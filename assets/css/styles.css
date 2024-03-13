@@ -1,0 +1,349 @@
+.dropzone, .dropzone * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.dropzone-previews {
+	box-sizing: border-box;
+}
+#images_old_preview {
+	box-sizing: border-box;
+}
+.dz-details {
+	z-index: 20;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	font-size: 13px;
+	min-width: 100%;
+	max-width: 100%;
+	padding: 2em 1em;
+	text-align: center;
+	color: rgba(0,0,0,.9);
+	line-height: 150%;
+}
+.dz-progress {
+	opacity: 1;
+	z-index: 1000;
+	pointer-events: none;
+	position: absolute;
+	height: 16px;
+	left: 50%;
+	top: 50%;
+	margin-top: -8px;
+	width: 80px;
+	margin-left: -40px;
+	background: rgba(255,255,255,.9);
+	-webkit-transform: scale(1);
+	border-radius: 8px;
+	overflow: hidden;
+}
+.dz-upload {
+	display: block;
+	height: 100%;
+	width: 0;
+	background: green;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	transition: width .3s ease-in-out;
+}
+.dz-error-message {
+	pointer-events: none;
+	z-index: 1000;
+	position: absolute;
+	display: block;
+	display: none;
+	opacity: 0;
+	-webkit-transition: opacity .3s ease;
+	-moz-transition: opacity .3s ease;
+	-ms-transition: opacity .3s ease;
+	-o-transition: opacity .3s ease;
+	transition: opacity .3s ease;
+	border-radius: 8px;
+	font-size: 13px;
+	top: 130px;
+	left: -10px;
+	width: 140px;
+	background: #be2626;
+	background: linear-gradient(to bottom,#be2626,#a92222);
+	padding: .5em 1.2em;
+	color: #fff;
+}
+.dz-success-mark {
+	position: absolute;
+	display: none;
+	top: 30px;
+	width: 54px;
+	height: 58px;
+	left: 50%;
+	margin-left: -27px;
+	pointer-events: none;
+	opacity: 0;
+	z-index: 500;
+	margin-top: -27px;
+}
+.dz-error-mark {
+	position: absolute;
+	display: none;
+	top: 30px;
+	width: 54px;
+	height: 58px;
+	left: 50%;
+	margin-left: -27px;
+	pointer-events: none;
+	opacity: 0;
+	margin-top: -27px;
+	z-index: 500;
+}
+.dz-remove {
+	font-size: 14px;
+	text-align: center;
+	display: block;
+	cursor: pointer;
+	border: none;
+}
+.dz-preview {
+	position: relative;
+	display: inline-block;
+	width: 120px;
+	margin: 0.5em;
+	vertical-align: top;
+	min-height: 100px;
+}
+img.image-w-h {
+	width: 120px;
+	height: 120px;
+}
+.remove_file {
+	position: absolute;
+	top: -12px;
+	right: -10px;
+	border: 1px solid red;
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	border-radius: 50%;
+}
+img.images_w_table {
+	width: 116px;
+	height: 73px;
+}
+
+/*approval setting*/
+.new_vendor_requests_button {
+	display: contents;
+	line-height: 84px;
+	white-space: nowrap;
+}
+.approval_model {
+	width: 1000px;
+}
+.popup-with {
+	width: 60%;
+}
+.h4-color {
+	color: #d8341b;
+}
+.hr-color {
+	margin-top: 10px;
+	border-bottom: 0.5px solid;
+	color: #d8341b;
+}
+.label-tab1 {
+	border: 1px solid #84C529 !important;
+	color: #84C529 !important;
+}
+.label-tab2 {
+	border: 1px solid #28B8DA !important;
+	color: #28B8DA !important;
+}
+.label-tabus {
+	border: 1px solid red !important;
+	color: red !important;
+}
+.label-tab3{
+	border: 1px solid #da2828 !important;
+	color: #da2828 !important;
+}
+.signature-pad--body{
+	border-radius: 4px;
+	position: relative;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	border: 1px solid #c0cbda;
+}
+
+/*handsontable header auto wrap*/
+.handsontable th {
+	white-space: normal !important;
+	word-wrap: break-word;
+}
+.ht_clone_top {
+    z-index: auto !important;
+}
+
+/*
+	HR Profile
+*/
+body.payslip_manage  .label-success  {
+    background: rgb(132, 197, 41);
+    border: rgb(132, 197, 41);
+    color: #ffffff !important;
+}
+body.payslip_manage  .label-primary{
+    background: rgba(40, 184, 218, 0.93);
+    border: 1px solid rgb(40, 184, 218);
+    color: #ffffff !important;
+}
+.payslip-template-lable{
+	font-style: italic;
+}
+.dt-table-loading.table, .table-loading .dataTables_filter, .table-loading .dataTables_length, .table-loading .dt-buttons, .table-loading table tbody tr, .table-loading table thead th {
+	opacity: 1!important;
+}
+.mt-0{	margin-top: 0; }
+.mb-0{	margin-bottom: 0; }
+.pt-1{	padding-top: 1px; }
+.pt-2{	padding-top: 2px; }
+.pt-3{	padding-top: 3px; }
+.pt-4{	padding-top: 4px; }
+.pt-5{	padding-top: 5px; }
+.pt-6{	padding-top: 6px; }
+.pt-7{	padding-top: 7px; }
+.pt-8{	padding-top: 8px; }
+.pt-9{	padding-top: 9px; }
+.pt-10{	padding-top: 10px; }
+.hover{	display: none; }
+.item_hover:hover .hover{ display: block; }
+.w-100{
+	width: 100%;
+} 
+.h-100{
+	height: 100%;
+} 
+.border-none{
+	border: none;
+}
+.cursor-pointer{
+	cursor: pointer;
+}
+.mr-7{
+	margin-right: 7px;
+}
+.bg-fab017{
+	background-color: #fab017;
+}
+.p-5{
+	padding: 5px;
+}
+.organizational{
+	border-radius: 4px 4px 0px 0px;
+	color: white;
+	padding: 5px;
+	min-width: 195px;
+}
+.zen_unit_chart{
+	height: 35px;
+}
+.h5-color {
+    color: #d8341b;
+}
+.hr-color {
+    margin-top: 10px;
+    border-bottom: 0.5px solid;
+    color: #d8341b;
+}
+body.dependent_persons .label-success:hover,
+body.dependent_persons .label-success:active {
+    background: rgb(110, 160, 41);
+    border: rgb(132, 197, 41);
+    color: #ffffff !important;
+}
+body.dependent_persons .label-success, body.resignation_procedures .label-success, body.knowledge_base_q_a .label-success, body.contracts .label-success, body.hr_profile .label-success,  body.hr_profile .contract-ribbonc-success  {
+    background: rgb(132, 197, 41);
+    border: rgb(132, 197, 41);
+    color: #ffffff !important;
+}
+body.dependent_persons .label-danger, body.contracts .label-danger, body.hr_profile .label-danger,  body.hr_profile .contract-ribbonc-danger {
+    background: rgba(244, 3, 47, 0.59);
+    border: 1px solid rgb(248, 106, 132);
+    color: #ffffff !important;
+}
+body.dependent_persons .label-primary, body.resignation_procedures .label-primary, body.hr_profile .label-primary, body.hr_profile .contract-ribbonc-primary {
+    background: rgba(40, 184, 218, 0.93);
+    border: 1px solid rgb(40, 184, 218);
+    color: #ffffff !important;
+}
+body.dependent_persons .label-warning, body.hr_profile .label-warning, body.hr_profile .contract-ribbonc-warning {
+    background: rgba(255, 152, 0, 1);
+    border: 1px solid rgb(255, 152, 0);
+    color: #ffffff !important;
+}
+.resignation-procedures-modal{
+    padding: 10px 10px;
+}
+input#kb_article_files {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    opacity: 0;
+    outline: 0;
+    background: #fff;
+    cursor: pointer;
+    display: block;
+}
+.publisher-tools-tab.attach {
+    position: relative;
+    overflow: hidden;
+}
+.publisher-tools-tab {
+    display: block;
+    background: #f7f7f7;
+    padding: 7px 14px;
+    color: #7f838a;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+th.th-color{
+    color: #fff !important;
+    background-color: #2d2d2d;
+}
+.att-background-color{
+    background-color: #f1f5fa;
+}
+.staff-chart-background-color{
+    background-color: #fab017;
+    border-radius: 4px 4px 0px 0px;
+    color: white;
+    padding: 5px;min-width: 195px;
+}
+.staff-chart-margin{
+    margin-right:7px
+}
+.articles-width{
+    width:300px;
+}
+.table-margintop{
+    margin-top: 0px !important;
+}
+.signature-pad--body {
+    border-radius: 4px;
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border: 1px solid #c0cbda;
+}
+.hr-img-responsive {
+    width: 300px;
+    height: auto;
+}

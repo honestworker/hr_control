@@ -43,7 +43,7 @@
 <div id="new_version"></div>
 <?php init_tail(); ?>
 <?php
-require('modules/hr_control/assets/js/setting/manage_setting_js.php');
+require('modules/hr_control/assets/js/settings/manage_setting_js.php');
 hooks()->do_action('settings_tab_footer', $tab); ?>
 </body>
 </html>

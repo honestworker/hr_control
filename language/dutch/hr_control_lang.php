@@ -714,3 +714,5 @@ $lang['hr_step']	 													 = 'Stap';
 $lang['hr_not_staff_member_setting']	 								 = 'De instelling voor Geen medewerker';
 $lang['hr_not_staff_member_label']	 									 = 'Linker menu niet tonen, Personeelsprofiel';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Als deze medewerker Geen medewerker is en deze instelling is ingeschakeld, zal wanneer de medewerker inlogt de linker menubalk Personeelsprofiel niet zichtbaar zijn.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

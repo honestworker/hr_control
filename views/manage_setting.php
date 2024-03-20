@@ -18,28 +18,27 @@
 						?>
 						<li<?php if ($group_item == $group) {echo " class='active'"; } ?>>
 						<a href="<?php echo admin_url('hr_control/setting?group='.$group_item); ?>" data-group="<?php echo html_entity_decode($group_item); ?>">
-
 							<?php
-							if ($group_item == 'workplace') {
-							 echo _l('hr_hr_workplace');
-							} elseif ($group_item == 'salary_type') {
-							 echo _l('hr_salary_type');
-							} elseif ($group_item == 'procedure_retire') {
-							 echo _l('hr_procedure_retire');
-							} elseif ($group_item == 'type_of_training') {
-							 echo _l('hr_type_of_training');
-							} elseif ($group_item == 'reception_staff') {
-							 echo _l('hr_reception_staff');
-							} elseif ($group_item == 'hr_profile_permissions') {
-							 echo _l('hr_hr_profile_permissions');
-							} elseif ($group_item == 'prefix_number') {
-							 echo _l('hr_prefix_number');
-							} elseif ($group_item == 'allowance_type') {
-							 echo _l('hr_allowance_type');
-							} else {
-							 echo _l($group_item);
-							}
-							  ?>
+								if ($group_item == 'workplace') {
+									echo _l('hr_hr_workplace');
+								} elseif ($group_item == 'salary_type') {
+									echo _l('hr_salary_type');
+								} elseif ($group_item == 'procedure_retire') {
+									echo _l('hr_procedure_retire');
+								} elseif ($group_item == 'type_of_training') {
+									echo _l('hr_type_of_training');
+								} elseif ($group_item == 'reception_staff') {
+									echo _l('hr_reception_staff');
+								} elseif ($group_item == 'hr_profile_permissions') {
+									echo _l('hr_hr_profile_permissions');
+								} elseif ($group_item == 'prefix_number') {
+									echo _l('hr_prefix_number');
+								} elseif ($group_item == 'allowance_type') {
+									echo _l('hr_allowance_type');
+								} else {
+									echo _l($group_item);
+								}
+							?>
 						</a>
 					</li>
 				<?php } ?>
@@ -48,13 +47,10 @@
 		<div class="col-md-9">
 			<div class="panel_s">
 				<div class="panel-body">
-
-					<?php $this->load->view($tabs['view']); ?>
-
+					<?php $this->load->view($tabs['view'], $data); ?>
 				</div>
 			</div>
 		</div>
-
 		<div class="clearfix"></div>
 	</div>
 	<?php echo form_close(); ?>
@@ -66,11 +62,11 @@
 <?php
 $viewuri = $_SERVER['REQUEST_URI'];
 
-require('modules/hr_control/assets/js/setting/manage_setting_js.php');
+require('modules/hr_control/assets/js/settings/manage_setting_js.php');
 if ($group == 'reception_staff') {
-	require('modules/hr_control/assets/js/setting/reception_staff_js.php');
+	require('modules/hr_control/assets/js/settings/reception_staff_js.php');
 } elseif (!(strpos($viewuri,'admin/hr_control/setting?group=hr_profile_permissions') === false)) {
-	require('modules/hr_control/assets/js/setting/hr_profile_permissions_js.php');
+	require('modules/hr_control/assets/js/settings/hr_profile_permissions_js.php');
 }
 hooks()->do_action('settings_tab_footer', $tab); ?>
 </body>

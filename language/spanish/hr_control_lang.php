@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = ' %s eliminado';
 $lang['hrp_added_successfully']   											 = 'Agregado con éxito %s';
@@ -714,7 +714,7 @@ $lang['staff_signature_sign']	 										 = 'signo de empleado';
 $lang['company_signature']	 											 = ' Firma (Empresa)';
 $lang['staff_signature']	 											 = 'Firma (Personal)';
 $lang['contract_signed_by']	 											 = 'Nombre del firmante';
-$lang['contract_signed_date']	 											 = 'Fecha de firma';
+$lang['contract_signed_date']	 										 = 'Fecha de firma';
 $lang['hr_general_infor']	 											 = 'Información general';
 $lang['hr_yes']	 														 = 'Sí';
 $lang['hr_hr_time']	 													 = 'Tiempo';
@@ -722,3 +722,5 @@ $lang['hr_step']	 													 = 'Paso';
 $lang['hr_not_staff_member_setting']	 								 = 'La configuración para No miembro del personal';
 $lang['hr_not_staff_member_label']	 									 = 'No mostrar el menú de la izquierda, perfil del personal';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Si este empleado no es un miembro del personal y esta configuración está habilitada, cuando el empleado inicie sesión, la barra de menú izquierda, el perfil del personal no estará visible.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

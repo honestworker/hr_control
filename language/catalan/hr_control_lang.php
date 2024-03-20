@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'S\'ha suprimit %s';
 $lang['hrp_added_successfully']   											 = 'S\'ha afegit %s correctament';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Pas';
 $lang['hr_not_staff_member_setting']	 								 = 'La configuració de No membre del personal';
 $lang['hr_not_staff_member_label']	 									 = 'No mostris el menú esquerre, el perfil del personal';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Si aquest empleat no és membre del personal i aquesta configuració està activada, quan l\'empleat iniciï sessió, la barra de menú esquerra, el perfil del personal, no serà visible.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

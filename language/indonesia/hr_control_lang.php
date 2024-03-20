@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = ' %s dihapus';
 $lang['hrp_added_successfully']   											 = 'Berhasil ditambahkan %s';
@@ -714,7 +714,7 @@ $lang['staff_signature_sign']	 										 = 'Tanda karyawan';
 $lang['company_signature']	 											 = ' Tanda Tangan (Perusahaan)';
 $lang['staff_signature']	 											 = 'Tanda Tangan (Staf)';
 $lang['contract_signed_by']	 											 = 'Nama Penandatangan';
-$lang['contract_signed_date']	 											 = 'Tanggal Ditandatangani';
+$lang['contract_signed_date']	 										 = 'Tanggal Ditandatangani';
 $lang['hr_general_infor']	 											 = 'Informasi Umum';
 $lang['hr_yes']	 														 = 'Ya';
 $lang['hr_hr_time']	 													 = 'Waktu';
@@ -722,3 +722,5 @@ $lang['hr_step']	 													 = 'Melangkah';
 $lang['hr_not_staff_member_setting']	 								 = 'Pengaturan untuk Bukan Anggota Staf';
 $lang['hr_not_staff_member_label']	 									 = 'Jangan tampilkan menu kiri, Profil staf';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Jika karyawan ini Bukan Anggota staf dan pengaturan ini diaktifkan, saat karyawan masuk, bilah menu kiri, Profil staf tidak akan terlihat.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

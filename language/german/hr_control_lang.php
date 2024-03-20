@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = ' %s gelöscht';
 $lang['hrp_added_successfully']   											 = 'Erfolgreich hinzugefügt %s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Mitarbeiterzeichen';
 $lang['company_signature']	 											 = ' Unterschrift (Firma)';
 $lang['staff_signature']	 											 = 'Unterschrift (Mitarbeiter)';
 $lang['contract_signed_by']	 											 = 'Name des Unterzeichners';
-$lang['contract_signed_date']	 											 = 'Unterzeichnetes Datum';
+$lang['contract_signed_date']	 										 = 'Unterzeichnetes Datum';
 $lang['hr_general_infor']	 											 = 'Allgemeine Information';
 $lang['hr_yes']	 														 = 'Ja';
 $lang['hr_hr_time']	 													 = 'Zeit';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Schritt';
 $lang['hr_not_staff_member_setting']	 								 = 'Die Einstellung für Kein Mitarbeiter';
 $lang['hr_not_staff_member_label']	 									 = 'Linkes Menü, Mitarbeiterprofil nicht anzeigen';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Wenn dieser Mitarbeiter kein Mitarbeiter ist und diese Einstellung aktiviert ist und sich der Mitarbeiter anmeldet, ist die linke Menüleiste, das Mitarbeiterprofil, nicht sichtbar.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

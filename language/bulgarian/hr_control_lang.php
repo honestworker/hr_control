@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Изтрити %s';
 $lang['hrp_added_successfully']   											 = 'Добавено успешно %s';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Стъпка';
 $lang['hr_not_staff_member_setting']	 								 = 'Настройката за „Не член на персонала“.';
 $lang['hr_not_staff_member_label']	 									 = 'Не показвайте лявото меню, профил на персонала';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Ако този служител не е член на персонала и тази настройка е активирана, когато служителят влезе, лявата лента с менюта, профилът на персонала няма да се вижда.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

@@ -139,7 +139,7 @@
 </div>
 <?php init_tail(); ?>
 <?php 
-  require('modules/hr_control/assets/js/setting/procedure_procedure_retire_details_js.php');
+  require('modules/hr_control/assets/js/settings/procedure_procedure_retire_details_js.php');
  ?>
 </body>
 </html>

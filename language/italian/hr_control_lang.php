@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Eliminato %s';
 $lang['hrp_added_successfully']   											 = 'Aggiunto con successo %s';
@@ -722,3 +722,5 @@ $lang['hr_step']	 													 = 'Fare un passo';
 $lang['hr_not_staff_member_setting']	 								 = 'L\'impostazione per Non membro dello staff';
 $lang['hr_not_staff_member_label']	 									 = 'Non mostrare il menu a sinistra, Profilo personale';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Se questo dipendente non è un membro dello staff e questa impostazione è abilitata, quando il dipendente effettua l\'accesso, la barra dei menu a sinistra, Profilo personale non sarà visibile.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

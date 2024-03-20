@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Borttagen %s';
 $lang['hrp_added_successfully']   											 = 'Tillagd %s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Anställd tecken';
 $lang['company_signature']	 											 = ' Signatur (företag)';
 $lang['staff_signature']	 											 = 'Signatur (personal)';
 $lang['contract_signed_by']	 											 = 'Undertecknarens namn';
-$lang['contract_signed_date']	 											 = 'Signerat datum';
+$lang['contract_signed_date']	 										 = 'Signerat datum';
 $lang['hr_general_infor']	 											 = 'Allmän information';
 $lang['hr_yes']	 														 = 'Ja';
 $lang['hr_hr_time']	 													 = 'Tid';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Steg';
 $lang['hr_not_staff_member_setting']	 								 = 'Inställningen för Not Staff Member';
 $lang['hr_not_staff_member_label']	 									 = 'Visa inte vänstermeny, personalprofil';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Om den här anställde inte är en anställd och den här inställningen är aktiverad, när medarbetaren loggar in, kommer den vänstra menyraden, Personalprofilen inte att vara synlig.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

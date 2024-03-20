@@ -8,7 +8,7 @@
 <hr class="hr-color">
 
 <?php if (is_admin()) { ?>
-<a href="#" onclick="hr_payroll_permissions_update(0,0,' hide'); return false;" class="btn btn-info mbot10"><?php echo _l('_new'); ?></a>
+  <a href="#" onclick="hr_payroll_permissions_update(0,0,' hide'); return false;" class="btn btn-info mbot10"><?php echo _l('_new'); ?></a>
 <?php } ?>
 <table class="table table-hr-profile-permission">
   <thead>

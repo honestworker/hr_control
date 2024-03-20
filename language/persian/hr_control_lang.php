@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = ' %s حذف شد';
 $lang['hrp_added_successfully']   											 = 'با موفقیت %s اضافه شد';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'علامت کارمند';
 $lang['company_signature']	 											 = ' امضا (شرکت)';
 $lang['staff_signature']	 											 = 'امضا (کارکنان)';
 $lang['contract_signed_by']	 											 = 'نام امضاکننده';
-$lang['contract_signed_date']	 											 = 'تاریخ امضا';
+$lang['contract_signed_date']	 										 = 'تاریخ امضا';
 $lang['hr_general_infor']	 											 = 'اطلاعات کلی';
 $lang['hr_yes']	 														 = 'آره';
 $lang['hr_hr_time']	 													 = 'زمان';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'گام';
 $lang['hr_not_staff_member_setting']	 								 = 'تنظیم برای Not Staff Member';
 $lang['hr_not_staff_member_label']	 									 = 'منوی سمت چپ، نمایه کارکنان نشان داده نشود';
 $lang['hr_not_staff_member_tooltip']	 								 = 'اگر این کارمند عضو کارکنان نباشد و این تنظیم فعال باشد، وقتی کارمند وارد سیستم می‌شود، نوار منوی سمت چپ، نمایه کارکنان قابل مشاهده نخواهد بود.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

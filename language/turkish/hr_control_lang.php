@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = ' %s silindi';
 $lang['hrp_added_successfully']   											 = ' %s başarıyla eklendi';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'çalışan işareti';
 $lang['company_signature']	 											 = ' İmza (Şirket)';
 $lang['staff_signature']	 											 = 'İmza (Personel)';
 $lang['contract_signed_by']	 											 = 'İmzalayan Adı';
-$lang['contract_signed_date']	 											 = 'İmza Tarihi';
+$lang['contract_signed_date']	 										 = 'İmza Tarihi';
 $lang['hr_general_infor']	 											 = 'Genel bilgi';
 $lang['hr_yes']	 														 = 'Evet';
 $lang['hr_hr_time']	 													 = 'Zaman';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Adım';
 $lang['hr_not_staff_member_setting']	 								 = 'Personel Üyesi Değil ayarı';
 $lang['hr_not_staff_member_label']	 									 = 'Sol menüyü gösterme, Personel profili';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Bu çalışan Personel Değilse ve bu ayar etkinleştirilirse, çalışan giriş yaptığında sol menü çubuğunda Personel profili görünmez.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

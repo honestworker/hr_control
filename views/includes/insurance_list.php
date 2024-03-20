@@ -1,11 +1,10 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<div> 
-
+<div>
 	<?php echo form_open_multipart(admin_url('hr_control/setting_insurance_list'), array('id'=>'add_insurance_list')); ?>
 
 	<div class="row">
 		<div class="col-md-12">
-				<h4 class="h4-color no-margin"><i class="fa fa-dedent" aria-hidden="true"></i> <?php echo _l('insurance_list'); ?></h4>
+			<h4 class="h4-color no-margin"><i class="fa fa-dedent" aria-hidden="true"></i> <?php echo _l('insurance_list'); ?></h4>
 		</div>
 	</div>
 	<hr class="hr-color">
@@ -26,6 +25,5 @@
 	<?php echo form_close(); ?>
 
 	<div class="clearfix"></div>
-
 </body>
 </html>

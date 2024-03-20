@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										    = 'تم الحذف %s ';
+$lang['hr_control']              										    = 'HR Control';
 
 $lang['hrp_deleted']              											= 'تم الحذف %s ';
 $lang['hrp_added_successfully']   											= 'اضيف بنجاح %s';
@@ -732,3 +732,5 @@ $lang['hr_step']	 													 = 'خطوة';
 $lang['hr_not_staff_member_setting']	 								 = 'الإعداد لعدم الموظف';
 $lang['hr_not_staff_member_label']	 									 = 'لا تعرض القائمة اليسرى ، ملف تعريف الموظفين';
 $lang['hr_not_staff_member_tooltip']	 								 = 'إذا لم يكن هذا الموظف أحد الموظفين وتم تمكين هذا الإعداد ، عندما يقوم الموظف بتسجيل الدخول ، فإن شريط القائمة الأيسر ، لن يكون ملف تعريف الموظفين مرئيًا';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

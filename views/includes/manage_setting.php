@@ -115,12 +115,12 @@ $viewuri = $_SERVER['REQUEST_URI'];
 } elseif (!(strpos($viewuri,'admin/hr_control/setting?group=insurance_list') === false)) {
 	require 'modules/hr_control/assets/js/settings/insurance_list_js.php';
 } elseif ($group == 'reception_staff') {
-	require('modules/hr_control/assets/js/setting/reception_staff_js.php');
+	require('modules/hr_control/assets/js/settings/reception_staff_js.php');
 } elseif (!(strpos($viewuri,'admin/hr_profile/setting?group=hr_profile_permissions') === false)) {
-	require('modules/hr_control/assets/js/setting/hr_profile_permissions_js.php');
+	require('modules/hr_control/assets/js/settings/hr_profile_permissions_js.php');
 }
 if (isset($icon[$gr])) {
-	require('modules/hr_control/assets/js/setting/manage_setting_js.php');
+	require('modules/hr_control/assets/js/settings/manage_setting_js.php');
 }
 
  ?>

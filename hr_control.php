@@ -205,7 +205,7 @@ function hr_payroll_module_init_menu_items()
     if (has_permission('hrp_setting', '', 'view')) {
         $CI->app_menu->add_sidebar_children_item('hr_control', [
             'slug' => 'hrp_settings',
-            'name' => _l('settings'),
+            'name' => _l('hr_income_tax_rates_settings'),
             'icon' => 'fa fa-cog menu-icon',
             'href' => admin_url('hr_control/setting?group=income_tax_rates'),
             'position' => 11,
@@ -419,7 +419,7 @@ function hr_profile_module_init_menu_items()
     if (has_permission('hrm_dashboard', '', 'view')) {
         $CI->app_menu->add_sidebar_children_item('hr_control', [
             'slug' => 'hr_records_dashboard',
-            'name' => _l('hr_dashboard'),
+            'name' => _l('hr_records_dashboard'),
             'icon' => 'fa fa-dashboard',
             'href' => admin_url('hr_control/records_dashboard'),
             'position' => 1,
@@ -516,20 +516,10 @@ function hr_profile_module_init_menu_items()
         ]);
     }
 
-    if (has_permission('hrm_report', '', 'view')) {
-        $CI->app_menu->add_sidebar_children_item('hr_control', [
-            'slug' => 'hr_profile_reports',
-            'name' => _l('hr_reports'),
-            'icon' => 'fa fa-list-alt',
-            'href' => admin_url('hr_control/reports'),
-            'position' => 10,
-        ]);
-    }
-
     if (has_permission('hrm_setting', '', 'view')) {
         $CI->app_menu->add_sidebar_children_item('hr_control', [
             'slug' => 'hr_profile_setting',
-            'name' => _l('hr_settings'),
+            'name' => _l('hr_contact_type_settings'),
             'icon' => 'fa fa-cogs',
             'href' => admin_url('hr_control/setting?group=contract_type'),
             'position' => 14,
@@ -561,19 +551,19 @@ function hr_profile_load_js()
 
     //settings
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=contract_type') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/contract_type.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/contract_type.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=allowance_type') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/allowance_type.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/allowance_type.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=payroll') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/payroll.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/payroll.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=type_of_training') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/type_of_training.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/type_of_training.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=income_tax_individual') === false)) {
@@ -582,15 +572,15 @@ function hr_profile_load_js()
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=procedure_retire') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/procedure_retire.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/procedure_retire.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=salary_type') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/salary_type.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/salary_type.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/setting?group=workplace') === false)) {
-        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/setting/workplace.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
+        echo '<script src="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/js/settings/workplace.js') . '?v=' . HR_CONTROL_REVISION . '"></script>';
     }
 
     if (!(strpos($viewuri, 'admin/hr_control/training') === false)) {
@@ -688,7 +678,7 @@ function hr_profile_add_head_components()
 
     if (!(strpos($viewuri, 'admin/hr_control/training') === false)) {
         if (!(strpos($viewuri, 'insurrance') === false)) {
-            echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/css/setting/insurrance.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
+            echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/css/settings/insurrance.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
         }
     }
 
@@ -726,7 +716,7 @@ function hr_profile_add_head_components()
     }
 
     if (!(strpos($viewuri, '/admin/hr_control/setting') === false)) {
-        echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/css/setting/contract_template.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
+        echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/css/settings/contract_template.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
     }
 }
 

@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											= 'Đã xóa %s ';
 $lang['hrp_added_successfully']   											= 'Thêm thành công %s';
@@ -767,3 +767,5 @@ $lang['hr_step']	 													= 'Bước';
 $lang['hr_not_staff_member_setting']	 								= 'Cài đặt không phải là Nhân viên';
 $lang['hr_not_staff_member_label']	 									= 'Không hiển thị menu bên trái, Hồ sơ nhân viên';
 $lang['hr_not_staff_member_tooltip']	 								= 'Nếu nhân viên này không phải là Thành viên của công ty và cài đặt này được bật, khi nhân viên đăng nhập, thanh menu bên trái, Hồ sơ nhân viên sẽ không hiển thị.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

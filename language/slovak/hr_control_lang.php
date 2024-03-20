@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Odstránené %s';
 $lang['hrp_added_successfully']   											 = 'Úspešne pridané %s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Zamestnanecký znak';
 $lang['company_signature']	 											 = ' Podpis (spoločnosť)';
 $lang['staff_signature']	 											 = 'Podpis (zamestnanci)';
 $lang['contract_signed_by']	 											 = 'Meno podpisovateľa';
-$lang['contract_signed_date']	 											 = 'Dátum podpisu';
+$lang['contract_signed_date']	 										 = 'Dátum podpisu';
 $lang['hr_general_infor']	 											 = 'Všeobecné informácie';
 $lang['hr_yes']	 														 = 'Áno';
 $lang['hr_hr_time']	 													 = 'čas';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Krok';
 $lang['hr_not_staff_member_setting']	 								 = 'Nastavenie pre Not Staff Member';
 $lang['hr_not_staff_member_label']	 									 = 'Nezobrazovať ľavé menu, Profil zamestnancov';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Ak tento zamestnanec nie je zamestnancom a toto nastavenie je povolené, po prihlásení zamestnanca nebude ľavá lišta ponuky, Profil zamestnanca viditeľná.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

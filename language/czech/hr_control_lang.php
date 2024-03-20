@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Krok';
 $lang['hr_not_staff_member_setting']	 								 = 'Nastavení pro Not Staff';
 $lang['hr_not_staff_member_label']	 									 = 'Nezobrazovat levé menu, Profil zaměstnanců';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Pokud tento zaměstnanec není zaměstnancem a toto nastavení je povoleno, když se zaměstnanec přihlásí, levá lišta nabídky nebude viditelná.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

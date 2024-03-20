@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = '步';
 $lang['hr_not_staff_member_setting']	 								 = '非工作人员的设置';
 $lang['hr_not_staff_member_label']	 									 = '不显示左侧菜单，员工资料';
 $lang['hr_not_staff_member_tooltip']	 								 = '如果该员工不是员工并且启用了此设置，则当员工登录时，左侧菜单栏“员工档案”将不可见。';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

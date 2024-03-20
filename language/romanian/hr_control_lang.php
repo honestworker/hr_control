@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Șters %s';
 $lang['hrp_added_successfully']   											 = 'Adăugat cu succes %s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Semnul angajatului';
 $lang['company_signature']	 											 = ' Semnătura (Companie)';
 $lang['staff_signature']	 											 = 'Semnătura (personal)';
 $lang['contract_signed_by']	 											 = 'Numele semnatarului';
-$lang['contract_signed_date']	 											 = 'Data semnării';
+$lang['contract_signed_date']	 										 = 'Data semnării';
 $lang['hr_general_infor']	 											 = 'Informatii generale';
 $lang['hr_yes']	 														 = 'da';
 $lang['hr_hr_time']	 													 = 'Timp';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Etapa';
 $lang['hr_not_staff_member_setting']	 								 = 'Setarea pentru Nu este membru al personalului';
 $lang['hr_not_staff_member_label']	 									 = 'Nu afișa meniul din stânga, Profilul personalului';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Dacă acest angajat nu este membru al personalului și această setare este activată, atunci când angajatul se conectează, bara de meniu din stânga, Profilul personalului nu va fi vizibilă.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

@@ -4,14 +4,14 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<?php 
-				$title = '';
-				$staffid = '';
-				if (isset($member)) {
-					$title .= _l('hrp_update_permissions');
-					$staffid    = $member->staffid;
-				} else {
-					$title .= _l('hrp_add_permissions');
-				}
+					$title = '';
+					$staffid = '';
+					if (isset($member)) {
+						$title .= _l('hrp_update_permissions');
+						$staffid    = $member->staffid;
+					} else {
+						$title .= _l('hrp_add_permissions');
+					}
 				?>
 				<h4 class="modal-title"><?php echo html_entity_decode($title); ?></h4>
 			</div>

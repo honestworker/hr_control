@@ -15,6 +15,10 @@
 								<p><a href="#" class="font-medium" onclick="init_report(this,'income_summary_report'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_income_summary_report'); ?></a></p>
 								<hr class="hr-10" />
 								<p><a href="#" class="font-medium" onclick="init_report(this,'insurance_cost_summary_report'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_insurance_cost_summary_report'); ?></a></p>
+								<hr class="hr-10" />
+								<p><a href="#" class="font-medium" onclick="init_report(this,'report_the_employee_quitting'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_report_the_employee_quitting'); ?></a></p>
+								<hr class="hr-10" />
+								<p><a href="#" class="font-medium" onclick="init_report(this,'list_of_employees_with_salary_change'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_list_of_employees_with_salary_change'); ?></a></p>
 							</div>
 
 							<div class="col-md-4 border-right">
@@ -24,6 +28,11 @@
 								<hr class="hr-10" />
 								<p><a href="#" class="font-medium" onclick="init_report(this,'department_payslip_chart'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('department_payslip_chart'); ?></a></p>
 								<hr class="hr-10" />
+								<p><a href="#" class="font-medium" onclick="init_report(this,'seniority'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_hr_fluctuations_according_to_seniority'); ?></a></p>
+								<hr class="hr-10" />
+								<p><a href="#" class="font-medium" onclick="init_report(this,'month'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_hr_fluctuations_according_by_month'); ?></a></p>
+								<hr class="hr-10" />
+								<p><a href="#" class="font-medium" onclick="init_report(this,'qualifications_department'); return false;"><i class="fa fa-caret-down" aria-hidden="true"></i> <?php echo _l('hr_personnel_qualifications_department'); ?></a></p>
 							</div>
 
 							<div class="col-md-4">
@@ -141,6 +150,12 @@
 							<?php $this->load->view('reports/insurance_cost_summary_report.php'); ?> 
 							<?php $this->load->view('reports/payslip_chart.php'); ?>
 							<?php $this->load->view('reports/department_payslip_chart.php'); ?> 
+							<?php $this->load->view('reports/senior_staff.php'); ?>
+							<?php $this->load->view('reports/hr_is_working.php'); ?>
+							<?php $this->load->view('reports/report_the_employee_quitting.php'); ?>
+							<?php $this->load->view('reports/list_of_employees_with_salary_change.php'); ?>
+							<?php $this->load->view('reports/qualifications_department.php'); ?>
+							<?php $this->load->view('reports/qualifications_department_circle.php'); ?>
 						</div>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Excluído %s';
 $lang['hrp_added_successfully']   											 = 'Adicionado com sucesso %s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Sinal de funcionário';
 $lang['company_signature']	 											 = ' Assinatura (Empresa)';
 $lang['staff_signature']	 											 = 'Assinatura (Funcionários)';
 $lang['contract_signed_by']	 											 = 'Nome do signatário';
-$lang['contract_signed_date']	 											 = 'Data de assinatura';
+$lang['contract_signed_date']	 										 = 'Data de assinatura';
 $lang['hr_general_infor']	 											 = 'Informação geral';
 $lang['hr_yes']	 														 = 'Sim';
 $lang['hr_hr_time']	 													 = 'Tempo';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Etapa';
 $lang['hr_not_staff_member_setting']	 								 = 'A configuração para Não membro da equipe';
 $lang['hr_not_staff_member_label']	 									 = 'Não mostrar o menu esquerdo, perfil da equipe';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Se este funcionário não for membro da equipe e esta configuração estiver habilitada, quando o funcionário fizer login, a barra de menu à esquerda, o perfil da equipe não estará visível.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

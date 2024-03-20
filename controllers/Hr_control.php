@@ -75,9 +75,6 @@ class hr_control extends AdminController
 
 		$this->load->model('currencies_model');
 		$data['base_currency'] = $this->currencies_model->get_base_currency();
-		$data['title'] = _l('hr_settings');
-		$data['tabs']['view'] = 'includes/' . $data['group'];
-		$this->load->view('manage_setting', $data);
 
         if ($data['group'] == '') {
             $data['group'] = 'payroll_columns';
@@ -235,7 +232,6 @@ class hr_control extends AdminController
             $data['actual_workday_type'] = $get_attendance_type['actual_workday'];
             $data['paid_leave_type'] = $get_attendance_type['paid_leave'];
             $data['unpaid_leave_type'] = $get_attendance_type['unpaid_leave'];
-
         } elseif ($data['group'] == 'hr_records_earnings_list') {
             $earnings_value = [];
             $earnings_value[] = [
@@ -250,10 +246,8 @@ class hr_control extends AdminController
             $data['title'] = _l('earnings_list');
             $data['basis_value'] = $earnings_value;
             $data['earnings_list_hr_records'] = json_encode($this->hr_payroll_model->hr_records_get_earnings_list());
-        } elseif ($data['group'] == 'profile') {
+        } elseif ($data['group'] == 'contract_type') {
 			$data['group'] = 'contract_type';
-			$data['contract'] = $this->hr_profile_model->get_contracttype();
-		} elseif ($data['group'] == 'contract_type') {
 			$data['contract'] = $this->hr_profile_model->get_contracttype();
 		} elseif ($data['group'] == 'salary_type') {
 			$data['salary_form'] = $this->hr_profile_model->get_salary_form();
@@ -278,7 +272,6 @@ class hr_control extends AdminController
 		}
 
         $data['tabs']['view'] = 'includes/' . $data['group'];
-
         $this->load->view('manage_setting', $data);
     }
 
@@ -929,7 +922,6 @@ class hr_control extends AdminController
                         $data_object_kpi[$staff_key]['job_title'] = $employees_value[$staff_value['staffid'] . '_' . $month_filter]['job_title'];
                         $data_object_kpi[$staff_key]['income_tax_number'] = $employees_value[$staff_value['staffid'] . '_' . $month_filter]['income_tax_number'];
                         $data_object_kpi[$staff_key]['residential_address'] = $employees_value[$staff_value['staffid'] . '_' . $month_filter]['residential_address'];
-
                     } else {
                         $data_object_kpi[$staff_key]['job_title'] = '';
                         $data_object_kpi[$staff_key]['income_tax_number'] = '';
@@ -1147,7 +1139,6 @@ class hr_control extends AdminController
 
                 $list_department = '';
                 if (count($arr_department) > 0) {
-
                     foreach ($arr_department as $key => $department) {
                         $department_value = $this->departments_model->get($department);
 
@@ -1169,7 +1160,6 @@ class hr_control extends AdminController
             }
 
             if (isset($attendances_value[$staff_value['staffid'] . '_' . $current_month])) {
-
                 $data_object_kpi[$staff_key]['standard_workday'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['standard_workday'];
                 $data_object_kpi[$staff_key]['actual_workday'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['actual_workday'];
                 $data_object_kpi[$staff_key]['actual_workday_probation'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['actual_workday_probation'];
@@ -1178,7 +1168,6 @@ class hr_control extends AdminController
                 $data_object_kpi[$staff_key]['id'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['id'];
 
                 $data_object_kpi[$staff_key] = array_merge($data_object_kpi[$staff_key], $attendances_value[$staff_value['staffid'] . '_' . $current_month]);
-
             } else {
                 $data_object_kpi[$staff_key]['standard_workday'] = get_hr_payroll_option('standard_working_time');
                 $data_object_kpi[$staff_key]['actual_workday_probation'] = 0;
@@ -1259,7 +1248,6 @@ class hr_control extends AdminController
             } else {
                 $data['active_language'] = get_option('active_language');
             }
-
         } else {
             $data['active_language'] = get_option('active_language');
         }
@@ -1381,7 +1369,6 @@ class hr_control extends AdminController
                     $data_object_kpi['job_title'] = $employees_value[$staff_value['staffid'] . '_' . $month_filter]['job_title'];
                     $data_object_kpi['income_tax_number'] = $employees_value[$staff_value['staffid'] . '_' . $month_filter]['income_tax_number'];
                     $data_object_kpi['residential_address'] = $employees_value[$staff_value['staffid'] . '_' . $month_filter]['residential_address'];
-
                 } else {
                     $data_object_kpi['job_title'] = '';
                     $data_object_kpi['income_tax_number'] = '';
@@ -1747,9 +1734,7 @@ class hr_control extends AdminController
 
                 $data_object_kpi[$staff_key]['rel_type'] = $rel_type;
                 $data_object_kpi[$staff_key]['month'] = $month_filter;
-
             }
-
         }
 
         //check is add new or update data
@@ -1783,7 +1768,6 @@ class hr_control extends AdminController
             } else {
                 $data['active_language'] = get_option('active_language');
             }
-
         } else {
             $data['active_language'] = get_option('active_language');
         }
@@ -1900,7 +1884,6 @@ class hr_control extends AdminController
             }
 
             if (isset($attendances_value[$staff_value['staffid'] . '_' . $current_month])) {
-
                 $data_object_kpi['standard_workday'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['standard_workday'];
                 $data_object_kpi['actual_workday_probation'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['actual_workday_probation'];
                 $data_object_kpi['actual_workday'] = $attendances_value[$staff_value['staffid'] . '_' . $current_month]['actual_workday'];
@@ -1928,7 +1911,6 @@ class hr_control extends AdminController
 
             $get_values_for_keys = $this->get_values_for_keys($data_object_kpi, $header_key);
             $writer->writeSheetRow('Sheet1', $get_values_for_keys);
-
         }
 
         $filename = 'attendance_sample_file' . get_staff_user_id() . '_' . strtotime(date('Y-m-d H:i:s')) . '.xlsx';
@@ -1974,7 +1956,6 @@ class hr_control extends AdminController
         $filename = '';
         if ($this->input->post()) {
             if (isset($_FILES['file_csv']['name']) && $_FILES['file_csv']['name'] != '') {
-
                 $this->delete_error_file_day_before();
                 $rel_type = hrp_get_timesheets_status();
 
@@ -2098,7 +2079,6 @@ class hr_control extends AdminController
                             $filename = 'Import_attendance_error_' . get_staff_user_id() . '_' . strtotime(date('Y-m-d H:i:s')) . '.xlsx';
                             $writer->writeToFile(str_replace($filename, HR_CONTROL_ERROR . $filename, $filename));
                         }
-
                     }
                 }
             }
@@ -2552,7 +2532,6 @@ class hr_control extends AdminController
         $data_object_kpi = [];
         $index_data_object = 0;
         if ($newquerystring != '') {
-
             //load staff
             if (!is_admin() && !has_permission('hrp_employee', '', 'view')) {
                 //View own
@@ -2724,7 +2703,6 @@ class hr_control extends AdminController
                 }
 
                 $data_object_kpi['employee_name'] = $staff_i->firstname . ' ' . $staff_i->lastname;
-
                 $arr_department = $this->hr_payroll_model->get_staff_departments($staff_i->staffid, true);
 
                 $list_department = '';
@@ -2752,7 +2730,6 @@ class hr_control extends AdminController
             if (isset($commissions_value[$staff_value['staffid'] . '_' . $current_month])) {
                 $data_object_kpi['commission_amount'] = $commissions_value[$staff_value['staffid'] . '_' . $current_month]['commission_amount'];
                 $data_object_kpi['id'] = $commissions_value[$staff_value['staffid'] . '_' . $current_month]['id'];
-
             } else {
                 $data_object_kpi['commission_amount'] = 0;
                 $data_object_kpi['id'] = 0;
@@ -2921,7 +2898,6 @@ class hr_control extends AdminController
                             $filename = 'Import_commissions_error_' . get_staff_user_id() . '_' . strtotime(date('Y-m-d H:i:s')) . '.xlsx';
                             $writer->writeToFile(str_replace($filename, HR_CONTROL_ERROR . $filename, $filename));
                         }
-
                     }
                 }
             }
@@ -3424,7 +3400,6 @@ class hr_control extends AdminController
         $before_7_day = strtotime(date_format($date, "Y-m-d H:i:s"));
 
         foreach (glob($folder . '*') as $file) {
-
             $file_arr = explode("/", $file);
             $filename = array_pop($file_arr);
 
@@ -6888,9 +6863,7 @@ class hr_control extends AdminController
 			}
 
 			//3 Create a training record
-
 			if ($list_staff->job_position != '') {
-
 				$jp_interview_training = $this->hr_profile_model->get_job_position_training_de($data['training_program']);
 				//TO DO
 				// $list_training = $this->hr_profile_model->get_jp_interview_training($list_staff->job_position,$data['training_type']);
@@ -6915,7 +6888,6 @@ class hr_control extends AdminController
 			set_alert('success', $message);
 			redirect(admin_url('hr_control/reception_staff'));
 		}
-
 	}
 
 	/**
@@ -7042,7 +7014,6 @@ class hr_control extends AdminController
 					$training_allocation_min_point = 0;
 
 					if (isset($list_training_allocation)) {
-
 						$job_position_training = $this->hr_profile_model->get_job_position_training_de($list_training_allocation->jp_interview_training_id);
 
 						if ($job_position_training) {
@@ -7053,7 +7024,6 @@ class hr_control extends AdminController
 					if ((float) $data_marks['training_program_point'] >= (float) $training_allocation_min_point) {
 						$count_effect_total += 1;
 					}
-
 				}
 			}
 
@@ -11253,7 +11223,7 @@ class hr_control extends AdminController
 	/**
 	 * HR is working
 	 */
-	public function HR_is_working() {
+	public function hr_is_working() {
 		if ($this->input->is_ajax_request()) {
 
 			$months_report = $this->input->post('months_filter');
@@ -12216,12 +12186,12 @@ class hr_control extends AdminController
 		}
 
 		//delete file error response
-		foreach (glob('modules/hr_profile/uploads/file_error_response/' . '*') as $file) {
+		foreach (glob('modules/hr_control/uploads/file_error_response/' . '*') as $file) {
 			$file_arr = explode("/", $file);
 			$filename = array_pop($file_arr);
 
 			if (is_dir($file)) {
-				delete_dir('modules/hr_profile/uploads/file_error_response/' . $filename);
+				delete_dir('modules/hr_control/uploads/file_error_response/' . $filename);
 			}
 		}
 

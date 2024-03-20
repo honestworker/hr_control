@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Usunięto %s';
 $lang['hrp_added_successfully']   											 = 'Dodano pomyślnie %s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Pracownik znak';
 $lang['company_signature']	 											 = ' Podpis (firma)';
 $lang['staff_signature']	 											 = 'Podpis (personel)';
 $lang['contract_signed_by']	 											 = 'Imię i nazwisko sygnatariusza';
-$lang['contract_signed_date']	 											 = 'Data podpisania';
+$lang['contract_signed_date']	 										 = 'Data podpisania';
 $lang['hr_general_infor']	 											 = 'Informacje ogólne';
 $lang['hr_yes']	 														 = 'tak';
 $lang['hr_hr_time']	 													 = 'Czas';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Krok';
 $lang['hr_not_staff_member_setting']	 								 = 'Ustawienie dla Nie członek personelu';
 $lang['hr_not_staff_member_label']	 									 = 'Nie pokazuj lewego menu, Profil personelu';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Jeśli ten pracownik nie jest członkiem personelu i to ustawienie jest włączone, po zalogowaniu się pracownika lewy pasek menu Profil personelu nie będzie widoczny.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

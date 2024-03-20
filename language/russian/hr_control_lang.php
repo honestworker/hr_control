@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Удалено %s';
 $lang['hrp_added_successfully']   											 = ' %s успешно добавлен';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Знак сотрудника';
 $lang['company_signature']	 											 = ' Подпись (Компания)';
 $lang['staff_signature']	 											 = 'Подпись (Персонал)';
 $lang['contract_signed_by']	 											 = 'Имя подписывающей стороны';
-$lang['contract_signed_date']	 											 = 'Дата подписания';
+$lang['contract_signed_date']	 										 = 'Дата подписания';
 $lang['hr_general_infor']	 											 = 'Главная Информация';
 $lang['hr_yes']	 														 = 'Да';
 $lang['hr_hr_time']	 													 = 'Время';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Шаг';
 $lang['hr_not_staff_member_setting']	 								 = 'Настройка для не сотрудника';
 $lang['hr_not_staff_member_label']	 									 = 'Не показывать левое меню, профиль персонала';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Если этот сотрудник не является сотрудником и этот параметр включен, когда сотрудник входит в систему, левая строка меню «Профиль персонала» не будет отображаться.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

@@ -55,7 +55,7 @@
 
 						<?php if (is_admin() || has_permission('hrp_setting','','delete')) { ?>
 							<?php if ($value['is_edit'] != 'no') { ?>
-								<a href="<?php echo admin_url('hr_control/delete_payroll_column_setting/'.$value['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+								<a href="<?php echo admin_url('hr_control/delete_payroll_column_settings/'.$value['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 							<?php } ?>
 
 						<?php } ?>

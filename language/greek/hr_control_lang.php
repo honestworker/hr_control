@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = 'Διαγράφηκε% s';
 $lang['hrp_added_successfully']   											 = 'Προστέθηκε με επιτυχία% s';
@@ -715,7 +715,7 @@ $lang['staff_signature_sign']	 										 = 'Σημάδι εργαζομένων
 $lang['company_signature']	 											 = ' Υπογραφή (Εταιρεία)';
 $lang['staff_signature']	 											 = 'Υπογραφή (Προσωπικό)';
 $lang['contract_signed_by']	 											 = 'Όνομα υπογράφοντος';
-$lang['contract_signed_date']	 											 = 'Ημερομηνία υπογραφής';
+$lang['contract_signed_date']	 										 = 'Ημερομηνία υπογραφής';
 $lang['hr_general_infor']	 											 = 'Γενικές πληροφορίες';
 $lang['hr_yes']	 														 = 'Ναί';
 $lang['hr_hr_time']	 													 = 'χρόνος';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'Βήμα';
 $lang['hr_not_staff_member_setting']	 								 = 'Η ρύθμιση για το Not Staff Member';
 $lang['hr_not_staff_member_label']	 									 = 'Να μην εμφανίζεται το αριστερό μενού, Προφίλ προσωπικού';
 $lang['hr_not_staff_member_tooltip']	 								 = 'Εάν αυτός ο υπάλληλος δεν είναι μέλος του προσωπικού και αυτή η ρύθμιση είναι ενεργοποιημένη, όταν ο υπάλληλος συνδέεται, η αριστερή γραμμή μενού, το προφίλ προσωπικού δεν θα είναι ορατή.';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

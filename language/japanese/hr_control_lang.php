@@ -1,5 +1,5 @@
 <?php
-$lang['hr_control']              										     = 'تم الحذف %s ';
+$lang['hr_control']              										     = 'HR Control';
 
 $lang['hrp_deleted']              											 = ' %sを削除しました';
 $lang['hrp_added_successfully']   											 = ' %sが正常に追加されました';
@@ -723,3 +723,5 @@ $lang['hr_step']	 													 = 'ステップ';
 $lang['hr_not_staff_member_setting']	 								 = 'スタッフ以外の設定';
 $lang['hr_not_staff_member_label']	 									 = '左メニュー、スタッフプロフィールを表示しない';
 $lang['hr_not_staff_member_tooltip']	 								 = 'この従業員がスタッフメンバーではなく、この設定が有効になっている場合、従業員がログインすると、左側のメニューバーであるスタッフプロファイルは表示されません。';
+$lang['hr_income_tax_rates_settings'] 									 = 'Income Tax Rates Settings';
+$lang['hr_contact_type_settings'] 										 = 'Contact Type Settings';

@@ -14,14 +14,12 @@
 			<div class="checkbox checkbox-primary">
 				<input  type="checkbox" id="integrated_hrprofile" name="integrated_hrprofile" <?php if (get_hr_payroll_option('integrated_hrprofile') == 1 ) { echo 'checked';} ?> value="integrated_hrprofile" <?php if ($hr_profile_active == false) {echo ' disabled';} ?>>
 				<label for="integrated_hrprofile"><?php echo _l('integrated_hrprofile'); ?>
-
-				<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($hr_profile_title); ?>"></i></a>
-			</label>
+					<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($hr_profile_title); ?>"></i></a>
+				</label>
+			</div>
 		</div>
 	</div>
 </div>
-</div>
-
 
 <div class="row">
 	<div class="col-md-12">
@@ -29,12 +27,11 @@
 			<div class="checkbox checkbox-primary">
 				<input type="checkbox" id="integrated_timesheets" name="integrated_timesheets" <?php if (get_hr_payroll_option('integrated_timesheets') == 1 ) { echo 'checked';} ?> value="integrated_timesheets" <?php if ($timesheets_active == false) {echo ' disabled';} ?>>
 				<label for="integrated_timesheets"><?php echo _l('integrated_timesheets'); ?>
-
 				<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($timesheets_title); ?>"></i></a>
-			</label>
+				</label>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <?php 
@@ -54,15 +51,12 @@ $unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave
 	</div>
 
 <div class="col-md-12 option-show <?php if (get_hr_payroll_option('integrated_timesheets') == 1) { echo '';} else { echo 'hide';}  ?>">
-
-
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group select-placeholder ">
 				<label for="integration_actual_workday" class="control-label"><small class="req text-danger">* </small><?php echo _l('integration_actual_workday'); ?><a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('tooltip_actual_workday'); ?>"></i></a></label>
 				<select name="integration_actual_workday[]" id="integration_actual_workday" multiple="true" class="form-control selectpicker" data-actions-box="true" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>" required>
 					<?php foreach ($actual_workday_type as $key => $value) { ?>
-
 						<?php 
 						$selected ='';
 						if (in_array($key, $actual_workday)) {
@@ -70,13 +64,11 @@ $unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave
 						}
 						?>
 						<option value="<?php echo html_entity_decode($key); ?>" <?php echo  html_entity_decode($selected)?>><?php  echo html_entity_decode($value); ?></option>
-
 					<?php } ?>
 				</select>
 			</div>
 		</div>
 	</div>
-
 
 	<div class="row">
 		<div class="col-md-4">
@@ -84,7 +76,6 @@ $unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave
 				<label for="integration_paid_leave" class="control-label"><small class="req text-danger">* </small><?php echo _l('integration_paid_leave'); ?><a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('tooltip_paid_leave'); ?>"></i></a></label>
 				<select name="integration_paid_leave[]" class="form-control selectpicker" multiple="true" id="integration_paid_leave" data-actions-box="true" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>" required> 
 					<?php foreach ($paid_leave_type as $key => $value) { ?>
-
 						<?php 
 						$selected ='';
 						if (in_array($key, $paid_leave)) {
@@ -103,7 +94,6 @@ $unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave
 				<label for="integration_unpaid_leave" class="control-label"><small class="req text-danger">* </small><?php echo _l('integration_unpaid_leave'); ?><a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('tooltip_unpaid_leave'); ?>"></i></a></label>
 				<select name="integration_unpaid_leave[]" class="form-control selectpicker" multiple="true" id="integration_unpaid_leave" data-actions-box="true" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>" required> 
 					<?php foreach ($unpaid_leave_type as $key => $value) { ?>
-
 						<?php 
 						$selected ='';
 						if (in_array($key, $unpaid_leave)) {
@@ -119,19 +109,17 @@ $unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave
 	</div>
 </div>
 
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="form-group">
 			<div class="checkbox checkbox-primary">
 				<input type="checkbox" id="integrated_commissions" name="integrated_commissions" <?php if (get_hr_payroll_option('integrated_commissions') == 1 ) { echo 'checked';} ?> value="integrated_commissions" <?php if ($commissions_active == false) {echo ' disabled';} ?>>
 				<label for="integrated_commissions"><?php echo _l('integrated_commissions'); ?>
-
-				<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($commissions_title); ?>"></i></a>
-			</label>
+					<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($commissions_title); ?>"></i></a>
+				</label>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <div class="row">
@@ -144,7 +132,6 @@ $unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave
 	</div>
 </div>
 <?php echo form_close(); ?>
-
 
 <div class="clearfix"></div>
 

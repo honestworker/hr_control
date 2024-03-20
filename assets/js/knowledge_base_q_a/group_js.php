@@ -1,5 +1,5 @@
 <script>
-    window.addEventListener('load',function(){
+    window.addEventListener('load',function() {
 
     // Validating the knowledge group form
     appValidateForm($('#kb_group_form'), {
@@ -25,16 +25,16 @@ function manage_kb_groups(form) {
     var data = $(form).serialize();
     var url = form.action;
     var articleAddEdit = $('body').hasClass('kb-article');
-    if(articleAddEdit) {
+    if (articleAddEdit) {
         data+='&article_add_edit=true';
     }
     $.post(url, data).done(function(response) {
-        if(!articleAddEdit) {
+        if (!articleAddEdit) {
            window.location.reload();
         } else {
             response = JSON.parse(response);
-            if(response.success == true){
-                if(typeof(response.id) != 'undefined') {
+            if (response.success == true) {
+                if (typeof(response.id) != 'undefined') {
                     var group = $('#articlegroup');
                     group.find('option:first').after('<option value="'+response.id+'">'+response.name+'</option>');
                     group.selectpicker('val',response.id);

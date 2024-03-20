@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <button type="button" class="btn btn-info intext-btn" onclick="reset_data(this); return false;" ><?php echo _l('reset_data'); ?></button>
-                <a href="#" class="input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('hr_reset_data_title'); ?>"></i></a>
+                <a href="#" class="input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('hrp_reset_data_title'); ?>"></i></a>
             </div>
         </div>
 

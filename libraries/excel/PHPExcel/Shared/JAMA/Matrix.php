@@ -326,7 +326,7 @@ class PHPExcel_Shared_JAMA_Matrix
         } else {
             throw new PHPExcel_Calculation_Exception(self::ARGUMENT_TYPE_EXCEPTION);
         }
-    }    //    function checkMatrixDimensions()
+    }//    function checkMatrixDimensions()
 
     /**
      *    set
@@ -341,7 +341,7 @@ class PHPExcel_Shared_JAMA_Matrix
     {
         // Optimized set version just has this
         $this->A[$i][$j] = $c;
-    }    //    function set()
+    }//    function set()
 
     /**
      *    identity
@@ -431,7 +431,7 @@ class PHPExcel_Shared_JAMA_Matrix
             }
         }
         return $R;
-    }    //    function transpose()
+    }//    function transpose()
 
     /**
      *    trace

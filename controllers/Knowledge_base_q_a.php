@@ -30,7 +30,7 @@ class Knowledge_base_q_a extends AdminController
     /* Add new article or edit existing*/
     public function article($id = '')
     {
-        $this->load->model('hr_control_model');
+        $this->load->model('hr_profile_model');
         $staffs = $this->staff_model->get();
         $data['staffs'] = $staffs;
         if (!has_permission('hr_manage_q_a', '', 'view')) {
@@ -48,19 +48,21 @@ class Knowledge_base_q_a extends AdminController
                 
                 $id = $this->knowledge_base_q_a_model->add_article($data);
                 if ($id) {
-                    hr_control_handle_kb_article_files_upload($id);
+                    hr_profile_handle_kb_article_files_upload($id);
                     set_alert('success', _l('added_successfully', _l('kb_article')));
                     redirect(admin_url('hr_control/knowledge_base_q_a/article/' . $id));
                 }
+
             } else {
                 if (!has_permission('hr_manage_q_a', '', 'edit')) {
                     access_denied('knowledge_base');
                 }   
                 $success = $this->knowledge_base_q_a_model->update_article($data, $id);
-                hr_control_handle_kb_article_files_upload($id);
+                hr_profile_handle_kb_article_files_upload($id);
                 if ($success) {
                     set_alert('success', _l('updated_successfully', _l('kb_article')));
                 }
+
 
                 redirect(admin_url('hr_control/knowledge_base_q_a/article/' . $id));
             }
@@ -71,7 +73,7 @@ class Knowledge_base_q_a extends AdminController
             $article         = $this->knowledge_base_q_a_model->get($id);
             $data['article'] = $article;
             $data['fileid'] = $this->knowledge_base_q_a_model->get_file_article($article->articleid);
-            $data['attachments'] = $this->hr_control_model->get_hrm_attachments_file($id, 'hr_control_kb_articl');
+            $data['attachments'] = $this->hr_profile_model->get_hrm_attachments_file($id, 'hr_profile_kb_articl');
             $title           = _l('edit', _l('kb_article')) . ' ' . $article->subject;
         }
         $this->app_scripts->add('tinymce-stickytoolbar',site_url('assets/plugins/tinymce-stickytoolbar/stickytoolbar.js'));
@@ -80,6 +82,7 @@ class Knowledge_base_q_a extends AdminController
         $this->load->view('knowledge_base_q_a/article', $data);
     }
 
+
     /**
      * view
      * @param  [type] $slug 
@@ -87,7 +90,7 @@ class Knowledge_base_q_a extends AdminController
      */
     public function view($slug)
     {
-        $this->load->model('hr_control_model');
+        $this->load->model('hr_profile_model');
         
         if (!has_permission('hr_manage_q_a', '', 'view')) {
             access_denied('View Knowledge Base Article');
@@ -99,13 +102,14 @@ class Knowledge_base_q_a extends AdminController
             show_404();
         }
 
-        $data['attachments'] = $this->hr_control_model->get_hrm_attachments_file($data['article']->articleid, 'hr_control_kb_articl');
+        $data['attachments'] = $this->hr_profile_model->get_hrm_attachments_file($data['article']->articleid, 'hr_profile_kb_articl');
         $data['related_articles'] = $this->knowledge_base_q_a_model->get_related_articles($data['article']->articleid, false);
 
-        add_views_tracking('hr_control_kb_article', $data['article']->articleid);
+        add_views_tracking('hr_profile_kb_article', $data['article']->articleid);
         $data['title'] = $data['article']->subject;
         $this->load->view('knowledge_base_q_a/view', $data);
     }
+
 
     /**
      * add kb answer
@@ -129,6 +133,7 @@ class Knowledge_base_q_a extends AdminController
         }
     }
 
+
     /**
      * update kan ban
      * @return [type] 
@@ -150,6 +155,7 @@ class Knowledge_base_q_a extends AdminController
             }
         }
     }
+
 
     /**
      * change group color
@@ -245,6 +251,7 @@ class Knowledge_base_q_a extends AdminController
         }
     }
 
+
     /**
      * update groups order
      * @return [type] 
@@ -278,6 +285,7 @@ class Knowledge_base_q_a extends AdminController
         redirect(admin_url('hr_control/knowledge_base_q_a/manage_groups'));
     }
 
+
     /**
      * get article by id ajax
      * @param  [type] $id 
@@ -290,21 +298,24 @@ class Knowledge_base_q_a extends AdminController
         }
     }
 
+
     /**
      * send mail support
      * @return [type] 
      */
-    public function send_mail_support(){
-        if($this->input->post()){
+    public function send_mail_support() {
+        if ($this->input->post()) {
             $data = $this->input->post();
             $data['email'] = hr_get_staff_email_by_id($data['curator']);
 
             $rs = $this->knowledge_base_q_a_model->send_mail_support($data);
-            if($rs == true){
+            if ($rs == true) {
                 set_alert('success', _l('send_mail_successfully'));
 
             }
-            redirect(admin_url('hr_control/knowledge_base_q_a'));            
+            redirect(admin_url('hr_control/knowledge_base_q_a'));
+            
         }
     }
+
 }

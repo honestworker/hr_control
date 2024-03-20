@@ -53,7 +53,7 @@ class Export_employee_pdf extends App_pdf {
 	 */
 	protected function file_path() {
 		$customPath = APPPATH . 'views/themes/' . active_clients_theme() . '/views/my_requestpdf.php';
-		$actualPath = APP_MODULES_PATH . '/hr_control/views/employee_payslip/export_employee_pdf.php';
+		$actualPath = APP_MODULES_PATH . '/hr_payroll/views/employee_payslip/export_employee_pdf.php';
 
 		if (file_exists($customPath)) {
 			$actualPath = $customPath;

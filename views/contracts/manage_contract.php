@@ -17,20 +17,20 @@
 						foreach($staff as $s) { 
 							echo form_hidden('contracts_by_staff_'.$s['staffid']);
 						}
-						foreach($contract_type as $type){
+						foreach($contract_type as $type) {
 							echo form_hidden('contracts_by_type_'.$type['id_contracttype']);
 						}
-						foreach($duration as $d){
+						foreach($duration as $d) {
 							echo form_hidden('contracts_by_duration_'.$d['duration'].'_'.$d['unit']);
 						}
 						?>
 					</div>
 					<div class="panel-body">
-						<?php if(has_permission('hrm_contract','','create') || is_admin()){ { ?>
+						<?php if (has_permission('hrm_contract','','create') || is_admin()) { { ?>
 							<div class="_buttons">
-								<a href="<?php echo admin_url('hr_profile/contract'); ?>" class="btn btn-info pull-left display-block mright5"><?php echo _l('new_contract'); ?></a>
+								<a href="<?php echo admin_url('hr_control/contract'); ?>" class="btn btn-info pull-left display-block mright5"><?php echo _l('new_contract'); ?></a>
 
-								<a href="<?php echo admin_url('hr_profile/import_xlsx_contract'); ?>" class=" btn mright5 btn-default pull-left hide">
+								<a href="<?php echo admin_url('hr_control/import_xlsx_contract'); ?>" class=" btn mright5 btn-default pull-left hide">
 									<?php echo _l('hr_job_p_import_excel'); ?>
 								</a>
 							</div>
@@ -78,7 +78,7 @@
 								<li class="dropdown-submenu pull-left">
 									<a href="#" tabindex="-1"><?php echo _l('staff'); ?></a>
 									<ul class="dropdown-menu dropdown-menu-left">
-										<?php  foreach($staff as $s){ ?>
+										<?php  foreach($staff as $s) { ?>
 											<li><a href="#" data-cview="contracts_by_staff_<?php echo html_entity_decode($s['staffid']); ?>" onclick="dt_custom_view('contracts_by_staff_<?php echo html_entity_decode($s['staffid']); ?>','.table-table_contract','contracts_by_staff_<?php echo html_entity_decode($s['staffid']); ?>'); return false;">
 												<?php echo html_entity_decode($s['firstname'].' '.$s['lastname']); ?>
 											</a></li>
@@ -86,9 +86,9 @@
 									</ul>
 								</li>
 								<div class="clearfix"></div>
-								<?php if(count($contract_type) > 0){ ?>
+								<?php if (count($contract_type) > 0) { ?>
 									<li class="divider"></li>
-									<?php foreach($contract_type as $type){ ?>
+									<?php foreach($contract_type as $type) { ?>
 										<li>
 											<a href="#" data-cview="contracts_by_type_<?php echo html_entity_decode($type['id_contracttype']); ?>" onclick="dt_custom_view('contracts_by_type_<?php echo html_entity_decode($type['id_contracttype']); ?>','.table-table_contract','contracts_by_type_<?php echo html_entity_decode($type['id_contracttype']); ?>'); return false;">
 												<?php echo html_entity_decode($type['name_contracttype']); ?>
@@ -97,9 +97,9 @@
 									<?php } ?>
 								<?php } ?>
 								<div class="clearfix"></div>
-								<?php if(count($duration) > 0){ ?>
+								<?php if (count($duration) > 0) { ?>
 									<li class="divider"></li>
-									<?php foreach($duration as $type){ ?>
+									<?php foreach($duration as $type) { ?>
 										<li class="filter-group" data-filter-group="duration">
 											<a href="#" data-cview="contracts_by_duration_<?php echo html_entity_decode($type['duration']).'_'.$type['unit']; ?>" onclick="dt_custom_view('contracts_by_duration_<?php echo html_entity_decode($type['duration']).'_'.$type['unit']; ?>','.table-table_contract','contracts_by_duration_<?php echo html_entity_decode($type['duration']).'_'.$type['unit']; ?>'); return false;">
 												<?php echo html_entity_decode($type['duration']).' '.$type['unit']; ?>
@@ -164,7 +164,7 @@
 													<h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
 												</div>
 												<div class="modal-body">
-													<?php if(has_permission('hrm_contract','','delete') || is_admin()){ ?>
+													<?php if (has_permission('hrm_contract','','delete') || is_admin()) { ?>
 														<div class="checkbox checkbox-danger">
 															<input type="checkbox" name="mass_delete" id="mass_delete">
 															<label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -174,7 +174,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 
-													<?php if(has_permission('hrm_contract','','delete') || is_admin()){ ?>
+													<?php if (has_permission('hrm_contract','','delete') || is_admin()) { ?>
 														<a href="#" class="btn btn-info" onclick="staff_delete_bulk_action(this); return false;"><?php echo _l('hr_confirm'); ?></a>
 													<?php } ?>
 												</div>
@@ -224,7 +224,7 @@
 		</div>
 		<?php init_tail(); ?>
 		<?php 
-		require('modules/hr_profile/assets/js/contracts/manage_contract_js.php');
+		require('modules/hr_control/assets/js/contracts/manage_contract_js.php');
 		?>
 	</body>
 	</html>

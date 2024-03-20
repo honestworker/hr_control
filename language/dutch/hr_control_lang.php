@@ -1,4 +1,5 @@
 <?php
+$lang['hr_control']              										     = 'تم الحذف %s ';
 
 $lang['hrp_deleted']              											 = ' %s verwijderd';
 $lang['hrp_added_successfully']   											 = 'Met succes %s toegevoegd';
@@ -194,7 +195,7 @@ $lang['create_commissions_file_success']	 									 = 'Het importbestand van de 
 $lang['create_commissions_file_false']	 									 = 'Het maken van het importbestand voor commissiegegevens is mislukt';
 $lang['file_xlsx_commissions1']	 											 = 'Voeg geen kolommen of rijen toe aan het bestand dat van het systeem is gedownload.';
 $lang['file_xlsx_commissions2']	 											 = 'Kan alleen worden bijgewerkt (de kolom is blauw), update de oranje kolomwaarde niet';
-$lang['hrp_reports']	 													 = 'Rapporten';
+$lang['hrm_reports']	 													 = 'Rapporten';
 $lang['hr_payslip_report']	 												 = 'Salarisrapport';
 $lang['hr_income_summary_report']	 										 = 'Inkomensoverzicht';
 $lang['hr_insurance_cost_summary_report']	 								 = 'Samenvattend rapport over de verzekeringskosten';
@@ -255,13 +256,14 @@ $lang['hrp_copy']             												 = 'Kopiëren';
 $lang['No_data_for_the_previous_month']             						 = 'Geen gegevens voor de vorige maand';
 $lang['hrp_reset_data_title']             							 = 'Alle gerelateerde gegevens: werknemers, aanwezigheden, commissies, inhoudingen, bonus-kpi, verzekering, loonstroken worden verwijderd';
 
+
 $lang['hr_deleted']              										 = '% S verwijderd';
 $lang['hr_added_successfully']   										 = 'Met succes% s toegevoegd';
 $lang['hr_dashboard']                                                   = 'Dashboard';
 $lang['hr_contract_type_chart']                                         = 'Contracttype grafiek';
 $lang['hr_list_overdue_contract']                                       = 'Lijst met achterstallig contract';
 $lang['hr_list_expire_contract']                                        = 'Lijst verloopt contract';
-$lang['hr_hr_profile_dashboard']                                        = 'Dashboard HR-records';
+$lang['hr_records_dashboard']                                        = 'Dashboard HR-records';
 $lang['hr_organizational_chart']                                        = 'Organigram';
 $lang['hr_new_unit']                                                    = 'Voeg een nieuwe eenheid toe';
 $lang['hr_edit_unit']                                                   = 'Bewerk eenheid';

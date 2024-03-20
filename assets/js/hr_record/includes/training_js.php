@@ -1,6 +1,5 @@
 <script>
-
-	$(function(){
+	$(function() {
 		'use strict';
 
 		appValidateForm($('.save_update_education'), {
@@ -16,14 +15,13 @@
 			"hr_profile_from_month"    : "",
 		};
 		var table_education2 = $('table.table-table_education_position');
-		initDataTable(table_education2,admin_url + 'hr_profile/table_education_position', [0], [0], ContractsServerParams);
+		initDataTable(table_education2,admin_url + 'hr_control/table_education_position', [0], [0], ContractsServerParams);
 		var table_education = $('table.table-table_education');
 		var staff_id = $('input[name="memberid"]').val();
-		initDataTable(table_education,admin_url + 'hr_profile/table_education/'+staff_id, [0], [0], '');
-
+		initDataTable(table_education,admin_url + 'hr_control/table_education/'+staff_id, [0], [0], '');
 
 		$('form.save_update_education').on('submit', function (e) {
-		'use strict';
+			'use strict';
 
 			e.preventDefault();
 			var data=$('form.save_update_education').serialize();
@@ -32,11 +30,11 @@
 			var training_time_from = $('input[name="training_time_from"]').val();
 			var training_time_to = $('input[name="training_time_to"]').val();
 
-			if(training_programs_name != '' && training_places != '' && training_time_from != '' && training_time_to != ''){
+			if (training_programs_name != '' && training_places != '' && training_time_from != '' && training_time_to != '') {
 				$('#education_sidebar').modal('hide');
-				$.post(admin_url+'hr_profile/save_update_education',data).done(function(response){
+				$.post(admin_url+'hr_control/save_update_education',data).done(function(response) {
 					response = JSON.parse(response);
-					if(response.success == true) {
+					if (response.success == true) {
 						alert_float('success',response.message);
 						table_education.DataTable().ajax.reload()
 						.columns.adjust()
@@ -55,16 +53,15 @@
 		$('#training_time_from').datetimepicker();
 		$('#training_time_to').datetimepicker();
 
-		$(".save_update_education").submit(function(event){
+		$(".save_update_education").submit(function(event) {
 			'use strict';
 			tinymce.triggerSave();
 		});
-
 	});
 
-
-	function create_trainings(){
+	function create_trainings() {
 		'use strict';
+		
 		$('#education_sidebar').modal('show');
 		$('input[name="id"]').val('');
 		$('input[name="training_programs_name"]').val('');
@@ -79,15 +76,14 @@
 		$('.add-title-training').show();
 	}
 
-
-	function delete_education(el){
+	function delete_education(el) {
 		'use strict';
 		var id = $(el).data('id');
 		var table_education = $('table.table-table_education');
 
-		$.post(admin_url+'hr_profile/delete_education',{'id':id}).done(function(response){
+		$.post(admin_url+'hr_control/delete_education',{'id':id}).done(function(response) {
 			response = JSON.parse(response);
-			if(response.success == true) {
+			if (response.success == true) {
 				alert_float('success',response.message);
 				table_education.DataTable().ajax.reload()
 				.columns.adjust()
@@ -102,8 +98,9 @@
 		});
 	}
 
-	function update_education(el){
+	function update_education(el) {
 		'use strict';
+
 		$('#education_sidebar').modal('show');
 		var id = $(el).data('id');
 		$('input[name="id"]').val(id);
@@ -119,8 +116,8 @@
 		tinyMCE.activeEditor.setContent($(el).data('result'));
 	}
 
-$('.trainingtable').dataTable( {
-	 'destroy': true,
+	$('.trainingtable').dataTable( {
+		'destroy': true,
 		"ordering": false
 	} );
 </script>

@@ -1,11 +1,11 @@
 <script>
 	
-		<?php if(isset($data_object_kpi)){ ?>
+		<?php if (isset($data_object_kpi)) { ?>
 
 			var dataObject = <?php echo json_encode($data_object_kpi) ; ?>;
-		<?php }?>
+		<?php } ?>
 
-	var hotElement1 = document.querySelector('#hr_employees_value');
+	var hotElement1 = document.querySelector('#hrp_employees_value');
 	
 	 var commodity_fill = new Handsontable(hotElement1, {
 
@@ -55,7 +55,7 @@
 	});
 
 	//filter
-	function attendance_filter(invoker){
+	function attendance_filter(invoker) {
 		'use strict';
 
 		var data = {};
@@ -75,43 +75,42 @@
 			})
 			$('input[name="month"]').val(response.month);
 			$('.save_attendance').html(response.button_name);
-			
 		});
 	};
 
 
 	//save_attendance
-	function save_attendance(event){
+	function save_attendance(event) {
 		'use strict';
 
-		var valid_employees_value = $('#hr_employees_value').find('.htInvalid').html();
+		var valid_employees_value = $('#hrp_employees_value').find('.htInvalid').html();
 
-		if(valid_employees_value){
+		if (valid_employees_value) {
 			alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-		}else{
+		} else {
       $(event).addClass('disabled');
 
-			$('input[name="hr_attendance_value"]').val(JSON.stringify(commodity_fill.getData()));   
+			$('input[name="hrp_attendance_value"]').val(JSON.stringify(commodity_fill.getData()));   
 			$('input[name="attendance_fill_month"]').val($("#month_attendance").val());
-      $('input[name="hr_attendance_rel_type"]').val('update');   
+      $('input[name="hrp_attendance_rel_type"]').val('update');   
 			$( "#add_attendance" ).submit();
 		}
 
 	};
 
-	function save_synchronized(event){
+	function save_synchronized(event) {
 		'use strict';
 
-		var valid_employees_value = $('#hr_employees_value').find('.htInvalid').html();
+		var valid_employees_value = $('#hrp_employees_value').find('.htInvalid').html();
 
-		if(valid_employees_value){
+		if (valid_employees_value) {
 			alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-		}else{
+		} else {
       $(event).addClass('disabled');
 
-			$('input[name="hr_attendance_value"]').val(JSON.stringify(commodity_fill.getData()));   
+			$('input[name="hrp_attendance_value"]').val(JSON.stringify(commodity_fill.getData()));   
 			$('input[name="attendance_fill_month"]').val($("#month_attendance").val());
-			$('input[name="hr_attendance_rel_type"]').val('synchronization');   
+			$('input[name="hrp_attendance_rel_type"]').val('synchronization');   
 			$( "#add_attendance" ).submit();
 		}
 

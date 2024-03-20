@@ -9,8 +9,8 @@
 						<div class="_buttons">
 							<?php if (is_admin() || has_permission('hrm_hr_records','','create') || has_permission('hrm_hr_records','','edit')) { ?>
 
-								<a href="<?php echo admin_url('hr_profile/new_member'); ?>" class="btn mright5 btn-info pull-left display-block "><?php echo _l('new_staff'); ?></a>
-								<a href="<?php echo admin_url('hr_profile/importxlsx'); ?>" class="btn mright5 btn-info pull-left  ">
+								<a href="<?php echo admin_url('hr_control/new_member'); ?>" class="btn mright5 btn-info pull-left display-block "><?php echo _l('new_staff'); ?></a>
+								<a href="<?php echo admin_url('hr_control/importxlsx'); ?>" class="btn mright5 btn-info pull-left  ">
 									<?php echo _l('hr_import_xlsx_hr_profile'); ?>
 								</a>
 
@@ -84,7 +84,7 @@
 												<h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
 											</div>
 											<div class="modal-body">
-												<?php if(has_permission('crm_mana_leads','','delete')){ ?>
+												<?php if (has_permission('crm_mana_leads','','delete')) { ?>
 													<div class="checkbox checkbox-danger">
 														<input type="checkbox" name="mass_delete" id="mass_delete">
 														<label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -116,7 +116,7 @@
 									_l('hr_status_work'),                            
 								);
 								$custom_fields = get_custom_fields('staff',array('show_on_table'=>1));
-								foreach($custom_fields as $field){
+								foreach($custom_fields as $field) {
 									array_push($table_data,$field['name']);
 								}
 
@@ -139,7 +139,7 @@
 
 	<div class="modal" id="delete_staff" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
-			<?php echo form_open(admin_url('hr_profile/delete_staff',array('delete_staff_form'))); ?>
+			<?php echo form_open(admin_url('hr_control/delete_staff',array('delete_staff_form'))); ?>
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -188,7 +188,7 @@
 	<div id="modal_wrapper"></div>
 	<?php init_tail(); ?>
 	<?php 
-	require('modules/hr_profile/assets/js/hr_record/hr_record_js.php');
+	require('modules/hr_control/assets/js/hr_record/hr_record_js.php');
 	?>
 </body>
 </html>

@@ -29,7 +29,7 @@ class PHPExcel_Chart_Legend
 {
     /** Legend positions */
     const xlLegendPositionBottom = -4107;    //    Below the chart.
-    const xlLegendPositionCorner = 2;        //    In the upper right-hand corner of the chart border.
+    const xlLegendPositionCorner = 2; //    In the upper right-hand corner of the chart border.
     const xlLegendPositionCustom = -4161;    //    A custom position.
     const xlLegendPositionLeft   = -4131;    //    Left of the chart.
     const xlLegendPositionRight  = -4152;    //    Right of the chart.

@@ -57,16 +57,16 @@
 						</div>
 						<input type="hidden" name="language" value="<?php echo html_entity_decode($active_language); ?>">
 						<?php
-						if(!isset($simulate)) { ?>
+						if (!isset($simulate)) { ?>
 							<ul>
 								<li class="text-danger">1. <?php echo _l('file_xlsx_staff1'); ?></li>
 								<li>2. <?php echo _l('file_xlsx_staff2'); ?></li>
-								<li><a href="<?php echo admin_url('hr_profile/setting?group=workplace'); ?>" target="_blank" >3. <?php echo _l('file_xlsx_staff3'); ?></a></li>
-								<li><a href="<?php echo admin_url('hr_profile/job_positions'); ?>" target="_blank"> 4. <?php echo _l('file_xlsx_staff4'); ?></a></li>
-								<li><a href="<?php echo admin_url('hr_profile/staff_infor'); ?>" target="_blank"> 5. <?php echo _l('file_xlsx_staff5'); ?></a></li>
+								<li><a href="<?php echo admin_url('hr_control/setting?group=workplace'); ?>" target="_blank" >3. <?php echo _l('file_xlsx_staff3'); ?></a></li>
+								<li><a href="<?php echo admin_url('hr_control/job_positions'); ?>" target="_blank"> 4. <?php echo _l('file_xlsx_staff4'); ?></a></li>
+								<li><a href="<?php echo admin_url('hr_control/staff_infor'); ?>" target="_blank"> 5. <?php echo _l('file_xlsx_staff5'); ?></a></li>
 								<li><a href="<?php echo admin_url('roles'); ?>" target="_blank"> 6. <?php echo _l('file_xlsx_staff6'); ?></a></li>
 								<li>7. <?php echo _l('file_xlsx_staff7'); ?></li>
-								<li><a href="<?php echo admin_url('hr_profile/organizational_chart'); ?>" target="_blank"> 8. <?php echo _l('file_xlsx_staff8'); ?></a></li>
+								<li><a href="<?php echo admin_url('hr_control/organizational_chart'); ?>" target="_blank"> 8. <?php echo _l('file_xlsx_staff8'); ?></a></li>
 								<li>9. <?php echo _l('file_xlsx_staff9'); ?></li>
 								<li>10. <?php echo _l('file_xlsx_staff10'); ?></li>
 								<li>11. <?php echo _l('file_xlsx_staff11'); ?></li>
@@ -78,8 +78,8 @@
 											<?php
 											$total_fields = 0;
 											
-											for($i=0;$i<count($file_header);$i++){
-												if( $i == 2 ||$i == 3 ||$i == 6 ||$i == 9 || $i == 10){
+											for($i=0;$i<count($file_header);$i++) {
+												if ( $i == 2 ||$i == 3 ||$i == 6 ||$i == 9 || $i == 10) {
 													?>
 													<th class="bold"><span class="text-danger">*</span> <?php echo html_entity_decode($file_header[$i]); ?> </th>
 													<?php 
@@ -97,9 +97,9 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php for($i = 0; $i<1;$i++){
+										<?php for($i = 0; $i<1;$i++) {
 											echo '<tr>';
-											for($x = 0; $x<count($file_header);$x++){
+											for($x = 0; $x<count($file_header);$x++) {
 												echo '<td>- </td>';
 											}
 											echo '</tr>';
@@ -122,8 +122,8 @@
 										</thead>
 										<tbody>
 											<?php
-											if(count($departments) > 0 ){
-												foreach($departments as $value){ 
+											if (count($departments) > 0 ) {
+												foreach($departments as $value) { 
 
 													?> 
 													<tr>
@@ -145,8 +145,8 @@
 											</thead>
 											<tbody>
 												<?php
-												if(count($job_positions) > 0) {
-													foreach($job_positions as $value){ 
+												if (count($job_positions) > 0) {
+													foreach($job_positions as $value) { 
 														?> 
 														<tr>
 															<td><?php echo html_entity_decode($value['position_id']); ?></td>
@@ -244,8 +244,8 @@
 												</thead>
 												<tbody>
 													<?php
-													if(count($workplaces) > 0 ){
-														foreach($workplaces as $value){ 
+													if (count($workplaces) > 0 ) {
+														foreach($workplaces as $value) { 
 
 															?> 
 															<tr>
@@ -266,7 +266,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-md-4">
-											<?php echo form_open_multipart(admin_url('hr_profile/importxlsx2'),array('id'=>'import_form')) ;?>
+											<?php echo form_open_multipart(admin_url('hr_control/importxlsx2'),array('id'=>'import_form')) ;?>
 											<?php echo form_hidden('leads_import','true'); ?>
 											<?php echo render_input('file_csv','choose_excel_file','','file'); ?> 
 
@@ -295,7 +295,7 @@
 			</div>
 			<?php init_tail(); ?>
 			<?php 
-			require('modules/hr_profile/assets/js/hr_record/importxlsx_js.php');
+			require('modules/hr_control/assets/js/hr_record/importxlsx_js.php');
 			?>
 		</body>
 		</html>

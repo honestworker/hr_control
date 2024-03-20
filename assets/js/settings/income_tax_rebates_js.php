@@ -1,10 +1,11 @@
 <script>
-var purchase;
+	var purchase;
 
-(function($) {
-	"use strict";
+	(function($) {
+		"use strict";  
 
-	<?php if (isset($income_tax_rebates)){?>
+
+	<?php if (isset($income_tax_rebates)) { ?>
 		var dataObject_pu = <?php echo html_entity_decode($income_tax_rebates); ?>;
 	<?php } else { ?>
 		var dataObject_pu = [];
@@ -51,44 +52,50 @@ var purchase;
 		},
 
 		columns: [
-			{
-				type: 'text',
-				data: 'code',
+				{
+			type: 'text',
+			data: 'code',
+		},
+		{
+			type: 'text',
+			data: 'description',
+		},
+		
+		{
+			type: 'numeric',
+			data: 'value',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'text',
-				data: 'description',
-			},
-			
-			{
-				type: 'numeric',
-				data: 'value',
-				numericFormat: {
-					pattern: '0,00',
-				},
-			},
+		},
 
-			{
-				type: 'numeric',
-				data: 'total',
-				numericFormat: {
-					pattern: '0,00',
-				},
+		{
+			type: 'numeric',
+			data: 'total',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'text',
-				data: 'id',
-			},
+		},
+		{
+			type: 'text',
+			data: 'id',
+		},
+		
+
 		],
+
 		colHeaders: [
-			'<?php echo _l('rebates_code'); ?>',
-			'<?php echo _l('rebates_name'); ?>',
-			'<?php echo _l('rebates_value'); ?>',
-			'<?php echo _l('rebates_total'); ?>',
-			'<?php echo _l('id'); ?>',
+		'<?php echo _l('rebates_code'); ?>',
+		'<?php echo _l('rebates_name'); ?>',
+		'<?php echo _l('rebates_value'); ?>',
+		'<?php echo _l('rebates_total'); ?>',
+		'<?php echo _l('id'); ?>',
 		],
+
 		data: dataObject_pu,
 	});
+
+
 })(jQuery);
 
 function customDropdownRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -120,21 +127,24 @@ var purchase_value = purchase;
 purchase.addHook('afterChange', function(changes, src) {
 	"use strict";
 
-	if (changes !== null){
+	if (changes !== null) {
 		changes.forEach(([row, col, prop, oldValue, newValue]) => {
+
 			//update total column when change value column
-			if (col == 'value'){
-				if (row == 0){
-					purchase.setDataAtCell(row,3, purchase.getDataAtCell(row, 2).toFixed(2));				
+			if (col == 'value') {
+				if (row == 0) {
+					purchase.setDataAtCell(row,3, purchase.getDataAtCell(row, 2).toFixed(2));
+				
 				} else {
 					purchase.setDataAtCell(row,3, (parseInt(purchase.getDataAtCell(row, 2)) + parseInt(purchase.getDataAtCell(row-1, 3)) ).toFixed(2));
 				}
 			}
 
 			//update when goback change above column
-			if (col == 'total' && (purchase.getDataAtCell(row+1, 3) != '') && (purchase.getDataAtCell(row+1, 3) != 0) && (purchase.getDataAtCell(row+1, 3) != null)){
+			if (col == 'total' && (purchase.getDataAtCell(row+1, 3) != '') && (purchase.getDataAtCell(row+1, 3) != 0) && (purchase.getDataAtCell(row+1, 3) != null)) {
 				purchase.setDataAtCell(row+1,3, (parseInt(purchase.getDataAtCell(row, 3)) + parseInt(purchase.getDataAtCell(row+1, 2)) ).toFixed(2));
 			}
+
 		});
 	}
 });
@@ -144,13 +154,15 @@ $('.add_incometax_rebates').on('click', function() {
 	
 	var valid_contract = $('#incometax_rebates_hs').find('.htInvalid').html();
 
-	if (valid_contract){
+	if (valid_contract) {
 		alert_float('danger', "<?php echo _l('data_must_number') ; ?>");
 	} else {
+
 		$('input[name="incometax_rebates_hs"]').val(JSON.stringify(purchase_value.getData()));   
 		$('#add_incometax_rebates').submit(); 
 
 	}
 });
+
 
 </script>

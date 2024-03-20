@@ -267,14 +267,14 @@ class PHPExcel_Cell
      */
     public function getCalculatedValue($resetLog = true)
     {
-//echo 'Cell '.$this->getCoordinate().' value is a '.$this->dataType.' with a value of '.$this->getValue().PHP_EOL;
+//echo 'Cell '.$this->getCoordinate() . ' value is a '.$this->dataType.' with a value of '.$this->getValue().PHP_EOL;
         if ($this->dataType == PHPExcel_Cell_DataType::TYPE_FORMULA) {
             try {
-//echo 'Cell value for '.$this->getCoordinate().' is a formula: Calculating value'.PHP_EOL;
+//echo 'Cell value for '.$this->getCoordinate() . ' is a formula: Calculating value'.PHP_EOL;
                 $result = PHPExcel_Calculation::getInstance(
                     $this->getWorksheet()->getParent()
                 )->calculateCellValue($this, $resetLog);
-//echo $this->getCoordinate().' calculation result is '.$result.PHP_EOL;
+//echo $this->getCoordinate() . ' calculation result is '.$result.PHP_EOL;
                 //    We don't yet handle array returns
                 if (is_array($result)) {
                     while (is_array($result)) {
@@ -289,7 +289,7 @@ class PHPExcel_Cell
 //echo 'Calculation Exception: '.$ex->getMessage().PHP_EOL;
                 $result = '#N/A';
                 throw new PHPExcel_Calculation_Exception(
-                    $this->getWorksheet()->getTitle().'!'.$this->getCoordinate().' -> '.$ex->getMessage()
+                    $this->getWorksheet()->getTitle() . '!'.$this->getCoordinate() . ' -> '.$ex->getMessage()
                 );
             }
 
@@ -300,10 +300,10 @@ class PHPExcel_Cell
 //echo 'Returning calculated value of '.$result.' for cell '.$this->getCoordinate().PHP_EOL;
             return $result;
         } elseif ($this->value instanceof PHPExcel_RichText) {
-//        echo 'Cell value for '.$this->getCoordinate().' is rich text: Returning data value of '.$this->value.'<br />';
+//        echo 'Cell value for '.$this->getCoordinate() . ' is rich text: Returning data value of '.$this->value.'<br />';
             return $this->value->getPlainText();
         }
-//        echo 'Cell value for '.$this->getCoordinate().' is not a formula: Returning data value of '.$this->value.'<br />';
+//        echo 'Cell value for '.$this->getCoordinate() . ' is not a formula: Returning data value of '.$this->value.'<br />';
         return $this->value;
     }
 

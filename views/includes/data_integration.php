@@ -12,7 +12,7 @@
 	<div class="col-md-12">
 		<div class="form-group">
 			<div class="checkbox checkbox-primary">
-				<input  type="checkbox" id="integrated_hrprofile" name="integrated_hrprofile" <?php if(get_hr_control_option('integrated_hrprofile') == 1 ){ echo 'checked';} ?> value="integrated_hrprofile" <?php if($hr_profile_active == false){echo ' disabled';} ?>>
+				<input  type="checkbox" id="integrated_hrprofile" name="integrated_hrprofile" <?php if (get_hr_payroll_option('integrated_hrprofile') == 1 ) { echo 'checked';} ?> value="integrated_hrprofile" <?php if ($hr_profile_active == false) {echo ' disabled';} ?>>
 				<label for="integrated_hrprofile"><?php echo _l('integrated_hrprofile'); ?>
 
 				<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($hr_profile_title); ?>"></i></a>
@@ -27,7 +27,7 @@
 	<div class="col-md-12">
 		<div class="form-group">
 			<div class="checkbox checkbox-primary">
-				<input type="checkbox" id="integrated_timesheets" name="integrated_timesheets" <?php if(get_hr_control_option('integrated_timesheets') == 1 ){ echo 'checked';} ?> value="integrated_timesheets" <?php if($timesheets_active == false){echo ' disabled';} ?>>
+				<input type="checkbox" id="integrated_timesheets" name="integrated_timesheets" <?php if (get_hr_payroll_option('integrated_timesheets') == 1 ) { echo 'checked';} ?> value="integrated_timesheets" <?php if ($timesheets_active == false) {echo ' disabled';} ?>>
 				<label for="integrated_timesheets"><?php echo _l('integrated_timesheets'); ?>
 
 				<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($timesheets_title); ?>"></i></a>
@@ -38,22 +38,22 @@
 </div>
 
 <?php 
-$attendance_types = hr_attendance_type();
-$actual_workday   = explode(',', get_hr_control_option('integration_actual_workday'));
-$paid_leave       = explode(',', get_hr_control_option('integration_paid_leave'));
-$unpaid_leave     = explode(',', get_hr_control_option('integration_unpaid_leave'));
+$attendance_types = hrp_attendance_type();
+$actual_workday   = explode(',', get_hr_payroll_option('integration_actual_workday'));
+$paid_leave       = explode(',', get_hr_payroll_option('integration_paid_leave'));
+$unpaid_leave     = explode(',', get_hr_payroll_option('integration_unpaid_leave'));
 ?>
 
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group">
 				<label for="standard_working_time" class="control-label clearfix"><small class="req text-danger">* </small><?php echo _l('standard_working_time_of_month'); ?><a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('tooltip_standard_working_time'); ?>"></i></a></label>
-				<input type="number" min="0" max="1000" id="standard_working_time" name="standard_working_time" class="form-control" value="<?php echo get_hr_control_option('standard_working_time'); ?>" required>
+				<input type="number" min="0" max="1000" id="standard_working_time" name="standard_working_time" class="form-control" value="<?php echo get_hr_payroll_option('standard_working_time'); ?>" required>
 			</div>
 		</div>
 	</div>
 
-<div class="col-md-12 option-show <?php if(get_hr_control_option('integrated_timesheets') == 1){ echo '';}else{ echo 'hide';}  ?>">
+<div class="col-md-12 option-show <?php if (get_hr_payroll_option('integrated_timesheets') == 1) { echo '';} else { echo 'hide';}  ?>">
 
 
 	<div class="row">
@@ -65,7 +65,7 @@ $unpaid_leave     = explode(',', get_hr_control_option('integration_unpaid_leave
 
 						<?php 
 						$selected ='';
-						if(in_array($key, $actual_workday)){
+						if (in_array($key, $actual_workday)) {
 							$selected .= ' selected';
 						}
 						?>
@@ -87,7 +87,7 @@ $unpaid_leave     = explode(',', get_hr_control_option('integration_unpaid_leave
 
 						<?php 
 						$selected ='';
-						if(in_array($key, $paid_leave)){
+						if (in_array($key, $paid_leave)) {
 							$selected .= ' selected';
 						}
 						?>
@@ -106,7 +106,7 @@ $unpaid_leave     = explode(',', get_hr_control_option('integration_unpaid_leave
 
 						<?php 
 						$selected ='';
-						if(in_array($key, $unpaid_leave)){
+						if (in_array($key, $unpaid_leave)) {
 							$selected .= ' selected';
 						}
 						?>
@@ -124,7 +124,7 @@ $unpaid_leave     = explode(',', get_hr_control_option('integration_unpaid_leave
 	<div class="col-md-12">
 		<div class="form-group">
 			<div class="checkbox checkbox-primary">
-				<input type="checkbox" id="integrated_commissions" name="integrated_commissions" <?php if(get_hr_control_option('integrated_commissions') == 1 ){ echo 'checked';} ?> value="integrated_commissions" <?php if($commissions_active == false){echo ' disabled';} ?>>
+				<input type="checkbox" id="integrated_commissions" name="integrated_commissions" <?php if (get_hr_payroll_option('integrated_commissions') == 1 ) { echo 'checked';} ?> value="integrated_commissions" <?php if ($commissions_active == false) {echo ' disabled';} ?>>
 				<label for="integrated_commissions"><?php echo _l('integrated_commissions'); ?>
 
 				<a href="#" class="pull-right display-block input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo html_entity_decode($commissions_title); ?>"></i></a>
@@ -137,7 +137,7 @@ $unpaid_leave     = explode(',', get_hr_control_option('integration_unpaid_leave
 <div class="row">
 	<div class="col-md-12">
 		<div class="modal-footer">
-			<?php if(is_admin()){ ?>
+			<?php if (is_admin()) { ?>
 				<button type="submit" class="btn btn-info"><?php echo _l('submit'); ?></button>
 			<?php } ?>
 		</div>

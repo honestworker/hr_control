@@ -16,12 +16,12 @@
                        <!-- file attachment -->
                       <div class="row">                           
                        <div id="contract_attachments" class="mtop30 col-md-8 ">
-                        <?php if(count($attachments) > 0){ ?>
+                        <?php if (count($attachments) > 0) { ?>
                          <?php
                          $data = '<div class="row" id="attachment_file">';
                          foreach($attachments as $attachment) {
-                          $href_url = site_url('modules/hr_profile/uploads/q_a/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
-                          if(!empty($attachment['external'])){
+                          $href_url = site_url('modules/hr_control/uploads/q_a/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
+                          if (!empty($attachment['external'])) {
                             $href_url = $attachment['external_link'];
                           }
                           $data .= '<div class="display-block contract-attachment-wrapper">';
@@ -61,11 +61,11 @@
                   </div>
 
                   <div class="btn-group mtop15 article_useful_buttons pull-right" role="group">
-                    <?php if(isset($article->curator) && $article->curator != '' && $article->curator != 0){ ?>
+                    <?php if (isset($article->curator) && $article->curator != '' && $article->curator != 0) { ?>
                       <a href="#" onclick="send_mail_support(this);" id="support_<?php echo html_entity_decode($article->articleid); ?>" class="btn btn-success " ><?php echo _l('support') ?></a>
                     <?php } ?>
 
-                    <a href="<?php echo admin_url('hr_profile/knowledge_base_q_a'); ?>"  class="btn btn-default  mright10">
+                    <a href="<?php echo admin_url('hr_control/knowledge_base_q_a'); ?>"  class="btn btn-default  mright10">
                       <?php echo _l('go_back'); ?>
                     </a>
                   </div>
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <?php if(count($related_articles) > 0){ ?>
+        <?php if (count($related_articles) > 0) { ?>
         <div class="col-md-5">
           <div class="panel_s">
               <div class="panel-body">
@@ -83,7 +83,7 @@
                 <?php foreach($related_articles as $rel_article_article) { ?>
                     <li>
                         <i class="fa fa-file-text-o"></i>
-                        <a href="<?php echo admin_url('hr_profile/knowledge_base_q_a/view/'.$rel_article_article['slug']); ?>" class="article-heading"><?php echo html_entity_decode($rel_article_article['subject']); ?></a>
+                        <a href="<?php echo admin_url('hr_control/knowledge_base_q_a/view/'.$rel_article_article['slug']); ?>" class="article-heading"><?php echo html_entity_decode($rel_article_article['subject']); ?></a>
                         <div class="text-muted mtop10"><?php echo strip_tags(mb_substr($rel_article_article['description'],0,100)); ?>...</div>
                     </li>
                     <hr />
@@ -101,7 +101,7 @@
 <div id="contract_file_data"></div>
 
 <?php init_tail(); ?>
-<?php  require('modules/hr_profile/assets/js/knowledge_base_q_a/view_js.php'); ?>
+<?php  require('modules/hr_control/assets/js/knowledge_base_q_a/view_js.php'); ?>
 
 </body>
 </html>

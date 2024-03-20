@@ -118,13 +118,13 @@ foreach ($rResult as $aRow) {
 
 	if (has_permission('staffmanage_job_position', '', 'view') || has_permission('staffmanage_job_position', '', 'view_own') || is_admin()) {
 
-		$subjectOutput .= '<a href="' . admin_url('hr_profile/job_position_view_edit/' . $aRow['position_id']) . '">' . $aRow['position_code'] . '</a>';
+		$subjectOutput .= '<a href="' . admin_url('hr_control/job_position_view_edit/' . $aRow['position_id']) . '">' . $aRow['position_code'] . '</a>';
 	}
 
 	$subjectOutput .= '<div class="row-options">';
 
 	if (has_permission('staffmanage_job_position', '', 'view') || has_permission('staffmanage_job_position', '', 'view_own') || is_admin()) {
-		$subjectOutput .= '<a href="' . admin_url('hr_profile/job_position_view_edit/' . $aRow['position_id']) . '">' . _l('hr_view') . '</a>';
+		$subjectOutput .= '<a href="' . admin_url('hr_control/job_position_view_edit/' . $aRow['position_id']) . '">' . _l('hr_view') . '</a>';
 	}
 
 	if (has_permission('staffmanage_job_position', '', 'edit') || is_admin()) {
@@ -132,7 +132,7 @@ foreach ($rResult as $aRow) {
 	}
 
 	if (has_permission('staffmanage_job_position', '', 'delete') || is_admin()) {
-		$subjectOutput .= ' | <a href="' . admin_url('hr_profile/delete_job_position/' . $aRow['position_id']) . '" class="text-danger _delete" >' . _l('delete') . '</a>';
+		$subjectOutput .= ' | <a href="' . admin_url('hr_control/delete_job_position/' . $aRow['position_id']) . '" class="text-danger _delete" >' . _l('delete') . '</a>';
 
 	}
 

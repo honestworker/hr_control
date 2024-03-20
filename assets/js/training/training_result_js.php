@@ -8,7 +8,7 @@
 	};
 
 	var table_training_result = $('.table-table_training_result');
-	initDataTable(table_training_result, admin_url+'hr_profile/table_training_result', [0], [0], TrainingProgramServerParams, [0, 'desc']);
+	initDataTable(table_training_result, admin_url+'hr_control/table_training_result', [0], [0], TrainingProgramServerParams, [0, 'desc']);
 
 		 //hide first column
 		 var hidden_columns = [0,1];
@@ -27,7 +27,7 @@
 		 
 
 
-	function training_program_bulk_actions(){
+	function training_program_bulk_actions() {
 		'use strict';
 
 	 	$('#table_training_result_bulk_actions').modal('show');
@@ -40,7 +40,7 @@
 	 	if (confirm_delete()) {
 	 		var mass_delete = $('#mass_delete').prop('checked');
 
-	 		if(mass_delete == true){
+	 		if (mass_delete == true) {
 	 			var ids = [];
 	 			var data = {};
 
@@ -58,14 +58,14 @@
 	 			data.ids = ids;
 	 			$(event).addClass('disabled');
 	 			setTimeout(function() {
-	 				$.post(admin_url + 'hr_profile/hrm_delete_bulk_action_v2', data).done(function() {
+	 				$.post(admin_url + 'hr_control/hrm_delete_bulk_action_v2', data).done(function() {
 	 					window.location.reload();
 	 				}).fail(function(data) {
 	 					$('#training_program_bulk_actions').modal('hide');
 	 					alert_float('danger', data.responseText);
 	 				});
 	 			}, 200);
-	 		}else{
+	 		} else {
 	 			window.location.reload();
 	 		}
 

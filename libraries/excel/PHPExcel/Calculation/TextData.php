@@ -74,7 +74,7 @@ class PHPExcel_Calculation_TextData
         }
 
         if (function_exists('mb_convert_encoding')) {
-            return mb_convert_encoding('&#'.intval($character).';', 'UTF-8', 'HTML-ENTITIES');
+            return mb_convert_encoding('&#'.intval($character) . ';', 'UTF-8', 'HTML-ENTITIES');
         } else {
             return chr(intval($character));
         }

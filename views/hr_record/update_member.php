@@ -21,7 +21,7 @@ if (isset($member)) {
                 <h4 class="modal-title"><?php echo html_entity_decode($title); ?></h4>
             </div>
 
-     <?php echo form_open_multipart(admin_url('hr_profile/add_edit_member/' . $staffid), array('id' => 'add_edit_member')); ?>
+     <?php echo form_open_multipart(admin_url('hr_control/add_edit_member/' . $staffid), array('id' => 'add_edit_member')); ?>
             <div class="modal-body">
               <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="active">
@@ -588,5 +588,5 @@ if (isset($permission['after'])) {
     </div>
 </div>
 <?php
-require 'modules/hr_profile/assets/js/hr_record/add_update_staff_js.php';
+require 'modules/hr_control/assets/js/hr_record/add_update_staff_js.php';
 ?>

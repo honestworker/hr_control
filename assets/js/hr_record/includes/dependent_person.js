@@ -1,4 +1,4 @@
-	(function(){
+	(function() {
 		'use strict';
 
 		appValidateForm($('#dependent form'), {
@@ -13,7 +13,7 @@
 		};
 
 		var table_dependent_person = $('.table-table_dependent_person');
-		initDataTable(table_dependent_person, admin_url+'hr_profile/table_dependent_person', [0], [0], ContractsServerParams, [0, 'desc']);
+		initDataTable(table_dependent_person, admin_url+'hr_control/table_dependent_person', [0], [0], ContractsServerParams, [0, 'desc']);
 
 		//hide first column
 		var hidden_columns = [0,1,3,9];
@@ -21,7 +21,7 @@
 
 	})(jQuery);
 
-	function new_dependent_person(){
+	function new_dependent_person() {
 		'use strict';
 		$('#dependent').modal('show');
 		$('#dependent_person_id').html('');
@@ -30,7 +30,7 @@
 		$('.add-title').removeClass('hide');
 	}
 
-	function edit_dependent_person(invoker,id){
+	function edit_dependent_person(invoker,id) {
 		'use strict';
 		$('#dependent_person_id').append(hidden_input('id',id));
 		$('#dependent input[name="dependent_name"]').val($(invoker).data('dependent_name'));

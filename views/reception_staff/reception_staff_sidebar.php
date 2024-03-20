@@ -61,7 +61,7 @@
 			<div class="row">
 				<div class="col-md-12">	
 					<div class="checkbox">
-						<input data-can-view="" type="checkbox" onclick="change_info_checklist(this);" class="capability" id="<?php echo html_entity_decode($sub['name']) ?>" name="subitem[<?php echo html_entity_decode($count_id); ?>]" data-id="<?php echo html_entity_decode($sub['id']); ?>" data-count="<?php echo html_entity_decode($count_id); ?>" value="<?php echo html_entity_decode($sub['status']); ?>" <?php if((int)$sub['status'] == 1){
+						<input data-can-view="" type="checkbox" onclick="change_info_checklist(this);" class="capability" id="<?php echo html_entity_decode($sub['name']) ?>" name="subitem[<?php echo html_entity_decode($count_id); ?>]" data-id="<?php echo html_entity_decode($sub['id']); ?>" data-count="<?php echo html_entity_decode($count_id); ?>" value="<?php echo html_entity_decode($sub['status']); ?>" <?php if ((int)$sub['status'] == 1) {
 							echo 'checked';
 						} ?>>
 						<label for="<?php echo html_entity_decode($sub['name']) ?>">
@@ -77,8 +77,8 @@
 
 
 	<?php 
-	if(isset($list_staff_asset)){
-		if($list_staff_asset){ ?>
+	if (isset($list_staff_asset)) {
+		if ($list_staff_asset) { ?>
 			<br>
 
 			<div class="row">
@@ -97,7 +97,7 @@
 					<div class="row item_hover">
 						<div class="col-md-7">	
 							<div class="checkbox">
-								<input data-can-view="" type="checkbox" class="capability" name="asset_staff[]" id="<?php echo html_entity_decode($value['asset_name']); ?>	" data-id="<?php echo html_entity_decode($value['allocation_id']); ?>" value="<?php echo html_entity_decode($value['status_allocation']); ?>" <?php if($value['status_allocation'] == 1){ echo 'checked'; } ?> onclick="active_asset(this);">
+								<input data-can-view="" type="checkbox" class="capability" name="asset_staff[]" id="<?php echo html_entity_decode($value['asset_name']); ?>	" data-id="<?php echo html_entity_decode($value['allocation_id']); ?>" value="<?php echo html_entity_decode($value['status_allocation']); ?>" <?php if ($value['status_allocation'] == 1) { echo 'checked'; } ?> onclick="active_asset(this);">
 								<label for="<?php echo html_entity_decode($value['asset_name']); ?>	">
 									<?php echo html_entity_decode($value['asset_name']); ?>					
 								</label>
@@ -119,8 +119,8 @@
 			</div>				
 		<?php }	} ?>
 
-		<?php if(isset($list_training)){
-			if($list_training){
+		<?php if (isset($list_training)) {
+			if ($list_training) {
 				?>
 				<br>
 				<div class="row">
@@ -128,12 +128,12 @@
 						<h4 class="text-primary mt-0"><i class="fa fa-info-circle"></i> <?php echo _l('hr_training'); ?></h4>
 					</div>
 					<div class="col-md-6">
-						<?php if(isset($complete)){ ?>
-						<?php if($complete == 1){ ?>
+						<?php if (isset($complete)) { ?>
+						<?php if ($complete == 1) { ?>
 						<div class="progress-bar bg-green bg-danger task-progress-bar-ins-427 pull-right" id="training_staff">0%</div>
-					<?php }else{ ?>
+					<?php } else { ?>
 						<div class="progress-bar task-progress-bar-ins-427 pull-right bg-green" id="asset_staff" style="width: 100%; color: rgb(255, 255, 255); margin: unset;">100%</div>
-					<?php } }else{?>
+					<?php } } else {?>
 						<div class="progress-bar bg-green bg-danger task-progress-bar-ins-427 pull-right" id="training_staff">0%</div>
 
 					<?php } ?>
@@ -143,7 +143,7 @@
 				<div class="row mt-4 p-3 panel">
 					<div class="col-md-12">
 						<?php 
-						if(isset($list_training_allocation)){
+						if (isset($list_training_allocation)) {
 							echo html_entity_decode($list_training_allocation->training_name) .' ( ';
 						} 
 						 ?>
@@ -160,7 +160,7 @@
 				$check = '';
 				$mark = 0;
 
-				if(isset($staff_training_result)){
+				if (isset($staff_training_result)) {
 
 				foreach ($staff_training_result as $key => $value) {
 
@@ -190,5 +190,5 @@
 			<button type="button" class="btn btn-default reception_staff_close_model" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 		</div>
 		<?php 
-		require('modules/hr_profile/assets/js/reception_staff/reception_staff_js.php');
+		require('modules/hr_control/assets/js/reception_staff/reception_staff_js.php');
 		?>

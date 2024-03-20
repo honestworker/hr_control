@@ -75,7 +75,7 @@ class CholeskyDecomposition
         } else {
             throw new PHPExcel_Calculation_Exception(JAMAError(ARGUMENT_TYPE_EXCEPTION));
         }
-    }    //    function __construct()
+    }//    function __construct()
 
     /**
      *    Is the matrix symmetric and positive definite?
@@ -85,7 +85,7 @@ class CholeskyDecomposition
     public function isSPD()
     {
         return $this->isspd;
-    }    //    function isSPD()
+    }//    function isSPD()
 
     /**
      *    getL
@@ -96,7 +96,7 @@ class CholeskyDecomposition
     public function getL()
     {
         return new Matrix($this->L);
-    }    //    function getL()
+    }//    function getL()
 
     /**
      *    Solve A*X = B
@@ -144,5 +144,5 @@ class CholeskyDecomposition
         } else {
             throw new PHPExcel_Calculation_Exception(JAMAError(ARGUMENT_TYPE_EXCEPTION));
         }
-    }    //    function solve()
+    }//    function solve()
 }

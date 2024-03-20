@@ -23,7 +23,7 @@ function hypo($a, $b)
         $r = 0.0;
     }
     return $r;
-}    //    function hypo()
+}//    function hypo()
 
 
 /**

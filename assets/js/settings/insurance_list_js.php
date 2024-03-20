@@ -1,10 +1,11 @@
 <script>
-var purchase;
+	var purchase;
 
-(function($) {
-	"use strict";
+	(function($) {
+		"use strict";  
 
-	<?php if (isset($insurance_list)) {?>
+
+	<?php if (isset($insurance_list)) { ?>
 		var dataObject_pu = <?php echo html_entity_decode($insurance_list); ?>;
 	<?php } else { ?>
 		var dataObject_pu = [];
@@ -52,44 +53,53 @@ var purchase;
 		autoWrapCol: true,
 		autoWrapRow: true,
 		columns: [
-			{
-				type: 'text',
-				data: 'code',
+				{
+			type: 'text',
+			data: 'code',
+		},
+		{
+			type: 'text',
+			data: 'description',
+		},
+		{
+			type: 'numeric',
+			data: 'rate',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'text',
-				data: 'description',
-			},
-			{
-				type: 'numeric',
-				data: 'rate',
-				numericFormat: {
-					pattern: '0,00',
-				},
-			},
-			{
-				type: 'text',
-				data: 'basis',
-				renderer: customDropdownRenderer,
-				editor: "chosen",
-				chosenOptions: {
-					data: <?php echo json_encode($basis_value); ?>
-				}
-			},
-			{
-				type: 'text',
-				data: 'id',
-			},
+		},
+
+		{
+			type: 'text',
+			data: 'basis',
+			renderer: customDropdownRenderer,
+			editor: "chosen",
+			chosenOptions: {
+				data: <?php echo json_encode($basis_value); ?>
+			}
+
+		},
+
+		{
+			type: 'text',
+			data: 'id',
+		},
+		
+
 		],
+
 		colHeaders: [
-			'<?php echo _l('salary_deduction_code'); ?>',
-			'<?php echo _l('salary_deduction_name'); ?>',
-			'<?php echo _l('salary_deduction_rate'); ?>',
-			'<?php echo _l('salary_deduction_basis'); ?>',
-			'<?php echo _l('id'); ?>',
+		'<?php echo _l('salary_deduction_code'); ?>',
+		'<?php echo _l('salary_deduction_name'); ?>',
+		'<?php echo _l('salary_deduction_rate'); ?>',
+		'<?php echo _l('salary_deduction_basis'); ?>',
+		'<?php echo _l('id'); ?>',
 		],
+
 		data: dataObject_pu,
 	});
+
+
 })(jQuery);
 
 function customDropdownRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -105,6 +115,7 @@ function customDropdownRenderer(instance, td, row, col, prop, value, cellPropert
 	var values = (value + "").split("|");
 	value = [];
 	for (var index = 0; index < optionsList.length; index++) {
+
 		if (values.indexOf(optionsList[index].id + "") > -1) {
 			selectedId = optionsList[index].id;
 			value.push(optionsList[index].label);
@@ -126,9 +137,12 @@ $('.add_insurance_list').on('click', function() {
 	if (valid_contract) {
 		alert_float('danger', "<?php echo _l('data_must_number') ; ?>");
 	} else {
+
 		$('input[name="insurance_list_hs"]').val(JSON.stringify(purchase_value.getData()));   
 		$('#add_insurance_list').submit(); 
 
 	}
 });
+
+
 </script>

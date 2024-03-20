@@ -34,7 +34,7 @@
 
         this._elemInput.addClass('comboTreeInputBox');
 
-        if(this._elemInput.attr('id') === undefined)
+        if (this._elemInput.attr('id') === undefined)
             this._elemInput.attr('id', this.comboTreeId + 'Input');
         this.elemInputId = this._elemInput.attr('id');
 
@@ -77,7 +77,7 @@
 
     ComboTree.prototype.createSourceSubItemsHTML = function (subItems) {
         var subItemsHtml = '<UL>';
-        for (var i=0; i<subItems.length; i++){
+        for (var i=0; i<subItems.length; i++) {
             subItemsHtml += this.createSourceItemHTML(subItems[i]);
         }
         subItemsHtml += '</UL>'
@@ -111,22 +111,22 @@
     ComboTree.prototype.bindings = function () {
         var _this = this;
 
-        this._elemArrowBtn.on('click', function(e){
+        this._elemArrowBtn.on('click', function(e) {
             e.stopPropagation();
             _this.toggleDropDown();
         });
-        this._elemInput.on('click', function(e){
+        this._elemInput.on('click', function(e) {
             e.stopPropagation();
             if (!_this._elemDropDownContainer.is(':visible'))
                 _this.toggleDropDown();
         });
-        this._elemItems.on('click', function(e){
+        this._elemItems.on('click', function(e) {
             e.stopPropagation();
-            if ($(this).hasClass('ComboTreeItemParent')){
+            if ($(this).hasClass('ComboTreeItemParent')) {
                 _this.toggleSelectionTree(this);
             }
-        });        
-        this._elemItemsTitle.on('click', function(e){
+        }); 
+        this._elemItemsTitle.on('click', function(e) {
             e.stopPropagation();
             if (_this.options.isMultiple)
                 _this.multiItemClick(this);
@@ -181,7 +181,7 @@
         }
         });
         // ON FOCUS OUT CLOSE DROPDOWN
-        $(document).on('mouseup.' + _this.comboTreeId, function (e){
+        $(document).on('mouseup.' + _this.comboTreeId, function (e) {
             if (!_this._elemWrapper.is(e.target) && _this._elemWrapper.has(e.target).length === 0 && _this._elemDropDownContainer.is(':visible'))
                 _this.closeDropDownMenu();
         });
@@ -204,7 +204,7 @@
     // Selection Tree Open/Close
     ComboTree.prototype.toggleSelectionTree = function (item, direction) {
         var subMenu = $(item).children('ul')[0];
-        if (direction === undefined){
+        if (direction === undefined) {
             if ($(subMenu).is(':visible'))
                 $(item).children('span.comboTreeParentPlus').html("+");
             else
@@ -212,12 +212,12 @@
 
             $(subMenu).slideToggle(50);
         }
-        else if (direction == 1 && !$(subMenu).is(':visible')){
+        else if (direction == 1 && !$(subMenu).is(':visible')) {
                 $(item).children('span.comboTreeParentPlus').html("&minus;");
                 $(subMenu).slideDown(50);
         }
-        else if (direction == -1){
-            if ($(subMenu).is(':visible')){
+        else if (direction == -1) {
+            if ($(subMenu).is(':visible')) {
                 $(item).children('span.comboTreeParentPlus').html("+");
                 $(subMenu).slideUp(50);
             }
@@ -247,7 +247,7 @@
         };
 
         var index = this.isItemInArray(this._selectedItem, this._selectedItems);
-        if (index){
+        if (index) {
             this._selectedItems.splice(parseInt(index), 1);
             $(ctItem).find("input").prop('checked', false);
         }
@@ -272,7 +272,7 @@
         var tmpTitle = "";
         
         if (this.options.isMultiple) {
-            for (var i=0; i<this._selectedItems.length; i++){
+            for (var i=0; i<this._selectedItems.length; i++) {
                 tmpTitle += this._selectedItems[i].title;
                 if (i<this._selectedItems.length-1)
                     tmpTitle += ", ";
@@ -323,12 +323,12 @@
         i = this._elemHoveredItem?list.index(this._elemHoveredItem) + step:0;
         i = (list.length + i) % list.length;
 
-        this.dropDownMenuHover(list[i], true);        
+        this.dropDownMenuHover(list[i], true); 
     },
 
     ComboTree.prototype.filterDropDownMenu = function () {
         var searchText = this._elemInput.val();
-        if (searchText != ""){
+        if (searchText != "") {
             this._elemItemsTitle.hide();
             this._elemItemsTitle.siblings("span.comboTreeParentPlus").hide();
             list = this._elemItems.find("span:icontains('" + this._elemInput.val() + "')").each(function (i, elem) {
@@ -344,14 +344,14 @@
 
     // Retuns Array (multiple), Integer (single), or False (No choice)
     ComboTree.prototype.getSelectedItemsId = function () {
-        if (this.options.isMultiple && this._selectedItems.length>0){
+        if (this.options.isMultiple && this._selectedItems.length>0) {
             var tmpArr = [];
             for (i=0; i<this._selectedItems.length; i++)
                 tmpArr.push(this._selectedItems[i].id);
 
             return tmpArr;
         }
-        else if (!this.options.isMultiple && this._selectedItem.hasOwnProperty('id')){
+        else if (!this.options.isMultiple && this._selectedItem.hasOwnProperty('id')) {
             return this._selectedItem.id;
         }
         return false;
@@ -359,14 +359,14 @@
 
     // Retuns Array (multiple), Integer (single), or False (No choice)
     ComboTree.prototype.getSelectedItemsTitle = function () {
-        if (this.options.isMultiple && this._selectedItems.length>0){
+        if (this.options.isMultiple && this._selectedItems.length>0) {
             var tmpArr = [];
             for (i=0; i<this._selectedItems.length; i++)
                 tmpArr.push(this._selectedItems[i].title);
 
             return tmpArr;
         }
-        else if (!this.options.isMultiple && this._selectedItem.hasOwnProperty('id')){
+        else if (!this.options.isMultiple && this._selectedItem.hasOwnProperty('id')) {
             return this._selectedItem.title;
         }
         return false;
@@ -376,7 +376,7 @@
     ComboTree.prototype.unbind = function () {
         this._elemArrowBtn.off('click');
         this._elemInput.off('click');
-        this._elemItems.off('click');        
+        this._elemItems.off('click'); 
         this._elemItemsTitle.off('click');
         this._elemItemsTitle.off("mousemove");
         this._elemInput.off('keyup');

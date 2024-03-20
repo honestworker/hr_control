@@ -1,7 +1,7 @@
-  (function(){
+  (function() {
     'use strict';
 
-    window.addEventListener('load',function(){
+    window.addEventListener('load',function() {
       appValidateForm($("body").find('.job_p'), {
         'job_name': 'required'
       });
@@ -13,7 +13,7 @@
     };
 
     var table_job = $('.table-table_job');
-    initDataTable(table_job, admin_url+'hr_profile/table_job', [0], [0], ContractsServerParams, [0, 'desc']);
+    initDataTable(table_job, admin_url+'hr_control/table_job', [0], [0], ContractsServerParams, [0, 'desc']);
 
     //hide first column
     var hidden_columns = [];
@@ -28,7 +28,7 @@
 
   })(jQuery);
 
-  function new_job_p(){
+  function new_job_p() {
     'use strict';
 
     $('#additional_job').empty();
@@ -42,7 +42,7 @@
     $('input[name="create_job_position"]').prop('checked',true); 
   }
 
-  function edit_job_p(invoker,id){
+  function edit_job_p(invoker,id) {
     'use strict';
 
     $('input[name="create_job_position"]').prop('checked',false); 
@@ -52,7 +52,7 @@
     $('#additional_job').append(hidden_input('id',id));
     $('#job_p input[name="job_name"]').val($(invoker).data('name'));
 
-    $.post(admin_url + 'hr_profile/get_job_p_edit/'+id).done(function(response) {
+    $.post(admin_url + 'hr_control/get_job_p_edit/'+id).done(function(response) {
       response = JSON.parse(response);
       tinyMCE.activeEditor.setContent(response.description);
       $('.selectpicker').selectpicker({});
@@ -65,16 +65,16 @@
 
   /*get jobposition in department by staff in department*/
 
-  function department_change(invoker){
+  function department_change(invoker) {
     'use strict';
 
     var data_select = {};
     data_select.department_id = $('select[name="department_id[]"]').val();
     data_select.status = 'true';
-    if((data_select.department_id).length == 0){
+    if ((data_select.department_id).length == 0) {
       data_select.status = 'false';
     }
-    $.post(admin_url + 'hr_profile/get_position_by_department',data_select).done(function(response){
+    $.post(admin_url + 'hr_control/get_position_by_department',data_select).done(function(response) {
      response = JSON.parse(response);
      $("select[name='job_position_id[]']").html('');
 
@@ -85,7 +85,7 @@
 
   }
 
-  function staff_bulk_actions(){
+  function staff_bulk_actions() {
     'use strict';
 
     $('#table_contract_bulk_actions').modal('show');
@@ -98,7 +98,7 @@
     if (confirm_delete()) {
       var mass_delete = $('#mass_delete').prop('checked');
 
-      if(mass_delete == true){
+      if (mass_delete == true) {
         var ids = [];
         var data = {};
 
@@ -116,14 +116,14 @@
         data.ids = ids;
         $(event).addClass('disabled');
         setTimeout(function() {
-          $.post(admin_url + 'hr_profile/hrm_delete_bulk_action_v2', data).done(function() {
+          $.post(admin_url + 'hr_control/hrm_delete_bulk_action_v2', data).done(function() {
             window.location.reload();
           }).fail(function(data) {
             $('#table_contract_bulk_actions').modal('hide');
             alert_float('danger', data.responseText);
           });
         }, 200);
-      }else{
+      } else {
         window.location.reload();
       }
 

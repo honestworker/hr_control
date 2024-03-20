@@ -45,7 +45,7 @@ $where = hooks()->apply_filters('staff_table_sql_where', []);
 $where = array();
 
 $department_id = $this->ci->input->post('hr_profile_deparment');
-if(isset($department_id) && strlen($department_id) > 0){
+if (isset($department_id) && strlen($department_id) > 0) {
 
 	$departmentgroup = $this->ci->hr_profile_model->get_staff_in_deparment($department_id);
 	if (count($departmentgroup) > 0) {
@@ -55,25 +55,25 @@ if(isset($department_id) && strlen($department_id) > 0){
 
 }
 
-if($this->ci->input->post('status_work')){
+if ($this->ci->input->post('status_work')) {
 	$where_status = '';
 	$status = $this->ci->input->post('status_work');
 	foreach ($status as $statues) {
-		if($status != '')
+		if ($status != '')
 		{
-			if($where_status == ''){
+			if ($where_status == '') {
 				$where_status .= ' ('.db_prefix().'staff.status_work in ("'.$statues.'")';
-			}else{
+			} else {
 				$where_status .= ' or '.db_prefix().'staff.status_work in ("'.$statues.'")';
 			}
 		}
 	}
-	if($where_status != '')
+	if ($where_status != '')
 	{
 		$where_status .= ')';
-		if($where != ''){
+		if ($where != '') {
 			array_push($where, 'AND'. $where_status);
-		}else{
+		} else {
 			array_push($where, $where_status);
 		}
 		
@@ -82,26 +82,26 @@ if($this->ci->input->post('status_work')){
 
 
 
-if($this->ci->input->post('staff_role')){
+if ($this->ci->input->post('staff_role')) {
 	$where_role = '';
 	$staff_role      = $this->ci->input->post('staff_role');
 	foreach ($staff_role as $staff_id) {
-		if($staff_id != '')
+		if ($staff_id != '')
 		{
-			if($where_role == ''){
+			if ($where_role == '') {
 				$where_role .= '( '.db_prefix().'staff.job_position in ('.$staff_id.')';
-			}else{
+			} else {
 				$where_role .= ' or '.db_prefix().'staff.job_position in ('.$staff_id.')';
 			}
 		}
 	}
 
-	if($where_role != '')
+	if ($where_role != '')
 	{
 		$where_role .= ' )';
-		if($where_role != ''){
+		if ($where_role != '') {
 			array_push($where, 'AND '. $where_role);
-		}else{
+		} else {
 			array_push($where, $where_role);
 		}
 
@@ -111,7 +111,7 @@ if($this->ci->input->post('staff_role')){
 
 
 $manages = $this->ci->input->post('staff_teammanage');
-if(isset($manages) && strlen($manages) > 0){
+if (isset($manages) && strlen($manages) > 0) {
 
 	$where[] = '  AND staffid IN (select 
 	staffid 
@@ -123,13 +123,13 @@ if(isset($manages) && strlen($manages) > 0){
 }
 
 //load deparment by manager
-if(!is_admin() && !has_permission('hrm_hr_records','','view')){
+if (!is_admin() && !has_permission('hrm_hr_records','','view')) {
 	  //View own
 	$staff_ids = $this->ci->hr_profile_model->get_staff_by_manager();
 	if (count($staff_ids) > 0) {
 		$where[] = 'AND '.db_prefix().'staff.staffid IN (' . implode(', ', $staff_ids) . ')';
 
-	}else{
+	} else {
 		$where[] = 'AND 1=2';
 	}
 
@@ -155,17 +155,17 @@ foreach ($rResult as $aRow) {
 		} else {
 			$_data = $aRow[$aColumns[$i]];
 		}
-		if($aColumns[$i] == 'staff_identifi'){
+		if ($aColumns[$i] == 'staff_identifi') {
 			$_data = $aRow['staff_identifi'];
-		}elseif($aColumns[$i] == 'birthday'){
+		} elseif ($aColumns[$i] == 'birthday') {
 			$_data = _d($aRow['birthday']);
-		}elseif($aColumns[$i] == 'last_login'){
+		} elseif ($aColumns[$i] == 'last_login') {
 			$_data = _d($aRow['last_login']);
 		}
-		elseif($aColumns[$i] == 'sex'){
+		elseif ($aColumns[$i] == 'sex') {
 			$_data = _l($aRow['sex']);
         
-        }elseif($aColumns[$i] == 'status_work'){
+        } elseif ($aColumns[$i] == 'status_work') {
 			$_data = _l($aRow['status_work']);
 		}         
 		elseif ($aColumns[$i] == 'active') {
@@ -180,15 +180,15 @@ foreach ($rResult as $aRow) {
 
 			$_data .= '<span class="hide">' . ($checked == 'checked' ? _l('is_active_export') : _l('is_not_active_export')) . '</span>';
 		} elseif ($aColumns[$i] == 'firstname') {
-			$_data = '<a href="' . admin_url('hr_profile/member/' . $aRow['staffid']) . '">' . staff_profile_image($aRow['staffid'], [
+			$_data = '<a href="' . admin_url('hr_control/member/' . $aRow['staffid']) . '">' . staff_profile_image($aRow['staffid'], [
 				'staff-profile-image-small',
 			]) . '</a>';
-			$_data .= ' <a href="' . admin_url('hr_profile/member/' . $aRow['staffid']) . '">' . $aRow['firstname'] . ' ' . $aRow['lastname'] . '</a>';
+			$_data .= ' <a href="' . admin_url('hr_control/member/' . $aRow['staffid']) . '">' . $aRow['firstname'] . ' ' . $aRow['lastname'] . '</a>';
 			
 			$_data .= '<div class="row-options">';
 
 			if (has_permission('hrm_hr_records', '', 'view') || has_permission('hrm_hr_records', '', 'view_own') || ($aRow['staffid'] == get_staff_user_id()) ) {
-				$_data .= '<a href="' . admin_url('hr_profile/member/' . $aRow['staffid']) . '">' . _l('hr_view') . '</a>';
+				$_data .= '<a href="' . admin_url('hr_control/member/' . $aRow['staffid']) . '">' . _l('hr_view') . '</a>';
 			}
 
 			if (has_permission('hrm_hr_records', '', 'edit') || ($aRow['staffid'] == get_staff_user_id()) || is_admin()) {
@@ -205,14 +205,14 @@ foreach ($rResult as $aRow) {
 		} elseif ($aColumns[$i] == 'email') {
 			$_data = '<a href="mailto:' . $_data . '">' . $_data . '</a>';
 		} elseif ($aColumns[$i] == 'team_manage') {
-			if($aRow['staffid'] != ''){
+			if ($aRow['staffid'] != '') {
 				$team = $this->ci->hr_profile_model->get_staff_departments($aRow['staffid']);
 				$str = '';
 				$j = 0;
 				foreach ($team as $value) {
 					$j++;
 					$str .= '<span class="label label-tag tag-id-1"><span class="tag">'.$value['name'].'</span><span class="hide">, </span></span>&nbsp';
-					if($j%2 == 0){
+					if ($j%2 == 0) {
 						$str .= '<br><br/>';
 					}
 					
@@ -222,7 +222,7 @@ foreach ($rResult as $aRow) {
 			else{
 				$_data = '';
 			}
-		}elseif($aColumns[$i] == 'nation'){
+		} elseif ($aColumns[$i] == 'nation') {
 			$_data = '<div class="checkbox"><input type="checkbox" value="' . $aRow['staffid'] . '"><label></label></div>';
 		}
 		else {

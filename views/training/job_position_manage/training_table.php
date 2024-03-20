@@ -20,25 +20,25 @@ foreach ($rResult as $aRow) {
 	$row = [];
 	for ($i = 0; $i < count($aColumns); $i++) {
 		$_data = $aRow[$aColumns[$i]];
-		if($aColumns[$i] == '1') {
+		if ($aColumns[$i] == '1') {
 			$_data = '<div class="checkbox"><input type="checkbox" value="' . $aRow['training_id'] . '"><label></label></div>';
 
-		}elseif ($aColumns[$i] == 'subject') {
-			$_data = '<a href="' . site_url('hr_profile/participate/index/' . $aRow['training_id'] . '/' . $aRow['hash']) . '" target="_blank">' . $_data . '</a>';
+		} elseif ($aColumns[$i] == 'subject') {
+			$_data = '<a href="' . site_url('hr_control/participate/index/' . $aRow['training_id'] . '/' . $aRow['hash']) . '" target="_blank">' . $_data . '</a>';
 
 			$_data .= '<div class="row-options">';
 
 
 			if (is_admin() || has_permission('staffmanage_training', '', 'edit')) {
-				$_data .= ' <a href="' . admin_url('hr_profile/position_training/' . $aRow['training_id']) . '">' . _l('hr_edit') . '</a>';
+				$_data .= ' <a href="' . admin_url('hr_control/position_training/' . $aRow['training_id']) . '">' . _l('hr_edit') . '</a>';
 			}    
 
 			if (is_admin() || has_permission('staffmanage_training', '', 'delete')) {
-				$_data .= ' | <a href="' . admin_url('hr_profile/delete_position_training/' . $aRow['training_id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
+				$_data .= ' | <a href="' . admin_url('hr_control/delete_position_training/' . $aRow['training_id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
 			}
 
 			$_data .= '</div>';
-		}elseif($aColumns[$i] == 'training_type'){
+		} elseif ($aColumns[$i] == 'training_type') {
 			$_data = get_type_of_training_by_id($_data);
 		} elseif ($aColumns[$i] == 'datecreated') {
 			$_data = _dt($_data);

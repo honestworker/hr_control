@@ -1,9 +1,11 @@
 <script>
-var purchase;
+	var purchase;
 
-(function($) {
-	"use strict";
-	<?php if (isset($company_contributions_list)) {?>
+	(function($) {
+		"use strict";  
+
+
+	<?php if (isset($company_contributions_list)) { ?>
 		var dataObject_pu = <?php echo html_entity_decode($company_contributions_list); ?>;
 	<?php } else { ?>
 		var dataObject_pu = [];
@@ -51,62 +53,72 @@ var purchase;
 		autoWrapCol: true,
 		autoWrapRow: true,
 		columns: [
-			{
-				type: 'text',
-				data: 'code',
+				{
+			type: 'text',
+			data: 'code',
+		},
+		{
+			type: 'text',
+			data: 'description',
+		},
+		{
+			type: 'numeric',
+			data: 'rate',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'text',
-				data: 'description',
+		},
+
+		{
+			type: 'text',
+			data: 'basis',
+		},
+
+		{
+			type: 'text',
+			data: 'earn_inclusion',
+			renderer: customDropdownRenderer,
+			editor: "chosen",
+			chosenOptions: {
+				data: <?php echo json_encode($earn_inclusion); ?>
+			}
+
+		},
+		{
+			type: 'text',
+			data: 'earn_exclusion',
+		},
+		{
+			type: 'numeric',
+			data: 'earnings_max',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'numeric',
-				data: 'rate',
-				numericFormat: {
-					pattern: '0,00',
-				},
-			},
-			{
-				type: 'text',
-				data: 'basis',
-			},
-			{
-				type: 'text',
-				data: 'earn_inclusion',
-				renderer: customDropdownRenderer,
-				editor: "chosen",
-				chosenOptions: {
-					data: <?php echo json_encode($earn_inclusion); ?>
-				}
-			},
-			{
-				type: 'text',
-				data: 'earn_exclusion',
-			},
-			{
-				type: 'numeric',
-				data: 'earnings_max',
-				numericFormat: {
-					pattern: '0,00',
-				},
-			},
-			{
-				type: 'text',
-				data: 'id',
-			},
+		},
+
+		{
+			type: 'text',
+			data: 'id',
+		},
+		
+
 		],
+
 		colHeaders: [
-			'<?php echo _l('salary_deduction_code'); ?>',
-			'<?php echo _l('salary_deduction_name'); ?>',
-			'<?php echo _l('salary_deduction_rate'); ?>',
-			'<?php echo _l('salary_deduction_basis'); ?>',
-			'<?php echo _l('earn_inclusion'); ?>',
-			'<?php echo _l('earn_exclusion'); ?>',
-			'<?php echo _l('earnings_max'); ?>',
-			'<?php echo _l('id'); ?>',
+		'<?php echo _l('salary_deduction_code'); ?>',
+		'<?php echo _l('salary_deduction_name'); ?>',
+		'<?php echo _l('salary_deduction_rate'); ?>',
+		'<?php echo _l('salary_deduction_basis'); ?>',
+		'<?php echo _l('earn_inclusion'); ?>',
+		'<?php echo _l('earn_exclusion'); ?>',
+		'<?php echo _l('earnings_max'); ?>',
+		'<?php echo _l('id'); ?>',
 		],
+
 		data: dataObject_pu,
 	});
+
+
 })(jQuery);
 
 function customDropdownRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -144,9 +156,12 @@ $('.add_company_contributions_list').on('click', function() {
 	if (valid_contract) {
 		alert_float('danger', "<?php echo _l('data_must_number') ; ?>");
 	} else {
+
 		$('input[name="company_contributions_list_hs"]').val(JSON.stringify(purchase_value.getData()));   
-		$('#add_company_contributions_list').submit();
+		$('#add_company_contributions_list').submit(); 
+
 	}
 });
+
 
 </script>

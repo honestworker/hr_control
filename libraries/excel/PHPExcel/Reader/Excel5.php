@@ -978,7 +978,7 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
                     case self::XLS_TYPE_NOTE:
                         $this->readNote();
                         break;
-                    //case self::XLS_TYPE_IMDATA:                $this->readImData();                    break;
+                    //case self::XLS_TYPE_IMDATA:                $this->readImData();             break;
                     case self::XLS_TYPE_TXO:
                         $this->readTextObject();
                         break;

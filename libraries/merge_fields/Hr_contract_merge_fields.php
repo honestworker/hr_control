@@ -148,7 +148,9 @@ class Hr_contract_merge_fields extends App_merge_fields
 					'hr_contract',
 				],
 			],
-			//contract
+
+
+				//contract
 			[
 				'name'      => 'Contract Code',
 				'key'       => '{contract_code}',
@@ -198,6 +200,9 @@ class Hr_contract_merge_fields extends App_merge_fields
 					'hr_contract',
 				],
 			],
+
+
+
 		];
 	}
 
@@ -216,20 +221,24 @@ class Hr_contract_merge_fields extends App_merge_fields
         $this->ci->db->join(db_prefix() . 'staff', '' . db_prefix() . 'staff.staffid = ' . db_prefix() . 'hr_staff_contract.staff');
 		$contract = $this->ci->db->get(db_prefix() . 'hr_staff_contract')->row();
 
+
+
 		if (!$contract) {
 			return $fields;
 		}
 
 		$currency = get_base_currency();
+
+
 		$fields['{staff_code}'] 				=  $contract->staff_identifi;
 		$fields['{staff_firstname}'] 			=  $contract->firstname;
-		$fields['{staff_lastname}'] 			=  $contract->lastname;
+		$fields['{staff_lastname}'] 		=  $contract->lastname;
 		$fields['{staff_gender}'] 				=  $contract->sex;
-		$fields['{staff_birthday}'] 			=  $contract->birthday;
+		$fields['{staff_birthday}'] 				=  $contract->birthday;
 		$fields['{staff_email}'] 				=  $contract->email;
 		$fields['{staff_phone}'] 				=  $contract->phonenumber;
-		$fields['{staff_workplace}'] 			=  hr_control_get_workplace_name($contract->workplace);
-		$fields['{staff_jobposition}'] 			=  hr_control_get_job_position_name($contract->job_position);
+		$fields['{staff_workplace}'] 			=  hr_profile_get_workplace_name($contract->workplace);
+		$fields['{staff_jobposition}'] 			=  hr_profile_get_job_position_name($contract->job_position);
 		$fields['{staff_role}'] 				=  hr_get_role_name($contract->role);
 		$fields['{staff_deparment_name}'] 		=  get_staff_department_names($contract->staffid);
 		$fields['{staff_Domicile}'] 			=  $contract->home_town;
@@ -248,6 +257,7 @@ class Hr_contract_merge_fields extends App_merge_fields
 		$fields['{contract_expiration_date}'] 	=  _d($contract->end_valid);
 		$fields['{hourly_or_month}'] 			=  $contract->hourly_or_month;
 		$fields['{salary_and_allowance}'] 		=  hr_render_salary_table($contract_id);
+
 		
 		return hooks()->apply_filters('hr_contract_merge_fields', $fields, [
 			'id'       => $contract_id,

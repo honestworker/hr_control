@@ -77,7 +77,7 @@ var setBorder = function (luckyBorderInfo, worksheet) {
 	if (!Array.isArray(luckyBorderInfo)) {return
 		luckyBorderInfo.forEach(function (elem) {
 			var border = borderConvert(elem.borderType, elem.style, elem.color);
-			if(elem.range){
+			if (elem.range) {
 				var rang = elem.range[0]
 				worksheet.getCell(rang.row_focus + 1, rang.column_focus + 1).border = border
 			}

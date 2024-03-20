@@ -32,7 +32,7 @@ $file_header[] = _l('commission_amount');
 						</div>
 
 						<!-- button download file -->
-						<?php if(has_permission('hr_commission','','create') || has_permission('hr_commission','','edit')){ ?>
+						<?php if (has_permission('hrp_commission','','create') || has_permission('hrp_commission','','edit')) { ?>
 							<button id="export-file" onclick="dowload_commissions_excel(); return false;" class="btn btn-warning btn-xs mleft5 staff_contract_create " data-toggle="tooltip" title="" data-original-title="<?php echo _l('create_attendance_file_download'); ?>"><i class="fa fa-download"></i><?php echo _l('create_attendance_file_download') ?></button>
 						<?php } ?>
 
@@ -40,7 +40,7 @@ $file_header[] = _l('commission_amount');
 
 						<hr>
 
-						<?php if(!isset($simulate)) { ?>
+						<?php if (!isset($simulate)) { ?>
 							<ul>
 								<li class="text-danger">1. <?php echo _l('file_xlsx_commissions1'); ?></li>
 								<li class="text-danger">2. <?php echo _l('file_xlsx_commissions2'); ?></li>
@@ -53,8 +53,8 @@ $file_header[] = _l('commission_amount');
 											<?php
 											$total_fields = 0;
 											
-											for($i=0;$i<count($file_header);$i++){
-												if($i == 0 || $i == 1 ||$i == 2){
+											for($i=0;$i<count($file_header);$i++) {
+												if ($i == 0 || $i == 1 ||$i == 2) {
 													?>
 													<th class="bold"><span class="text-danger">*</span> <?php echo html_entity_decode($file_header[$i]) ?> </th>
 													<?php 
@@ -73,9 +73,9 @@ $file_header[] = _l('commission_amount');
 										</tr>
 									</thead>
 									<tbody>
-										<?php for($i = 0; $i<1;$i++){
+										<?php for($i = 0; $i<1;$i++) {
 											echo '<tr>';
-											for($x = 0; $x<count($file_header);$x++){
+											for($x = 0; $x<count($file_header);$x++) {
 												echo '<td>- </td>';
 											}
 											echo '</tr>';
@@ -97,12 +97,12 @@ $file_header[] = _l('commission_amount');
 								<div class="form-group">
 									
 									<a href="<?php echo admin_url('hr_control/manage_commissions'); ?>" class=" btn  btn-default ">
-										<?php echo _l('hr_back'); ?>
+										<?php echo _l('hrp_back'); ?>
 									</a>
-									<?php if(has_permission('hr_commission','','create') || has_permission('hr_commission','','edit')){ ?>
+									<?php if (has_permission('hrp_commission','','create') || has_permission('hrp_commission','','edit')) { ?>
 										<button id="uploadfile" type="button" class="btn btn-info import" onclick="return uploadfilecsv(this);" ><?php echo _l('import'); ?></button>
 
-									<?php }?>
+									<?php } ?>
 								</div>
 								<?php echo form_close(); ?>
 							</div>

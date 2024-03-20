@@ -254,7 +254,7 @@ class PHPExcel_CachedObjectStorage_Wincache extends PHPExcel_CachedObjectStorage
 
         if (is_null($this->cachePrefix)) {
             $baseUnique = $this->getUniqueID();
-            $this->cachePrefix = substr(md5($baseUnique), 0, 8).'.';
+            $this->cachePrefix = substr(md5($baseUnique), 0, 8) . '.';
             $this->cacheTime = $cacheTime;
 
             parent::__construct($parent);

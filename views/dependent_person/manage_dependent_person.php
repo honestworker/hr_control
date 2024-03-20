@@ -10,13 +10,13 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="_buttons">
-									<?php if(is_admin() || has_permission('hrm_dependent_person','','create')) { ?>
+									<?php if (is_admin() || has_permission('hrm_dependent_person','','create')) { ?>
 
 										<a href="" onclick="dependent_person_add('', '', true); return false;" class=" btn mright5 btn-primary pull-left display-block">
 											<?php echo _l('hr_new_dependent_person'); ?>
 										</a>
 
-										<a href="<?php echo admin_url('hr_profile/import_xlsx_dependent_person'); ?>" class=" btn mright5 btn-default pull-left display-block">
+										<a href="<?php echo admin_url('hr_control/import_xlsx_dependent_person'); ?>" class=" btn mright5 btn-default pull-left display-block">
 											<?php echo _l('hr_job_p_import_excel'); ?>
 										</a>
 										
@@ -66,7 +66,7 @@
 												<h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
 											</div>
 											<div class="modal-body">
-												<?php if(has_permission('hrm_dependent_person','','delete') || is_admin()){ ?>
+												<?php if (has_permission('hrm_dependent_person','','delete') || is_admin()) { ?>
 													<div class="checkbox checkbox-danger">
 														<input type="checkbox" name="mass_delete" id="mass_delete">
 														<label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -76,7 +76,7 @@
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 
-												<?php if(has_permission('hrm_dependent_person','','delete') || is_admin()){ ?>
+												<?php if (has_permission('hrm_dependent_person','','delete') || is_admin()) { ?>
 													<a href="#" class="btn btn-info" onclick="staff_delete_bulk_action(this); return false;"><?php echo _l('hr_confirm'); ?></a>
 												<?php } ?>
 											</div>
@@ -111,7 +111,7 @@
 							
 							<div class="modal" id="approvaldependent" tabindex="-1" role="dialog">
 								<div class="modal-dialog">
-									<?php echo form_open(admin_url('hr_profile/approval_status')); ?>
+									<?php echo form_open(admin_url('hr_control/approval_status')); ?>
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -165,6 +165,6 @@
 
 	<div id="modal_wrapper"></div>
 	<?php init_tail(); ?>
-	<?php  require('modules/hr_profile/assets/js/dependent_person/manage_js.php'); ?>
+	<?php  require('modules/hr_control/assets/js/dependent_person/manage_js.php'); ?>
 </body>
 </html>

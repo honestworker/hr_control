@@ -199,8 +199,8 @@
             self.$textarea.trigger("chosen:open");
 
             $(self.TEXTAREA_PARENT).find("input").on("keydown", function(e) {
-                if(e.keyCode === Handsontable.helper.KEY_CODES.ENTER /*|| e.keyCode === Handsontable.helper.KEY_CODES.BACKSPACE*/) {
-                    if($(this).val()) {
+                if (e.keyCode === Handsontable.helper.KEY_CODES.ENTER /*|| e.keyCode === Handsontable.helper.KEY_CODES.BACKSPACE*/) {
+                    if ($(this).val()) {
                         e.preventDefault();
                         e.stopPropagation();
                     } else {
@@ -213,7 +213,7 @@
 
                 }
 
-                if( e.keyCode === Handsontable.helper.KEY_CODES.BACKSPACE) {
+                if ( e.keyCode === Handsontable.helper.KEY_CODES.BACKSPACE) {
                     var txt =  $(self.TEXTAREA_PARENT).find("input").val();
 
                     $(self.TEXTAREA_PARENT).find("input").val(txt.substr(0,txt.length-1)).trigger("keyup.chosen");
@@ -222,7 +222,7 @@
                     e.stopPropagation();
                 }
 
-                if(e.keyCode === Handsontable.helper.KEY_CODES.ARROW_DOWN || e.keyCode === Handsontable.helper.KEY_CODES.ARROW_UP) {
+                if (e.keyCode === Handsontable.helper.KEY_CODES.ARROW_DOWN || e.keyCode === Handsontable.helper.KEY_CODES.ARROW_UP) {
                     e.preventDefault();
                     e.stopPropagation();
                 }
@@ -257,10 +257,10 @@
     };
 
     ChosenEditor.prototype.getValue = function() {
-        if(!this.$textarea.val()) {
+        if (!this.$textarea.val()) {
             return "";
         }
-        if(typeof this.$textarea.val() === "object") {
+        if (typeof this.$textarea.val() === "object") {
             return this.$textarea.val().join("|");
         }
         return this.$textarea.val();

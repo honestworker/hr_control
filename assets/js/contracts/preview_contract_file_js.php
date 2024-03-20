@@ -1,7 +1,7 @@
 <script>
 	
 	//contract preview file
-	function preview_file_staff(invoker){
+	function preview_file_staff(invoker) {
 		'use strict';
 		
 		var id = $(invoker).attr('id');
@@ -14,7 +14,7 @@
 	 	'use strict';
 
 	 	$('#contract_file_data').empty();
-	 	$("#contract_file_data").load(admin_url + 'hr_profile/hrm_file_contract/' + id + '/' + rel_id, function(response, status, xhr) {
+	 	$("#contract_file_data").load(admin_url + 'hr_control/hrm_file_contract/' + id + '/' + rel_id, function(response, status, xhr) {
 	 		if (status == "error") {
 	 			alert_float('danger', xhr.statusText);
 	 		}
@@ -90,7 +90,7 @@
 				editor_settings.contextmenu = editor_settings.contextmenu.replace('inserttable', 'inserttable template');
 			}
 
-			if(is_mobile()) {
+			if (is_mobile()) {
 
 				editor_settings.theme = 'modern';
 				editor_settings.mobile    = {};
@@ -126,7 +126,7 @@
 				var data = {};
 				data.contract_id = contract_id;
 				data.content = editor.getContent();
-				$.post(admin_url + 'hr_profile/save_hr_contract_data', data).done(function (response) {
+				$.post(admin_url + 'hr_control/save_hr_contract_data', data).done(function (response) {
 					response = JSON.parse(response);
 					if (typeof (manual) != 'undefined') {
 

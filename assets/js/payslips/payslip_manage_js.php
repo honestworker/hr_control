@@ -22,7 +22,7 @@ $('#date_add').on('change', function() {
 var hidden_columns = [0];
 $('.table-payslip_table').DataTable().columns(hidden_columns).visible(false, false); 
 
-function new_payslip(){
+function new_payslip() {
     "use strict";
 
     $('#payslip_template_modal').modal('show');
@@ -42,7 +42,7 @@ function new_payslip(){
 
 }
 
-function edit_payslip(invoker,id){
+function edit_payslip(invoker,id) {
     "use strict";
 
     $('#additional_payslip_template').html('');

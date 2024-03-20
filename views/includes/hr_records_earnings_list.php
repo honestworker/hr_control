@@ -17,8 +17,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="modal-footer">
-				<?php if(has_permission('hr_setting', '', 'create') || has_permission('hr_setting', '', 'edit')){ ?>
-					<a href="#"class="btn btn-info pull-right display-block add_earnings_list_hr_records"  data-toggle="tooltip" title="<?php echo _l('synchronized_hr_salary_allowance_tye_title'); ?>"><?php echo _l('hr_synchronized'); ?><i class=" pull-right fa fa-question-circle i_tooltip" ></i></a>
+				<?php if (has_permission('hrp_setting', '', 'create') || has_permission('hrp_setting', '', 'edit')) { ?>
+					<a href="#"class="btn btn-info pull-right display-block add_earnings_list_hr_records"  data-toggle="tooltip" title="<?php echo _l('synchronized_hr_salary_allowance_tye_title'); ?>"><?php echo _l('hrp_synchronized'); ?><i class=" pull-right fa fa-question-circle i_tooltip" ></i></a>
 
 				<?php } ?>
 			</div>

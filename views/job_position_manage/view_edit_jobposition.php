@@ -68,12 +68,12 @@
 											<!-- file attachment -->
 											<div class="row">                           
 												<div id="contract_attachments" class="mtop30 col-md-8 ">
-													<?php if(isset($job_position_attachment)){ ?>
+													<?php if (isset($job_position_attachment)) { ?>
 														<?php
 														$data = '<div class="row" id="attachment_file">';
 														foreach($job_position_attachment as $attachment) {
-															$href_url = site_url('modules/hr_profile/uploads/job_position/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
-															if(!empty($attachment['external'])){
+															$href_url = site_url('modules/hr_control/uploads/job_position/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
+															if (!empty($attachment['external'])) {
 																$href_url = $attachment['external_link'];
 															}
 															$data .= '<div class="display-block contract-attachment-wrapper">';
@@ -105,7 +105,7 @@
 											<div class="row">
 												<div class="col-md-12">
 													<div class="modal-footer">
-														<a href="<?php echo admin_url('hr_profile/job_positions/'.$parent_id); ?>" class="btn btn-default  mright5"><?php echo _l('hr_close'); ?></a>
+														<a href="<?php echo admin_url('hr_control/job_positions/'.$parent_id); ?>" class="btn btn-default  mright5"><?php echo _l('hr_close'); ?></a>
 													</div>
 												</div>
 											</div>
@@ -113,7 +113,7 @@
 
 										<!-- salary level start -->
 										<div role="tabpanel" class="tab-pane hide " id="salary_allowance_insurance">
-											<?php echo form_open_multipart(admin_url('hr_profile/job_position_salary_add_edit'),array('class'=>'job_position_salary_add_edit','autocomplete'=>'off')); ?>
+											<?php echo form_open_multipart(admin_url('hr_control/job_position_salary_add_edit'),array('class'=>'job_position_salary_add_edit','autocomplete'=>'off')); ?>
 											<input type="hidden" name="job_position_id" value="<?php echo html_entity_decode($job_position_id); ?>">
 
 											<div class="row hide">
@@ -131,7 +131,7 @@
 													<div class="row " >
 
 														<!-- start salary-->
-														<?php if(isset($salary_form_edit) && (count($salary_form_edit) != 0)){ ?>
+														<?php if (isset($salary_form_edit) && (count($salary_form_edit) != 0)) { ?>
 
 															<div class="col-md-12 contract-expense-al">
 																<!-- for each start -->
@@ -143,9 +143,9 @@
 																			<select onchange="OnSelectionChange_salsaryform (this)" name="salary_form[<?php echo html_entity_decode($salary_key); ?>]" class="selectpicker" id="salary_form[<?php echo html_entity_decode($salary_key); ?>]" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 																				<option value=""></option> 
 																				<?php
-																				foreach($salary_form as $s){                             
+																				foreach($salary_form as $s) {                             
 																					?>
-																					<option value="<?php echo html_entity_decode($s['form_id']); ?>" <?php if(isset($salary_value) && $salary_value['rel_id'] == $s['form_id'] ){echo 'selected';} ?>><?php echo html_entity_decode($s['form_name']); ?></option>
+																					<option value="<?php echo html_entity_decode($s['form_id']); ?>" <?php if (isset($salary_value) && $salary_value['rel_id'] == $s['form_id'] ) {echo 'selected';} ?>><?php echo html_entity_decode($s['form_name']); ?></option>
 
 																				<?php } ?>
 																			</select>
@@ -163,7 +163,7 @@
 																			<?php  echo render_input('contract_expense['.$salary_key.']','amount_of_money', app_format_money($value_expense, ''), 'text', $input_att1, [],'','salary_currency'); ?> 
 
 																		</div>
-																		<?php if($salary_key == 0) { ?>
+																		<?php if ($salary_key == 0) { ?>
 																			<div class="col-md-2 ptop" name="button_add">
 																				<button name="add" class="btn new_contract_expense btn-success" data-ticket="true" type="button"><i class="fa fa-plus"></i></button>
 																			</div>
@@ -177,7 +177,7 @@
 																<?php } ?>
 															</div>
 
-														<?php }else{ ?>
+														<?php } else { ?>
 															<div class="col-md-12 contract-expense-al">
 																<div id ="contract-expense" class="row">
 																	<div class="col-md-5 ">
@@ -187,9 +187,9 @@
 																		<select onchange="OnSelectionChange_salsaryform (this)" name="salary_form[0]" class="selectpicker" id="salary_form[0]" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 																			<option value=""></option> 
 																			<?php
-																			foreach($salary_form as $s){                             
+																			foreach($salary_form as $s) {                             
 																				?>
-																				<option value="<?php echo html_entity_decode($s['form_id']); ?>" <?php if(isset($contracts) && $contracts[0]['salary_form'] == $s['form_id'] ){echo 'selected';} ?>><?php echo html_entity_decode($s['form_name']); ?>
+																				<option value="<?php echo html_entity_decode($s['form_id']); ?>" <?php if (isset($contracts) && $contracts[0]['salary_form'] == $s['form_id'] ) {echo 'selected';} ?>><?php echo html_entity_decode($s['form_name']); ?>
 																			</option>
 																		<?php } ?>
 																	</select>
@@ -214,7 +214,7 @@
 											</div>
 											<div class="col-md-6">
 
-												<?php if(isset($salary_allowance) && (count($salary_allowance) != 0)){ ?>
+												<?php if (isset($salary_allowance) && (count($salary_allowance) != 0)) { ?>
 													<div class="col-md-12 contract-allowance-type">
 														<?php foreach ($salary_allowance as $allowance_key => $allowance_value) { ?>
 
@@ -224,9 +224,9 @@
 																	<select onchange="OnSelectionChange_allowancetype (this)" name="allowance_type[<?php echo html_entity_decode($allowance_key) ?>]" class="selectpicker" id="allowance_type[<?php echo html_entity_decode($allowance_key) ?>]" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 																		<option value=""></option> 
 																		<?php
-																		foreach($allowance_type as $s){                             
+																		foreach($allowance_type as $s) {                             
 																			?>
-																			<option value="<?php echo html_entity_decode($s['type_id']); ?>" <?php if(isset($allowance_value) && $allowance_value['rel_id'] == $s['type_id'] ){echo 'selected';} ?>><?php echo html_entity_decode($s['type_name']); ?></option>
+																			<option value="<?php echo html_entity_decode($s['type_id']); ?>" <?php if (isset($allowance_value) && $allowance_value['rel_id'] == $s['type_id'] ) {echo 'selected';} ?>><?php echo html_entity_decode($s['type_name']); ?></option>
 
 																		<?php } ?>
 																	</select>
@@ -245,11 +245,11 @@
 																	</div>
 
 																</div>
-																<?php if($allowance_key == 0) {?>
+																<?php if ($allowance_key == 0) {?>
 																	<div class="col-md-2 ptop" name="button_allowance_type">
 																		<button name="add" class="btn new_contract_allowance_type btn-success" data-ticket="true" type="button"><i class="fa fa-plus"></i></button>
 																	</div>
-																<?php }else{ ?>
+																<?php } else { ?>
 																	<div class="col-md-2 ptop" name="button_allowance_type">
 																		<button name="add" class="btn remove_contract_allowance_type btn-danger" data-ticket="true" type="button"><i class="fa fa-minus"></i></button>
 																	</div>
@@ -258,7 +258,7 @@
 														<?php } ?>
 
 													</div>
-												<?php }else{ ?>
+												<?php } else { ?>
 													<div class="col-md-12 contract-allowance-type">
 														<div id ="contract-allowancetype" class="row">
 
@@ -267,9 +267,9 @@
 																<select onchange="OnSelectionChange_allowancetype (this)" name="allowance_type[0]" class="selectpicker" id="allowance_type[0]" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 																	<option value=""></option> 
 																	<?php
-																	foreach($allowance_type as $s){                             
+																	foreach($allowance_type as $s) {                             
 																		?>
-																		<option value="<?php echo html_entity_decode($s['type_id']); ?>" <?php if(isset($contracts) && $contracts[0]['allowance_type'] == $s['type_id'] ){echo 'selected';} ?>><?php echo html_entity_decode($s['type_name']); ?></option>
+																		<option value="<?php echo html_entity_decode($s['type_id']); ?>" <?php if (isset($contracts) && $contracts[0]['allowance_type'] == $s['type_id'] ) {echo 'selected';} ?>><?php echo html_entity_decode($s['type_name']); ?></option>
 
 																	<?php } ?>
 																</select>
@@ -295,7 +295,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="modal-footer">
-													<a href="<?php echo admin_url('hr_profile/job_positions/'.$parent_id); ?>" class="btn btn-default  mright5"><?php echo _l('hr_close'); ?></a>
+													<a href="<?php echo admin_url('hr_control/job_positions/'.$parent_id); ?>" class="btn btn-default  mright5"><?php echo _l('hr_close'); ?></a>
 													<?php if (has_permission('staffmanage_job_position', '', 'create')) { ?>
 														<button type="submit" class="btn btn-info"><?php echo _l('submit'); ?></button>
 													<?php } ?>

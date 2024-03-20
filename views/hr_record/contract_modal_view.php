@@ -48,24 +48,24 @@
                               <th class="th-color"><?php echo _l('note'); ?></th>
                           </thead>
                           <tbody>
-                              <?php foreach($contract_details as $contract_detail){ ?>
+                              <?php foreach($contract_details as $contract_detail) { ?>
                                 <?php 
                                     $type_name ='';
-                                    if(preg_match('/^st_/', $contract_detail['rel_type'])){
+                                    if (preg_match('/^st_/', $contract_detail['rel_type'])) {
                                         $rel_value = str_replace('st_', '', $contract_detail['rel_type']);
                                         $salary_type = $this->hr_profile_model->get_salary_form($rel_value);
 
                                         $type = 'salary';
-                                        if($salary_type){
+                                        if ($salary_type) {
                                             $type_name = $salary_type->form_name;
                                         }
 
-                                    }elseif(preg_match('/^al_/', $contract_detail['rel_type'])){
+                                    } elseif (preg_match('/^al_/', $contract_detail['rel_type'])) {
                                         $rel_value = str_replace('al_', '', $contract_detail['rel_type']);
                                         $allowance_type = $this->hr_profile_model->get_allowance_type($rel_value);
 
                                         $type = 'allowance';
-                                        if($allowance_type){
+                                        if ($allowance_type) {
                                             $type_name = $allowance_type->type_name;
                                         }
                                     }
@@ -92,5 +92,5 @@
     </div>
 </div>
 <?php 
-  require('modules/hr_profile/assets/js/hr_record/add_update_staff_js.php');
+  require('modules/hr_control/assets/js/hr_record/add_update_staff_js.php');
  ?>

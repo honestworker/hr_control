@@ -1,10 +1,10 @@
 <script src="<?php echo base_url('assets/plugins/jquery-validation/additional-methods.min.js'); ?>"></script>
 <script>
 
-	function uploadfilecsv(event){
+	function uploadfilecsv(event) {
 		'use strict';
 
-		if(($("#file_csv").val() != '') && ($("#file_csv").val().split('.').pop() == 'xlsx')){
+		if (($("#file_csv").val() != '') && ($("#file_csv").val().split('.').pop() == 'xlsx')) {
 			var formData = new FormData();
 			formData.append("file_csv", $('#file_csv')[0].files[0]);
 			formData.append("csrf_token_name", $('input[name="csrf_token_name"]').val());
@@ -37,35 +37,35 @@
 				$("#file_csv").change();
 				$(".panel-body").find("#file_upload_response").html();
 
-				if($(".panel-body").find("#file_upload_response").html() != ''){
+				if ($(".panel-body").find("#file_upload_response").html() != '') {
 					$(".panel-body").find("#file_upload_response").empty();
 				};
 
-				if(response.total_rows){
+				if (response.total_rows) {
 					$( "#file_upload_response" ).append( "<h4><?php echo _l("_Result") ?></h4><h5><?php echo _l('import_line_number') ?> :"+response.total_rows+" </h5>" );
 				}
-				if(response.total_row_success){
+				if (response.total_row_success) {
 					$( "#file_upload_response" ).append( "<h5><?php echo _l('import_line_number_success') ?> :"+response.total_row_success+" </h5>" );
 				}
-				if(response.total_row_false){
+				if (response.total_row_false) {
 					$( "#file_upload_response" ).append( "<h5><?php echo _l('import_line_number_failed') ?> :"+response.total_row_false+" </h5>" );
 				}
-				if(response.total_row_false > 0)
+				if (response.total_row_false > 0)
 				{
 					$( "#file_upload_response" ).append( '<a href="'+response.site_url+response.filename+'" class="btn btn-warning"  ><?php echo _l('hr_download_file_error') ?></a>' );
 				}
-				if(response.total_rows < 1){
+				if (response.total_rows < 1) {
 					alert_float('warning', response.message);
 				}
 			});
 			return false;
-		}else if($("#file_csv").val() != ''){
+		}else if ($("#file_csv").val() != '') {
 			alert_float('warning', "<?php echo _l('_please_select_a_file') ?>");
 		}
 
 	}
 
-	function dowload_contract_excel(){
+	function dowload_contract_excel() {
 		'use strict';
 
 		var formData = new FormData();
@@ -79,7 +79,7 @@
 			processData: false
 		}).done(function(response) {
 			response = JSON.parse(response);
-			if(response.success == true){
+			if (response.success == true) {
 
 				alert_float('success', "<?php echo _l("create_attendance_file_success") ?>");
 
@@ -89,7 +89,7 @@
 				$('.staff_contract_download').attr({target: '_blank', 
 					href  : site_url +response.filename});
 
-			}else{
+			} else {
 				alert_float('warning', "<?php echo _l("create_attendance_file_false") ?>");
 			}
 		});

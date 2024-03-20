@@ -17,7 +17,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="modal-footer">
-				<?php if(has_permission('hr_setting', '', 'create') || has_permission('hr_setting', '', 'edit')){ ?>
+				<?php if (has_permission('hrp_setting', '', 'create') || has_permission('hrp_setting', '', 'edit')) { ?>
 					<a href="#"class="btn btn-info pull-right display-block add_earnings_list" ><?php echo _l('submit'); ?></a>
 				<?php } ?>
 			</div>

@@ -1,10 +1,11 @@
 <script>
-var purchase;
+	var purchase;
 
-(function($) {
-	"use strict";
+	(function($) {
+		"use strict";  
 
-	<?php if (isset($earnings_list_hr_records)) {?>
+
+	<?php if (isset($earnings_list_hr_records)) { ?>
 		var dataObject_pu = <?php echo html_entity_decode($earnings_list_hr_records); ?>;
 	<?php } else { ?>
 		var dataObject_pu = [];
@@ -49,61 +50,70 @@ var purchase;
 			columns: [3,4,5,6,7],
 			indicators: true
 		},
+
 		columns: [
-			{
-				type: 'text',
-				data: 'code',
+				{
+			type: 'text',
+			data: 'code',
+		},
+		{
+			type: 'text',
+			data: 'description',
+		},
+		{
+			type: 'text',
+			data: 'short_name',
+		},
+		
+		{
+			type: 'numeric',
+			data: 'taxable',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'text',
-				data: 'description',
-			},
-			{
-				type: 'text',
-				data: 'short_name',
-			},
-			{
-				type: 'numeric',
-				data: 'taxable',
-				numericFormat: {
-					pattern: '0,00',
-				},
-			},
-			{
-				type: 'text',
-				data: 'basis_type',
-				renderer: customDropdownRenderer,
-				editor: "chosen",
-				chosenOptions: {
-					data: <?php echo json_encode($basis_value); ?>
-				}
-			},
-			{
-				type: 'text',
-				data: 'id',
-			},
-			{
-				type: 'text',
-				data: 'rel_type',
-			},
-			{
-				type: 'text',
-				data: 'rel_id',
-			},
+		},
+
+		{
+			type: 'text',
+			data: 'basis_type',
+			renderer: customDropdownRenderer,
+			editor: "chosen",
+			chosenOptions: {
+				data: <?php echo json_encode($basis_value); ?>
+			}
+
+		},
+		{
+			type: 'text',
+			data: 'id',
+		},
+		{
+			type: 'text',
+			data: 'rel_type',
+		},
+		{
+			type: 'text',
+			data: 'rel_id',
+		},
+		
+
 		],
+
 		colHeaders: [
-			'<?php echo _l('earning_code'); ?>',
-			'<?php echo _l('earning_name'); ?>',
-			'<?php echo _l('short_name'); ?>',
-			'<?php echo _l('taxable').' %'; ?>',
-			'<?php echo _l('earning_basis'); ?>',
-			'<?php echo _l('id'); ?>',
-			'<?php echo _l('rel_type'); ?>',
-			'<?php echo _l('rel_id'); ?>',
+		'<?php echo _l('earning_code'); ?>',
+		'<?php echo _l('earning_name'); ?>',
+		'<?php echo _l('short_name'); ?>',
+		'<?php echo _l('taxable') . ' %'; ?>',
+		'<?php echo _l('earning_basis'); ?>',
+		'<?php echo _l('id'); ?>',
+		'<?php echo _l('rel_type'); ?>',
+		'<?php echo _l('rel_id'); ?>',
 		],
 
 		data: dataObject_pu,
 	});
+
+
 })(jQuery);
 
 function customDropdownRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -141,8 +151,12 @@ $('.add_earnings_list_hr_records').on('click', function() {
 	if (valid_contract) {
 		alert_float('danger', "<?php echo _l('data_must_number') ; ?>");
 	} else {
+
 		$('input[name="earnings_list_hr_records_hs"]').val(JSON.stringify(purchase_value.getData()));   
-		$('#add_earnings_list_hr_records').submit();
+		$('#add_earnings_list_hr_records').submit(); 
+
 	}
 });
+
+
 </script>

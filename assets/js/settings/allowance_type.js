@@ -1,56 +1,58 @@
-function new_allowance_type(){
-  'use strict';
+  function new_allowance_type() {
+    'use strict';
 
-  $('#additional_allowance_type').empty();
+    $('#additional_allowance_type').empty();
 
-  $('#allowance_type').modal('show');
-  $('#allowance_type input[name="type_name"]').val('');
-  $('#allowance_type input[name="allowance_val"]').val('');
+    $('#allowance_type').modal('show');
+    $('#allowance_type input[name="type_name"]').val('');
+    $('#allowance_type input[name="allowance_val"]').val('');
 
-  $('#allowance_type select[name="taxable"]').val('0').change();
+    $('#allowance_type select[name="taxable"]').val('0').change();
 
-  $('.edit-title').addClass('hide');
-  $('.add-title').removeClass('hide');
-  
-  $("input[data-type='currency']").on({
-    keyup: function() {
-      formatCurrency($(this));
-    },
-    blur: function() { 
-      formatCurrency($(this), "blur");
-    }
-  });
+    $('.edit-title').addClass('hide');
+    $('.add-title').removeClass('hide');
+
+    
+    $("input[data-type='currency']").on({
+        keyup: function() {        
+          formatCurrency($(this));
+        },
+      blur: function() { 
+          formatCurrency($(this), "blur");
+      }
+    });
 }
 
-function edit_allowance_type(invoker,id){
-  'use strict';
+function edit_allowance_type(invoker,id) {
+    'use strict';
 
-  $('#additional_allowance_type').empty();
+    $('#additional_allowance_type').empty();
 
-  $('#additional_allowance_type').append(hidden_input('id',id));
-  $('#allowance_type input[name="type_name"]').val($(invoker).data('name'));
+    $('#additional_allowance_type').append(hidden_input('id',id));
+    $('#allowance_type input[name="type_name"]').val($(invoker).data('name'));
 
-  $('#allowance_type input[name="allowance_val"]').val($(invoker).data('amount'));
+    $('#allowance_type input[name="allowance_val"]').val($(invoker).data('amount'));
 
-  $('#allowance_type select[name="taxable"]').val($(invoker).data('taxable'));
-  $('#allowance_type select[name="taxable"]').change();
+    $('#allowance_type select[name="taxable"]').val($(invoker).data('taxable'));
+    $('#allowance_type select[name="taxable"]').change();
 
-  $('#allowance_type').modal('show');
-  $('.add-title').addClass('hide');
-  $('.edit-title').removeClass('hide');
+    $('#allowance_type').modal('show');
+    $('.add-title').addClass('hide');
+    $('.edit-title').removeClass('hide');
 
-  $("input[data-type='currency']").on({
-    keyup: function() {
-      formatCurrency($(this));
-    },
-    blur: function() { 
-      formatCurrency($(this), "blur");
-    }
-  });
+
+    $("input[data-type='currency']").on({
+        keyup: function() {        
+          formatCurrency($(this));
+        },
+      blur: function() { 
+          formatCurrency($(this), "blur");
+      }
+    });
 }
 
 function formatNumber(n) {
-  'use strict';
+    'use strict';
 
   return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
@@ -71,6 +73,7 @@ function formatCurrency(input, blur) {
     right_side = right_side.substring(0, 2);
     input_val = left_side + "." + right_side;
   } else {
+
     input_val = formatNumber(input_val);
     input_val = input_val;
   }

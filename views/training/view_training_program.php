@@ -32,7 +32,7 @@
 											<td><?php echo html_entity_decode($training_program->mint_point) ; ?></td>
 										</tr>
 
-										<?php if($training_program->additional_training == 'additional_training'){ ?>
+										<?php if ($training_program->additional_training == 'additional_training') { ?>
 											<tr class="project-overview">
 												<td class="bold"><?php echo _l('hr_additional_training'); ?></td>
 												<td><?php echo hr_get_list_staff_name($training_program->staff_id) ; ?></td>
@@ -44,7 +44,7 @@
 												<td><?php echo _l('hr_time_to_start').': '. _d($training_program->time_to_start).' -  '._l('hr_time_to_end').': '. _d($training_program->time_to_end) ; ?></td>
 											</tr>
 
-										<?php }else{ ?>
+										<?php } else { ?>
 											<tr class="project-overview">
 												<td class="bold"><?php echo _l('hr__position_apply'); ?></td>
 												<td><?php echo hr_get_list_job_position_name($training_program->job_position_id) ; ?></td>
@@ -77,7 +77,7 @@
 							<tbody>
 								<?php $index=1; ?>
 
-								<?php if(count($training_results) > 0){ ?>
+								<?php if (count($training_results) > 0) { ?>
 									<?php foreach ($training_results as $key => $value) { ?>
 
 										<tr>
@@ -94,22 +94,22 @@
 
 											<td>
 												<?php 
-												if((float)$value['training_program_point'] >= (float)$training_program->mint_point){
+												if ((float)$value['training_program_point'] >= (float)$training_program->mint_point) {
 													echo ' <span class="label label-success "> '._l('hr_complete').' </span>';
-												}else{
+												} else {
 													echo ' <span class="label label-primary"> '._l('hr_not_yet_complete').' </span>';
 												}
 												?>
 											</td>
 										</tr>
 										<?php $index++; ?>
-										<?php if(isset($value['staff_training_result'])){ ?>
+										<?php if (isset($value['staff_training_result'])) { ?>
 											<?php  foreach ($value['staff_training_result'] as $r_key => $r_value) { ?>
 												<tr>
 													<td class="hide"><b><?php echo html_entity_decode($index); ?></b></td>
 
 													<td>
-														<a href="<?php echo admin_url('hr_profile/participate/view_staff_training_result/'.$r_value['staff_id'].'/'.$r_value['resultsetid'].'/'.$r_value['training_id'].'/'.$r_value['hash']); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+'. html_entity_decode($r_value['training_name']); ?></a>
+														<a href="<?php echo admin_url('hr_control/participate/view_staff_training_result/'.$r_value['staff_id'].'/'.$r_value['resultsetid'].'/'.$r_value['training_id'].'/'.$r_value['hash']); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+'. html_entity_decode($r_value['training_name']); ?></a>
 
 
 													</td>
@@ -132,7 +132,7 @@
 								</table>
 
 							<div class="modal-footer">
-								<a href="<?php echo admin_url('hr_profile/training?group=training_program'); ?>"  class="btn btn-default mr-2 "><?php echo _l('close'); ?></a>
+								<a href="<?php echo admin_url('hr_control/training?group=training_program'); ?>"  class="btn btn-default mr-2 "><?php echo _l('close'); ?></a>
 							</div>
 							</div>
 						</div>

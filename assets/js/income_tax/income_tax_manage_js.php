@@ -2,12 +2,12 @@
 		
 		var purchase;
 		
-		<?php if(isset($body_value)){ ?>
+		<?php if (isset($body_value)) { ?>
 
 			var dataObject = <?php echo html_entity_decode($body_value) ; ?>;
-		<?php }?>
+		<?php } ?>
 
-	var hotElement1 = document.querySelector('#hr_income_taxs_value');
+	var hotElement1 = document.querySelector('#hrp_income_taxs_value');
 	 var purchase = new Handsontable(hotElement1, {
 
 		contextMenu: true,
@@ -57,7 +57,7 @@
 	});
 
 		//filter
-	function income_taxs_filter (invoker){
+	function income_taxs_filter (invoker) {
 		'use strict';
 
 		var data = {};
@@ -87,15 +87,15 @@
 	$('.save_manage_income_taxs').on('click', function() {
 		'use strict';
 
-		var valid_contract = $('#hr_income_taxs_value').find('.htInvalid').html();
+		var valid_contract = $('#hrp_income_taxs_value').find('.htInvalid').html();
 
-		if(valid_contract){
+		if (valid_contract) {
 			alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-		}else{
+		} else {
 
-			$('input[name="hr_income_taxs_value"]').val(JSON.stringify(purchase_value.getData()));   
+			$('input[name="hrp_income_taxs_value"]').val(JSON.stringify(purchase_value.getData()));   
 			$('input[name="income_taxs_fill_month"]').val($("#month_income_taxs").val());
-			$('input[name="hr_income_taxs_rel_type"]').val('update');   
+			$('input[name="hrp_income_taxs_rel_type"]').val('update');   
 			$('#add_manage_income_taxs').submit(); 
 
 		}

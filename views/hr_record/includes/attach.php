@@ -1,4 +1,4 @@
- <?php echo form_open_multipart('admin/hr_profile/upload_file',array('id'=>'hr_profile_attachment','class'=>'dropzone')); ?>
+ <?php echo form_open_multipart('admin/hr_control/upload_file',array('id'=>'hr_profile_attachment','class'=>'dropzone')); ?>
  <input type="hidden" name="staffid" value="<?php echo html_entity_decode($staffid); ?>">
  <?php echo form_close(); ?>   
 
@@ -7,8 +7,8 @@
  		<?php
  		$data = '<div class="row" id="attachment_file">';
  		foreach($hr_profile_staff as $attachment) {
- 			$href_url = site_url('modules/hr_profile/uploads/att_file/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
- 			if(!empty($attachment['external'])){
+ 			$href_url = site_url('modules/hr_control/uploads/att_file/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
+ 			if (!empty($attachment['external'])) {
  				$href_url = $attachment['external_link'];
  			}
  			$data .= '<div class="display-block contract-attachment-wrapper">';
@@ -25,7 +25,7 @@
  			$data .= '</div>';
  			$data .= '</div>';
  			$data .= '<div class="col-md-2 text-right">';
- 			if($attachment['staffid'] == get_staff_user_id() || is_admin() || has_permission('hrm_hr_records', '', 'edit')){
+ 			if ($attachment['staffid'] == get_staff_user_id() || is_admin() || has_permission('hrm_hr_records', '', 'edit')) {
  				$data .= '<a href="#" class="text-danger" onclick="delete_hr_att_file_attachment(this,'.$attachment['id'].'); return false;"><i class="fa fa fa-times"></i></a>';
  			}
  			$data .= '</div>';

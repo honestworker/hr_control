@@ -1,6 +1,6 @@
 <script >
 	
-	(function(){
+	(function() {
 		"use strict";
 
 		 var maxed = false
@@ -28,11 +28,11 @@
 
 
 
-		if((<?php echo isset($data_form) ? "true" : "false"?>)){
+		if ((<?php echo isset($data_form) ? "true" : "false"?>)) {
 			var data = <?php echo isset($data_form) ? ($data_form != "" ? $data_form : '""') : '""' ?>;
 			var dataSheet = data;
 			var title = "<?php echo isset($file_excel) ? $file_excel->templates_name : "" ?>";
-		}else{
+		} else {
 			var dataSheet = [{
 				name: "Sheet1",
 				status: "1",
@@ -132,10 +132,10 @@
 		var type_screen = $("input[name='type']").val();
 		var role = $("input[name='role']").val();
 
-		if(type_screen == 3){
+		if (type_screen == 3) {
 			$('.luckysheet_info_detail_save_as').remove();
 		}
-		if(role == 1){
+		if (role == 1) {
 			$('.luckysheet_info_detail_save_as').remove();
 			$('.luckysheet_info_detail_save').remove();
 		}
@@ -144,7 +144,7 @@
 
 
 	//save payroll template via Ajax
-	$(".luckysheet_info_detail_save").unbind('click').on('click', function(){   
+	$(".luckysheet_info_detail_save").unbind('click').on('click', function() {   
 		$("form#spreadsheet-test-form").unbind('submit').on('submit', function(e) {
 
 			"use strict";
@@ -185,7 +185,7 @@
 				contentType: false,
 				success: function (response, status, xhr) {
 					response = JSON.parse(response);
-					if(response.success == true) {
+					if (response.success == true) {
 						alert_float('success', response.message);
 						var disposition = xhr.getResponseHeader('content-disposition');
 						$('#SaveAsModal').modal('hide');

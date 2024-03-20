@@ -1,5 +1,5 @@
 <script>
-	$(function(){
+	$(function() {
 		'use strict';
 
 			// Lightbox for knowledge base images
@@ -12,7 +12,7 @@
 				var data = {};
 				data.answer = $(this).data('answer');
 				data.articleid = '<?php echo html_entity_decode($article->articleid); ?>';
-				$.post(admin_url+'hr_profile/knowledge_base_q_a/add_kb_answer', data).done(function(response) {
+				$.post(admin_url+'hr_control/knowledge_base_q_a/add_kb_answer', data).done(function(response) {
 					response = JSON.parse(response);
 					if (response.success == true) {
 						$(this).focusout();
@@ -22,7 +22,7 @@
 			});
 
 		});
-	function send_mail_support(obj){
+	function send_mail_support(obj) {
 		'use strict';
 		
 		var id = $(obj).attr('id');
@@ -32,7 +32,7 @@
 	}
 
 			//contract preview file
-			function preview_file_q_a(invoker){
+			function preview_file_q_a(invoker) {
 				'use strict';
 				var id = $(invoker).attr('id');
 				var rel_id = $(invoker).attr('rel_id');
@@ -43,7 +43,7 @@
 	 function view_hr_profile_q_a(id, rel_id) {  
 	 	'use strict'; 
 	 	$('#contract_file_data').empty();
-	 	$("#contract_file_data").load(admin_url + 'hr_profile/preview_q_a_file/' + id + '/' + rel_id, function(response, status, xhr) {
+	 	$("#contract_file_data").load(admin_url + 'hr_control/preview_q_a_file/' + id + '/' + rel_id, function(response, status, xhr) {
 	 		if (status == "error") {
 	 			alert_float('danger', xhr.statusText);
 	 		}

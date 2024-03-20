@@ -32,18 +32,18 @@ $join = [
 
 $where  = [];
 $filter = [];
-if($this->ci->input->post('memberid')){
+if ($this->ci->input->post('memberid')) {
 	$where_staff = '';
 	$staffs = $this->ci->input->post('memberid');
-	if($staffs != '')
+	if ($staffs != '')
 	{
-		if($where_staff == ''){
+		if ($where_staff == '') {
 			$where_staff .= ' where staff = "'.$staffs. '"';
-		}else{
+		} else {
 			$where_staff .= ' or staff = "' .$staffs.'"';
 		}
 	}
-	if($where_staff != '')
+	if ($where_staff != '')
 	{
 		array_push($where, $where_staff);
 	}
@@ -99,7 +99,7 @@ if (count($filter) > 0) {
 	array_push($where, 'AND (' . prepare_dt_filter($filter) . ')');
 }
 $department_id = $this->ci->input->post('hr_profile_deparment');
-if(isset($department_id) && strlen($department_id) > 0){
+if (isset($department_id) && strlen($department_id) > 0) {
 	$departmentgroup = $this->ci->hr_profile_model->get_staff_in_deparment($department_id);
 	if (count($departmentgroup) > 0) {
 		$where[] = 'AND '.db_prefix().'staff_contract.staff IN (SELECT staffid FROM '.db_prefix().'staff_departments WHERE departmentid IN (' . implode(', ', $departmentgroup) . '))';
@@ -108,45 +108,45 @@ if(isset($department_id) && strlen($department_id) > 0){
 
 $staff_id = $this->ci->input->post('hr_profile_staff');
 
-if(isset($staff_id)){
+if (isset($staff_id)) {
 	$where_staff = '';
 	foreach ($staff_id as $staffid) {
 
-		if($staffid != '')
+		if ($staffid != '')
 		{
-			if($where_staff == ''){
+			if ($where_staff == '') {
 				$where_staff .= ' ('.db_prefix().'staff.staffid in ('.$staffid.')';
-			}else{
+			} else {
 				$where_staff .= ' or '.db_prefix().'staff.staffid in ('.$staffid.')';
 			}
 		}
 	}
-	if($where_staff != '')
+	if ($where_staff != '')
 	{
 		$where_staff .= ')';
-		if($where != ''){
+		if ($where != '') {
 			array_push($where, 'AND'. $where_staff);
-		}else{
+		} else {
 			array_push($where, $where_staff);
 		}
 		
 	}
 }
 
-if($this->ci->input->post('validity_start_date')){
+if ($this->ci->input->post('validity_start_date')) {
 	$start_date = to_sql_date($this->ci->input->post('validity_start_date'));
 }
 
-if($this->ci->input->post('validity_end_date')){
+if ($this->ci->input->post('validity_end_date')) {
 	$end_date = to_sql_date($this->ci->input->post('validity_end_date'));
 }
 
-if(isset($start_date) && isset($end_date)){
-	array_push($where, 'AND ((start_valid >= "' . $start_date . '" and start_valid <= "' . $end_date . '") or if(end_valid > 0, (start_valid <= "' . $start_date . '" and end_valid >= "' . $end_date . '"), (start_valid <= "' . $start_date . '")))');
-}elseif(isset($start_date) && !isset($end_date)){
-	array_push($where, 'AND if(end_valid > 0, (start_valid <= "' . $start_date . '" and end_valid >= "' . $start_date . '"), (start_valid <= "' . $start_date . '"))');
-}elseif(!isset($start_date) && isset($end_date)){
-	array_push($where, 'AND if(end_valid > 0, (start_valid <= "' . $end_date . '" and end_valid >= "' . $end_date . '"), (start_valid <= "' . $end_date . '"))');
+if (isset($start_date) && isset($end_date)) {
+	array_push($where, 'AND ((start_valid >= "' . $start_date . '" and start_valid <= "' . $end_date . '") or if (end_valid > 0, (start_valid <= "' . $start_date . '" and end_valid >= "' . $end_date . '"), (start_valid <= "' . $start_date . '")))');
+} elseif (isset($start_date) && !isset($end_date)) {
+	array_push($where, 'AND if (end_valid > 0, (start_valid <= "' . $start_date . '" and end_valid >= "' . $start_date . '"), (start_valid <= "' . $start_date . '"))');
+} elseif (!isset($start_date) && isset($end_date)) {
+	array_push($where, 'AND if (end_valid > 0, (start_valid <= "' . $end_date . '" and end_valid >= "' . $end_date . '"), (start_valid <= "' . $end_date . '"))');
 }
 
 
@@ -163,19 +163,19 @@ foreach ($rResult as $aRow) {
 	$row = [];
 	$row[] = '<div class="checkbox"><input type="checkbox" value="' . $aRow['id'] . '"><label></label></div>';
 
-	$subjectOutput = '<a href="' . admin_url('hr_profile/contracts/' . $aRow['id'] ).'" onclick="init_hr_profile_contract(' . $aRow['id'] . ');return false;">' . $aRow['contract_code'] . '</a>';
+	$subjectOutput = '<a href="' . admin_url('hr_control/contracts/' . $aRow['id'] ).'" onclick="init_hr_profile_contract(' . $aRow['id'] . ');return false;">' . $aRow['contract_code'] . '</a>';
 
 	$subjectOutput .= '<div class="row-options">';
 
 	if (has_permission('hr_profile_contract', '', 'view') || is_admin()) {
-		$subjectOutput .= '<a href="' . admin_url('hr_profile/contracts/' . $aRow['id'] ).'" onclick="init_hr_profile_contract(' . $aRow['id'] . ');return false;">' . _l('hr_view') .' </a>';
+		$subjectOutput .= '<a href="' . admin_url('hr_control/contracts/' . $aRow['id'] ).'" onclick="init_hr_profile_contract(' . $aRow['id'] . ');return false;">' . _l('hr_view') .' </a>';
 	}
 	if (has_permission('hr_profile_contract', '', 'edit') || is_admin()) {
-		$subjectOutput .= ' | <a href="' . admin_url('hr_profile/contract/' . $aRow['id']) . '">' . _l('hr_edit') . '</a>';
+		$subjectOutput .= ' | <a href="' . admin_url('hr_control/contract/' . $aRow['id']) . '">' . _l('hr_edit') . '</a>';
 	}
 
 	if (has_permission('hr_profile_contract', '', 'delete') || is_admin()) {
-		$subjectOutput .= ' | <a href="' . admin_url('hr_profile/delete_contract/' . $aRow['id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
+		$subjectOutput .= ' | <a href="' . admin_url('hr_control/delete_contract/' . $aRow['id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
 	}
 
 	$subjectOutput .= '</div>';
@@ -183,16 +183,16 @@ foreach ($rResult as $aRow) {
 
 	$row[] = $aRow['name_contracttype'];
 
-	$row[] = ' <a href="' . admin_url('hr_profile/member/' . $aRow['staff']) . '">' . $aRow['firstname'] . '</a>';
+	$row[] = ' <a href="' . admin_url('hr_control/member/' . $aRow['staff']) . '">' . $aRow['firstname'] . '</a>';
 
 	$row[] = $aRow['contract_form'];
 
 	$departmentsRow = '';
-	if($aRow['departments'] != ''){
+	if ($aRow['departments'] != '') {
 		$departments = explode(',', $aRow['departments']);
 		foreach ($departments as $department) {
 			$deparmentname = $this->ci->hr_profile_model->hr_profile_get_department_name($department);
-			if($deparmentname){
+			if ($deparmentname) {
 				$name = $deparmentname[0]['name'];
 				
 				$departmentsRow .= '<span class="label label-default mleft5 inline-block customer-group-list pointer">' . $name . '</span>';
@@ -206,15 +206,15 @@ foreach ($rResult as $aRow) {
 	}
 	$row[] = _d($aRow['start_valid']);
 	$row[] = _d($aRow['end_valid']);
-	if($aRow['contract_status'] == 'draft' ){
+	if ($aRow['contract_status'] == 'draft' ) {
 		$row[] = ' <span class="label label inline-block text-white bg-gray"> '._l('draft').' </span>';
-	}elseif($aRow['contract_status'] == 'valid'){
+	} elseif ($aRow['contract_status'] == 'valid') {
 		$row[] = ' <span class="label label inline-block text-white bg-primary"> '._l('valid').' </span>';
-	}elseif($aRow['contract_status'] == 'invalid'){
+	} elseif ($aRow['contract_status'] == 'invalid') {
 		$row[] = ' <span class="label label inline-block text-white bg-danger"> '._l('invalid__').' </span>';
-	}elseif($aRow['contract_status'] == 'finish'){
+	} elseif ($aRow['contract_status'] == 'finish') {
 		$row[] = ' <span class="label label inline-block text-white bg-success"> '._l('finish').' </span>';
-	}else{
+	} else {
 		$row[] = '';
 	}
 

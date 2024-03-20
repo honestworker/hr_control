@@ -1,6 +1,6 @@
 <script>      
 
-  function new_insurance_type(){
+  function new_insurance_type() {
     "use strict";
 
     $('#insurance_type_modal').modal('show');
@@ -11,7 +11,7 @@
 
   }
 
-  function edit_insurance_type(invoker,id){
+  function edit_insurance_type(invoker,id) {
     "use strict";
 
     $('#additional_insurance_type').html('');
@@ -66,7 +66,7 @@
   }
 
 
-  function social_staff_change(invoker){
+  function social_staff_change(invoker) {
       "use strict";
 
     $('#social_staff_title').html('');
@@ -79,7 +79,7 @@
 
   }
 
-  function labor_accident_staff_change(invoker){
+  function labor_accident_staff_change(invoker) {
     "use strict";
 
     $('#labor_accident_insurance_title').html('');
@@ -92,7 +92,7 @@
 
   }
 
-  function health_staff_change(invoker){
+  function health_staff_change(invoker) {
     "use strict";
 
     $('#health_insurance_title').html('');
@@ -105,7 +105,7 @@
 
   }
   
-  function unemployment_staff_change(invoker){
+  function unemployment_staff_change(invoker) {
     "use strict";
 
     $('#unemployment_insurance_title').html('');
@@ -125,19 +125,19 @@
     var data={};
     /*update*/
     var check_id = $('#additional_insurance_type').html();
-    if(check_id){
+    if (check_id) {
       data.id = $('input[name="id"]').val();
-    }else{
+    } else {
       data.id = '';
     }
     data.from_month = $('input[name="from_month"]').val();
 
         $('.insurance_type_submit').attr('disabled', 'disabled');
-        $.post(admin_url + 'hr_control/check_insurance_type_exist', data).done(function(response){
+        $.post(admin_url + 'hr_control/check_insurance_type_exist', data).done(function(response) {
             response = JSON.parse(response); 
             if (response.status == 'true') {
                 $('#add_insurance_type').submit();
-            }else{
+            } else {
                 alert_float('danger', response.message);
                 $('.insurance_type_submit').removeAttr('disabled', 'disabled');
 

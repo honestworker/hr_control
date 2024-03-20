@@ -1,5 +1,5 @@
     
-    function add_procedure_form_manage(id){ 
+    function add_procedure_form_manage(id) { 
     'use strict';
 
         $('#add_procedure_retire_manage').modal('show');
@@ -10,7 +10,7 @@
         $('select[name="departmentid[]"]').val(0).change();
     }
 
-    function edit_procedure_form_manage(el){
+    function edit_procedure_form_manage(el) {
     'use strict';
       
         $('#add_procedure_retire_manage').modal('show');
@@ -20,9 +20,9 @@
         var name_procedure_retire = $(el).data('name_procedure_retire');
         var department = $(el).data('department');
         var list_id = [];
-        if(typeof department.length != 'undefined'){
+        if (typeof department.length != 'undefined') {
             var array_dept = department.split(', ');
-            jQuery.each(array_dept, function(key, value){
+            jQuery.each(array_dept, function(key, value) {
               list_id.push(value);
           }); 
         }

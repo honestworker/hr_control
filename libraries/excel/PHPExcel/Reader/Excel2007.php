@@ -200,7 +200,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                         $fileWorksheet = $worksheets[(string) self::getArrayItem($eleSheet->attributes("http://schemas.openxmlformats.org/officeDocument/2006/relationships"), "id")];
 
                         $xml = new XMLReader();
-                        $res = $xml->xml($this->securityScanFile('zip://'.PHPExcel_Shared_File::realpath($pFilename).'#'."$dir/$fileWorksheet"), null, PHPExcel_Settings::getLibXmlLoaderOptions());
+                        $res = $xml->xml($this->securityScanFile('zip://'.PHPExcel_Shared_File::realpath($pFilename) . '#'."$dir/$fileWorksheet"), null, PHPExcel_Settings::getLibXmlLoaderOptions());
                         $xml->setParserProperty(2, true);
 
                         $currCells = 0;
@@ -1526,7 +1526,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                                     $chartRef       = $graphic->graphicData->children("http://schemas.openxmlformats.org/drawingml/2006/chart")->chart;
                                                     $thisChart      = (string) $chartRef->attributes("http://schemas.openxmlformats.org/officeDocument/2006/relationships");
 
-                                                    $chartDetails[$docSheet->getTitle().'!'.$thisChart] = array(
+                                                    $chartDetails[$docSheet->getTitle() . '!'.$thisChart] = array(
                                                         'fromCoordinate'    => $fromCoordinate,
                                                         'fromOffsetX'       => $fromOffsetX,
                                                         'fromOffsetY'       => $fromOffsetY,
@@ -1593,7 +1593,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                                 }
                                                 break;
                                             case '_xlnm.Print_Area':
-                                                $rangeSets = explode(',', $extractedRange);        // FIXME: what if sheetname contains comma?
+                                                $rangeSets = explode(',', $extractedRange); // FIXME: what if sheetname contains comma?
                                                 $newRangeSets = array();
                                                 foreach ($rangeSets as $rangeSet) {
                                                     $range = explode('!', $rangeSet);    // FIXME: what if sheetname contains exclamation mark?

@@ -321,7 +321,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
         if (($this->currentObject !== null) && (is_object($this->currentObject))) {
             $this->currentObject->attach($this);
         }
-    }    //    function copyCellCollection()
+    }//    function copyCellCollection()
 
     /**
      * Remove a row, deleting all cells in that row

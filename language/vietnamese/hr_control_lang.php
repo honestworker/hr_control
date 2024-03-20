@@ -1,13 +1,13 @@
 <?php
+$lang['hr_control']              										     = 'تم الحذف %s ';
 
-# Version 1.0.0
-$lang['hr_deleted']              											= 'Đã xóa %s ';
-$lang['hr_added_successfully']   											= 'Thêm thành công %s';
-$lang['hr_add_failed'] 													    = 'Thêm không thành công %s';
-$lang['hr_updated_successfully'] 											= 'Cập nhật thành công %s';
-$lang['hr_updated_failed'] 												    = 'Cập nhật không thành công %s';
-$lang['hr_synchronized'] 													= 'Đồng bộ dự liệu';
-$lang['hr_successful_data_synchronization'] 								= 'Đồng bộ dữ liệu thành công';
+$lang['hrp_deleted']              											= 'Đã xóa %s ';
+$lang['hrp_added_successfully']   											= 'Thêm thành công %s';
+$lang['hrp_add_failed'] 													= 'Thêm không thành công %s';
+$lang['hrp_updated_successfully'] 											= 'Cập nhật thành công %s';
+$lang['hrp_updated_failed'] 												= 'Cập nhật không thành công %s';
+$lang['hrp_synchronized'] 													= 'Đồng bộ dự liệu';
+$lang['hrp_successful_data_synchronization'] 								= 'Đồng bộ dữ liệu thành công';
 $lang['handsontable_scroll_horizontally'] 									= 'Shift + Chuột cuộn để cuộn theo chiều ngang';
 $lang['integration_actual_workday'] 										= 'Thời gian làm việc thực tế (giờ)';
 $lang['integration_paid_leave'] 											= 'Thời gian nghỉ có lương (giờ)';
@@ -17,7 +17,7 @@ $lang['tooltip_paid_leave'] 												= 'Được tính vào thời gian ngh�
 $lang['tooltip_unpaid_leave'] 												= 'Được tính vào thời gian nghỉ không lương (giờ)';
 $lang['standard_working_time_of_month'] 									= 'Thời gian làm việc tiêu chuẩn trong tháng (giờ)';
 $lang['tooltip_standard_working_time'] 										= 'Thời gian làm việc tiêu chuẩn trong tháng (giờ)';
-$lang['hr_back'] 															= 'Quay lại';
+$lang['hrp_back'] 															= 'Quay lại';
 $lang['actual_workday'] 													= 'Thời gian làm việc thực tế (giờ)';
 $lang['paid_leave'] 														= 'Thời gian nghỉ có lương (giờ)';
 $lang['unpaid_leave'] 														= 'Thời gian nghỉ không lương (giờ)';
@@ -25,6 +25,7 @@ $lang['standard_workday'] 													= 'Thời gian làm việc tiêu chuẩn 
 $lang['staff_departments'] 													= 'Phòng ban';
 $lang['payroll_in_month'] 													= 'Bảng lương tháng ';
 $lang['hr_job_p_export_excel'] 												= 'Xuất excel';
+
 $lang['sunday'] 															= 'Chủ nhật';
 $lang['monday'] 															= 'Thứ hai';
 $lang['tuesday'] 															= 'Thứ ba';
@@ -34,6 +35,7 @@ $lang['friday'] 															= 'Thứ sáu';
 $lang['saturday'] 															= 'Thứ bảy';
 $lang['gross'] 																= 'Tổng lương';
 $lang['fixed_amount'] 														= 'Số tiền cố định';
+
 $lang['ps_pay_slip_number']													= 'Phiếu lương số';
 $lang['ps_payment_run_date']												= 'Ngày tạo phiếu lương';
 $lang['ps_employee_number']													= 'Mã nhân viên';
@@ -58,7 +60,7 @@ $lang['deduction_list']														= 'Danh sách khấu trừ';
 $lang['payslip_detail']														= 'Chi tiết phiếu lương';
 
 //Settings
-$lang['hr_control'] 														= 'Bảng lương';
+$lang['hr_payroll'] 														= 'Bảng lương';
 $lang['hr_bonus_kpi'] 														= 'Thưởng kpi';
 $lang['hr_pay_slip'] 														= 'Phiếu lương';
 $lang['setting'] 															= 'Cài đặt';
@@ -67,7 +69,7 @@ $lang['setting'] 															= 'Cài đặt';
 $lang['income_tax_rates'] 													= 'Thuế suất thuế thu nhập';
 $lang['tax_bracket_name'] 													= 'Khung thuế thu nhập';
 $lang['tax_bracket_value'] 													= 'Giá trị khung thuế';
-$lang['hr_tax_rate'] 														= 'Thuế suất';
+$lang['hrp_tax_rate'] 														= 'Thuế suất';
 $lang['equivalent_value'] 													= 'Giá trị tương đương';
 $lang['effective_rate'] 													= 'Tỉ lệ hiệu quả';
 //income_tax_rebates
@@ -149,14 +151,14 @@ $lang['updated_failed'] 													= 'Cập nhật thất bại';
 $lang['payslip_template_id_lable'] 											= 'Mẫu lương';
 $lang['new_payslip'] 														= 'Tạo phiếu lương';
 $lang['edit_payslip'] 														= 'Cập nhật phiếu lương';
-$lang['hr_payslip'] 														= 'Phiếu lương';
+$lang['hrp_payslip'] 														= 'Phiếu lương';
 $lang['column_name_lable'] 													= 'Tên cột';
 $lang['please_select_function_name'] 										= 'Hãy chọn tên chức năng';
 
 
 //manage_employees
 $lang['hr_manage_employees'] 												= 'Nhân viên';
-$lang['hr_employees']	 													= 'Quản lý nhân sự';
+$lang['hrp_employees']	 													= 'Quản lý nhân sự';
 $lang['employee_number']	 												= 'Mã nhân viên';
 $lang['employee_name']	 													= 'Tên nhân viên';
 $lang['job_title']	 														= 'Chức vụ';
@@ -182,32 +184,32 @@ $lang['file_xlsx_attendance2']	 											= 'Chỉ có thể cập nhật (cộ
 $lang['actual_workday_probation']	 										= 'Thời gian làm việc thực tế của hợp đồng thử việc (giờ)';
 
 
-//hr_permissions
-$lang['hr_permissions']	 												= 'Quyền';
-$lang['hr_control_employee']	 											= 'Nhân viên';
-$lang['hr_control_attendance']	 											= 'Điểm danh';
-$lang['hr_control_deduction']	 											= 'Các khoản khấu trừ';
-$lang['hr_control_bonus_kpi']	 											= 'Thưởng kpi';
-$lang['hr_control_insurrance']	 											= 'Bảo hiểm';
-$lang['hr_control_payslip']	 												= 'Phiếu lương';
-$lang['hr_control_payslip_template']	 									= 'Mẫu lương';
-$lang['hr_control_income_tax']	 											= 'Thuế thu nhập';
-$lang['hr_control_setting']	 												= 'Cài đặt';
-$lang['hr_control_commission']	 											= 'Hoa hồng';
-$lang['hr_control_report']	 												= 'Báo cáo';
+//hrp_permissions
+$lang['hrp_permissions']	 												= 'Quyền';
+$lang['hr_payroll_employee']	 											= 'Nhân viên';
+$lang['hr_payroll_attendance']	 											= 'Điểm danh';
+$lang['hr_payroll_deduction']	 											= 'Các khoản khấu trừ';
+$lang['hr_payroll_bonus_kpi']	 											= 'Thưởng kpi';
+$lang['hr_payroll_insurrance']	 											= 'Bảo hiểm';
+$lang['hr_payroll_payslip']	 												= 'Phiếu lương';
+$lang['hr_payroll_payslip_template']	 									= 'Mẫu lương';
+$lang['hr_payroll_income_tax']	 											= 'Thuế thu nhập';
+$lang['hr_payroll_setting']	 												= 'Cài đặt';
+$lang['hr_payroll_commission']	 											= 'Hoa hồng';
+$lang['hr_payroll_report']	 												= 'Báo cáo';
 
 //deduction_manage
 $lang['deduction_manage']	 												= 'Các khoản khấu trừ';
-$lang['hr_deduction_manage']	 											= 'Các khoản khấu trừ';
+$lang['hrp_deduction_manage']	 											= 'Các khoản khấu trừ';
 
 //income_tax
-$lang['hr_income_tax']	 													= 'Thuế thu nhập';
+$lang['hrp_income_tax']	 													= 'Thuế thu nhập';
 $lang['income_tax']	 														= 'Thuế thu nhập';
 
 //insurrance
-$lang['hr_insurrance']	 													= 'Bảo hiểm';
+$lang['hrp_insurrance']	 													= 'Bảo hiểm';
 $lang['insurance_list']	 													= 'Danh sách bảo hiểm';
-$lang['hr_salary_insurances']	 											= 'Bảo hiểm nhân viên';
+$lang['hrp_salary_insurances']	 											= 'Bảo hiểm nhân viên';
 
 
 $lang['probationary_effective']	 											= 'Ngày hiệu lực CT1';
@@ -216,10 +218,10 @@ $lang['primary_effective']	 												= 'Ngày hiệu lực CT2';
 $lang['primary_expiration']	 												= 'Ngày hết hạn CT2';
 
 //deduction menu
-$lang['hr_salary_deductions']	 											= 'Khấu trừ lương';
+$lang['hrp_salary_deductions']	 											= 'Khấu trừ lương';
 
 //commission menu
-$lang['hr_commission_manage']	 											= 'Hoa hồng';
+$lang['hrp_commission_manage']	 											= 'Hoa hồng';
 $lang['commission_amount']	 												= 'Hoa hồng';
 $lang['rel_type']	 														= 'Loại';
 $lang['create_commissions_file_success']	 									= 'Tạo thành công tập tin nhập dữ liệu hoa hồng';
@@ -228,7 +230,7 @@ $lang['file_xlsx_commissions1']	 											= 'Không thêm bất kỳ cột ho�
 $lang['file_xlsx_commissions2']	 											= 'Chỉ có thể cập nhật (cột màu xanh lam), không cập nhật giá trị cột màu cam';
 
 //reports
-$lang['hr_reports']	 													= 'Báo cáo';
+$lang['hrm_reports']	 													= 'Báo cáo';
 $lang['hr_payslip_report']	 												= 'Báo cáo bảng lương';
 $lang['hr_income_summary_report']	 										= 'Báo cáo tổng thu nhập';
 $lang['hr_insurance_cost_summary_report']	 								= 'Báo cáo chi phí bảo hiểm';
@@ -263,7 +265,7 @@ $lang['falls_within_other_the_payslip_template']							= ': Đã tồn tại tro
 $lang['no_eligible_employee_was_found_for_this_payslip_template']			= 'Không tìm thấy nhân viên đủ điều kiện cho mẫu phiếu lương này';
 $lang['payslip_for_the_month_of']											= 'Phiếu lương cho tháng đã tồn tại ';
 $lang['last_updated_data']													= 'Dữ liệu cập nhật lần cuối';
-$lang['hr_import_excel']                                     				= 'Nhập Excel';
+$lang['hrp_import_excel']                                     				= 'Nhập Excel';
 $lang['hr_code']                                     						= 'Mã nhân viên';
 $lang['staff_name']                                     					= 'Tên nhân viên';
 $lang['choose_excel_file']                                     				= 'Chọn tệp Excel';
@@ -275,38 +277,39 @@ $lang['import_line_number_failed']                                     	= 'Số 
 $lang['hr_download_file_error']                                     		= 'Tải xuống tệp lỗi';
 $lang['status']                                     						= 'Trạng thái';
 $lang['_new']                                     							= 'Thêm';
-$lang['hr_staff_name']                                     				= 'Tên nhân viên';
-$lang['hr_phone']                                     						= 'Số điện thoại';
-$lang['hr_close']                                     						= 'Đóng';
-$lang['hr_update_permissions']                                     		= 'Cập nhật quyền';
-$lang['hr_add_permissions']                                     			= 'Thêm quyền';
-$lang['hr_update']                                     					= 'Cập nhật';
+$lang['hrp_staff_name']                                     				= 'Tên nhân viên';
+$lang['hrp_phone']                                     						= 'Số điện thoại';
+$lang['hrp_close']                                     						= 'Đóng';
+$lang['hrp_update_permissions']                                     		= 'Cập nhật quyền';
+$lang['hrp_add_permissions']                                     			= 'Thêm quyền';
+$lang['hrp_update']                                     					= 'Cập nhật';
 $lang['tax_for_year']                                     					= 'Thuế trong năm';
 $lang['synchronized_hr_salary_allowance_tye_title']                         = 'Dữ liệu sẽ được đồng bộ từ mô-đun nhân sự: Cài đặt ( Loại lương, Loại phụ cấp )';
 $lang['payroll_column']                         							= 'Cột dùng tính lương';
 $lang['create_a_payslip_for_successful_download']                         	= 'Tạo phiếu lương để tải xuống thành công';
 $lang['an_error_occurred_while_creating_a_payslip_to_download']             = 'Đã xảy ra lỗi khi tạo phiếu lương để tải xuống';
 $lang['copy_from_last_month']             									= 'Sao chép từ tháng trước';
-$lang['hr_copy']             												= 'Sao chép';
+$lang['hrp_copy']             												= 'Sao chép';
 $lang['No_data_for_the_previous_month']             						= 'Không có dữ liệu tháng trước';
-$lang['hr_reset_data_title']             									= 'Tất cả dữ liệu liên quan: Nhân viên, Điểm danh, Hoa hồng, Các khoản khấu trừ, Thương Kpi, Bảo hiểm, Phiếu lương sẽ bị xóa';
-$lang['hr_probation_contract']             								= 'Hợp đồng thử việc';
-$lang['hr_formal_contract']             									= 'Hợp đồng chính thức';
-$lang['hr_salary']             											= 'Lương';
-$lang['hr_allowance']             											= 'Phụ cấp';
-$lang['hr_payslip_for']             										= 'Phiếu lương cho';
-$lang['hr_worked_day']             										= 'Thời gian làm việc thực tế (giờ)';
-$lang['hr_amount']             											= 'Số tiền';
-$lang['hr_payslip_download']             									= 'Tải phiếu lương';
+$lang['hrp_reset_data_title']             									= 'Tất cả dữ liệu liên quan: Nhân viên, Điểm danh, Hoa hồng, Các khoản khấu trừ, Thương Kpi, Bảo hiểm, Phiếu lương sẽ bị xóa';
+$lang['hrp_probation_contract']             								= 'Hợp đồng thử việc';
+$lang['hrp_formal_contract']             									= 'Hợp đồng chính thức';
+$lang['hrp_salary']             											= 'Lương';
+$lang['hrp_allowance']             											= 'Phụ cấp';
+$lang['hrp_payslip_for']             										= 'Phiếu lương cho';
+$lang['hrp_worked_day']             										= 'Thời gian làm việc thực tế (giờ)';
+$lang['hrp_amount']             											= 'Số tiền';
+$lang['hrp_payslip_download']             									= 'Tải phiếu lương';
 $lang['bank_name']             												= 'Tên ngân hàng';
 $lang['account_number']             										= 'Số tài khoản';
 
-
+$lang['hr_deleted']              										= 'Đã xóa %s.';
+$lang['hr_added_successfully']   											= 'Đã thêm %s.';
 $lang['hr_dashboard']                                                  = 'Bảng điều khiển';
 $lang['hr_contract_type_chart']                                        = 'Biểu đồ loại hợp đồng';
 $lang['hr_list_overdue_contract']                                      = 'Danh sách hợp đồng quá hạn';
 $lang['hr_list_expire_contract']                                       = 'Danh sách hợp đồng hết hạn';
-$lang['hr_hr_profile_dashboard']                                       = 'Bảng tổng quan về hồ sơ nhân sự';
+$lang['hr_records_dashboard']                                       = 'Bảng tổng quan về hồ sơ nhân sự';
 $lang['hr_organizational_chart']                                       = 'Sơ đồ tổ chức';
 $lang['hr_new_unit']                                                   = 'Thêm đơn vị mới';
 $lang['hr_edit_unit']                                                  = 'Cập nhật đơn vị';

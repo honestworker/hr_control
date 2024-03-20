@@ -1,6 +1,6 @@
 
 <script>
-	$(function(){
+	$(function() {
 		'use strict';
 		var StaffServerParams = {
 			"status_work": "[name='status_work[]']",
@@ -9,7 +9,7 @@
 			"staff_teammanage": "input[name='staff_dep_tree']",
 		};
 		var table_staff = $('table.table-table_staff');
-		initDataTable(table_staff,admin_url + 'hr_profile/table', [0],[0], StaffServerParams, [1, 'desc']);
+		initDataTable(table_staff,admin_url + 'hr_control/table', [0],[0], StaffServerParams, [1, 'desc']);
 
 		//hide first column
 		 var hidden_columns = [];
@@ -57,7 +57,7 @@
 
 		})
 //staff role end  
-function delete_staff_member(id){
+function delete_staff_member(id) {
 	'use strict';
 	$('#delete_staff').modal('show');
 	$('#transfer_data_to').find('option').prop('disabled',false);
@@ -69,7 +69,7 @@ function delete_staff_member(id){
 var nodeTemplate = function(data) { 
 	'use strict';
 
-	if(data.name){
+	if (data.name) {
 		return `
 		<div class="staff-chart-background-color">
 		${data.image}${data.name}
@@ -77,7 +77,7 @@ var nodeTemplate = function(data) {
 		<div class="content chart_company_name"><i class=${data.dp_user_icon} class="staff-chart-margin"></i>  ${data.job_position_name}</div>
 		<div class="content"><i class=${data.dp_icon} class="staff-chart-margin"></i>  ${data.departmentname}</div>
 		`;
-	}else{
+	} else {
 		return `
 		<div class="staff-chart-background-color">
 		${data.image}${data.name}
@@ -123,7 +123,7 @@ window.onload = function () {
 	});
 };
 
-function staff_bulk_actions(){
+function staff_bulk_actions() {
 	'use strict';
 	$('#table_staff_bulk_actions').modal('show');
 }
@@ -133,7 +133,7 @@ function staff_delete_bulk_action(event) {
 	if (confirm_delete()) {
 		var mass_delete = $('#mass_delete').prop('checked');
 
-		if(mass_delete == true){
+		if (mass_delete == true) {
 			var ids = [];
 			var data = {};
 			data.mass_delete = true;
@@ -150,7 +150,7 @@ function staff_delete_bulk_action(event) {
 			$(event).addClass('disabled');
 		
    			setTimeout(function() {
-   				$.post(admin_url + 'hr_profile/hrm_delete_bulk_action', data).done(function() {
+   				$.post(admin_url + 'hr_control/hrm_delete_bulk_action', data).done(function() {
    					window.location.reload();
    				}).fail(function(data) {
    					$('#table_contract_bulk_actions').modal('hide');
@@ -158,7 +158,7 @@ function staff_delete_bulk_action(event) {
    				});
    			}, 200);
 
-		}else{
+		} else {
 			window.location.reload();
 		}
 	}
@@ -167,7 +167,7 @@ function staff_delete_bulk_action(event) {
 function hr_profile_add_staff(staff_id, role_id, add_new) {
 	"use strict";
 
-	$("#modal_wrapper").load("<?php echo admin_url('hr_profile/hr_profile/member_modal'); ?>", {
+	$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/member_modal'); ?>", {
 		slug: 'create',
 		staff_id: staff_id,
 		role_id: role_id,
@@ -191,7 +191,7 @@ function hr_profile_add_staff(staff_id, role_id, add_new) {
 function hr_profile_update_staff_manage_view(staff_id) {
 	"use strict";
 
-	$("#modal_wrapper").load("<?php echo admin_url('hr_profile/hr_profile/member_modal'); ?>", {
+	$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/member_modal'); ?>", {
 		slug: 'update',
 		staff_id: staff_id,
 		manage_staff: 'manage_staff'
@@ -210,13 +210,13 @@ function hr_profile_update_staff_manage_view(staff_id) {
 	$(".selectpicker").selectpicker('refresh');
 }
 
-function view_staff_chart(){
+function view_staff_chart() {
 	'use strict';
 	$('#staff_chart_view').modal('show');
 }
 
 
-function staff_export_item(){
+function staff_export_item() {
 	"use strict";
 	var ids = [];
 	var data = {};
@@ -235,11 +235,11 @@ function staff_export_item(){
 
 	$(event).addClass('disabled');
 
-	if(data.ids.length > 0){
+	if (data.ids.length > 0) {
 	setTimeout(function() {
-		$.post(admin_url + 'hr_profile/create_staff_sample_file', data).done(function(response) {
+		$.post(admin_url + 'hr_control/create_staff_sample_file', data).done(function(response) {
 			response = JSON.parse(response);
-			if(response.success == true){
+			if (response.success == true) {
 				alert_float('success', "<?php echo _l("create_export_file_success") ?>");
 
 				$('#dowload_items').removeClass('hide');
@@ -248,7 +248,7 @@ function staff_export_item(){
 				$('#dowload_items').attr({target: '_blank', 
 					href  : site_url +response.filename});
 
-			}else{
+			} else {
 				alert_float('success', "<?php echo _l("create_export_file_fails") ?>");
 
 			}
@@ -258,7 +258,7 @@ function staff_export_item(){
 
 		});
 	}, 200);
-	}else{
+	} else {
 		alert_float('warning', "<?php echo _l("please_select_the_employee_you_want_to_export_to_excel") ?>");
 
 	}

@@ -1,5 +1,5 @@
 <script>
- $(function(){
+ $(function() {
   'use strict';
   init_editor('.tinymce-email-description');
   init_editor('.tinymce-view-description');
@@ -18,7 +18,7 @@
       var data = {};
       data.type = type;
       data.training_id = training_id;
-      $.post(admin_url + 'hr_profile/add_training_question', data).done(function(response) {
+      $.post(admin_url + 'hr_control/add_training_question', data).done(function(response) {
         response = JSON.parse(response);
         var question_area = '<li>';
         question_area += '<div class="form-group question">';
@@ -102,7 +102,7 @@ if (type == 'checkbox' || type == 'radio') {
 }
 
 setTimeout(function() {
-    $.post(admin_url + 'hr_profile/update_training_question', data).done(function(response) {
+    $.post(admin_url + 'hr_control/update_training_question', data).done(function(response) {
         $(question).parents('li').find('i.question_update').removeClass('spinning');
     });
 }, 10);
@@ -117,15 +117,15 @@ function update_answer_question(question, type, questionid, answer_id) {
 
   var data={};
   data.questionboxdescriptionid = answer_id;
-  if(input_checked_status){
+  if (input_checked_status) {
       data.correct = 0;
-  }else{
+  } else {
       data.correct = 1;
 
   }
 
   setTimeout(function() {
-    $.post(admin_url + 'hr_profile/update_training_question_answer', data).done(function(response) {
+    $.post(admin_url + 'hr_control/update_training_question_answer', data).done(function(response) {
         $(question).parents('li').find('i.question_update').removeClass('spinning');
     });
 }, 10);
@@ -159,7 +159,7 @@ function add_more_boxes(question, boxdescriptionid) {
 // Remove question from database
 function remove_question_from_database(question, questionid) {
   'use strict';
-  $.get(admin_url + 'hr_profile/remove_question/' + questionid, function(response) {
+  $.get(admin_url + 'hr_control/remove_question/' + questionid, function(response) {
     if (response.success == false) {
         alert_float('danger', response.message);
     } else {
@@ -172,7 +172,7 @@ function remove_question_from_database(question, questionid) {
 // Remove question box description  // checkbox // radio box
 function remove_box_description_from_database(question, questionboxdescriptionid) {
   'use strict';
-  $.get(admin_url + 'hr_profile/remove_box_description/' + questionboxdescriptionid, function(response) {
+  $.get(admin_url + 'hr_control/remove_box_description/' + questionboxdescriptionid, function(response) {
     if (response.success == true) {
         $(question).parents('.box_area').remove();
     } else {
@@ -183,7 +183,7 @@ function remove_box_description_from_database(question, questionboxdescriptionid
 // Add question box description  // checkbox // radio box
 function add_box_description_to_database(question, questionid, boxid) {
   'use strict';
-  $.get(admin_url + 'hr_profile/add_box_description/' + questionid + '/' + boxid, function(response) {
+  $.get(admin_url + 'hr_control/add_box_description/' + questionid + '/' + boxid, function(response) {
     if (response.boxdescriptionid !== false) {
         add_more_boxes(question, response.boxdescriptionid);
     } else {
@@ -210,10 +210,10 @@ function update_questions_order() {
 });
   var data = {};
   data.data = update;
-  $.post(admin_url + 'hr_profile/update_training_questions_orders', data);
+  $.post(admin_url + 'hr_control/update_training_questions_orders', data);
 }
 
-window.addEventListener('load',function(){
+window.addEventListener('load',function() {
   'use strict';
     //validation form
     appValidateForm($("body").find('#training_form'), {

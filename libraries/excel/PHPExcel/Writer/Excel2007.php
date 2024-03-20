@@ -255,13 +255,13 @@ class PHPExcel_Writer_Excel2007 extends PHPExcel_Writer_Abstract implements PHPE
                 $tmpRibbonTarget=$this->spreadSheet->getRibbonXMLData('target');
                 $objZip->addFromString($tmpRibbonTarget, $this->spreadSheet->getRibbonXMLData('data'));
                 if ($this->spreadSheet->hasRibbonBinObjects()) {
-                    $tmpRootPath=dirname($tmpRibbonTarget).'/';
+                    $tmpRootPath=dirname($tmpRibbonTarget) . '/';
                     $ribbonBinObjects=$this->spreadSheet->getRibbonBinObjects('data');//the files to write
                     foreach ($ribbonBinObjects as $aPath => $aContent) {
                         $objZip->addFromString($tmpRootPath.$aPath, $aContent);
                     }
                     //the rels for files
-                    $objZip->addFromString($tmpRootPath.'_rels/'.basename($tmpRibbonTarget).'.rels', $this->getWriterPart('RelsRibbonObjects')->writeRibbonRelationships($this->spreadSheet));
+                    $objZip->addFromString($tmpRootPath.'_rels/'.basename($tmpRibbonTarget) . '.rels', $this->getWriterPart('RelsRibbonObjects')->writeRibbonRelationships($this->spreadSheet));
                 }
             }
             

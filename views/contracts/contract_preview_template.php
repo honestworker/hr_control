@@ -30,7 +30,7 @@
 
 
 <div class="tab-content">
-	<div role="tabpanel" class="tab-pane<?php if(!$this->input->get('tab') || $this->input->get('tab') == 'contract_infor'){echo ' active';} ?>" id="contract_infor">
+	<div role="tabpanel" class="tab-pane<?php if (!$this->input->get('tab') || $this->input->get('tab') == 'contract_infor') {echo ' active';} ?>" id="contract_infor">
 
 <div class="">
 	<div class="">
@@ -38,19 +38,19 @@
 		$contract_status = (isset($contracts) ? $contracts->contract_status : '');
 		?>
 
-		<?php if($contract_status == 'draft'){ ?>
+		<?php if ($contract_status == 'draft') { ?>
 			<div class="wrap">
 				<div class="ribbonc contract-ribbonc-warning" ><span><?php echo _l('hr_hr_draft'); ?></span></div>
 			</div>
-		<?php }elseif($contract_status == 'valid'){ ?> 
+		<?php } elseif ($contract_status == 'valid') { ?> 
 			<div class="wrap">
 				<div class="ribbonc contract-ribbonc-success" ><span><?php echo _l('hr_hr_valid'); ?></span></div>
 			</div>
-		<?php }elseif($contract_status == 'invalid'){ ?>
+		<?php } elseif ($contract_status == 'invalid') { ?>
 			<div class="wrap">
 				<div class="ribbonc contract-ribbonc-danger" ><span><?php echo _l('hr_hr_expired'); ?></span></div>
 			</div>
-		<?php } elseif($contract_status == 'finish'){ ?>
+		<?php } elseif ($contract_status == 'finish') { ?>
 			<div class="wrap">
 				<div class="ribbonc contract-ribbonc-primary" ><span><?php echo _l('hr_hr_finish'); ?></span></div>
 			</div>
@@ -79,8 +79,8 @@
 				</tr>
 				<tr class="project-overview">
 					<td class="bold" width="30%"><?php echo _l('hr_name_contract'); ?></td>
-					<?php foreach($contract_type as $c){
-						if(isset($contracts) && $contracts->name_contract == $c['id_contracttype'] ){
+					<?php foreach($contract_type as $c) {
+						if (isset($contracts) && $contracts->name_contract == $c['id_contracttype'] ) {
 							?>
 							<td class="text-right"><?php echo html_entity_decode($c['name_contracttype']); ?></td>
 						<?php }?>
@@ -98,8 +98,8 @@
 			<tbody>
 				<tr class="project-overview">
 					<td class="bold" width="40%"><?php echo _l('staff'); ?></td>
-					<?php foreach($staff as $s){
-						if(isset($contracts) && $contracts->staff == $s['staffid'] ){
+					<?php foreach($staff as $s) {
+						if (isset($contracts) && $contracts->staff == $s['staffid'] ) {
 							?>
 							<td class="text-right">
 								<a href="<?php echo admin_url('profile/'.$s['staffid']); ?>">
@@ -132,13 +132,13 @@
 						?>
 						<td class="bold"><?php echo _l('hr_status_label'); ?></td>
 						<td class="text-right">
-							<?php if($contract_status == 'draft' ){
+							<?php if ($contract_status == 'draft' ) {
 								$_data .= ' <span class="label label-warning" > '._l('hr_hr_draft').' </span>';
-							}elseif($contract_status == 'valid'){
+							} elseif ($contract_status == 'valid') {
 								$_data .= ' <span class="label label-success"> '._l('hr_hr_valid').' </span>';
-							}elseif($contract_status == 'invalid'){
+							} elseif ($contract_status == 'invalid') {
 								$_data .= ' <span class="label label-danger"> '._l('hr_hr_expired').' </span>';
-							}elseif($contract_status == 'finish'){
+							} elseif ($contract_status == 'finish') {
 								$_data .= ' <span class="label label-primary"> '._l('hr_hr_finish').' </span>';
 							}
 
@@ -164,24 +164,24 @@
 					<th class="th-color"><?php echo _l('note'); ?></th>
 				</thead>
 				<tbody>
-					<?php foreach($contract_details as $contract_detail){ ?>
+					<?php foreach($contract_details as $contract_detail) { ?>
 						<?php 
 						$type_name ='';
-						if(preg_match('/^st_/', $contract_detail['rel_type'])){
+						if (preg_match('/^st_/', $contract_detail['rel_type'])) {
 							$rel_value = str_replace('st_', '', $contract_detail['rel_type']);
 							$salary_type = $this->hr_profile_model->get_salary_form($rel_value);
 
 							$type = 'salary';
-							if($salary_type){
+							if ($salary_type) {
 								$type_name = $salary_type->form_name;
 							}
 
-						}elseif(preg_match('/^al_/', $contract_detail['rel_type'])){
+						} elseif (preg_match('/^al_/', $contract_detail['rel_type'])) {
 							$rel_value = str_replace('al_', '', $contract_detail['rel_type']);
 							$allowance_type = $this->hr_profile_model->get_allowance_type($rel_value);
 
 							$type = 'allowance';
-							if($allowance_type){
+							if ($allowance_type) {
 								$type_name = $allowance_type->type_name;
 							}
 						}
@@ -215,8 +215,8 @@
 					</tr>
 					<tr class="project-overview">
 						<?php 
-						if(isset($staff_delegate_role) && $staff_delegate_role != null){
-							$staff_role = $staff_delegate_role->name ; }else{
+						if (isset($staff_delegate_role) && $staff_delegate_role != null) {
+							$staff_role = $staff_delegate_role->name ; } else {
 								$staff_role = '';   
 							} ?>
 
@@ -235,8 +235,8 @@
 					<tbody>
 						<tr class="project-overview">
 							<td class="bold" width="40%"><?php echo _l('hr_staff_delegate'); ?></td>
-							<?php foreach($staff as $s){ 
-								if(isset($contracts) && $contracts->staff_delegate == $s['staffid'] ){
+							<?php foreach($staff as $s) { 
+								if (isset($contracts) && $contracts->staff_delegate == $s['staffid'] ) {
 									?>
 									<td class="text-right">
 										<a href="<?php echo admin_url('profile/'.$s['staffid']); ?>">
@@ -259,8 +259,8 @@
 						<?php
 						$data = '<div class="row" id="attachment_file">';
 						foreach($contract_attachment as $attachment) {
-							$href_url = site_url('modules/hr_profile/uploads/contracts/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
-							if(!empty($attachment['external'])){
+							$href_url = site_url('modules/hr_control/uploads/contracts/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
+							if (!empty($attachment['external'])) {
 								$href_url = $attachment['external_link'];
 							}
 							$data .= '<div class="mt-1 mb-1 row inline-block full-width att-background-color" >';
@@ -297,13 +297,13 @@
 
 			<div class="col-md-12 text-right _buttons">
 				<div class="btn-group">
-					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-pdf-o"></i><?php if(is_mobile()){echo ' PDF';} ?> <span class="caret"></span></a>
+					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-pdf-o"></i><?php if (is_mobile()) {echo ' PDF';} ?> <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li class="hidden-xs"><a href="<?php echo admin_url('hr_profile/contract_pdf/'.$contracts->id_contract.'?output_type=I'); ?>"><?php echo _l('view_pdf'); ?></a></li>
-						<li class="hidden-xs"><a href="<?php echo admin_url('hr_profile/contract_pdf/'.$contracts->id_contract.'?output_type=I'); ?>" target="_blank"><?php echo _l('view_pdf_in_new_window'); ?></a></li>
-						<li><a href="<?php echo admin_url('hr_profile/contract_pdf/'.$contracts->id_contract); ?>"><?php echo _l('download'); ?></a></li>
+						<li class="hidden-xs"><a href="<?php echo admin_url('hr_control/contract_pdf/'.$contracts->id_contract.'?output_type=I'); ?>"><?php echo _l('view_pdf'); ?></a></li>
+						<li class="hidden-xs"><a href="<?php echo admin_url('hr_control/contract_pdf/'.$contracts->id_contract.'?output_type=I'); ?>" target="_blank"><?php echo _l('view_pdf_in_new_window'); ?></a></li>
+						<li><a href="<?php echo admin_url('hr_control/contract_pdf/'.$contracts->id_contract); ?>"><?php echo _l('download'); ?></a></li>
 						<li>
-							<a href="<?php echo admin_url('hr_profile/contract_pdf/'.$contracts->id_contract.'?print=true'); ?>" target="_blank">
+							<a href="<?php echo admin_url('hr_control/contract_pdf/'.$contracts->id_contract.'?print=true'); ?>" target="_blank">
 								<?php echo _l('print'); ?>
 							</a>
 						</li>
@@ -314,21 +314,21 @@
 					<i class="fa fa-envelope"></i></span>
 				</a>
 
-				<a href="<?php echo admin_url('hr_profile/contract_sign/'.$contracts->id_contract); ?>" class="btn btn-default "><span class="btn-with-tooltip" data-toggle="tooltip" data-title="<?php echo _l('View'); ?>" data-placement="bottom">
+				<a href="<?php echo admin_url('hr_control/contract_sign/'.$contracts->id_contract); ?>" class="btn btn-default "><span class="btn-with-tooltip" data-toggle="tooltip" data-title="<?php echo _l('View'); ?>" data-placement="bottom">
 					<i class="fa fa-view"></i>View</span>
 				</a>
 
 				
 				</div>
 				<div class="col-md-12">
-					<?php if(isset($contract_merge_fields)){ ?>
+					<?php if (isset($contract_merge_fields)) { ?>
 						<hr class="hr-panel-heading" />
 						<p class="bold mtop10 text-right"><a href="#" onclick="slideToggle('.avilable_merge_fields'); return false;"><?php echo _l('available_merge_fields'); ?></a></p>
 						<div class=" avilable_merge_fields mtop15 hide">
 							<ul class="list-group">
 								<?php
-								foreach($contract_merge_fields as $field){
-									foreach($field as $f){
+								foreach($contract_merge_fields as $field) {
+									foreach($field as $f) {
 										echo '<li class="list-group-item"><b>'.$f['name'].'</b>  <a href="javascript:void(0)" class="pull-right" onclick="insert_merge_field(this); return false">'.$f['key'].'</a></li>';
 									}
 								}
@@ -339,15 +339,15 @@
 				</div>
 			</div>
 			<hr class="hr-panel-heading" />
-			<?php if(!has_permission('hrm_contract','','edit')) { ?>
+			<?php if (!has_permission('hrm_contract','','edit')) { ?>
 				<div class="alert alert-warning contract-edit-permissions">
 					<?php echo _l('contract_content_permission_edit_warning'); ?>
 				</div>
 			<?php } ?>
-			<div class="tc-content<?php if(has_permission('hrm_contract','','edit')){echo ' editable';} ?>"
+			<div class="tc-content<?php if (has_permission('hrm_contract','','edit')) {echo ' editable';} ?>"
 				style="border:1px solid #d2d2d2;min-height:70px; border-radius:4px;">
 				<?php
-				if(empty($contracts->content) && has_permission('hrm_contract','','edit')){
+				if (empty($contracts->content) && has_permission('hrm_contract','','edit')) {
 					echo hooks()->apply_filters('new_contract_default_content', '<span class="text-danger text-uppercase mtop15 editor-add-content-notice"> ' . _l('click_to_add_content') . '</span>');
 				} else {
 					echo $contracts->content;
@@ -357,12 +357,12 @@
 				<div class="row mtop25">
 
 						<div class="col-md-6  text-left">
-					<?php if(!empty($contracts->staff_signature)) { ?>
+					<?php if (!empty($contracts->staff_signature)) { ?>
 							<p class="bold"><?php echo _l('staff_signature'); ?>
 
 							<div class="bold">
 								<?php 
-								if(is_numeric($contracts->staff)){
+								if (is_numeric($contracts->staff)) {
 									$contracts_staff_signer = get_staff_full_name($contracts->staff);
 								}else {
 									$contracts_staff_signer = ' ';
@@ -376,18 +376,18 @@
 							
 						</p>
 						<div class="pull-left">
-							<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_PROFILE_CONTRACT_SIGN.$contracts->id_contract.'/'.$contracts->staff_signature)); ?>" class="img-responsive" alt="">
+							<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_CONTROL_CONTRACT_SIGN.$contracts->id_contract.'/'.$contracts->staff_signature)); ?>" class="img-responsive" alt="">
 						</div>
 				<?php } ?> 
 					</div>
 
 					<div class="col-md-6  text-right">
-			<?php if(!empty($contracts->signature)) { ?>
+			<?php if (!empty($contracts->signature)) { ?>
 						<p class="bold"><?php echo _l('company_signature'); ?>
 
 						<div class="bold">
 							<?php 
-							if(is_numeric($contracts->signer)){
+							if (is_numeric($contracts->signer)) {
 								$contracts_signer = get_staff_full_name($contracts->signer);
 							}else {
 								$contracts_signer = ' ';
@@ -398,14 +398,14 @@
 							<p class="no-mbot"><?php echo _l('contract_signed_date') . ': ' . _d($contracts->sign_day) ?></p>
 						</div>
 						<p class="bold"><?php echo _l('hr_signature_text'); ?>
-						<?php if($contracts->staff_delegate == get_staff_user_id() || $contracts->signer == get_staff_user_id() || has_permission('hrm_contract','','delete')){ ?>
-							<a href="<?php echo admin_url('hr_profile/hr_clear_signature/'.$contracts->id_contract); ?>" data-toggle="tooltip" title="<?php echo _l('clear_signature'); ?>" class="_delete text-danger">
+						<?php if ($contracts->staff_delegate == get_staff_user_id() || $contracts->signer == get_staff_user_id() || has_permission('hrm_contract','','delete')) { ?>
+							<a href="<?php echo admin_url('hr_control/hr_clear_signature/'.$contracts->id_contract); ?>" data-toggle="tooltip" title="<?php echo _l('clear_signature'); ?>" class="_delete text-danger">
 								<i class="fa fa-remove"></i>
 							</a>
 						<?php } ?>
 					</p>
 					<div class="pull-right">
-						<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_PROFILE_CONTRACT_SIGN.$contracts->id_contract.'/'.$contracts->signature)); ?>" class="img-responsive" alt="">
+						<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_CONTROL_CONTRACT_SIGN.$contracts->id_contract.'/'.$contracts->signature)); ?>" class="img-responsive" alt="">
 					</div>
 			<?php } ?> 
 				</div>
@@ -419,6 +419,6 @@
 
 
 		<?php 
-		require('modules/hr_profile/assets/js/contracts/preview_contract_file_js.php');
+		require('modules/hr_control/assets/js/contracts/preview_contract_file_js.php');
 		?>
 

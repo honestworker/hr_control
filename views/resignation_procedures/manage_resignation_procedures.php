@@ -9,7 +9,7 @@
 
 						<div class="row">
 							<div class="col-md-12">
-								<?php if(is_admin() || has_permission('hrm_procedures_for_quitting_work','','create')){?>
+								<?php if (is_admin() || has_permission('hrm_procedures_for_quitting_work','','create')) {?>
 		                    		<button class="btn btn-info" id="btn_new_staff"><?php echo _l('hr_new_resignation_procedures')?></button>
 		                    	<?php } ?>
 							</div>
@@ -25,7 +25,7 @@
 										<h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
 									</div>
 									<div class="modal-body">
-										<?php if(has_permission('hrm_procedures_for_quitting_work','','delete') || is_admin()){ ?>
+										<?php if (has_permission('hrm_procedures_for_quitting_work','','delete') || is_admin()) { ?>
 											<div class="checkbox checkbox-danger">
 												<input type="checkbox" name="mass_delete" id="mass_delete">
 												<label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -35,7 +35,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 
-										<?php if(has_permission('hrm_procedures_for_quitting_work','','delete') || is_admin()){ ?>
+										<?php if (has_permission('hrm_procedures_for_quitting_work','','delete') || is_admin()) { ?>
 											<a href="#" class="btn btn-info" onclick="staff_delete_bulk_action(this); return false;"><?php echo _l('hr_confirm'); ?></a>
 										<?php } ?>
 									</div>
@@ -80,7 +80,7 @@
 <div class="modal" id="new_staff" tabindex="-1" role="dialog"  aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content ">
-			<?php echo form_open(admin_url('hr_profile/add_resignation_procedure'), array('id'=>'staff_quitting_work_form')); ?>
+			<?php echo form_open(admin_url('hr_control/add_resignation_procedure'), array('id'=>'staff_quitting_work_form')); ?>
 				<div class="modal-header pd-x-20">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">
@@ -114,7 +114,7 @@
 <div id="detail_checklist_staff" class="modal">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content ">
-			<?php echo form_open(admin_url('hr_profile/update_status_option_name')); ?>
+			<?php echo form_open(admin_url('hr_control/update_status_option_name')); ?>
 
 			<div class="modal-header pd-x-20">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -140,7 +140,7 @@
 	</div><!-- modal-dialog -->
 </div>	
 <?php init_tail(); ?>	
-<?php  require('modules/hr_profile/assets/js/resignation_procedures/resignation_procedures_manage_js.php'); ?>
+<?php  require('modules/hr_control/assets/js/resignation_procedures/resignation_procedures_manage_js.php'); ?>
 
 </body>
 </html>

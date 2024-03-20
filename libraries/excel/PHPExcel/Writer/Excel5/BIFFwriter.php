@@ -163,16 +163,16 @@ class PHPExcel_Writer_Excel5_BIFFwriter
      */
     protected function storeBof($type)
     {
-        $record  = 0x0809;            // Record identifier    (BIFF5-BIFF8)
+        $record  = 0x0809;     // Record identifier    (BIFF5-BIFF8)
         $length  = 0x0010;
 
         // by inspection of real files, MS Office Excel 2007 writes the following
         $unknown = pack("VV", 0x000100D1, 0x00000406);
 
-        $build   = 0x0DBB;            //    Excel 97
-        $year    = 0x07CC;            //    Excel 97
+        $build   = 0x0DBB;     //    Excel 97
+        $year    = 0x07CC;     //    Excel 97
 
-        $version = 0x0600;            //    BIFF8
+        $version = 0x0600;     //    BIFF8
 
         $header  = pack("vv", $record, $length);
         $data    = pack("vvvv", $version, $type, $build, $year);
@@ -221,7 +221,7 @@ class PHPExcel_Writer_Excel5_BIFFwriter
     private function addContinue($data)
     {
         $limit  = $this->limit;
-        $record = 0x003C;         // Record identifier
+        $record = 0x003C;  // Record identifier
 
         // The first 2080/8224 bytes remain intact. However, we have to change
         // the length field of the record.

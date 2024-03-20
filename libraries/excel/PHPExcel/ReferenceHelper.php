@@ -666,7 +666,7 @@ class PHPExcel_ReferenceHelper
                                 $cellIndex = $column.$row;
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString);
-                                $cellTokens[$cellIndex] = '/(?<!\d\$\!)'.preg_quote($fromString).'(?!\d)/i';
+                                $cellTokens[$cellIndex] = '/(?<!\d\$\!)'.preg_quote($fromString) . '(?!\d)/i';
                                 ++$adjustCount;
                             }
                         }
@@ -691,7 +691,7 @@ class PHPExcel_ReferenceHelper
                                 $cellIndex = $column.$row;
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString);
-                                $cellTokens[$cellIndex] = '/(?<![A-Z\$\!])'.preg_quote($fromString).'(?![A-Z])/i';
+                                $cellTokens[$cellIndex] = '/(?<![A-Z\$\!])'.preg_quote($fromString) . '(?![A-Z])/i';
                                 ++$adjustCount;
                             }
                         }
@@ -717,7 +717,7 @@ class PHPExcel_ReferenceHelper
                                 $cellIndex = $column.$row;
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString);
-                                $cellTokens[$cellIndex] = '/(?<![A-Z]\$\!)'.preg_quote($fromString).'(?!\d)/i';
+                                $cellTokens[$cellIndex] = '/(?<![A-Z]\$\!)'.preg_quote($fromString) . '(?!\d)/i';
                                 ++$adjustCount;
                             }
                         }
@@ -743,7 +743,7 @@ class PHPExcel_ReferenceHelper
                                 $cellIndex = $row . $column;
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString);
-                                $cellTokens[$cellIndex] = '/(?<![A-Z\$\!])'.preg_quote($fromString).'(?!\d)/i';
+                                $cellTokens[$cellIndex] = '/(?<![A-Z\$\!])'.preg_quote($fromString) . '(?!\d)/i';
                                 ++$adjustCount;
                             }
                         }

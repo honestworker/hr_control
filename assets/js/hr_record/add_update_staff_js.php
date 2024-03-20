@@ -1,5 +1,5 @@
 <script>
-	$(function(){
+	$(function() {
 		'use strict';
 		appValidateForm($('#add_edit_member'), {
 			firstname: 'required',
@@ -86,7 +86,7 @@
 
     // Get all permissions
     var permissions = $('table.roles').find('tr');
-    requestGetJSON('hr_profile/hr_role_changed/' + roleid).done(function(response) {
+    requestGetJSON('hr_control/hr_role_changed/' + roleid).done(function(response) {
 
     	permissions.find('.capability').not('[data-not-applicable="true"]').prop('checked', false).trigger('change');
 
@@ -123,7 +123,7 @@
 	function hr_profile_update_staff(staff_id) {
 		"use strict";
 
-		$("#modal_wrapper").load("<?php echo admin_url('hr_profile/hr_profile/member_modal'); ?>", {
+		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/member_modal'); ?>", {
 			slug: 'update',
 			staff_id: staff_id
 		}, function() {

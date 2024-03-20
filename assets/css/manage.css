@@ -2275,7 +2275,7 @@ readers do not read off random characters that represent icons */
 
   }
 
-  .content-table tbody tr:nth-of-type(even){
+  .content-table tbody tr:nth-of-type(even) {
 
     background-color: #f3f3f3;
 

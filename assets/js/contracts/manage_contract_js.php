@@ -1,7 +1,7 @@
 <script>
 	
 
-	$(function(){
+	$(function() {
 		'use strict';
 		
 		var tree_dep = $('#hrm_derpartment_tree').comboTree({
@@ -14,12 +14,12 @@
 			"validity_start_date": "input[name='validity_start_date']",
 			"validity_end_date": "input[name='validity_end_date']",
 		};
-		$.each($('._hidden_inputs._filters input'),function(){
+		$.each($('._hidden_inputs._filters input'),function() {
 			ContractsServerParams[$(this).attr('name')] = '[name="'+$(this).attr('name')+'"]';
 		});
 
 		var table_contract = $('.table-table_contract');
-		initDataTable(table_contract, admin_url+'hr_profile/table_contract', [0], [0], ContractsServerParams, [1, 'desc']);
+		initDataTable(table_contract, admin_url+'hr_control/table_contract', [0], [0], ContractsServerParams, [1, 'desc']);
 
 		 //hide first column
 		 var hidden_columns = [1];
@@ -45,11 +45,11 @@
 
 		init_hrm_contract();
 
-		<?php if(isset($to_expire)){ ?>
+		<?php if (isset($to_expire)) { ?>
 			dt_custom_view('hr_contract_is_about_to_expire','.table-table_contract','hr_contract_is_about_to_expire');
 		<?php } ?>
 		
-		<?php if(isset($overdue_contract)){ ?>
+		<?php if (isset($overdue_contract)) { ?>
 			dt_custom_view('hr_overdue_contract','.table-table_contract','hr_overdue_contract');
 		<?php } ?>
 		
@@ -113,7 +113,7 @@
 		$(window).trigger('resize');
 	}
 
-	function staff_bulk_actions(){
+	function staff_bulk_actions() {
 		'use strict';
 
 		$('#table_contract_bulk_actions').modal('show');
@@ -126,7 +126,7 @@
    	if (confirm_delete()) {
    		var mass_delete = $('#mass_delete').prop('checked');
 
-   		if(mass_delete == true){
+   		if (mass_delete == true) {
    			var ids = [];
    			var data = {};
 
@@ -144,14 +144,14 @@
    			data.ids = ids;
    			$(event).addClass('disabled');
    			setTimeout(function() {
-   				$.post(admin_url + 'hr_profile/hrm_delete_bulk_action', data).done(function() {
+   				$.post(admin_url + 'hr_control/hrm_delete_bulk_action', data).done(function() {
    					window.location.reload();
    				}).fail(function(data) {
    					$('#table_contract_bulk_actions').modal('hide');
    					alert_float('danger', data.responseText);
    				});
    			}, 200);
-   		}else{
+   		} else {
    			window.location.reload();
    		}
 
@@ -159,7 +159,7 @@
    }
 
 	 //contract preview file
-	 function preview_file_staff(invoker){
+	 function preview_file_staff(invoker) {
 	 	'use strict';
 
 	 	var id = $(invoker).attr('id');
@@ -172,7 +172,7 @@
 	   	'use strict';
 
 	   	$('#contract_file_data').empty();
-	   	$("#contract_file_data").load(admin_url + 'hr_profile/hrm_file_contract/' + id + '/' + rel_id, function(response, status, xhr) {
+	   	$("#contract_file_data").load(admin_url + 'hr_control/hrm_file_contract/' + id + '/' + rel_id, function(response, status, xhr) {
 	   		if (status == "error") {
 	   			alert_float('danger', xhr.statusText);
 	   		}

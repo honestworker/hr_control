@@ -114,10 +114,10 @@ class PHPExcel_Writer_Excel5_Parser
     public function __construct()
     {
         $this->currentCharacter  = 0;
-        $this->currentToken = '';       // The token we are working on.
-        $this->formula       = '';       // The formula to parse.
-        $this->lookAhead     = '';       // The character ahead of the current char.
-        $this->parseTree    = '';       // The parse tree to be generated.
+        $this->currentToken = '';// The token we are working on.
+        $this->formula       = '';// The formula to parse.
+        $this->lookAhead     = '';// The character ahead of the current char.
+        $this->parseTree    = '';// The parse tree to be generated.
         $this->initializeHashes();      // Initialize the hashes: ptg's and function's ptg's
         $this->externalSheets = array();
         $this->references = array();
@@ -506,7 +506,7 @@ class PHPExcel_Writer_Excel5_Parser
      */
     private function convert($token)
     {
-        if (preg_match("/\"([^\"]|\"\"){0,255}\"/", $token)) {
+        if (preg_match("/\"([^\"]|\"\") {0,255}\"/", $token)) {
             return $this->convertString($token);
 
         } elseif (is_numeric($token)) {
@@ -1142,7 +1142,7 @@ class PHPExcel_Writer_Excel5_Parser
                 } elseif (is_numeric($token) and (!is_numeric($token.$this->lookAhead) or ($this->lookAhead == '')) and ($this->lookAhead != '!') and ($this->lookAhead != ':')) {
                     // If it's a number (check that it's not a sheet name or range)
                     return $token;
-                } elseif (preg_match("/\"([^\"]|\"\"){0,255}\"/", $token) and $this->lookAhead != '"' and (substr_count($token, '"')%2 == 0)) {
+                } elseif (preg_match("/\"([^\"]|\"\") {0,255}\"/", $token) and $this->lookAhead != '"' and (substr_count($token, '"')%2 == 0)) {
                     // If it's a string (of maximum 255 characters)
                     return $token;
                 } elseif (preg_match("/^#[A-Z0\/]{3,5}[!?]{1}$/", $token) or $token == '#N/A') {
@@ -1234,7 +1234,7 @@ class PHPExcel_Writer_Excel5_Parser
     private function expression()
     {
         // If it's a string return a string node
-        if (preg_match("/\"([^\"]|\"\"){0,255}\"/", $this->currentToken)) {
+        if (preg_match("/\"([^\"]|\"\") {0,255}\"/", $this->currentToken)) {
             $tmp = str_replace('""', '"', $this->currentToken);
             if (($tmp == '"') || ($tmp == '')) {
                 //    Trap for "" that has been used for an empty string
@@ -1339,12 +1339,12 @@ class PHPExcel_Writer_Excel5_Parser
     private function fact()
     {
         if ($this->currentToken == "(") {
-            $this->advance();         // eat the "("
+            $this->advance();  // eat the "("
             $result = $this->parenthesizedExpression();
             if ($this->currentToken != ")") {
                 throw new PHPExcel_Writer_Exception("')' token expected.");
             }
-            $this->advance();         // eat the ")"
+            $this->advance();  // eat the ")"
             return $result;
         }
         // if it's a reference
@@ -1414,7 +1414,7 @@ class PHPExcel_Writer_Excel5_Parser
         $function = strtoupper($this->currentToken);
         $result   = ''; // initialize result
         $this->advance();
-        $this->advance();         // eat the "("
+        $this->advance();  // eat the "("
         while ($this->currentToken != ')') {
         /**/
             if ($num_args > 0) {
@@ -1441,7 +1441,7 @@ class PHPExcel_Writer_Excel5_Parser
         }
 
         $result = $this->createTree($function, $result, $num_args);
-        $this->advance();         // eat the ")"
+        $this->advance();  // eat the ")"
         return $result;
     }
 

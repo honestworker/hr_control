@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="_buttons">
-				<?php if(is_admin() || has_permission('hr_setting','','create')) {?>
+				<?php if (is_admin() || has_permission('hrp_setting','','create')) { ?>
 					<a href="#" onclick="new_column_type(); return false;" class="btn btn-info pull-left display-block" >
 						<?php echo _l('add'); ?>
 					</a>
@@ -34,7 +34,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach($payroll_column_value as $value){ ?>
+			<?php foreach ($payroll_column_value as $value) { ?>
 				<?php 
 				$_data = '<a href="' . admin_url('staff/profile/' . $value['staff_id_created']) . '">' . staff_profile_image($value['staff_id_created'], [
 					'staff-profile-image-small',
@@ -49,12 +49,12 @@
 					<td><?php echo html_entity_decode(_dt($value['date_created'])); ?></td>
 					<td>
 						
-						<?php if(is_admin() || has_permission('hr_setting','','edit')) {?>
+						<?php if (is_admin() || has_permission('hrp_setting','','edit')) { ?>
 							<a href="#" onclick="edit_column_type(this,<?php echo html_entity_decode($value['id']); ?>); return false"  class="btn btn-default btn-icon" data-toggle="sidebar-right" data-target=".insurance_type_modal-edit-modal"><i class="fa fa-regular fa-pen-to-square"></i></a>
 						<?php } ?>
 
-						<?php if(is_admin() || has_permission('hr_setting','','delete')) {?>
-							<?php if($value['is_edit'] != 'no'){ ?>
+						<?php if (is_admin() || has_permission('hrp_setting','','delete')) { ?>
+							<?php if ($value['is_edit'] != 'no') { ?>
 								<a href="<?php echo admin_url('hr_control/delete_payroll_column_setting/'.$value['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 							<?php } ?>
 
@@ -136,7 +136,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('close'); ?></button>
-					<?php if(has_permission('hr_setting','','create') || has_permission('hr_setting', '', 'edit')){ ?>
+					<?php if (has_permission('hrp_setting','','create') || has_permission('hrp_setting', '', 'edit')) { ?>
 						<button type="button" class="btn btn-info payroll_column_submit"><?php echo _l('submit'); ?></button>
 					<?php } ?>
 				</div>

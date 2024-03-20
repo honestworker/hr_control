@@ -16,7 +16,7 @@
 						<div class="row">    
 							<div class="_buttons col-md-3">
 
-								<?php if (has_permission('hr_payslip_template', '', 'create') || is_admin()) { ?>
+								<?php if (has_permission('hrp_payslip_template', '', 'create') || is_admin()) { ?>
 									<a href="#" onclick="new_payslip_template(); return false;"class="btn btn-info pull-left mright10 display-block">
 										<?php echo _l('_new'); ?>
 									</a>

@@ -187,7 +187,7 @@ class PHPExcel_Shared_OLE_PPS
               . pack("V", isset($this->_StartBlock)?
                         $this->_StartBlock:0)        // 120
               . pack("V", $this->Size)               // 124
-              . pack("V", 0);                        // 128
+              . pack("V", 0);                 // 128
         return $ret;
     }
 

@@ -1,5 +1,5 @@
 <script>  
-	$(function(){
+	$(function() {
 		'use strict';
 
 		var tree_dep = $('#dep_tree').comboTree({
@@ -11,7 +11,7 @@
 		};
 
 		var table_departments = $('.table-departments');
-		initDataTable(table_departments, admin_url + 'hr_profile/get_data_department', [4], [4], LeadsServerParams, [2, 'asc']);
+		initDataTable(table_departments, admin_url + 'hr_control/get_data_department', [4], [4], LeadsServerParams, [2, 'asc']);
 		$('#dep_tree').on('change', function() {
 			$('#dept').val(tree_dep.getSelectedItemsId());
 			table_departments.DataTable().ajax.reload().columns.adjust().responsive.recalc();
@@ -26,7 +26,7 @@
 					email: function() {
 						return $('input[name="email"]').val();
 					},
-					departmentid:function(){
+					departmentid:function() {
 						return $('input[name="id"]').val();
 					}
 				}
@@ -52,15 +52,15 @@
 		var url = form.action;
 		$.post(url, data).done(function(response) {
 			response = JSON.parse(response);
-			if(response.success == true){
+			if (response.success == true) {
 				alert_float('success',response.message);
 			}
-			if(response.email_exist_as_staff == true) {
+			if (response.email_exist_as_staff == true) {
 				window.location.reload();
 			}
 			$('.table-departments').DataTable().ajax.reload();
 			$('#department').modal('hide');
-		}).fail(function(data){
+		}).fail(function(data) {
 			var error = JSON.parse(data.responseText);
 			alert_float('danger',error.message);
 		});
@@ -68,7 +68,7 @@
 	}
 
 
-	function new_department(){
+	function new_department() {
 		'use strict';
 
 		$('#department').modal('show');
@@ -79,7 +79,7 @@
 	}
 
 
-	function edit_department(invoker,id){
+	function edit_department(invoker,id) {
 		'use strict';
 
 		$('#department').modal('show');
@@ -87,19 +87,19 @@
 		$('#department').find('.add-title').addClass('hide');
 		var hide_from_client = $(invoker).data('hide-from-client');
 		var delete_after_import = $(invoker).data('delete-after-import');
-		if(hide_from_client == 1){
+		if (hide_from_client == 1) {
 			$('input[name="hidefromclient"]').prop('checked',true);
 		} else {
 			$('input[name="hidefromclient"]').prop('checked',false);
 		}
-		if(delete_after_import == 1){
+		if (delete_after_import == 1) {
 			$('input[name="delete_after_import"]').prop('checked',true);
 		} else {
 			$('input[name="delete_after_import"]').prop('checked',false);
 		}
 		var enc = $(invoker).data('encryption');
 		var input_enc_selector;
-		if(enc == ''){
+		if (enc == '') {
 			input_enc_selector = '#no_enc';
 		} else {
 			input_enc_selector = '#'+enc;
@@ -114,19 +114,19 @@
 		$('#department input[name="imap_username"]').val($(invoker).data('imap_username'));
 
 		var manager_id = $(invoker).data('manager_id');
-		if(manager_id != 0 && manager_id != ''){
+		if (manager_id != 0 && manager_id != '') {
 			$('#department select[name="manager_id"]').val(manager_id);
 			$('#department select[name="manager_id"]').change();
-		}else{
+		} else {
 			$('#department select[name="manager_id"]').val('').change();
 		}
 
 		var parent_id = $(invoker).data('parent_id');
-		if(parent_id != 0 && parent_id != ''){
+		if (parent_id != 0 && parent_id != '') {
 			$('#department select[name="parent_id"]').val(parent_id);
 			$('#department select[name="parent_id"]').change();
 
-		}else{
+		} else {
 			$('#department select[name="parent_id"]').val('').change();
 		}
 
@@ -135,7 +135,7 @@
 	}
 
 
-	function test_dep_imap_connection(){
+	function test_dep_imap_connection() {
 		'use strict';
 
 		var data = {};
@@ -144,7 +144,7 @@
 		data.host = $('input[name="host"]').val();
 		data.username = $('input[name="imap_username"]').val();
 		data.encryption = $('input[name="encryption"]:checked').val();
-		$.post(admin_url+'hr_profile/test_imap_connection',data).done(function(response){
+		$.post(admin_url+'hr_control/test_imap_connection',data).done(function(response) {
 			response = JSON.parse(response);
 			alert_float(response.alert_type,response.message);
 		});
@@ -155,7 +155,7 @@
 	function zen_unit_chart (department) {
 		'use strict';
 
-		$.post(admin_url+'hr_profile/zen_unit_chart/'+department).done(function(response){
+		$.post(admin_url+'hr_control/zen_unit_chart/'+department).done(function(response) {
 			response = JSON.parse(response);
 
 			ds = {
@@ -180,7 +180,7 @@
 						//custom node template
 						
 						var nodeTemplate = function(data) {
-							if(data.name != ''){
+							if (data.name != '') {
 								return `
 								<a href="#" data-toggle="sidebar-right" data-target=".unit-chart-modal" ><div class="bg-fab017 p-5 organizational">${data.name}
 								</div>
@@ -191,7 +191,7 @@
 								<div class ="content chart_company_name">${data.reality_now}</div>
 								</a>
 								`;
-							}else{
+							} else {
 								return `
 								<a href="#" data-toggle="sidebar-right" data-target=".unit-chart-modal" >
 								<div class="content">${data.image}${data.title}</div>
@@ -234,7 +234,7 @@
 						});
 					};
 
-			function view_department_chart(){
+			function view_department_chart() {
 				'use strict';
 				$('#department_chart_view').modal('show');
 			}

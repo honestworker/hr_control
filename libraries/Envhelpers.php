@@ -26,7 +26,7 @@ class Envhelpers
      * @param  string $code
      * @return json
      */
-    public static function get_purchase_data($code){
+    public static function get_purchase_data($code) {
         //setting the header for the rest of the api
         $CI->load->config($module_name.'/conf');
 
@@ -60,7 +60,7 @@ class Envhelpers
      * @param  string $code
      * @return json
      */
-    public static function verify_purchase($code){
+    public static function verify_purchase($code) {
         $verify_obj = self::get_purchase_data($code);
 
         // Check for correct verify code
@@ -90,7 +90,7 @@ class Envhelpers
      * @param  string $module_name 
      * @return json
      */
-    public function validate_purchase($module_name){
+    public function validate_purchase($module_name) {
         $CI       = &get_instance();
         $verified = false;
 

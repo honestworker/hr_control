@@ -1,6 +1,6 @@
 	
 var hrmAttachmentDropzone;
-	(function(){
+	(function() {
 		'use strict';
 		if (typeof (hrmAttachmentDropzone) != 'undefined') {
 		  hrmAttachmentDropzone.destroy();
@@ -8,7 +8,7 @@ var hrmAttachmentDropzone;
 		}
 
 	   Dropzone.autoDiscover = false;
-		if($('#hr_profile_attachment').length){
+		if ($('#hr_profile_attachment').length) {
 		   hrmAttachmentDropzone = new Dropzone("#hr_profile_attachment", appCreateDropzoneOptions({
 			  uploadMultiple: true,
 			  parallelUploads: 20,
@@ -22,7 +22,7 @@ var hrmAttachmentDropzone;
 				 alert_float('success', response.message);
 				 var html ='';
 				 var data = response.data;
-				 if(data){
+				 if (data) {
 				  $("#attachment_file").empty();
 				  $("#attachment_file").append(data);
 
@@ -36,7 +36,7 @@ var hrmAttachmentDropzone;
 	})(jQuery);
 
 	//preview file
-	function preview_file_staff(invoker){
+	function preview_file_staff(invoker) {
 		'use strict';
 		var id = $(invoker).attr('id');
 		var rel_id = $(invoker).attr('rel_id');
@@ -46,7 +46,7 @@ var hrmAttachmentDropzone;
 	function view_hr_profilestaff_file(id, rel_id) {   
 		'use strict';
 		$('#contract_file_data').empty();
-		$("#contract_file_data").load(admin_url + 'hr_profile/hr_profile_file/' + id + '/' + rel_id, function(response, status, xhr) {
+		$("#contract_file_data").load(admin_url + 'hr_control/hr_profile_file/' + id + '/' + rel_id, function(response, status, xhr) {
 			if (status == "error") {
 				alert_float('danger', xhr.statusText);
 			}
@@ -56,13 +56,13 @@ var hrmAttachmentDropzone;
 	function delete_hr_att_file_attachment(wrapper, id) {
 		'use strict'; 	
 		if (confirm_delete()) {
-			$.get(admin_url + 'hr_profile/delete_hr_profile_staff_attachment/' + id, function (response) {
+			$.get(admin_url + 'hr_control/delete_hr_profile_staff_attachment/' + id, function (response) {
 				if (response.success == true || response.success == 'true') {
 					$(wrapper).parents('.contract-attachment-wrapper').remove();
 
 					var totalAttachmentsIndicator = $('.attachments-indicator');
 					var totalAttachments = totalAttachmentsIndicator.text().trim();
-					if(totalAttachments == 1) {
+					if (totalAttachments == 1) {
 						totalAttachmentsIndicator.remove();
 					} else {
 						totalAttachmentsIndicator.text(totalAttachments-1);

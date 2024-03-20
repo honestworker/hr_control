@@ -45,7 +45,7 @@
 						<h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
 					</div>
 					<div class="modal-body">
-						<?php if(has_permission('staffmanage_training','','delete') || is_admin()){ ?>
+						<?php if (has_permission('staffmanage_training','','delete') || is_admin()) { ?>
 							<div class="checkbox checkbox-danger">
 								<input type="checkbox" name="mass_delete" id="mass_delete">
 								<label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -55,7 +55,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 
-						<?php if(has_permission('staffmanage_training','','delete') || is_admin()){ ?>
+						<?php if (has_permission('staffmanage_training','','delete') || is_admin()) { ?>
 							<a href="#" class="btn btn-info" onclick="training_program_delete_bulk_action(this); return false;"><?php echo _l('hr_confirm'); ?></a>
 						<?php } ?>
 					</div>

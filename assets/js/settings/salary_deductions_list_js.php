@@ -5,9 +5,9 @@
 		"use strict";  
 
 
-	<?php if(isset($salary_deductions_list)){?>
+	<?php if (isset($salary_deductions_list)) { ?>
 		var dataObject_pu = <?php echo html_entity_decode($salary_deductions_list); ?>;
-	<?php }else{ ?>
+	<?php } else { ?>
 		var dataObject_pu = [];
 	<?php } ?>
 
@@ -104,7 +104,7 @@ function customDropdownRenderer(instance, td, row, col, prop, value, cellPropert
 	var selectedId;
 	var optionsList = cellProperties.chosenOptions.data;
 	
-	if(typeof optionsList === "undefined" || typeof optionsList.length === "undefined" || !optionsList.length) {
+	if (typeof optionsList === "undefined" || typeof optionsList.length === "undefined" || !optionsList.length) {
 		Handsontable.cellTypes.text.renderer(instance, td, row, col, prop, value, cellProperties);
 		return td;
 	}
@@ -131,9 +131,9 @@ $('.add_salary_deductions_list').on('click', function() {
 	
 	var valid_contract = $('#salary_deductions_list_hs').find('.htInvalid').html();
 
-	if(valid_contract){
+	if (valid_contract) {
 		alert_float('danger', "<?php echo _l('data_must_number') ; ?>");
-	}else{
+	} else {
 
 		$('input[name="salary_deductions_list_hs"]').val(JSON.stringify(purchase_value.getData()));   
 		$('#add_salary_deductions_list').submit(); 

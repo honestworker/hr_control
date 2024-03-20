@@ -6,16 +6,16 @@
 				<?php 
 				$title = '';
 				$staffid = '';
-				if(isset($member)){
-					$title .= _l('hr_update_permissions');
+				if (isset($member)) {
+					$title .= _l('hrp_update_permissions');
 					$staffid    = $member->staffid;
-				}else{
-					$title .= _l('hr_add_permissions');
+				} else {
+					$title .= _l('hrp_add_permissions');
 				}
 				?>
 				<h4 class="modal-title"><?php echo html_entity_decode($title); ?></h4>
 			</div>
-			<?php echo form_open(admin_url('hr_control/hr_control_update_permissions/'.$staffid), array('id' => 'update_permissions')); ?>
+			<?php echo form_open(admin_url('hr_control/hr_payroll_update_permissions/'.$staffid), array('id' => 'update_permissions')); ?>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
@@ -24,7 +24,7 @@
 							<div class="hide">
 								<?php
 								$isadmin = '';
-								if(isset($member) && ($member->staffid == get_staff_user_id() || is_admin($member->staffid))) {
+								if (isset($member) && ($member->staffid == get_staff_user_id() || is_admin($member->staffid))) {
 									$isadmin = ' checked';
 								}
 								?>
@@ -33,9 +33,9 @@
 
 							<?php 
 							$selected = '';
-							foreach($roles_value as $role_value){
-								if(isset($member)){
-									if($member->role == $role_value['roleid']){
+							foreach ($roles_value as $role_value) {
+								if (isset($member)) {
+									if ($member->role == $role_value['roleid']) {
 										$selected = $role_value['roleid'];
 									}
 								} 
@@ -45,25 +45,25 @@
 								<?php echo render_select('role',$roles_value,array('roleid','name'),'staff_add_edit_role',$selected); ?>
 							</div>
 
-							<?php if(isset($member)){ 
+							<?php if (isset($member)) { 
 								$staff_attr=[];
 								$staff_attr['disabled'] = true;
 								?>
 								<div class="lable-display-name">
-									<?php echo render_input('staff_name', 'hr_staff_name', get_staff_full_name($member->staffid), '', $staff_attr); ?>
+									<?php echo render_input('staff_name', 'hrp_staff_name', get_staff_full_name($member->staffid), '', $staff_attr); ?>
 
 								</div>
 							<?php } ?>
 
 							<?php 
 							$staff_selected = '';
-							if(isset($member)){
+							if (isset($member)) {
 								$staff_selected = $member->staffid;
 							}
 							?>
 
 							<div class="class <?php  echo html_entity_decode($display_staff); ?>">
-								<?php echo render_select('staff_id',$staffs,array('staffid',array('firstname', 'lastname')),'hr_staff_name',$staff_selected); ?>
+								<?php echo render_select('staff_id',$staffs,array('staffid',array('firstname', 'lastname')),'hrp_staff_name',$staff_selected); ?>
 							</div>
 
 							<table class="table table-bordered roles no-margin">
@@ -75,27 +75,27 @@
 								</thead>
 								<tbody>
 									<?php
-									if(isset($member)){
+									if (isset($member)) {
 										$is_admin = is_admin($member->staffid);
 									}
 
-									$hr_control_permissions = list_hr_control_permisstion();
+									$hr_payroll_permissions = list_hr_payroll_permisstion();
 
-									foreach(get_available_staff_permissions($funcData) as $feature => $permission) { ?>
-										<tr data-name="<?php echo html_entity_decode($feature); ?>" class="<?php if(!in_array($feature, $hr_control_permissions)){echo "hide";} ?>">
+									foreach (get_available_staff_permissions($funcData) as $feature => $permission) { ?>
+										<tr data-name="<?php echo html_entity_decode($feature); ?>" class="<?php if (!in_array($feature, $hr_payroll_permissions)) {echo "hide";} ?>">
 											<td>
 												<b><?php echo html_entity_decode($permission['name']); ?></b>
 											</td>
 											<td>
 												<?php
-												if(isset($permission['before'])){
+												if (isset($permission['before'])) {
 													echo html_entity_decode($permission['before']);
 												}
 												?>
 												<?php foreach ($permission['capabilities'] as $capability => $name) {
 													$checked = '';
 													$disabled = '';
-													if((isset($is_admin) && $is_admin) ||
+													if ((isset($is_admin) && $is_admin) ||
 														(is_array($name) && isset($name['not_applicable']) && $name['not_applicable']) ||
 														(
 															($capability == 'view_own' || $capability == 'view'
@@ -108,18 +108,18 @@
 																&& has_role_permission($role->roleid, ($capability == 'view' ? 'view_own' : 'view'), $feature))
 														)
 														)
-													){
+													) {
 														$disabled = ' disabled ';
-												} else if((isset($member) && staff_can($capability, $feature, $member->staffid))
-													|| isset($role) && has_role_permission($role->roleid, $capability, $feature)){
+												} else if ((isset($member) && staff_can($capability, $feature, $member->staffid))
+													|| isset($role) && has_role_permission($role->roleid, $capability, $feature)) {
 													$checked = ' checked ';
 												}
 												?>
 												<div class="checkbox">
 													<input
-													<?php if($capability == 'view') { ?> data-can-view <?php } ?>
-													<?php if($capability == 'view_own') { ?> data-can-view-own <?php } ?>
-													<?php if(is_array($name) && isset($name['not_applicable']) && $name['not_applicable']){ ?> data-not-applicable="true" <?php } ?>
+													<?php if ($capability == 'view') { ?> data-can-view <?php } ?>
+													<?php if ($capability == 'view_own') { ?> data-can-view-own <?php } ?>
+													<?php if (is_array($name) && isset($name['not_applicable']) && $name['not_applicable']) { ?> data-not-applicable="true" <?php } ?>
 													type="checkbox"
 													<?php echo html_entity_decode($checked);?>
 													class="capability"
@@ -131,14 +131,14 @@
 														<?php echo !is_array($name) ? $name : $name['name']; ?>
 													</label>
 													<?php
-													if(isset($permission['help']) && array_key_exists($capability, $permission['help'])) {
+													if (isset($permission['help']) && array_key_exists($capability, $permission['help'])) {
 														echo '<i class="fa fa-question-circle" data-toggle="tooltip" data-title="'.$permission['help'][$capability].'"></i>';
 													}
 													?>
 												</div>
 											<?php } ?>
 											<?php
-											if(isset($permission['after'])){
+											if (isset($permission['after'])) {
 												echo html_entity_decode($permission['after']);
 											}
 											?>
@@ -152,7 +152,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default close_btn" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
+				<button type="button" class="btn btn-default close_btn" data-dismiss="modal"><?php echo _l('hrp_close'); ?></button>
 				<button type="submit" class="btn btn-info"><?php echo _l('submit'); ?></button>
 			</div>
 			<?php echo form_close(); ?>

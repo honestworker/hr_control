@@ -1,5 +1,5 @@
 <script>
-   $(function(){
+   $(function() {
       'use strict';
      $('#survey_form').appFormValidator();
      var survey_fields_required = $('#survey_form').find('[data-required="1"]');
@@ -16,7 +16,7 @@
        }
      });
    });
-   <?php if($this->input->get('participated')) { ?>
+   <?php if ($this->input->get('participated')) { ?>
      $('body').find('input, textarea, #submit').prop('disabled',true);
    <?php } ?>
 </script>

@@ -11,7 +11,7 @@
 
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<h4 class="no-margin"><?php echo _l('hr_employees') ?> </h4>
+								<h4 class="no-margin"><?php echo _l('hrp_employees') ?> </h4>
 							</div>
 						</div>
 						<br>
@@ -72,9 +72,9 @@
 						</div>
 						<div id="total_insurance_histtory" class="col-md-12">
 							<div class="row">  
-								<div id="hr_employees_value" class="hot handsontable htColumnHeaders" >
+								<div id="hrp_employees_value" class="hot handsontable htColumnHeaders" >
 								</div>
-								<?php echo form_hidden('hr_employees_value'); ?>
+								<?php echo form_hidden('hrp_employees_value'); ?>
 								<?php echo form_hidden('month', date('m-Y')); ?>
 								<?php echo form_hidden('employees_fill_month'); ?>
 								<?php echo form_hidden('department_employees_filter'); ?>
@@ -82,25 +82,25 @@
 								<?php echo form_hidden('role_employees_filter'); ?>
 
 								<!-- rel_type synchronization or update value -->
-								<?php echo form_hidden('hr_employees_rel_type'); ?>
+								<?php echo form_hidden('hrp_employees_rel_type'); ?>
 
 							</div>
 						</div>
 
 						<div class="col-md-12">
 							<div class="modal-footer">
-								<?php if(has_permission('hr_employee', '', 'create') || has_permission('hr_employee', '', 'edit')){ ?>
+								<?php if (has_permission('hrp_employee', '', 'create') || has_permission('hrp_employee', '', 'edit')) { ?>
 									<button type="button" class="btn btn-info pull-right save_manage_employees mleft5 "><?php echo html_entity_decode($button_name); ?></button>
-									<?php if(hr_get_profile_status() == 'hr_records'){ ?>
+									<?php if (hrp_get_hr_profile_status() == 'hr_records') { ?>
 										
-										<a href="#"class="btn btn-info pull-right display-block hr_employees_synchronization" data-toggle="tooltip" title="<?php echo _l('synchronized_employees_title'); ?>"><?php echo _l('hr_synchronized'); ?><i class=" pull-right fa fa-question-circle i_tooltip" ></i></a>
+										<a href="#"class="btn btn-info pull-right display-block hrp_employees_synchronization" data-toggle="tooltip" title="<?php echo _l('synchronized_employees_title'); ?>"><?php echo _l('hrp_synchronized'); ?><i class=" pull-right fa fa-question-circle i_tooltip" ></i></a>
 									<?php } ?>
 
-									<a href="#" class=" btn mright5 btn-info pull-right hr_employees_copy" data-toggle="tooltip" title="<?php echo _l('copy_from_last_month'); ?>">
-										<?php echo _l('hr_copy'); ?>
+									<a href="#" class=" btn mright5 btn-info pull-right hrp_employees_copy" data-toggle="tooltip" title="<?php echo _l('copy_from_last_month'); ?>">
+										<?php echo _l('hrp_copy'); ?>
 									</a>
 									<a href="<?php echo admin_url('hr_control/import_xlsx_employees'); ?>" class=" btn mright5 btn-default pull-right">
-										<?php echo _l('hr_import_excel'); ?>
+										<?php echo _l('hrp_import_excel'); ?>
 									</a>
 								<?php } ?>
 								

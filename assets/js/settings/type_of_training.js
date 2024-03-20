@@ -4,7 +4,7 @@ appValidateForm($('#add_type_of_training'), {
     
 });
 
-function new_type_of_training(){
+function new_type_of_training() {
     'use strict';
 
     $('#type_of_training').modal('show');
@@ -16,7 +16,7 @@ function new_type_of_training(){
 
     
 }
-function edit_type_of_training(invoker,id){
+function edit_type_of_training(invoker,id) {
     'use strict';
     $('#additional_type_of_training').html('');
     

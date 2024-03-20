@@ -1,5 +1,7 @@
 <script>
 (function() {
+
+
 	'use strict';
 	var addMoreVendorsInputKey = $('.marks-emp-wrap').children().length + 1;
 	$("body").on('click', '.new_marks_emp', function() {
@@ -7,7 +9,7 @@
 		if ($(this).hasClass('disabled')) { return false; }
 		var new_marks_emp = $(this).parents('.marks-emp-wrap').find('#marks_emp').eq(0).clone().appendTo($(this).parents('.marks-emp-wrap'));
 
-		new_marks_emp.find('button[role="button"]').remove();        
+		new_marks_emp.find('button[role="button"]').remove(); 
 
 		new_marks_emp.find('select[id="info_name[1]"]').attr('name', 'name[' + addMoreVendorsInputKey + ']').val('');
 		new_marks_emp.find('select[id="info_name[1]"]').attr('id', 'name[' + addMoreVendorsInputKey + ']').val('');
@@ -18,13 +20,15 @@
 		new_marks_emp.find('button[name="add_marks"]').removeClass('new_marks_emp').addClass('remove_marks_emp').removeClass('btn-primary').addClass('btn-danger');
 
 		new_marks_emp.find('select').selectpicker('val', '');
-		addMoreVendorsInputKey++;            
+		addMoreVendorsInputKey++;     
 	});
+
 
 	$("body").on('click', '.remove_marks_emp', function() {
 		'use strict';
 		$(this).parents('#marks_emp').remove();
-	});
+	}); 
+
 
 	var addMoreVendorsInputKey2 = $('.assets_wrap').children().length + 1;
 	$("body").on('click', '.new_assets_emp', function() {
@@ -33,7 +37,7 @@
 		if ($(this).hasClass('disabled')) { return false; }
 		var new_assets_emp = $(this).parents('.assets_wrap').find('#assets_emp').eq(0).clone().appendTo($(this).parents('.assets_wrap'));
 
-		new_assets_emp.find('input[name="asset_name[]"]').val('');       
+		new_assets_emp.find('input[name="asset_name[]"]').val('');
 
 		new_assets_emp.find('div[name="button_add"]').removeAttr("style");
 
@@ -41,13 +45,15 @@
 		new_assets_emp.find('button[name="add_asset"]').removeClass('new_assets_emp').addClass('remove_assets_emp').removeClass('btn-primary').addClass('btn-danger');
 
 		new_assets_emp.find('select').selectpicker('val', '');
-		addMoreVendorsInputKey2++;            
+		addMoreVendorsInputKey2++;     
 	});
+
 
 	$("body").on('click', '.remove_assets_emp', function() {
 		'use strict';
 		$(this).parents('#assets_emp').remove();
-	});
+	}); 
+
 
 	var table_staff = $('table.table-table_staff');
 	$(function() {
@@ -57,30 +63,36 @@
 			"staff_role": "[name='staff_role[]']",
 		};
 
-		initDataTable(table_staff,admin_url + 'hr_profile/table_reception_staff', [0], [0], StaffServerParams, [0, 'desc']);
+
+		initDataTable(table_staff,admin_url + 'hr_control/table_reception_staff', [0], [0], StaffServerParams, [0, 'desc']);
 
 		//hide first column
 		var hidden_columns = [1];
-		$('.table-table_staff').DataTable().columns(hidden_columns).visible(false, false);
+				$('.table-table_staff').DataTable().columns(hidden_columns).visible(false, false);
 
-		$('.table-table_staff').DataTable().on('draw', function() {
-			var rows = $('.table-table_staff').find('tr');
-			$.each(rows, function() {
-				var td = $(this).find('td').eq(4);
-				var percent = $(td).find('input[name="percent"]').val();
+				$('.table-table_staff').DataTable().on('draw', function() {
+					var rows = $('.table-table_staff').find('tr');
+					$.each(rows, function() {
+						var td = $(this).find('td').eq(4);
+						var percent = $(td).find('input[name="percent"]').val();
 
-				$(td).find('.goal-progress').circleProgress({
-					value: percent,
-					size: 45,
-					animation: false,
-					fill: {
-						gradient: ["#28b8da", "#059DC1"]
-					}
+						$(td).find('.goal-progress').circleProgress({
+							value: percent,
+							size: 45,
+							animation: false,
+							fill: {
+								gradient: ["#28b8da", "#059DC1"]
+							}
+						})
+					})
 				})
-			})
-		})				
+				
 	})
+
+
+
 })(jQuery); 
+
 
 function delete_staff_member(id) {
 	'use strict';
@@ -96,6 +108,7 @@ function new_reception() {
 	$('#add_reception_staff').modal('show');
 	$('.add-title').removeClass('hide');
 	$('.edit-title').addClass('hide');
+
 } 
 
 $("select[name='staff_id']").on('change', function() {
@@ -104,12 +117,14 @@ $("select[name='staff_id']").on('change', function() {
 
 $("select[name='training_type']").on('change', function() {
 	var $staff_id = $('select[name="staff_id"]').val();
-	if($staff_id != '') {
+	if ($staff_id != '') {
 		get_training_program_by_type();
 	} else {
 		alert_float('warning', '<?php echo _l('please_select_staff_name_before_select_training_type') ?>');
 	}
 });
+
+
 
 function get_training_program_by_type() {
 	'use strict';
@@ -118,7 +133,7 @@ function get_training_program_by_type() {
 	data.staff_id = $('select[name="staff_id"]').val();
 	data.training_type = $('select[name="training_type"]').val();
 	
-	$.post(admin_url+'hr_profile/get_training_program_by_type', data).done(function(response) {
+	$.post(admin_url+'hr_control/get_training_program_by_type', data).done(function(response) {
 		response = JSON.parse(response);
 
 		$('#training_program').html('');
@@ -128,6 +143,7 @@ function get_training_program_by_type() {
 	  $(".selectpicker").selectpicker('refresh');
 	});
 }
+
 
 var counttitle = $('#manage_reception').children('.title').length-1;
 function add_title(el) {
@@ -142,6 +158,7 @@ function add_title(el) {
 	row_title.find('input').val('');
 }
 
+
 function add_subtitle(el) {
 	'use strict';
 	var step_increa = $(el).closest('.title').find('.sub .row').length;
@@ -152,21 +169,24 @@ function add_subtitle(el) {
 	row_title.find('input').val('');
 }
 
+
 function remove_title(el) {
 	'use strict';
 	$(el).closest('.title').remove();
 }
+
 
 function remove_subtitle(el) {
 	'use strict';
 	$(el).closest('.row').remove();
 }
 
+
 function delete_reception(id) {
 	'use strict';
 	$.post(admin_url+'recruitment/delete_reception/'+id).done(function(response) {
 		response = JSON.parse(response);
-		if(response.success == true) {
+		if (response.success == true) {
 			alert_float('success',response.message);
 			table_staff.DataTable().ajax.reload()
 			.columns.adjust()
@@ -174,6 +194,7 @@ function delete_reception(id) {
 		}
 	});
 }
+
 
 function show_info_reception(id) {
 	'use strict';
@@ -187,43 +208,47 @@ function show_info_reception(id) {
 
 function staff_bulk_actions() {
 	'use strict';
+
 	$('#table_staff_bulk_actions').modal('show');
 }
 
-// Leads bulk action
-function staff_delete_bulk_action(event) {
-	'use strict';
-	if (confirm_delete()) {
-		var mass_delete = $('#mass_delete').prop('checked');
+	 // Leads bulk action
+	 function staff_delete_bulk_action(event) {
+		'use strict';
 
-		if(mass_delete == true) {
-			var ids = [];
-			var data = {};
+		if (confirm_delete()) {
+			var mass_delete = $('#mass_delete').prop('checked');
 
-			data.mass_delete = true;
-			data.rel_type = 'hrm_reception_staff';
+			if (mass_delete == true) {
+				var ids = [];
+				var data = {};
 
-			var rows = $('#table-table_staff').find('tbody tr');
-			$.each(rows, function() {
-				var checkbox = $($(this).find('td').eq(0)).find('input');
-				if (checkbox.prop('checked') === true) {
-					ids.push(checkbox.val());
-				}
-			});
+				data.mass_delete = true;
+				data.rel_type = 'hrm_reception_staff';
 
-			data.ids = ids;
-			$(event).addClass('disabled');
-			setTimeout(function() {
-				$.post(admin_url + 'hr_profile/hrm_delete_bulk_action', data).done(function() {
-					window.location.reload();
-				}).fail(function(data) {
-					$('#table_staff_bulk_actions').modal('hide');
-					alert_float('danger', data.responseText);
+				var rows = $('#table-table_staff').find('tbody tr');
+				$.each(rows, function() {
+					var checkbox = $($(this).find('td').eq(0)).find('input');
+					if (checkbox.prop('checked') === true) {
+						ids.push(checkbox.val());
+					}
 				});
-			}, 200);
-		} else {
-			window.location.reload();
+
+				data.ids = ids;
+				$(event).addClass('disabled');
+				setTimeout(function() {
+					$.post(admin_url + 'hr_control/hrm_delete_bulk_action', data).done(function() {
+						window.location.reload();
+					}).fail(function(data) {
+						$('#table_staff_bulk_actions').modal('hide');
+						alert_float('danger', data.responseText);
+					});
+				}, 200);
+			} else {
+				window.location.reload();
+			}
+
 		}
 	}
-}
+
 </script>

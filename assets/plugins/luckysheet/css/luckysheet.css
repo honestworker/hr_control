@@ -3136,7 +3136,7 @@ a.btn.disabled,fieldset[disabled] a.btn{
     top:10%;
     position:relative
 }
-@media (max-width:776px){
+@media (max-width:776px) {
     .luckysheet-chart-point-config-set{
         width:90%
     }
@@ -3144,7 +3144,7 @@ a.btn.disabled,fieldset[disabled] a.btn{
         width:10%
     }
 }
-@media (min-width:768px){
+@media (min-width:768px) {
     .luckysheet-chart-point-config-set{
         width:80%
     }
@@ -3152,7 +3152,7 @@ a.btn.disabled,fieldset[disabled] a.btn{
         width:20%
     }
 }
-@media (min-width:1024px){
+@media (min-width:1024px) {
     .luckysheet-chart-point-config-set{
         width:70%
     }
@@ -3160,7 +3160,7 @@ a.btn.disabled,fieldset[disabled] a.btn{
         width:30%
     }
 }
-@media (min-width:1280px){
+@media (min-width:1280px) {
     .luckysheet-chart-point-config-set{
         width:60%
     }
@@ -3168,7 +3168,7 @@ a.btn.disabled,fieldset[disabled] a.btn{
         width:40%
     }
 }
-@media (min-width:1680px){
+@media (min-width:1680px) {
     .luckysheet-chart-point-config-set{
         width:50%
     }
@@ -3899,13 +3899,13 @@ a.btn.disabled,fieldset[disabled] a.btn{
     display:inline-block;
     text-align:center
 }
-#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(1){
+#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(1) {
     width:25%
 }
-#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(2){
+#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(2) {
     width:25%
 }
-#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(3){
+#luckysheet-search-replace #searchAllbox .boxTitle span:nth-of-type(3) {
     width:50%
 }
 #luckysheet-search-replace #searchAllbox .boxMain .boxItem{
@@ -3924,19 +3924,19 @@ a.btn.disabled,fieldset[disabled] a.btn{
     text-align:center;
     float:left
 }
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(1){
+#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(1) {
     width:25%;
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap
 }
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(2){
+#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(2) {
     width:25%;
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap
 }
-#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(3){
+#luckysheet-search-replace #searchAllbox .boxMain .boxItem span:nth-of-type(3) {
     width:50%;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -3990,10 +3990,10 @@ a.btn.disabled,fieldset[disabled] a.btn{
     background-color:#8c89fe;
     color:#fff
 }
-#formulaTypeList .listBox span:nth-of-type(1){
+#formulaTypeList .listBox span:nth-of-type(1) {
     display:block
 }
-#formulaTypeList .listBox span:nth-of-type(2){
+#formulaTypeList .listBox span:nth-of-type(2) {
     display:block
 }
 #luckysheet-search-formula-parm{
@@ -4200,13 +4200,13 @@ a.btn.disabled,fieldset[disabled] a.btn{
     line-height:29px;
     float:left
 }
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(1){
+#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(1) {
     width:30%
 }
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(2){
+#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(2) {
     width:20%
 }
-#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(3){
+#luckysheet-administerRule-dialog .ruleBox .ruleList .listTitle span:nth-of-type(3) {
     width:45%
 }
 #luckysheet-administerRule-dialog .ruleBox .ruleList .listBox{

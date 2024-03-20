@@ -11,7 +11,7 @@
 
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<h4 class="no-margin"><?php echo _l('hr_commission_manage') ?> </h4>
+								<h4 class="no-margin"><?php echo _l('hrp_commission_manage') ?> </h4>
 							</div>
 						</div>
 						<br>
@@ -72,9 +72,9 @@
 						</div>
 						<div id="total_insurance_histtory" class="col-md-12">
 							<div class="row">  
-								<div id="hr_commissions_value" class="hot handsontable htColumnHeaders" >
+								<div id="hrp_commissions_value" class="hot handsontable htColumnHeaders" >
 								</div>
-								<?php echo form_hidden('hr_commissions_value'); ?>
+								<?php echo form_hidden('hrp_commissions_value'); ?>
 								<?php echo form_hidden('month', date('m-Y')); ?>
 								<?php echo form_hidden('commissions_fill_month'); ?>
 								<?php echo form_hidden('department_commissions_filter'); ?>
@@ -82,23 +82,23 @@
 								<?php echo form_hidden('role_commissions_filter'); ?>
 
 								<!-- rel_type synchronization or update value -->
-								<?php echo form_hidden('hr_commissions_rel_type'); ?>
+								<?php echo form_hidden('hrp_commissions_rel_type'); ?>
 
 							</div>
 						</div>
 
 						<div class="col-md-12">
 							<div class="modal-footer">
-								<?php if(has_permission('hr_commission', '', 'create') || has_permission('hr_commission', '', 'edit')){ ?>
+								<?php if (has_permission('hrp_commission', '', 'create') || has_permission('hrp_commission', '', 'edit')) { ?>
 									<button type="button" class="btn btn-info pull-right save_manage_commissions mleft5 "><?php echo html_entity_decode($button_name); ?></button>
 									
-									<?php if(hr_get_commission_status() == 'commission'){ ?>
-										<button type="button" class="btn btn-info pull-right save_synchronized mleft5 " onclick="save_synchronized(this); return false;" title="<?php echo _l('synchronized_commission_title'); ?>"><?php echo _l('hr_synchronized'); ?> <i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('synchronized_commission_title'); ?>"></i></button>
+									<?php if (hrp_get_commission_status() == 'commission') { ?>
+										<button type="button" class="btn btn-info pull-right save_synchronized mleft5 " onclick="save_synchronized(this); return false;" title="<?php echo _l('synchronized_commission_title'); ?>"><?php echo _l('hrp_synchronized'); ?> <i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('synchronized_commission_title'); ?>"></i></button>
 
 									<?php } ?>
 									
 									<a href="<?php echo admin_url('hr_control/import_xlsx_commissions'); ?>" class=" btn mright5 btn-default pull-right">
-										<?php echo _l('hr_import_excel'); ?>
+										<?php echo _l('hrp_import_excel'); ?>
 									</a>
 								<?php } ?>
 								

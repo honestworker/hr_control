@@ -1,7 +1,7 @@
 <!--mail_modal-->
 <div class="modal" id="support_<?php echo isset($article) ? $article->articleid : '' ; ?>_form" tabindex="-1" role="dialog">
   <div class="modal-dialog">
-      <?php echo form_open_multipart(admin_url('hr_profile/knowledge_base_q_a/send_mail_support'),array('id'=>'mail_form_knowledge_base')); ?>
+      <?php echo form_open_multipart(admin_url('hr_control/knowledge_base_q_a/send_mail_support'),array('id'=>'mail_form_knowledge_base')); ?>
       <div class="modal-content w-100">
           <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

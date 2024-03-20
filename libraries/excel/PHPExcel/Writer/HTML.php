@@ -660,10 +660,10 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                 if ($drawing->getCoordinates() != $coordinates) {
                     continue;
                 }
-                ob_start();                                //  Let's start output buffering.
+                ob_start();                         //  Let's start output buffering.
                 imagepng($drawing->getImageResource());    //  This will normally output the image, but because of ob_start(), it won't.
-                $contents = ob_get_contents();             //  Instead, output above is saved to $contents
-                ob_end_clean();                            //  End the output buffer.
+                $contents = ob_get_contents();      //  Instead, output above is saved to $contents
+                ob_end_clean();                     //  End the output buffer.
 
                 $dataUri = "data:image/jpeg;base64," . base64_encode($contents);
 
@@ -671,7 +671,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                 //  max-width: 100% ensures that image doesnt overflow containing cell
                 //  width: X sets width of supplied image.
                 //  As a result, images bigger than cell will be contained and images smaller will not get stretched
-                $html .= '<img src="'.$dataUri.'" style="max-width:100%;width:'.$drawing->getWidth().'px;" />';
+                $html .= '<img src="'.$dataUri.'" style="max-width:100%;width:'.$drawing->getWidth() . 'px;" />';
             }
         }
 
@@ -696,7 +696,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
             if ($chart instanceof PHPExcel_Chart) {
                 $chartCoordinates = $chart->getTopLeftPosition();
                 if ($chartCoordinates['cell'] == $coordinates) {
-                    $chartFileName = PHPExcel_Shared_File::sys_get_temp_dir().'/'.uniqid().'.png';
+                    $chartFileName = PHPExcel_Shared_File::sys_get_temp_dir() . '/'.uniqid() . '.png';
                     if (!$chart->render($chartFileName)) {
                         return;
                     }
@@ -962,7 +962,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
         if ($textAlign = $this->mapHAlign($pStyle->getHorizontal())) {
             $css['text-align'] = $textAlign;
             if (in_array($textAlign, array('left', 'right'))) {
-                $css['padding-'.$textAlign] = (string)((int)$pStyle->getIndent() * 9).'px';
+                $css['padding-'.$textAlign] = (string)((int)$pStyle->getIndent() * 9) . 'px';
             }
         }
 

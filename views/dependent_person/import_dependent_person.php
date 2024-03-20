@@ -26,7 +26,7 @@ $file_header[] = _l('hr_status_label');
 
 						</div>
 
-						<?php if(!isset($simulate)) { ?>
+						<?php if (!isset($simulate)) { ?>
 							<ul>
 								<li>1. <?php echo _l('hr_import_excel_1'); ?></li>
 								<li>2. <?php echo _l('file_xlsx_dependent_person1'); ?></li>
@@ -40,8 +40,8 @@ $file_header[] = _l('hr_status_label');
 											<?php
 											$total_fields = 0;
 											
-											for($i=0;$i<count($file_header);$i++){
-												if($i == 0 || $i == 1){
+											for($i=0;$i<count($file_header);$i++) {
+												if ($i == 0 || $i == 1) {
 													?>
 													<th class="bold"><span class="text-danger">*</span> <?php echo html_entity_decode($file_header[$i]) ?> </th>
 													<?php 
@@ -60,9 +60,9 @@ $file_header[] = _l('hr_status_label');
 										</tr>
 									</thead>
 									<tbody>
-										<?php for($i = 0; $i<1;$i++){
+										<?php for($i = 0; $i<1;$i++) {
 											echo '<tr>';
-											for($x = 0; $x<count($file_header);$x++){
+											for($x = 0; $x<count($file_header);$x++) {
 												echo '<td>- </td>';
 											}
 											echo '</tr>';
@@ -104,6 +104,6 @@ $file_header[] = _l('hr_status_label');
 	</div>
 </div>
 <?php init_tail(); ?>
-<?php require('modules/hr_profile/assets/js/dependent_person/import_excel_js.php'); ?>
+<?php require('modules/hr_control/assets/js/dependent_person/import_excel_js.php'); ?>
 </body>
 </html>

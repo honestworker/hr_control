@@ -1,6 +1,6 @@
-    (function(){
+    (function() {
       'use strict';
-      window.addEventListener('load',function(){
+      window.addEventListener('load',function() {
         appValidateForm($("body").find('#job_position'), {
           'position_name': 'required',
           'position_code': 'required',
@@ -12,13 +12,13 @@
        'use strict';
        var tag_id = $(this).parents('li').val();
        /*delete tag id*/
-       if(tag_id){
-        $.post(admin_url + 'hr_profile/job_position_delete_tag_item/'+tag_id).done(function(response) {
+       if (tag_id) {
+        $.post(admin_url + 'hr_control/job_position_delete_tag_item/'+tag_id).done(function(response) {
           response = JSON.parse(response);
 
-          if(response.status == 'true'){
+          if (response.status == 'true') {
             alert_float('success', response.message);
-          }else{
+          } else {
             alert_float('warning', response.message);
           }
 
@@ -65,7 +65,7 @@
       "job_p_id"    : "[name='job_p_id[]']"
     };
     var table_job_position = $('.table-table_job_position');
-    initDataTable(table_job_position, admin_url+'hr_profile/table_job_position', [0], [0], jobPositionServerParams, [0, 'desc']);
+    initDataTable(table_job_position, admin_url+'hr_control/table_job_position', [0], [0], jobPositionServerParams, [0, 'desc']);
 
     //hide first column
     var hidden_columns = [1];
@@ -86,7 +86,7 @@
   })(jQuery);
 
   var Input_totall =0;
-  function hrrecord_new_job_position(){  
+  function hrrecord_new_job_position() {  
    'use strict';
 
     $('#new_job_positions').modal('show');  
@@ -103,12 +103,12 @@
     init_selectpicker();
 
     var rel_type ='position_code';
-    requestGetJSON('hr_profile/get_code/' + rel_type).done(function (response) {
+    requestGetJSON('hr_control/get_code/' + rel_type).done(function (response) {
         $("input[name='position_code']").val(response.code);
     });
   }
 
-  function hrrecord_edit_job_position(invoker,id){
+  function hrrecord_edit_job_position(invoker,id) {
      'use strict';
 
      $('#additional_proposal').empty();
@@ -121,19 +121,19 @@
 
      var department_id_str = $(invoker).data('department_id');
 
-      if(typeof(department_id_str) == "string"){
+      if (typeof(department_id_str) == "string") {
         $('#job_position select[name="department_id[]"]').val( ($(invoker).data('department_id')).split(',')).change();
-      }else{
+      } else {
         $('#job_position select[name="department_id[]"]').val($(invoker).data('department_id')).change();
       }
 
-      $.post(admin_url + 'hr_profile/get_list_job_position_tags_file/'+id).done(function(response) {
+      $.post(admin_url + 'hr_control/get_list_job_position_tags_file/'+id).done(function(response) {
         response = JSON.parse(response);
 
-        if(response.job_p != 0){
+        if (response.job_p != 0) {
           $('#job_position select[name="job_p_id"]').val(response.job_p).change();
 
-        }else{
+        } else {
           $('#job_position select[name="job_p_id"]').val('').change();
 
         }
@@ -160,7 +160,7 @@
 
   }
 
-  function edit_job_position(invoker,id){
+  function edit_job_position(invoker,id) {
      'use strict';
 
      $('#additional_proposal').empty();
@@ -169,19 +169,19 @@
      $('#job_position input[name="position_code"]').val($(invoker).data('position_code'));
      var department_id_str = $(invoker).data('department_id');
 
-      if(typeof(department_id_str) == "string"){
+      if (typeof(department_id_str) == "string") {
         $('#job_position select[name="department_id[]"]').val( ($(invoker).data('department_id')).split(',')).change();
-      }else{
+      } else {
         $('#job_position select[name="department_id[]"]').val($(invoker).data('department_id')).change();
       }
 
-      $.post(admin_url + 'hr_profile/get_list_job_position_tags_file/'+id).done(function(response) {
+      $.post(admin_url + 'hr_control/get_list_job_position_tags_file/'+id).done(function(response) {
         response = JSON.parse(response);
 
-        if(response.job_p != 0){
+        if (response.job_p != 0) {
           $('#job_position select[name="job_p_id"]').val(response.job_p).change();
 
-        }else{
+        } else {
           $('#job_position select[name="job_p_id"]').val('').change();
 
         }
@@ -205,7 +205,7 @@
     init_tags_inputs();
   }
 
-  function preview_file_job_position(invoker){
+  function preview_file_job_position(invoker) {
    'use strict';
 
     var id = $(invoker).attr('id');
@@ -217,7 +217,7 @@
    'use strict';
 
     $('#contract_file_data').empty();
-      $("#contract_file_data").load(admin_url + 'hr_profile/preview_job_position_file/' + id + '/' + rel_id, function(response, status, xhr) {
+      $("#contract_file_data").load(admin_url + 'hr_control/preview_job_position_file/' + id + '/' + rel_id, function(response, status, xhr) {
         $('#new_job_positions').removeClass('in');
         if (status == "error") {
           alert_float('danger', xhr.statusText);
@@ -229,13 +229,13 @@
     'use strict';
 
     if (confirm_delete()) {
-      $.get(admin_url + 'hr_profile/delete_hr_profile_job_position_attachment_file/' + id, function (response) {
+      $.get(admin_url + 'hr_control/delete_hr_profile_job_position_attachment_file/' + id, function (response) {
         if (response.success == true) {
           $(wrapper).parents('.contract-attachment-wrapper').remove();
 
             var totalAttachmentsIndicator = $('.attachments-indicator');
             var totalAttachments = totalAttachmentsIndicator.text().trim();
-          if(totalAttachments == 1) {
+          if (totalAttachments == 1) {
             totalAttachmentsIndicator.remove();
           } else {
             totalAttachmentsIndicator.text(totalAttachments-1);
@@ -248,7 +248,7 @@
     return false;
   }
 
-  function new_job_p(){
+  function new_job_p() {
     'use strict';
 
     $('#additional_job').empty();
@@ -262,7 +262,7 @@
 
   }
 
-    function staff_bulk_actions(){
+    function staff_bulk_actions() {
     'use strict';
 
     $('#table_contract_bulk_actions').modal('show');
@@ -275,7 +275,7 @@
     if (confirm_delete()) {
       var mass_delete = $('#mass_delete').prop('checked');
 
-      if(mass_delete == true){
+      if (mass_delete == true) {
         var ids = [];
         var data = {};
 
@@ -293,14 +293,14 @@
         data.ids = ids;
         $(event).addClass('disabled');
         setTimeout(function() {
-          $.post(admin_url + 'hr_profile/hrm_delete_bulk_action', data).done(function() {
+          $.post(admin_url + 'hr_control/hrm_delete_bulk_action', data).done(function() {
             window.location.reload();
           }).fail(function(data) {
             $('#table_contract_bulk_actions').modal('hide');
             alert_float('danger', data.responseText);
           });
         }, 200);
-      }else{
+      } else {
         window.location.reload();
       }
 

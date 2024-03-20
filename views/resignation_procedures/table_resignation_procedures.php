@@ -22,13 +22,13 @@ $join = [''];
 $where = [];
 
 //load deparment by manager
-if(!is_admin() && !has_permission('hrm_procedures_for_quitting_work','','view')){
+if (!is_admin() && !has_permission('hrm_procedures_for_quitting_work','','view')) {
 	  //View own
 	$staff_ids = $this->ci->hr_profile_model->get_staff_by_manager();
 	if (count($staff_ids) > 0) {
 		$where[] = 'AND '.db_prefix().'hr_list_staff_quitting_work.staffid IN (' . implode(', ', $staff_ids) . ')';
 
-	}else{
+	} else {
 		$where[] = 'AND 1=2';
 	}
 
@@ -40,9 +40,9 @@ $output  = $result['output'];
 $rResult = $result['rResult'];
 foreach ($rResult as $aRow) {
 
-	if($aRow['total'] == 0 && $aRow['total_check'] == 0){
+	if ($aRow['total'] == 0 && $aRow['total_check'] == 0) {
 		$ces = 100;
-	}else{
+	} else {
 		$ces = round($aRow['total_check'] * 100 / $aRow['total'], 2);
 	}
 	$row = [];
@@ -51,11 +51,11 @@ foreach ($rResult as $aRow) {
 	$row[] = $aRow['id'];
 
 	$staff_n = '';
-	if(is_admin() || has_permission('hrm_procedures_for_quitting_work','','edit')){
+	if (is_admin() || has_permission('hrm_procedures_for_quitting_work','','edit')) {
 		$staff_n .=  '<a href="#" data-id="'.$aRow['staffid'].'" onclick="detail_checklist_staff(this);">' . staff_profile_image($aRow['staffid'], [
 			'staff-profile-image-small',
 		]) . '</a><a href="#" onclick="detail_checklist_staff(this)" data-id="'.$aRow['staffid'].'">' . $aRow['staff_name']. '</a>';
-	}else{
+	} else {
 		$staff_n .= staff_profile_image($aRow['staffid'], ['staff-profile-image-small',]).' '. $aRow['staff_name'];
 	}
 
@@ -82,26 +82,26 @@ foreach ($rResult as $aRow) {
 
 
 
-	if($aRow['approval'] == 'approved' ){
+	if ($aRow['approval'] == 'approved' ) {
 		$row[] = '<span class="label label-success">'._l('hr_agree_label').'</span>';
-	}else{
+	} else {
 		$row[] ='<span class="label label-primary">'._l('hr_pending_label').'</span>';
 	}
 	$options ='';
-	if(is_admin() || has_permission('hrm_procedures_for_quitting_work','','edit')){	
+	if (is_admin() || has_permission('hrm_procedures_for_quitting_work','','edit')) {	
 		$options .= '<a href="#" onclick="detail_checklist_staff(this); return false" data-toggle="tooltip" data-original-title="'._l('hr_view').'" data-id="'.$aRow['staffid'].'" class="btn btn-default btn-icon" data-toggle="sidebar-right" data-target=".additional-timesheets-sidebar"><i class="fa fa-eye"></i></a>';
 	}
 
-	if(($ces == 100) && (is_admin() || has_permission('hrm_procedures_for_quitting_work','','edit'))){
-		if($aRow['approval'] == null ){
+	if (($ces == 100) && (is_admin() || has_permission('hrm_procedures_for_quitting_work','','edit'))) {
+		if ($aRow['approval'] == null ) {
 
 			$options .= '<a class="btn btn-success btn-xs mleft5" id="'.$aRow['staffid'].'" resignation_id="'.$aRow['id'].'" data-toggle="tooltip" title=""  onclick="update_status_quit_work(this);" data-original-title="'._l('hr_agree_label').'"><i class="fa fa-check"></i></a>';
 		}
 	}
 
-	if((is_admin() || (has_permission('hrm_procedures_for_quitting_work','','delete')) && $aRow['approval'] == null) ){
+	if ((is_admin() || (has_permission('hrm_procedures_for_quitting_work','','delete')) && $aRow['approval'] == null) ) {
 
-		$options .= '<a class="btn btn-danger btn-xs mleft5" id="confirmDelete" data-toggle="tooltip" title="" href="'. admin_url('hr_profile/delete_procedures_for_quitting_work/'.$aRow['staffid']).'"  data-original-title="'._l('hr_delete_resignation_procedures').'"><i class="fa fa-remove"></i></a>';
+		$options .= '<a class="btn btn-danger btn-xs mleft5" id="confirmDelete" data-toggle="tooltip" title="" href="'. admin_url('hr_control/delete_procedures_for_quitting_work/'.$aRow['staffid']).'"  data-original-title="'._l('hr_delete_resignation_procedures').'"><i class="fa fa-remove"></i></a>';
 	}
 
 	$row[]   = $options;

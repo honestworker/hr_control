@@ -19,7 +19,7 @@
 		html += '</div>';
 		html += '</div><br/>';
 		html += ' </div>';
-		$('.insurrance').append(html);            
+		$('.insurrance').append(html);     
 	}
 
 	function add_asset() {
@@ -62,14 +62,14 @@
 	}
 
 
-	function remove_question(el){
+	function remove_question(el) {
 		'use strict';
 		$(el).parent().parent().parent().remove();
 	}
 
 
 
-	function add_procedure_retire(){
+	function add_procedure_retire() {
 		'use strict';
 		var html = '';
 		html += '<div class="row">';
@@ -136,7 +136,7 @@
 		'use strict';
 		var id = $(el).data('id');
 		$('input[name="id"]').val(id);
-		$.post(admin_url + 'hr_profile/edit_procedure_retire/'+id).done(function(response) {
+		$.post(admin_url + 'hr_control/edit_procedure_retire/'+id).done(function(response) {
 			response = JSON.parse(response);
 
 			detail_index = response.count_option_value;
@@ -146,13 +146,13 @@
 			var html = '';
 
 			var edit_index = 1;
-			$.each(response.option_name, function(e, v){
+			$.each(response.option_name, function(e, v) {
 				html += '<div class="box_area_s">';
 				html += '<div class="row">';
 				html += '<div class="col-md-1">';
-				if(e == 1){
+				if (e == 1) {
 					html += '<a href="#" class="add_remove_action add_more_box btn" onclick="add_option_modal(this);"><i class="fa fa-plus"></i></a>';
-				}else{
+				} else {
 					html += '<a href="#" class="add_remove_action add_more_box btn text-danger" onclick="remove_question(this);"><i class="fa fa-remove"></i></a>';
 				}
 				html += '</div>';

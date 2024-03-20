@@ -27,28 +27,46 @@
 
 								if ($gr == 'hr_records_earnings_list') {
 									echo html_entity_decode($icon[$gr] .' '. _l('earnings_list'));
-								} else if ($gr == 'income_tax_rates') {
+								} elseif ($gr == 'income_tax_rates') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'income_tax_rebates') {
+								} elseif ($gr == 'income_tax_rebates') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'hr_records_earnings_list') {
+								} elseif ($gr == 'hr_records_earnings_list') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'earnings_list') {
+								} elseif ($gr == 'earnings_list') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'salary_deductions_list') {
+								} elseif ($gr == 'salary_deductions_list') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'insurance_list') {
+								} elseif ($gr == 'insurance_list') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'company_contributions_list') {
+								} elseif ($gr == 'company_contributions_list') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'payroll_columns') {
+								} elseif ($gr == 'payroll_columns') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'data_integration') {
+								} elseif ($gr == 'data_integration') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'permissions') {
+								} elseif ($gr == 'permissions') {
 									echo html_entity_decode($icon[$gr] .' '. _l($gr));
-								} else if ($gr == 'reset_data') {
-									echo html_entity_decode($icon[$gr] .' '. _l($gr)); 
+								} elseif ($gr == 'reset_data') {
+									echo html_entity_decode($icon[$gr] .' '. _l($gr));
+								} elseif($gr == 'workplace') {
+								 	echo _l('hr_hr_workplace');
+								} elseif ($gr == 'salary_type') {
+								 	echo _l('hr_salary_type');
+								} elseif ($gr == 'procedure_retire') {
+								 	echo _l('hr_procedure_retire');
+								} elseif ($gr == 'type_of_training') {
+								 	echo _l('hr_type_of_training');
+								} elseif ($gr == 'reception_staff') {
+								 	echo _l('hr_reception_staff');
+								} elseif ($gr == 'hr_profile_permissions') {
+								 	echo _l('hr_hr_profile_permissions');
+								} elseif ($gr == 'prefix_number') {
+								 	echo _l('hr_prefix_number');
+								} elseif ($gr == 'allowance_type') {
+								 	echo _l('hr_allowance_type');
+								} else {
+								 	echo _l($group_item);
 								}
 							?>
 						</a>
@@ -76,27 +94,35 @@
 $viewuri = $_SERVER['REQUEST_URI'];
 ?>
 
-<?php if (!(strpos($viewuri,'admin/hr_control/setting?group=income_tax_rates') === false)) {
+<?php if (!(strpos($viewuri,'admin/hr_control/setting?group=income_tax_rates') === false)) { 
 	require 'modules/hr_control/assets/js/settings/income_tax_rates_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=payroll_columns') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=payroll_columns') === false)) {
 	require 'modules/hr_control/assets/js/payroll_column/payroll_column_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=income_tax_rebates') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=income_tax_rebates') === false)) {
 	require 'modules/hr_control/assets/js/settings/income_tax_rebates_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=earnings_list') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=earnings_list') === false)) {
 	require 'modules/hr_control/assets/js/settings/earnings_list_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=salary_deductions_list') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=salary_deductions_list') === false)) {
 	require 'modules/hr_control/assets/js/settings/salary_deductions_list_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=company_contributions_list') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=company_contributions_list') === false)) {
 	require 'modules/hr_control/assets/js/settings/company_contributions_list_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=data_integration') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=data_integration') === false)) {
 	require 'modules/hr_control/assets/js/settings/data_integration_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=hr_records_earnings_list') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=hr_records_earnings_list') === false)) {
 	require 'modules/hr_control/assets/js/settings/hr_records_earnings_list_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=permissions') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=permissions') === false)) {
 	require 'modules/hr_control/assets/js/settings/permissions_js.php';
-} else if (!(strpos($viewuri,'admin/hr_control/setting?group=insurance_list') === false)) {
+} elseif (!(strpos($viewuri,'admin/hr_control/setting?group=insurance_list') === false)) {
 	require 'modules/hr_control/assets/js/settings/insurance_list_js.php';
+} elseif ($group == 'reception_staff') {
+	require('modules/hr_control/assets/js/setting/reception_staff_js.php');
+} elseif (!(strpos($viewuri,'admin/hr_profile/setting?group=hr_profile_permissions') === false)) {
+	require('modules/hr_control/assets/js/setting/hr_profile_permissions_js.php');
 }
-?>
+if (isset($icon[$gr])) {
+	require('modules/hr_control/assets/js/setting/manage_setting_js.php');
+}
+
+ ?>
 </body>
 </html>

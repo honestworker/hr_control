@@ -683,7 +683,7 @@ class PHPExcel_Shared_String
             return true;
         }
         return false;
-    }    //    function convertToNumberIfFraction()
+    }//    function convertToNumberIfFraction()
 
     /**
      * Get the decimal separator. If it has not yet been set explicitly, try to obtain number

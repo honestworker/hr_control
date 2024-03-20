@@ -1,13 +1,13 @@
 <div class="modal fade" id="dependentPersonModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
-		<?php echo form_open(admin_url('hr_profile/dependent_person'), array('id' => 'dependent_person' )); ?>
+		<?php echo form_open(admin_url('hr_control/dependent_person'), array('id' => 'dependent_person' )); ?>
 
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">
-					<span class="edit-title <?php if(!isset($dependent_person)){ echo ' hide' ;}; ?>"><?php echo _l('hr_edit_dependent_person'); ?></span>
-					<span class="add-title <?php if(isset($dependent_person)){ echo ' hide' ;}; ?>"><?php echo _l('hr_new_dependent_person'); ?></span>
+					<span class="edit-title <?php if (!isset($dependent_person)) { echo ' hide' ;}; ?>"><?php echo _l('hr_edit_dependent_person'); ?></span>
+					<span class="add-title <?php if (isset($dependent_person)) { echo ' hide' ;}; ?>"><?php echo _l('hr_new_dependent_person'); ?></span>
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -18,16 +18,16 @@
 							<div class="row">
 
 								<?php
-								if(isset($dependent_person)){
+								if (isset($dependent_person)) {
 									echo form_hidden('id',$dependent_person->id);
 								}
 								echo form_hidden('manage',$manage);
 								?>
 
-								<div class="col-md-12 <?php if(isset($dependent_person)){ echo ' hide' ;}; ?>">
+								<div class="col-md-12 <?php if (isset($dependent_person)) { echo ' hide' ;}; ?>">
 									<?php 
 									$staff_selected = '';
-									if(isset($dependent_person)){
+									if (isset($dependent_person)) {
 										$staff_selected = $dependent_person->staffid;
 									}
 
@@ -89,5 +89,5 @@
 		<?php echo form_close(); ?>
 	</div>
 </div>
-<?php require('modules/hr_profile/assets/js/dependent_person/modal_js.php'); ?>
+<?php require('modules/hr_control/assets/js/dependent_person/modal_js.php'); ?>
 

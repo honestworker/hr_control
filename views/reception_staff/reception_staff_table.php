@@ -20,13 +20,13 @@ $join         = [
 $where = [];
 
 //load deparment by manager
-if(!is_admin() && !has_permission('hrm_reception_staff','','view')){
+if (!is_admin() && !has_permission('hrm_reception_staff','','view')) {
 	  //View own
 	$staff_ids = $this->ci->hr_profile_model->get_staff_by_manager();
 	if (count($staff_ids) > 0) {
 		$where[] = 'AND '.db_prefix().'hr_rec_transfer_records.staffid IN (' . implode(', ', $staff_ids) . ')';
 
-	}else{
+	} else {
 		$where[] = 'AND 1=2';
 	}
 
@@ -53,19 +53,19 @@ foreach ($rResult as $aRow) {
 
 	$_data ='';
 
-	$_data .= '<a href="' . admin_url('hr_profile/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . staff_profile_image($aRow[db_prefix().'hr_rec_transfer_records.staffid'], [
+	$_data .= '<a href="' . admin_url('hr_control/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . staff_profile_image($aRow[db_prefix().'hr_rec_transfer_records.staffid'], [
 		'staff-profile-image-small',
 	]) . '</a>';
 
-	$_data .= ' <a href="' . admin_url('hr_profile/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . $aRow['firstname'] . ' ' . $aRow['lastname'] . '</a><br/>';
+	$_data .= ' <a href="' . admin_url('hr_control/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . $aRow['firstname'] . ' ' . $aRow['lastname'] . '</a><br/>';
 
 	$_data  .= '<div class="row-options">';
-	if(is_admin() || has_permission('hrm_reception_staff','','edit')){
+	if (is_admin() || has_permission('hrm_reception_staff','','edit')) {
 		$_data.='<span class="reception"><a  href="#" onclick="show_info_reception('.$aRow[db_prefix().'hr_rec_transfer_records.staffid'].');" >'. _l('hr_view') .'</a> |';
 	}
 
-	if(is_admin() || has_permission('hrm_reception_staff','','delete')){
-		$_data.=' <a  href="' . admin_url('hr_profile/delete_reception/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '" class="text-danger" >'. _l('delete') .'</a></span>';
+	if (is_admin() || has_permission('hrm_reception_staff','','delete')) {
+		$_data.=' <a  href="' . admin_url('hr_control/delete_reception/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '" class="text-danger" >'. _l('delete') .'</a></span>';
 	}
 	$_data .= '</div>';
 

@@ -1578,7 +1578,7 @@ class PHPExcel_Calculation_Engineering
         $octVal = decoct(hexdec($x));
 
         return self::nbrConversionFormat($octVal, $places);
-    }    //    function HEXTOOCT()
+    }//    function HEXTOOCT()
 
 
     /**

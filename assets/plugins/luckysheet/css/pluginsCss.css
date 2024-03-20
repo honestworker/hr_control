@@ -251,7 +251,7 @@
     border:1px solid #efeff0;
     color:#477cff
 }
-@media (min-width:564px){
+@media (min-width:564px) {
     .daterangepicker{
         width:auto
     }
@@ -294,7 +294,7 @@
         float:left
     }
 }
-@media (min-width:730px){
+@media (min-width:730px) {
     .daterangepicker .ranges{
         width:auto;
         float:left
@@ -744,7 +744,7 @@
 .sp-cf:after{
     clear:both
 }
-@media(max-device-width:480px){
+@media(max-device-width:480px) {
     .sp-color{
         right:40%
     }

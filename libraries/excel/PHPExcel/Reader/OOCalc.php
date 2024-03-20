@@ -127,7 +127,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         $worksheetNames = array();
 
         $xml = new XMLReader();
-        $res = $xml->xml($this->securityScanFile('zip://'.realpath($pFilename).'#content.xml'), null, PHPExcel_Settings::getLibXmlLoaderOptions());
+        $res = $xml->xml($this->securityScanFile('zip://'.realpath($pFilename) . '#content.xml'), null, PHPExcel_Settings::getLibXmlLoaderOptions());
         $xml->setParserProperty(2, true);
 
         //    Step into the first level of content of the XML
@@ -179,7 +179,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         }
 
         $xml = new XMLReader();
-        $res = $xml->xml($this->securityScanFile('zip://'.realpath($pFilename).'#content.xml'), null, PHPExcel_Settings::getLibXmlLoaderOptions());
+        $res = $xml->xml($this->securityScanFile('zip://'.realpath($pFilename) . '#content.xml'), null, PHPExcel_Settings::getLibXmlLoaderOptions());
         $xml->setParserProperty(2, true);
 
         //    Step into the first level of content of the XML
@@ -616,9 +616,9 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                         //    Only replace in alternate array entries (i.e. non-quoted blocks)
                                         if ($tKey = !$tKey) {
                                             $value = preg_replace('/\[([^\.]+)\.([^\.]+):\.([^\.]+)\]/Ui', '$1!$2:$3', $value);    //  Cell range reference in another sheet
-                                            $value = preg_replace('/\[([^\.]+)\.([^\.]+)\]/Ui', '$1!$2', $value);       //  Cell reference in another sheet
+                                            $value = preg_replace('/\[([^\.]+)\.([^\.]+)\]/Ui', '$1!$2', $value);//  Cell reference in another sheet
                                             $value = preg_replace('/\[\.([^\.]+):\.([^\.]+)\]/Ui', '$1:$2', $value);    //  Cell range reference
-                                            $value = preg_replace('/\[\.([^\.]+)\]/Ui', '$1', $value);                  //  Simple cell reference
+                                            $value = preg_replace('/\[\.([^\.]+)\]/Ui', '$1', $value);           //  Simple cell reference
                                             $value = PHPExcel_Calculation::translateSeparator(';', ',', $value, $inBraces);
                                         }
                                     }

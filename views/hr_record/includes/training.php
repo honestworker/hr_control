@@ -88,14 +88,14 @@ $current_date = date('Y-m-d');
 				?>
 
 								<?php if ($show_training == true) {?>
-									<a href="<?php echo admin_url('hr_profile/participate/index/' . $r_value['training_id'] . '/' . hr_get_training_hash($r_value['training_id'])); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+' . html_entity_decode($r_value['training_name']); ?></a>
+									<a href="<?php echo admin_url('hr_control/participate/index/' . $r_value['training_id'] . '/' . hr_get_training_hash($r_value['training_id'])); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+' . html_entity_decode($r_value['training_name']); ?></a>
 								<?php } else {?>
 									<a href="#" class="text-danger" title="<?php echo _l('training_over_due'); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+' . html_entity_decode($r_value['training_name']); ?></a>
 
 								<?php }?>
 
 							<?php } else {?>
-								<a href="<?php echo admin_url('hr_profile/participate/index/' . $r_value['training_id'] . '/' . hr_get_training_hash($r_value['training_id'])); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+' . html_entity_decode($r_value['training_name']); ?></a>
+								<a href="<?php echo admin_url('hr_control/participate/index/' . $r_value['training_id'] . '/' . hr_get_training_hash($r_value['training_id'])); ?>"><?php echo '&nbsp;&nbsp;&nbsp;+' . html_entity_decode($r_value['training_name']); ?></a>
 
 							<?php }?>
 						</td>
@@ -155,7 +155,7 @@ render_datatable($table_data, 'table_education', array(), array('data-page-lengt
 						<span class="add-title-training"><?php echo _l('hr_more_training_sessions'); ?></span>
 					</h4>
 				</div>
-				<?php echo form_open_multipart(admin_url('hr_profile/save_update_education'), array('class' => 'save_update_education')); ?>
+				<?php echo form_open_multipart(admin_url('hr_control/save_update_education'), array('class' => 'save_update_education')); ?>
 				<div class="modal-body">
 					<input type="hidden" name="id" value="">
 					<input type="hidden" name="staff_id" value="<?php echo $member->staffid; ?>">

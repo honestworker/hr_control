@@ -865,8 +865,8 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     private function writeCodepage()
     {
-        $record = 0x0042;             // Record identifier
-        $length = 0x0002;             // Number of bytes to follow
+        $record = 0x0042;      // Record identifier
+        $length = 0x0002;      // Number of bytes to follow
         $cv  = $this->codepage;   // The code page
 
         $header = pack('vv', $record, $length);
@@ -891,7 +891,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         $grbit = 0x0038;    // Option flags
 
         // not supported by PHPExcel, so there is only one selected sheet, the active
-        $ctabsel = 1;       // Number of workbook tabs selected
+        $ctabsel = 1;// Number of workbook tabs selected
 
         $wTabRatio = 0x0258;    // Tab to scrollbar ratio
 
@@ -913,7 +913,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     private function writeBoundSheet($sheet, $offset)
     {
         $sheetname = $sheet->getTitle();
-        $record    = 0x0085;                    // Record identifier
+        $record    = 0x0085;             // Record identifier
 
         // sheet state
         switch ($sheet->getSheetState()) {
@@ -934,7 +934,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         // sheet type
         $st = 0x00;
 
-        $grbit = 0x0000;                    // Visibility and sheet type
+        $grbit = 0x0000;             // Visibility and sheet type
 
         $data = pack("VCC", $offset, $ss, $st);
         $data .= PHPExcel_Shared_String::UTF8toBIFF8UnicodeShort($sheetname);
@@ -965,10 +965,10 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     private function writeExternalsheetBiff8()
     {
         $totalReferences = count($this->parser->references);
-        $record = 0x0017;                     // Record identifier
+        $record = 0x0017;              // Record identifier
         $length = 2 + 6 * $totalReferences;  // Number of bytes to follow
 
-        $supbook_index = 0;           // FIXME: only using internal SUPBOOK record
+        $supbook_index = 0;    // FIXME: only using internal SUPBOOK record
         $header = pack("vv", $record, $length);
         $data   = pack('v', $totalReferences);
         for ($i = 0; $i < $totalReferences; ++$i) {
@@ -1063,11 +1063,11 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     private function writeExternalSheet($sheetname)
     {
-        $record = 0x0017;                     // Record identifier
+        $record = 0x0017;              // Record identifier
         $length = 0x02 + strlen($sheetname);  // Number of bytes to follow
 
-        $cch    = strlen($sheetname);         // Length of sheet name
-        $rgch   = 0x03;                       // Filename encoding
+        $cch    = strlen($sheetname);  // Length of sheet name
+        $rgch   = 0x03;                // Filename encoding
 
         $header = pack("vv", $record, $length);
         $data   = pack("CC", $cch, $rgch);
@@ -1087,20 +1087,20 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     private function writeNameShort($index, $type, $rowmin, $rowmax, $colmin, $colmax)
     {
-        $record = 0x0018;       // Record identifier
-        $length = 0x0024;       // Number of bytes to follow
+        $record = 0x0018;// Record identifier
+        $length = 0x0024;// Number of bytes to follow
 
-        $grbit  = 0x0020;       // Option flags
-        $chKey  = 0x00;         // Keyboard shortcut
-        $cch    = 0x01;         // Length of text name
-        $cce    = 0x0015;       // Length of text definition
+        $grbit  = 0x0020;// Option flags
+        $chKey  = 0x00;  // Keyboard shortcut
+        $cch    = 0x01;  // Length of text name
+        $cce    = 0x0015;// Length of text definition
         $ixals  = $index + 1;   // Sheet index
-        $itab   = $ixals;       // Equal to ixals
-        $cchCustMenu    = 0x00;         // Length of cust menu text
-        $cchDescription = 0x00;         // Length of description text
-        $cchHelptopic   = 0x00;         // Length of help topic text
-        $cchStatustext  = 0x00;         // Length of status bar text
-        $rgch           = $type;        // Built-in name type
+        $itab   = $ixals;// Equal to ixals
+        $cchCustMenu    = 0x00;  // Length of cust menu text
+        $cchDescription = 0x00;  // Length of description text
+        $cchHelptopic   = 0x00;  // Length of help topic text
+        $cchStatustext  = 0x00;  // Length of status bar text
+        $rgch           = $type; // Built-in name type
 
         $unknown03 = 0x3b;
         $unknown04 = 0xffff - $index;
@@ -1151,19 +1151,19 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     private function writeNameLong($index, $type, $rowmin, $rowmax, $colmin, $colmax)
     {
-        $record          = 0x0018;       // Record identifier
-        $length          = 0x003d;       // Number of bytes to follow
-        $grbit           = 0x0020;       // Option flags
-        $chKey           = 0x00;         // Keyboard shortcut
-        $cch             = 0x01;         // Length of text name
-        $cce             = 0x002e;       // Length of text definition
+        $record          = 0x0018;// Record identifier
+        $length          = 0x003d;// Number of bytes to follow
+        $grbit           = 0x0020;// Option flags
+        $chKey           = 0x00;  // Keyboard shortcut
+        $cch             = 0x01;  // Length of text name
+        $cce             = 0x002e;// Length of text definition
         $ixals           = $index + 1;   // Sheet index
-        $itab            = $ixals;       // Equal to ixals
-        $cchCustMenu     = 0x00;         // Length of cust menu text
-        $cchDescription  = 0x00;         // Length of description text
-        $cchHelptopic    = 0x00;         // Length of help topic text
-        $cchStatustext   = 0x00;         // Length of status bar text
-        $rgch            = $type;        // Built-in name type
+        $itab            = $ixals;// Equal to ixals
+        $cchCustMenu     = 0x00;  // Length of cust menu text
+        $cchDescription  = 0x00;  // Length of description text
+        $cchHelptopic    = 0x00;  // Length of help topic text
+        $cchStatustext   = 0x00;  // Length of status bar text
+        $rgch            = $type; // Built-in name type
 
         $unknown01       = 0x29;
         $unknown02       = 0x002b;
@@ -1227,7 +1227,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     private function writeCountry()
     {
         $record = 0x008C;    // Record identifier
-        $length = 4;         // Number of bytes to follow
+        $length = 4;  // Number of bytes to follow
 
         $header = pack('vv', $record, $length);
         /* using the same country code always for simplicity */
@@ -1244,7 +1244,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     private function writeRecalcId()
     {
         $record = 0x01C1;    // Record identifier
-        $length = 8;         // Number of bytes to follow
+        $length = 8;  // Number of bytes to follow
 
         $header = pack('vv', $record, $length);
 
@@ -1261,10 +1261,10 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
     {
         $aref = $this->palette;
 
-        $record = 0x0092;                // Record identifier
+        $record = 0x0092;         // Record identifier
         $length = 2 + 4 * count($aref);  // Number of bytes to follow
-        $ccv    = count($aref);          // Number of RGB values to follow
-        $data = '';                      // The RGB data
+        $ccv    = count($aref);   // Number of RGB values to follow
+        $data = '';               // The RGB data
 
         // Pack the RGB data
         foreach ($aref as $color) {

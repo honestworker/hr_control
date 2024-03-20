@@ -11,7 +11,7 @@
 
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<h4 ><?php echo _l('hr_salary_insurances') ?> </h4>
+								<h4 ><?php echo _l('hrp_salary_insurances') ?> </h4>
 							</div>
 						</div>
 						<br>
@@ -72,9 +72,9 @@
 						</div>
 						<div id="total_insurance_histtory" class="col-md-12">
 							<div class="row">  
-								<div id="hr_insurances_value" class="hot handsontable htColumnHeaders" >
+								<div id="hrp_insurances_value" class="hot handsontable htColumnHeaders" >
 								</div>
-								<?php echo form_hidden('hr_insurances_value'); ?>
+								<?php echo form_hidden('hrp_insurances_value'); ?>
 								<?php echo form_hidden('month', date('m-Y')); ?>
 								<?php echo form_hidden('insurances_fill_month'); ?>
 								<?php echo form_hidden('department_insurances_filter'); ?>
@@ -82,19 +82,19 @@
 								<?php echo form_hidden('role_insurances_filter'); ?>
 
 								<!-- rel_type synchronization or update value -->
-								<?php echo form_hidden('hr_insurances_rel_type'); ?>
+								<?php echo form_hidden('hrp_insurances_rel_type'); ?>
 
 							</div>
 						</div>
 
 						<div class="col-md-12">
 							<div class="modal-footer">
-								<?php if(has_permission('hr_insurrance', '', 'create') || has_permission('hr_insurrance', '', 'edit')){ ?>
+								<?php if (has_permission('hrp_insurrance', '', 'create') || has_permission('hrp_insurrance', '', 'edit')) { ?>
 									<button type="button" class="btn btn-info pull-right save_manage_insurances mleft5 "><?php echo html_entity_decode($button_name); ?></button>
 								
 									
 									<a href="<?php echo admin_url('hr_control/import_xlsx_insurances'); ?>" class=" btn mright5 btn-default pull-right hide">
-										<?php echo _l('hr_import_excel'); ?>
+										<?php echo _l('hrp_import_excel'); ?>
 									</a>
 								<?php } ?>
 								

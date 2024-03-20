@@ -1,13 +1,13 @@
 <script>
 
-	$(function(){
+	$(function() {
 		'use strict';
 	     var ContractsServerParams = {
 	      "memberid": "[name='memberid']",
 	      "member_view": "[name='member_view']",
 	     };
 		var table_contract = $('table.table-table_contract');
-		initDataTable(table_contract, admin_url+'hr_profile/table_contract', undefined, undefined, ContractsServerParams,[1, 'desc']);
+		initDataTable(table_contract, admin_url+'hr_control/table_contract', undefined, undefined, ContractsServerParams,[1, 'desc']);
 
 		 //hide first column
 	    var hidden_columns = [0,1,4,5];
@@ -18,7 +18,7 @@
     function member_view_contract(contract_id) {
       "use strict";
 
-      $("#contract_modal_wrapper").load("<?php echo admin_url('hr_profile/hr_profile/view_contract_modal'); ?>", {
+      $("#contract_modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/view_contract_modal'); ?>", {
            slug: 'view',
            contract_id: contract_id
       }, function() {

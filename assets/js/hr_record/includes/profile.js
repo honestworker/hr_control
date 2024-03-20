@@ -1,7 +1,7 @@
-	(function(){
+	(function() {
 		'use strict';
-		$(document).ready(function(){
-			$("#profile_image").change(function(){
+		$(document).ready(function() {
+			$("#profile_image").change(function() {
 				readURL(this);
 			});
 		});

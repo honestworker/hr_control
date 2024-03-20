@@ -1,9 +1,9 @@
 <script>
 
-	$(function(){
+	$(function() {
 		'use strict';
 
-		window.addEventListener('load',function(){
+		window.addEventListener('load',function() {
 			appValidateForm($("body").find('.job_p'), {
 				'job_name': 'required'
 			});
@@ -15,7 +15,7 @@
 		};
 
 		var table_dependent_person = $('.table-table_dependent_person');
-		initDataTable(table_dependent_person, admin_url+'hr_profile/table_dependent_person', [0], [0], ContractsServerParams, [0, 'desc']);
+		initDataTable(table_dependent_person, admin_url+'hr_control/table_dependent_person', [0], [0], ContractsServerParams, [0, 'desc']);
 
 		//hide first column
 		var hidden_columns = [1];
@@ -31,13 +31,13 @@
 
 	});
 
-	function approval(invoker){
+	function approval(invoker) {
 		'use strict';
 
-		if($('input[name="status"]')){
+		if ($('input[name="status"]')) {
 			$('input[name="status"]').remove();
 		}
-		if($('input[name="id"]')){
+		if ($('input[name="id"]')) {
 			$('input[name="id"]').remove();
 		}
 
@@ -56,13 +56,13 @@
 		$('.approval-title').removeClass('hide');
 	}
 
-	function reject(invoker){
+	function reject(invoker) {
 		'use strict';
 
-		if($('input[name="status"]')){
+		if ($('input[name="status"]')) {
 			$('input[name="status"]').remove();
 		}
-		if($('input[name="id"]')){
+		if ($('input[name="id"]')) {
 			$('input[name="id"]').remove();
 		}
 
@@ -81,13 +81,13 @@
 		$('.reject-title').removeClass('hide');
 	}
 
-	function update_status(invoker){
+	function update_status(invoker) {
 		'use strict';
 
 		var id = $('input[name="id"]').val();
 		var status = $('input[name="status"]').val();
 
-		if(id != '' && status != ''){
+		if (id != '' && status != '') {
 			var formData = new FormData();
 			formData.append("csrf_token_name", $('input[name="csrf_token_name"]').val());
 			formData.append("id", id);
@@ -96,7 +96,7 @@
 			formData.append("end_month", $('input[name="end_month"]').val());
 			formData.append("reason", $('input[name="reason"]').val());
 			$.ajax({ 
-				url: admin_url + 'hr_profile/approval_status', 
+				url: admin_url + 'hr_control/approval_status', 
 				method: 'post', 
 				data: formData, 
 				contentType: false, 
@@ -109,11 +109,11 @@
 				.columns.adjust()
 				.responsive.recalc();
 
-				if(response.success == true){
+				if (response.success == true) {
 					alert_float('success', response.message);
 					$('#approvaldependent').modal('hide');
 
-				}else{
+				} else {
 					alert_float('warning', response.message);
 					$('#approvaldependent').modal('hide');
 
@@ -125,7 +125,7 @@
 	function dependent_person_update(staff_id, dependent_person_id, manage) {
 		"use strict";
 
-		$("#modal_wrapper").load("<?php echo admin_url('hr_profile/hr_profile/dependent_person_modal'); ?>", {
+		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/dependent_person_modal'); ?>", {
 			slug: 'update',
 			staff_id: staff_id,
 			dependent_person_id: dependent_person_id,
@@ -148,7 +148,7 @@
 	function dependent_person_add(staff_id, dependent_person_id, manage) {
 		"use strict";
 
-		$("#modal_wrapper").load("<?php echo admin_url('hr_profile/hr_profile/dependent_person_modal'); ?>", {
+		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/dependent_person_modal'); ?>", {
 			slug: 'create',
 			staff_id: staff_id,
 			dependent_person_id: dependent_person_id,
@@ -168,7 +168,7 @@
 		$(".selectpicker").selectpicker('refresh');
 	}
 
-	function staff_bulk_actions(){
+	function staff_bulk_actions() {
 		'use strict';
 
 		$('#table_contract_bulk_actions').modal('show');
@@ -181,7 +181,7 @@
    	if (confirm_delete()) {
    		var mass_delete = $('#mass_delete').prop('checked');
 
-   		if(mass_delete == true){
+   		if (mass_delete == true) {
    			var ids = [];
    			var data = {};
 
@@ -199,14 +199,14 @@
    			data.ids = ids;
    			$(event).addClass('disabled');
    			setTimeout(function() {
-   				$.post(admin_url + 'hr_profile/hrm_delete_bulk_action_v2', data).done(function() {
+   				$.post(admin_url + 'hr_control/hrm_delete_bulk_action_v2', data).done(function() {
    					window.location.reload();
    				}).fail(function(data) {
    					$('#table_contract_bulk_actions').modal('hide');
    					alert_float('danger', data.responseText);
    				});
    			}, 200);
-   		}else{
+   		} else {
    			window.location.reload();
    		}
 

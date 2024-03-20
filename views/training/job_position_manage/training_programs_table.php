@@ -18,7 +18,7 @@ $join =[];
 $where =[];
 
 //load deparment by manager
- if(!is_admin() && !has_permission('staffmanage_training','','view')){
+ if (!is_admin() && !has_permission('staffmanage_training','','view')) {
       //View own
  	$array_staff = $this->ci->hr_profile_model->get_staff_by_manager();
 
@@ -40,9 +40,9 @@ foreach ($rResult as $aRow) {
 		$row[] = $aRow['training_process_id'];
 
 			if (has_permission('staffmanage_training', '', 'view') || has_permission('staffmanage_training', '', 'view_own')) {
-				$subject = '<a href="' . admin_url('hr_profile/view_training_program/' . $aRow['training_process_id']) . '" >' .  $aRow['training_name']  . '</a>';
+				$subject = '<a href="' . admin_url('hr_control/view_training_program/' . $aRow['training_process_id']) . '" >' .  $aRow['training_name']  . '</a>';
 
-			}else{
+			} else {
 				$subject = $aRow['training_name'];
 			}
 
@@ -50,14 +50,14 @@ foreach ($rResult as $aRow) {
 
 			if (has_permission('staffmanage_training', '', 'view') || has_permission('staffmanage_training', '', 'view_own')) {
 
-				$subject .= '<a href="' . admin_url('hr_profile/view_training_program/' . $aRow['training_process_id']) . '" >' . _l('view') . '</a>';
+				$subject .= '<a href="' . admin_url('hr_control/view_training_program/' . $aRow['training_process_id']) . '" >' . _l('view') . '</a>';
 			}
 			if (has_permission('staffmanage_training', '', 'edit')) {
 				$subject .= ' | <a href="#" onclick="edit_training_process(this,' . $aRow['training_process_id'] . ', '.$aRow['training_process_id'].');return false;" data-id_training= "'.$aRow['training_process_id'].'" data-training_name= "'.$aRow['training_name'].'"  data-job_position_training_type= "'.$aRow['training_type'].'" data-job_position_mint_point= "'.$aRow['mint_point'].'"  data-job_position_training_id= "'.$aRow['position_training_id'].'" data-job_position_id= "'.$aRow['job_position_id'].'" data-additional_training= "'.$aRow['additional_training'].'" data-staff_id= "'.$aRow['staff_id'].'" data-time_to_start= "'._d($aRow['time_to_start']).'" data-time_to_end= "'._d($aRow['time_to_end']).'" >' . _l('hr_edit') . '</a>';
 			}    
 
 			if (has_permission('staffmanage_training', '', 'delete')) {
-				$subject .= ' | <a href="' . admin_url('hr_profile/delete_job_position_training_process/' . $aRow['training_process_id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
+				$subject .= ' | <a href="' . admin_url('hr_control/delete_job_position_training_process/' . $aRow['training_process_id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
 			}
 			$subject .= '</div>';
 
@@ -66,10 +66,10 @@ foreach ($rResult as $aRow) {
 		$row[] = get_type_of_training_by_id($aRow['training_type']);
 
 		/*get frist 100 character */
-		if(strlen($aRow['description']) > 300){
+		if (strlen($aRow['description']) > 300) {
 			$pos=strpos($aRow['description'], ' ', 300);
 			$description_sub = substr($aRow['description'],0,$pos ); 
-		}else{
+		} else {
 			$description_sub = $aRow['description'];
 		}
 
@@ -78,25 +78,25 @@ foreach ($rResult as $aRow) {
 		$row[] = _dt($aRow['date_add']);
 
 		//view own
-		if(strlen($aRow['job_position_id']) > 0){
+		if (strlen($aRow['job_position_id']) > 0) {
 			$training_program_staff = $this->ci->hr_profile_model->get_staff_by_job_position($aRow['job_position_id']);
-		}else{
+		} else {
 			$training_program_staff = explode(",", $aRow['staff_id']);
 		}
 
-		if(isset($array_staff)){
+		if (isset($array_staff)) {
 
-			if(count($training_program_staff) == 0){
+			if (count($training_program_staff) == 0) {
 				continue;//jump
-			}else{
+			} else {
 				$check_staff=false;
 				foreach ($training_program_staff as $staff_id) {
-					if(in_array($staff_id, $array_staff)){
+					if (in_array($staff_id, $array_staff)) {
 						$check_staff = true;//jump
 					}
 				}
 
-				if($check_staff == false){
+				if ($check_staff == false) {
 					continue;//jump
 				}
 			}

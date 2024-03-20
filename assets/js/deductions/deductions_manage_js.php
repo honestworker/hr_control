@@ -2,12 +2,12 @@
 		
 		var purchase;
 		
-		<?php if(isset($body_value)){ ?>
+		<?php if (isset($body_value)) { ?>
 
 			var dataObject = <?php echo html_entity_decode($body_value) ; ?>;
-		<?php }?>
+		<?php } ?>
 
-	var hotElement1 = document.querySelector('#hr_deductions_value');
+	var hotElement1 = document.querySelector('#hrp_deductions_value');
 	 var purchase = new Handsontable(hotElement1, {
 
 		contextMenu: true,
@@ -57,7 +57,7 @@
 	});
 
 		//filter
-	function deductions_filter (invoker){
+	function deductions_filter (invoker) {
 		'use strict';
 
 		var data = {};
@@ -88,15 +88,15 @@
 	$('.save_manage_deductions').on('click', function() {
 		'use strict';
 
-		var valid_contract = $('#hr_deductions_value').find('.htInvalid').html();
+		var valid_contract = $('#hrp_deductions_value').find('.htInvalid').html();
 
-		if(valid_contract){
+		if (valid_contract) {
 			alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-		}else{
+		} else {
 
-			$('input[name="hr_deductions_value"]').val(JSON.stringify(purchase_value.getData()));   
+			$('input[name="hrp_deductions_value"]').val(JSON.stringify(purchase_value.getData()));   
 			$('input[name="deductions_fill_month"]').val($("#month_deductions").val());
-			$('input[name="hr_deductions_rel_type"]').val('update');   
+			$('input[name="hrp_deductions_rel_type"]').val('update');   
 			$('#add_manage_deductions').submit(); 
 
 		}

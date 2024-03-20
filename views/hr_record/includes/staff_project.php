@@ -1,8 +1,8 @@
 <div class="row">
 
-     <div class="col-md-12<?php if($this->input->get('notifications')){echo ' hide';} ?>">
+     <div class="col-md-12<?php if ($this->input->get('notifications')) {echo ' hide';} ?>">
       
-     <?php if(($staff_p->staffid == get_staff_user_id() || is_admin()) && !$this->input->get('notifications')) { ?>
+     <?php if (($staff_p->staffid == get_staff_user_id() || is_admin()) && !$this->input->get('notifications')) { ?>
          <h4 class="no-margin">
           <?php echo _l('projects'); ?>
         </h4>

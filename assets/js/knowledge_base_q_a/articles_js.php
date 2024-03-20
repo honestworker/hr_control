@@ -29,7 +29,7 @@ $(function () {
           order.push([$(this).data('article-id'), i]);
         });
         setTimeout(function () {
-          $.post(admin_url + 'hr_profile/knowledge_base_q_a/update_kan_ban', {
+          $.post(admin_url + 'hr_control/knowledge_base_q_a/update_kan_ban', {
             order: order,
             groupid: $(ui.item.parent()[0]).data('group-id')
           });
@@ -60,14 +60,14 @@ $(function () {
       });
       var data = {}
       data.order = order;
-      $.post(admin_url + 'hr_profile/knowledge_base_q_a/update_groups_order', data);
+      $.post(admin_url + 'hr_control/knowledge_base_q_a/update_groups_order', data);
     }
   });
   // Status color change
   $('body').on('click', '.kb-kan-ban .cpicker', function () {
     var color = $(this).data('color');
     var group_id = $(this).parents('.panel-heading-bg').data('group-id');
-    $.post(admin_url + 'hr_profile/knowledge_base_q_a/change_group_color', {
+    $.post(admin_url + 'hr_control/knowledge_base_q_a/change_group_color', {
       color: color,
       group_id: group_id
     });
@@ -89,10 +89,10 @@ $(function () {
 function initKnowledgeBaseTableArticles() {
     'use strict';
 
-    if($( ".article_change_icon" ).hasClass( "fa fa-th-list" )){
+    if ($( ".article_change_icon" ).hasClass( "fa fa-th-list" )) {
       $( ".article_change_icon" ).removeClass("fa fa-th-list");
       $( ".article_change_icon" ).addClass("fa fa-archive");
-    }else{
+    } else {
       $( ".article_change_icon" ).removeClass("fa fa-archive");
       $( ".article_change_icon" ).addClass("fa fa-th-list");
     }
@@ -112,7 +112,7 @@ function initKnowledgeBaseTableArticles() {
     });
 }
 
-function send_mail_support(slug, curator, staff_email){
+function send_mail_support(slug, curator, staff_email) {
     'use strict';
 
   $('#support__form').modal('show');
@@ -125,7 +125,7 @@ function send_mail_support(slug, curator, staff_email){
 
 }
 
-  function staff_bulk_actions(){
+  function staff_bulk_actions() {
     'use strict';
 
     $('#table_contract_bulk_actions').modal('show');
@@ -138,7 +138,7 @@ function send_mail_support(slug, curator, staff_email){
     if (confirm_delete()) {
       var mass_delete = $('#mass_delete').prop('checked');
 
-      if(mass_delete == true){
+      if (mass_delete == true) {
         var ids = [];
         var data = {};
 
@@ -156,14 +156,14 @@ function send_mail_support(slug, curator, staff_email){
         data.ids = ids;
         $(event).addClass('disabled');
         setTimeout(function() {
-          $.post(admin_url + 'hr_profile/hrm_delete_bulk_action', data).done(function() {
+          $.post(admin_url + 'hr_control/hrm_delete_bulk_action', data).done(function() {
             window.location.reload();
           }).fail(function(data) {
             $('#table_contract_bulk_actions').modal('hide');
             alert_float('danger', data.responseText);
           });
         }, 200);
-      }else{
+      } else {
         window.location.reload();
       }
 

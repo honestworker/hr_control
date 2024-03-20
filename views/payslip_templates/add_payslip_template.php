@@ -12,7 +12,7 @@
 				</div> 
 					<?php 
 					$payslip_template_id = '';
-					if(isset($id)){
+					if (isset($id)) {
 						$payslip_template_id = $id;
 					}
 					?>

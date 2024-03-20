@@ -1,5 +1,5 @@
     
-    function new_workplace(){
+    function new_workplace() {
         'use strict';
         $('#additional_workplace').html('');
 
@@ -14,7 +14,7 @@
     }
 
 
-    function edit_workplace(invoker,id){
+    function edit_workplace(invoker,id) {
         'use strict';
 
         $('#additional_workplace').html('');

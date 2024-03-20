@@ -44,7 +44,7 @@ class XLSXReader_fin {
 		$this->zip = new ZipArchive();
 		$status = $this->zip->open($filePath);
 		//var_dump($this->zip);
-		if($status === true) {
+		if ($status === true) {
 			$this->parse();
 		} else {
 			throw new Exception("Failed to open $filePath with zip error code: $status");
@@ -55,7 +55,7 @@ class XLSXReader_fin {
 	protected function getEntryData($name) {
 		$data = $this->zip->getFromName($name);
 		//var_dump($data);
-		if($data === false) {
+		if ($data === false) {
 			throw new Exception("File $name does not exist in the Excel file");
 		} else {
 			return $data;
@@ -67,8 +67,8 @@ class XLSXReader_fin {
 		$sheets = array();
 		$relationshipsXML = simplexml_load_string($this->getEntryData("_rels/.rels"));
 		//var_dump($relationshipsXML);
-		foreach($relationshipsXML->Relationship as $rel) {
-			if($rel['Type'] == self::SCHEMA_OFFICEDOCUMENT) {
+		foreach ($relationshipsXML->Relationship as $rel) {
+			if ($rel['Type'] == self::SCHEMA_OFFICEDOCUMENT) {
 				$workbookDir = dirname($rel['Target']) . '/';
 				//var_dump($rel['Target']);
 				//var_export($this->getEntryData($rel['Target']));
@@ -77,7 +77,7 @@ class XLSXReader_fin {
 				//$workbookXML = simplexml_load_string($this->getEntryData($rel['Target']));
 				$workbookXML = simplexml_load_string($xml_target);
 				//var_dump($workbookXML);
-				foreach($workbookXML->sheets->sheet as $sheet) {				
+				foreach ($workbookXML->sheets->sheet as $sheet) {				
 					$r = $sheet->attributes('r', true);
 					$sheets[(string)$r->id] = array(
 						'sheetId' => (int)$sheet['sheetId'],
@@ -87,7 +87,7 @@ class XLSXReader_fin {
 				}
 				//var_dump($sheets);				
 				$workbookRelationsXML = simplexml_load_string($this->getEntryData($workbookDir . '_rels/' . basename($rel['Target']) . '.rels'));
-				foreach($workbookRelationsXML->Relationship as $wrel) {
+				foreach ($workbookRelationsXML->Relationship as $wrel) {
 					switch($wrel['Type']) {
 						case self::SCHEMA_WORKSHEETRELATION:
 							$sheets[(string)$wrel['Id']]['path'] = $workbookDir . (string)$wrel['Target'];
@@ -96,10 +96,10 @@ class XLSXReader_fin {
 							$xml_target_ss = $this->getEntryData($workbookDir . (string)$wrel['Target']);
 							$xml_target_ss = str_replace('</x:', '</',str_replace('<x:', '<', $xml_target_ss));
 							$sharedStringsXML = simplexml_load_string($xml_target_ss);
-							foreach($sharedStringsXML->si as $val) {
-								if(isset($val->t)) {
+							foreach ($sharedStringsXML->si as $val) {
+								if (isset($val->t)) {
 									$this->sharedStrings[] = (string)$val->t;									
-								} elseif(isset($val->r)) {
+								} elseif (isset($val->r)) {
 									$this->sharedStrings[] = XLSXWorksheet_fin::parseRichText($val);									
 								}
 							}
@@ -109,7 +109,7 @@ class XLSXReader_fin {
 			}
 		}
 		$this->sheetInfo = array();
-		foreach($sheets as $rid=>$info) {
+		foreach ($sheets as $rid=>$info) {
 			$this->sheetInfo[$info['name']] = array(
 				'sheetId' => $info['sheetId'],
 				'rid' => $rid,
@@ -122,7 +122,7 @@ class XLSXReader_fin {
 	// returns an array of sheet names, indexed by sheetId
 	public function getSheetNames() {
 		$res = array();
-		foreach($this->sheetInfo as $sheetName=>$info) {
+		foreach ($this->sheetInfo as $sheetName=>$info) {
 			$res[$info['sheetId']] = $sheetName;
 		}
 		return $res;
@@ -140,12 +140,12 @@ class XLSXReader_fin {
 
 	// instantiates a sheet object (if needed) and returns the sheet object
 	public function getSheet($sheet) {
-		if(is_numeric($sheet)) {
+		if (is_numeric($sheet)) {
 			$sheet = $this->getSheetNameById($sheet);
-		} elseif(!is_string($sheet)) {
+		} elseif (!is_string($sheet)) {
 			throw new Exception("Sheet must be a string or a sheet Id");
 		}
-		if(!array_key_exists($sheet, $this->sheets)) {
+		if (!array_key_exists($sheet, $this->sheets)) {
 			$this->sheets[$sheet] = new XLSXWorksheet_fin($this->getSheetXML($sheet), $sheet, $this);
 
 		}
@@ -153,8 +153,8 @@ class XLSXReader_fin {
 	}
 
 	public function getSheetNameById($sheetId) {
-		foreach($this->sheetInfo as $sheetName=>$sheetInfo) {
-			if($sheetInfo['sheetId'] === $sheetId) {
+		foreach ($this->sheetInfo as $sheetName=>$sheetInfo) {
+			if ($sheetInfo['sheetId'] === $sheetId) {
 				return $sheetName;
 			}
 		}
@@ -169,7 +169,7 @@ class XLSXReader_fin {
 
 	// converts an Excel date field (a number) to a unix timestamp (granularity: seconds)
 	public static function toUnixTimeStamp($excelDateTime) {
-		if(!is_numeric($excelDateTime)) {
+		if (!is_numeric($excelDateTime)) {
 			return $excelDateTime;
 		}
 		$d = floor($excelDateTime); // seconds since 1900
@@ -219,7 +219,7 @@ class XLSXWorksheet_fin {
 		$lastDataRow = -1;
 		foreach ($sheetData->row as $row) {
 			$rowNum = (int)$row['r'];
-			if($rowNum != ($curR + 1)) {
+			if ($rowNum != ($curR + 1)) {
 				$missingRows = $rowNum - ($curR + 1);
 				for($i=0; $i < $missingRows; $i++) {
 					$rows[$curR] = array_pad(array(),$this->colCount,null);
@@ -230,7 +230,7 @@ class XLSXWorksheet_fin {
 			$rowData = array();
 			foreach ($row->c as $c) {
 				list($cellIndex,) = $this->getColumnIndex((string) $c['r']);
-				if($cellIndex !== $curC) {
+				if ($cellIndex !== $curC) {
 					$missingCols = $cellIndex - $curC;
 					for($i=0;$i<$missingCols;$i++) {
 						$rowData[$curC] = null;
@@ -238,7 +238,7 @@ class XLSXWorksheet_fin {
 					}
 				}
 				$val = $this->parseCellValue($c);
-				if(!is_null($val)) {
+				if (!is_null($val)) {
 					$lastDataRow = $curR;
 				}
 				$rowData[$curC] = $val;
@@ -247,7 +247,7 @@ class XLSXWorksheet_fin {
 			$rows[$curR] = array_pad($rowData, $this->colCount, null);
 			$curR++;
 		}
-		if($this->config['removeTrailingRows']) {
+		if ($this->config['removeTrailingRows']) {
 			$this->data = array_slice($rows, 0, $lastDataRow + 1);
 			$this->rowCount = count($this->data);
 		} else {
@@ -302,7 +302,7 @@ class XLSXWorksheet_fin {
 				}
 				break;
 			default:
-				if(!isset($cell->v)) {
+				if (!isset($cell->v)) {
 					return null;
 				}
 				$value = (string)$cell->v;

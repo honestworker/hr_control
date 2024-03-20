@@ -8759,9 +8759,9 @@
         }
         ,
         o.prototype.getBackgroundByFill = function(e, t) {
-            if((typeof e == "undefined" || e == null)){
+            if ((typeof e == "undefined" || e == null)) {
                 var r = null;
-            }else{
+            } else {
                 var r = e.getInnerElements("patternFill");
             }
             if (null != r) {

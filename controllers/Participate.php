@@ -11,8 +11,8 @@ class Participate extends ClientsController
      */
     public function index($id, $hash)
     {
-        $this->load->model('hr_control_model');
-        $training = $this->hr_control_model->get_position_training($id);
+        $this->load->model('hr_profile_model');
+        $training = $this->hr_profile_model->get_position_training($id);
         if (!$training
             || ($training->hash != $hash)
             || (!$hash || !$id)
@@ -22,10 +22,10 @@ class Participate extends ClientsController
             show_404();
         }
         if ($this->input->post()) {
-            $success = $this->hr_control_model->add_training_result($id, $this->input->post());
+            $success = $this->hr_profile_model->add_training_result($id, $this->input->post());
                 $link_redirect = site_url('admin/hr_control/member/'.get_staff_user_id());
             if ($success) {
-                $training = $this->hr_control_model->get_position_training($id);
+                $training = $this->hr_profile_model->get_position_training($id);
                 set_alert('success', _l('hr_thank_you_for_participating_in_this_training'));
                 if ($link_redirect !== '') {
                     redirect($link_redirect);
@@ -51,10 +51,10 @@ class Participate extends ClientsController
             access_denied('job_position');
         }
 
-        $this->load->model('hr_control_model');
-        $training = $this->hr_control_model->get_position_training($id);
+        $this->load->model('hr_profile_model');
+        $training = $this->hr_profile_model->get_position_training($id);
 
-        $training_result = $this->hr_control_model->get_mark_staff_from_resultsetid($resultsetid, $id, $staff_id);
+        $training_result = $this->hr_profile_model->get_mark_staff_from_resultsetid($resultsetid, $id, $staff_id);
 
         if (!$training
             || ($training->hash != $hash)

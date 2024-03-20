@@ -538,8 +538,8 @@ class PHPExcel_Calculation_Statistical
         );
 
         //    Define lower and upper region break-points.
-        $p_low = 0.02425;            //Use lower region approx. below this
-        $p_high = 1 - $p_low;        //Use upper region approx. above this
+        $p_low = 0.02425;     //Use lower region approx. below this
+        $p_high = 1 - $p_low; //Use upper region approx. above this
 
         if (0 < $p && $p < $p_low) {
             //    Rational approximation for lower region.
@@ -604,7 +604,7 @@ class PHPExcel_Calculation_Statistical
             }
         }
         return $z;
-    }    //    function inverseNcdf2()
+    }//    function inverseNcdf2()
 
 
     private static function inverseNcdf3($p)

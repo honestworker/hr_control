@@ -20,7 +20,7 @@
 									<option value=""></option> 
 									
 									<?php foreach ($type_of_trainings as $key => $value) { ?>
-										<option value="<?php echo $value['id'] ?>" <?php if(isset($position_training) && $position_training->training_type == $value['id'] ){echo 'selected';}; ?> ><?php echo $value['name'] ?></option>
+										<option value="<?php echo $value['id'] ?>" <?php if (isset($position_training) && $position_training->training_type == $value['id'] ) {echo 'selected';}; ?> ><?php echo $value['name'] ?></option>
 									<?php } ?>
 								</select>
 
@@ -37,7 +37,7 @@
 								<?php echo render_textarea('viewdescription','',$value,array(),array(),'','tinymce-view-description'); ?>                     
 								<hr />
 								<button type="submit" class="btn btn-info pull-right"><?php echo _l('submit'); ?></button>
-								<a href="<?php echo admin_url('hr_profile/training?group=training_library'); ?>"  class="btn btn-default pull-right mright5 "><?php echo _l('hr_close'); ?></a>
+								<a href="<?php echo admin_url('hr_control/training?group=training_library'); ?>"  class="btn btn-default pull-right mright5 "><?php echo _l('hr_close'); ?></a>
 							</div>
 							<?php echo form_close(); ?>
 						</div>
@@ -48,7 +48,7 @@
 			<div class="col-md-7" id="training_questions_wrapper">
 				<div class="panel_s">
 					<div class="panel-body">
-						<?php if(isset($position_training)){ ?>
+						<?php if (isset($position_training)) { ?>
 							<ul class="nav nav-tabs tabs-in-body-no-margin" role="tablist">
 								<li role="presentation" class="active">
 									<a href="#survey_questions_tab" aria-controls="survey_questions_tab" role="tab" data-toggle="tab">
@@ -64,8 +64,8 @@
 									<div role="tabpanel" class="tab-pane active" id="survey_questions_tab">
 										<div class="row mt-3">
 											<div class="_buttons">
-												<a href="<?php echo site_url('hr_profile/participate/index/'.$position_training->training_id . '/' . $position_training->hash); ?>" target="_blank" class="btn btn-success pull-right mleft10 btn-with-tooltip" data-toggle="tooltip" data-placement="bottom" data-title="<?php echo _l('hr_survey_list_view_tooltip'); ?>"><i class="fa fa-eye"></i></a>
-												<?php if(has_permission('staffmanage_training','','edit') || has_permission('staffmanage_training','','create')){ ?>
+												<a href="<?php echo site_url('hr_control/participate/index/'.$position_training->training_id . '/' . $position_training->hash); ?>" target="_blank" class="btn btn-success pull-right mleft10 btn-with-tooltip" data-toggle="tooltip" data-placement="bottom" data-title="<?php echo _l('hr_survey_list_view_tooltip'); ?>"><i class="fa fa-eye"></i></a>
+												<?php if (has_permission('staffmanage_training','','edit') || has_permission('staffmanage_training','','create')) { ?>
 													<div class="btn-group pull-right">
 														<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 															<?php echo _l('hr_survey_insert_field'); ?> <span class="caret"></span>
@@ -84,13 +84,13 @@
 											<hr />
 											<?php
 											$question_area = '<ul class="list-unstyled survey_question_callback" id="survey_questions">';
-											if(count($position_training->questions) > 0){
-												foreach($position_training->questions as $question){
+											if (count($position_training->questions) > 0) {
+												foreach($position_training->questions as $question) {
 													$question_area .= '<li>';
 													$question_area .= '<div class="form-group question">';
 													$question_area .= '<div class="row pl-4">';
 													$question_area .= '<div class="checkbox checkbox-primary required col-md-2">';
-													if($question['required'] == 1){
+													if ($question['required'] == 1) {
 														$_required = ' checked';
 													} else {
 														$_required = '';
@@ -112,14 +112,14 @@
 													<a href="#" onclick="remove_question_from_database(this,'.$question['questionid'].'); return false;" class="pull-right"><i class="fa fa-remove text-danger"></i></a>
 													</label>';
 													$question_area .= '<input type="text" onblur="update_question(this,\''.$question['boxtype'].'\','.$question['questionid'].');" data-questionid="'.$question['questionid'].'" class="form-control questionid" value="'.$question['question'].'">';
-													if($question['boxtype'] == 'textarea'){
+													if ($question['boxtype'] == 'textarea') {
 														$question_area .= '<textarea class="form-control mtop20" disabled="disabled" rows="6">'._l('hr_survey_question_only_for_preview').'</textarea>';
-													} else if($question['boxtype'] == 'checkbox' || $question['boxtype'] == 'radio'){
+													} else if ($question['boxtype'] == 'checkbox' || $question['boxtype'] == 'radio') {
 														$question_area .= '<div class="row">';
 														$x = 0;
-														foreach($question['box_descriptions'] as $box_description){
+														foreach($question['box_descriptions'] as $box_description) {
 
-															if($box_description['correct'] == 0){
+															if ($box_description['correct'] == 0) {
 																$correct_checked = ' checked';
 															} else {
 																$correct_checked = '';
@@ -127,7 +127,7 @@
 
 															$box_description_icon_class = 'fa-minus text-danger';
 															$box_description_function = 'remove_box_description_from_database(this,'.$box_description['questionboxdescriptionid'].'); return false;';
-															if($x == 0){
+															if ($x == 0) {
 																$box_description_icon_class = 'fa-plus';
 																$box_description_function = 'add_box_description_to_database(this,'.$question['questionid'].','.$question['boxid'].'); return false;';
 															}
@@ -171,7 +171,7 @@
 			</div>
 			<?php init_tail(); ?>
 			<?php 
-			require('modules/hr_profile/assets/js/training/position_training_js.php');
+			require('modules/hr_control/assets/js/training/position_training_js.php');
 			?>
 		</body>
 	</body>

@@ -71,7 +71,7 @@ class PHPExcel_CachedObjectStorage_Memcache extends PHPExcel_CachedObjectStorage
             $this->currentCellIsDirty = false;
         }
         $this->currentObjectID = $this->currentObject = null;
-    }    //    function _storeData()
+    }//    function _storeData()
 
 
     /**
@@ -94,7 +94,7 @@ class PHPExcel_CachedObjectStorage_Memcache extends PHPExcel_CachedObjectStorage
         $this->currentCellIsDirty = true;
 
         return $cell;
-    }    //    function addCacheData()
+    }//    function addCacheData()
 
 
     /**

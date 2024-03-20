@@ -35,7 +35,7 @@ $file_header[] = _l('income_tax_rate');
 						</div>
 
 						<!-- button download file -->
-						<?php if(has_permission('hr_employee', '', 'create') || has_permission('hr_employee', '', 'edit')){ ?>
+						<?php if (has_permission('hrp_employee', '', 'create') || has_permission('hrp_employee', '', 'edit')) { ?>
 							<button id="export-file" onclick="dowload_contract_excel(); return false;" class="btn btn-warning btn-xs mleft5 staff_contract_create " data-toggle="tooltip" title="" data-original-title="<?php echo _l('create_attendance_file_download'); ?>"><i class="fa fa-download"></i><?php echo _l('create_attendance_file_download') ?></button>
 						<?php } ?>
 
@@ -43,7 +43,7 @@ $file_header[] = _l('income_tax_rate');
 
 						<hr>
 
-						<?php if(!isset($simulate)) { ?>
+						<?php if (!isset($simulate)) { ?>
 							<ul>
 								<li class="text-danger">1. <?php echo _l('file_xlsx_employees'); ?></li>
 								<li class="text-danger">2. <?php echo _l('file_xlsx_employees2'); ?></li>
@@ -57,8 +57,8 @@ $file_header[] = _l('income_tax_rate');
 											<?php
 											$total_fields = 0;
 											
-											for($i=0;$i<count($file_header);$i++){
-												if($i == -1){
+											for($i=0;$i<count($file_header);$i++) {
+												if ($i == -1) {
 													?>
 													<th class="bold"><span class="text-danger">*</span> <?php echo html_entity_decode($file_header[$i]) ?> </th>
 													<?php 
@@ -77,9 +77,9 @@ $file_header[] = _l('income_tax_rate');
 										</tr>
 									</thead>
 									<tbody>
-										<?php for($i = 0; $i<1;$i++){
+										<?php for($i = 0; $i<1;$i++) {
 											echo '<tr>';
-											for($x = 0; $x<count($file_header);$x++){
+											for($x = 0; $x<count($file_header);$x++) {
 												echo '<td>- </td>';
 											}
 											echo '</tr>';
@@ -100,10 +100,10 @@ $file_header[] = _l('income_tax_rate');
 
 								<div class="form-group">
 									<a href="<?php echo admin_url('hr_control/manage_employees'); ?>" class=" btn  btn-default ">
-										<?php echo _l('hr_back'); ?>
+										<?php echo _l('hrp_back'); ?>
 									</a>
 
-									<?php if(has_permission('hr_employee', '', 'create') || has_permission('hr_employee', '', 'edit')){ ?>
+									<?php if (has_permission('hrp_employee', '', 'create') || has_permission('hrp_employee', '', 'edit')) { ?>
 										<button id="uploadfile" type="button" class="btn btn-info import" onclick="return uploadfilecsv(this);" ><?php echo _l('import'); ?></button>
 									<?php } ?>
 								</div>

@@ -1,21 +1,21 @@
 <script >
-	(function(){
+	(function() {
 		"use strict";
 		$('#luckysheet').parents('.row').css({'position': 'fixed', 'left':'13px', 'right':'0', 'bottom' : '2px', 'top' : '92px'});
 		$('#luckysheet').parents('.container').css({'width': 'unset', 'padding':'0'});
 		
-		<?php if($payslip->payslip_status == 'payslip_closing'){ ?>
+		<?php if ($payslip->payslip_status == 'payslip_closing') { ?>
 			var dowload_s = '';
-		<?php }else{ ?>
+		<?php } else { ?>
 			var dowload_s = 'hide';
 		<?php } ?>
 		
 
-		if((<?php echo isset($data_form) ? "true" : "false"?>)){
+		if ((<?php echo isset($data_form) ? "true" : "false"?>)) {
 			var data = <?php echo isset($data_form) ? ($data_form != "" ? $data_form : '""') : '""' ?>;
 			var dataSheet = data;
 			var title = "<?php echo isset($payslip) ? $payslip->payslip_name : "" ?>";
-		}else{
+		} else {
 			var dataSheet = [{
 				name: "Sheet1",
 				status: "1",
@@ -112,10 +112,10 @@
 		var type_screen = $("input[name='type']").val();
 		var role = $("input[name='role']").val();
 
-		if(type_screen == 3){
+		if (type_screen == 3) {
 			$('.luckysheet_info_detail_save_as').remove();
 		}
-		if(role == 1){
+		if (role == 1) {
 			$('.luckysheet_info_detail_save_as').remove();
 			$('.luckysheet_info_detail_save').remove();
 		}
@@ -124,7 +124,7 @@
 
 
 	//save payroll template via Ajax
-	$(".luckysheet_info_detail_save").off('click').on('click', function(e){   
+	$(".luckysheet_info_detail_save").off('click').on('click', function(e) {   
 		"use strict";
 
    	 $(".luckysheet_info_detail_save").attr( "disabled", "disabled" );
@@ -158,7 +158,7 @@
 				contentType: false,
 				success: function (response, status, xhr) {
 					response = JSON.parse(response);
-					if(response.success == true) {
+					if (response.success == true) {
 						alert_float('success', response.message);
 						var disposition = xhr.getResponseHeader('content-disposition');
 						$('#SaveAsModal').modal('hide');
@@ -177,7 +177,7 @@
 
 
 	
-$(".luckysheet_info_detail_exports").off('click').on('click', function(e){   
+$(".luckysheet_info_detail_exports").off('click').on('click', function(e) {   
 		"use strict";
 
 		e.preventDefault();
@@ -206,7 +206,7 @@ $(".luckysheet_info_detail_exports").off('click').on('click', function(e){
 			processData: false
 		}).done(function(response) {
 			response = JSON.parse(response);
-			if(response.success == true){
+			if (response.success == true) {
 
 				alert_float('success', response.message);
 
@@ -216,7 +216,7 @@ $(".luckysheet_info_detail_exports").off('click').on('click', function(e){
 				$('.payslip_download').attr({target: '_blank', 
 					href  : site_url +response.filename});
 
-			}else{
+			} else {
 				alert_float('warning', response.message);
 			}
 		});

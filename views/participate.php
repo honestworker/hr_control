@@ -9,17 +9,17 @@
 			<h2 class="bold"><?php echo html_entity_decode($training->subject); ?></h2>
 			<hr />
 			<p><?php echo html_entity_decode($training->viewdescription); ?></p>
-			<?php if(count($training->questions) > 0){
+			<?php if (count($training->questions) > 0) {
 				$question_area = '<ul class="list-unstyled mtop25">';
-				foreach($training->questions as $question){
+				foreach($training->questions as $question) {
 					$question_area .= '<li>';
 					$question_area .= '<div class="form-group">';
 					$question_area .= '<label class="control-label" for="'.$question['questionid'].'">'.$question['question'].'</label>';
-					if($question['boxtype'] == 'textarea'){
+					if ($question['boxtype'] == 'textarea') {
 						$question_area .= '<textarea class="form-control" rows="6" name="question['.$question['questionid'].'][]" data-for="'.$question['questionid'].'" id="'.$question['questionid'].'" data-required="'.$question['required'].'"></textarea>';
-					} else if($question['boxtype'] == 'checkbox' || $question['boxtype'] == 'radio'){
+					} else if ($question['boxtype'] == 'checkbox' || $question['boxtype'] == 'radio') {
 						$question_area .= '<div class="row box chk" data-boxid="'.$question['boxid'].'">';
-						foreach($question['box_descriptions'] as $box_description){
+						foreach($question['box_descriptions'] as $box_description) {
 							$question_area .= '<div class="col-md-12">';
 							$question_area .= '<div class="'.$question['boxtype'].' '.$question['boxtype'].'-default">';
 							$question_area .=
@@ -57,5 +57,5 @@
 </div>
 
 <?php 
-require('modules/hr_profile/assets/js/training/participate_js.php');
+require('modules/hr_control/assets/js/training/participate_js.php');
 ?>

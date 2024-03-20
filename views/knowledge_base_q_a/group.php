@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <div class="modal" id="kb_group_modal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <?php echo form_open(admin_url('hr_profile/knowledge_base_q_a/group'),array('id'=>'kb_group_form')); ?>
+        <?php echo form_open(admin_url('hr_control/knowledge_base_q_a/group'),array('id'=>'kb_group_form')); ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -41,5 +41,5 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<?php  require('modules/hr_profile/assets/js/knowledge_base_q_a/group_js.php'); ?>
+<?php  require('modules/hr_control/assets/js/knowledge_base_q_a/group_js.php'); ?>
 

@@ -9,7 +9,7 @@
 						<div class="row">
 
 							<div class="col-md-3 pull-left">
-								<?php if(is_admin() || has_permission('hrm_reception_staff','','create')){ ?>
+								<?php if (is_admin() || has_permission('hrm_reception_staff','','create')) { ?>
 									<button type="button" class="btn btn-info" onclick="new_reception();"><?php echo _l('hr_add_reception'); ?></button>
 								<?php } ?>
 
@@ -26,7 +26,7 @@
 										<h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
 									</div>
 									<div class="modal-body">
-										<?php if(has_permission('hrm_reception_staff','','delete') || is_admin()){ ?>
+										<?php if (has_permission('hrm_reception_staff','','delete') || is_admin()) { ?>
 											<div class="checkbox checkbox-danger">
 												<input type="checkbox" name="mass_delete" id="mass_delete">
 												<label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -36,7 +36,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 
-										<?php if(has_permission('hrm_reception_staff','','delete') || is_admin()){ ?>
+										<?php if (has_permission('hrm_reception_staff','','delete') || is_admin()) { ?>
 											<a href="#" class="btn btn-info" onclick="staff_delete_bulk_action(this); return false;"><?php echo _l('hr_confirm'); ?></a>
 										<?php } ?>
 									</div>
@@ -85,14 +85,14 @@
 			</div>
 			<div class="modal-body p-0">
 
-			<?php echo form_open(admin_url('hr_profile/add_new_reception'),  array('id'=>'add_new_reception')); ?>
+			<?php echo form_open(admin_url('hr_control/add_new_reception'),  array('id'=>'add_new_reception')); ?>
 
 				<div class="row">
 					<div class="col-md-12">
 						<label for="staff_id" class="control-label"><small class="req text-danger">* </small><?php echo _l('hr_select_employee'); ?></label>
 						<select name="staff_id" data-live-search="true" class="selectpicker" id="staff_id" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>" required> 
 							<option value=""></option> 
-							<?php foreach ($list_staff_not_record as $e){ ?>
+							<?php foreach ($list_staff_not_record as $e) { ?>
 								<option value="<?php echo html_entity_decode($e['staffid']) ?>"><?php echo html_entity_decode($e['firstname'].' '.$e['lastname']); ?></option>
 							<?php } ?>
 						</select>
@@ -100,7 +100,7 @@
 
 
 
-					<?php if(count($group_checklist)>0){ ?>
+					<?php if (count($group_checklist)>0) { ?>
 						<div class="col-md-12">
 							<br>
 							<h4 class="text-primary"><i class="fa fa-info-circle"></i> <?php echo _l('hr_reception_information'); ?></h4>
@@ -121,9 +121,9 @@
 													</div>
 													<div class="col-md-2" name="button_add">
 														<?php 
-														if($key == 0){ ?>
+														if ($key == 0) { ?>
 															<button onclick="add_title(this); return false;" class="btn btn-primary mt-1 btn-title" data-ticket="true" type="button"><i class="fa fa-plus"></i></button>
-														<?php }else{?>
+														<?php } else {?>
 															<button onclick="remove_title(this); return false;" class="btn btn-danger mt-1 btn-title" data-ticket="true" type="button"><i class="fa fa-minus"></i></button>
 														<?php } ?>
 													</div>
@@ -141,9 +141,9 @@
 															</div>
 															<div class="col-md-3" name="button_add">
 																<?php 
-																if($ind == 0){ ?>
+																if ($ind == 0) { ?>
 																	<button onclick="add_subtitle(this); return false;" class="btn btn-primary btn-sub-title" data-ticket="true" type="button"><i class="fa fa-plus"></i></button>
-																<?php }else{?>
+																<?php } else {?>
 																	<button onclick="remove_subtitle(this); return false;" class="btn btn-danger btn-sub-title" data-ticket="true" type="button"><i class="fa fa-minus"></i></button>
 																<?php } ?>
 															</div>
@@ -153,7 +153,7 @@
 												<div class="col-md-12 pl-0 sub_title"></div>
 											</div>
 											<?php 
-										}}else{?>            
+										}} else {?>            
 											<div class="row title">                           
 												<div class="col-md-11 pt-2">
 													<div class="form-group">
@@ -183,7 +183,7 @@
 								</div>
 							</div>
 						<?php } ?>
-						<?php if(count($list_reception_staff_asset)>0){ ?>
+						<?php if (count($list_reception_staff_asset)>0) { ?>
 							<div class="col-md-12 mt-1">
 								<br>
 								<h4 class="text-primary"><i class="fa fa-star"></i> <?php echo _l('hr_property_allocation'); ?></h4>
@@ -191,7 +191,7 @@
 								<div class="col-md-12">
 									<!--  Add assets    -->
 									<div class="col-md-12 assets_wrap">
-										<?php if($list_reception_staff_asset){
+										<?php if ($list_reception_staff_asset) {
 											foreach ($list_reception_staff_asset as $p_key => $p_value) {              
 												?>
 												<div id ="assets_emp" class="row">                            
@@ -205,11 +205,11 @@
 														</div>
 													</div>                            
 													<div class="col-md-1 pl-0 pt-0" name="button_add">
-														<button name="add_asset" class="btn mt-1 <?php if($p_key == 0){ echo 'new_assets_emp btn-primary' ;}else{echo 'remove_assets_emp btn-danger' ;} ?>" data-ticket="true" type="button"><i class="fa <?php if($p_key == 0){ echo 'fa-plus' ;}else{ echo 'fa-minus' ;} ?> "></i></button>
+														<button name="add_asset" class="btn mt-1 <?php if ($p_key == 0) { echo 'new_assets_emp btn-primary' ;} else {echo 'remove_assets_emp btn-danger' ;} ?>" data-ticket="true" type="button"><i class="fa <?php if ($p_key == 0) { echo 'fa-plus' ;} else { echo 'fa-minus' ;} ?> "></i></button>
 													</div>
 												</div>
 											<?php } ?>
-										<?php }else{ ?>
+										<?php } else { ?>
 											<div id ="assets_emp" class="row">                           
 												<div class="col-md-11 pt-2">
 													<div class="form-group">                
@@ -226,7 +226,7 @@
 								</div>
 							</div>
 						<?php } ?>
-						<?php if(isset($setting_training)>0){ ?>
+						<?php if (isset($setting_training)>0) { ?>
 							<div class="col-md-12">
 								<br>
 								<h4 class="text-primary "><i class="fa fa-graduation-cap"></i> <?php echo _l('hr_training'); ?></h4>
@@ -241,7 +241,7 @@
 											<select name="training_type" class="selectpicker" id="training_type" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 												<option value=""></option> 
 												<?php foreach ($type_of_trainings as $key => $value) { ?>
-													<option value="<?php echo $value['id'] ?>" <?php if(isset($setting_training) && $setting_training->training_type == $value['id']  ){echo 'selected';}; ?> ><?php echo $value['name']  ?></option>
+													<option value="<?php echo $value['id'] ?>" <?php if (isset($setting_training) && $setting_training->training_type == $value['id']  ) {echo 'selected';}; ?> ><?php echo $value['name']  ?></option>
 												<?php } ?>
 											</select>
 										</div>
@@ -289,7 +289,7 @@
 	</div>
 
 	<?php init_tail(); ?>
-	<?php require('modules/hr_profile/assets/js/reception_staff/reception_staff_manage_js.php');
+	<?php require('modules/hr_control/assets/js/reception_staff/reception_staff_manage_js.php');
 	?>
 </body>
 </html>

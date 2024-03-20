@@ -4,7 +4,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <?php if($email_exist_as_staff){ ?>
+                <?php if ($email_exist_as_staff) { ?>
                     <div class="alert alert-danger">
                      Some of the departments email is used as staff member email, according to the docs, the support department email must be unique email in the system, you must change the staff email or the support department email in order all the features to work properly.
                  </div>
@@ -13,7 +13,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="_buttons col-md-8">
-                            <?php if(is_admin() || has_permission('staffmanage_orgchart','','create')){ ?>
+                            <?php if (is_admin() || has_permission('staffmanage_orgchart','','create')) { ?>
                                 <a href="#" onclick="new_department(); return false;" class=" mright5 btn btn-info pull-left display-block">
                                     <?php echo _l('hr_new_unit'); ?>
                                 </a>
@@ -59,7 +59,7 @@
                     <span class="add-title"><?php echo _l('hr_new_unit'); ?></span>
                 </h4>
             </div>
-            <?php echo form_open(admin_url('hr_profile/department')); ?>
+            <?php echo form_open(admin_url('hr_control/department')); ?>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -68,7 +68,7 @@
                         <input  type="text" class="fake-autofill-field" name="fakeusernameremembered" value='' tabindex="-1"/>
                         <input  type="password" class="fake-autofill-field" name="fakepasswordremembered" value='' tabindex="-1"/>
                         <?php echo render_input('name','unit_name'); ?>
-                        <?php if(get_option('google_api_key') != ''){ ?>
+                        <?php if (get_option('google_api_key') != '') { ?>
                             <?php echo render_input('calendar_id','department_calendar_id'); ?>
                         <?php } ?>
                         <div class="checkbox checkbox-primary">
@@ -141,7 +141,7 @@
 </div>
 <!-- view chart in sidebar end -->
 <?php init_tail(); ?>
-<?php require('modules/hr_profile/assets/js/organizational/organizational_js.php'); ?>
+<?php require('modules/hr_control/assets/js/organizational/organizational_js.php'); ?>
 </body>
 </html>
 

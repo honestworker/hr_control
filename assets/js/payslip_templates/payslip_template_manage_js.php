@@ -23,7 +23,7 @@ appValidateForm($("body").find('#add_payslip_template'), {
 }, addPaySlipTemplate);    
 
 
-function new_payslip_template(){
+function new_payslip_template() {
 	"use strict";
 
 	$('#payslip_template_modal').modal('show');
@@ -52,7 +52,7 @@ function new_payslip_template(){
 
 }
 
-  function edit_payslip_template(invoker,id){
+  function edit_payslip_template(invoker,id) {
 	"use strict";
 
 	$('#additional_payslip_template').html('');
@@ -73,30 +73,30 @@ function new_payslip_template(){
 		$("select[id='payslip_columns']").append(response.payslip_column_selected).selectpicker('refresh');
 
 		var department_id_str = response.payslip_template_data.department_id;
-		if(typeof(department_id_str) == "string"){
+		if (typeof(department_id_str) == "string") {
 			$('#add_payslip_template select[name="department_id[]"]').val( (department_id_str).split(',')).change();
-		}else{
+		} else {
 			$('#add_payslip_template select[name="department_id[]"]').val(department_id_str).change();
 		}
 
 		var role_id_str = response.payslip_template_data.role_employees;
-		if(typeof(role_id_str) == "string"){
+		if (typeof(role_id_str) == "string") {
 			$('#add_payslip_template select[name="role_employees[]"]').val( (role_id_str).split(',')).change();
-		}else{
+		} else {
 			$('#add_payslip_template select[name="role_employees[]"]').val(role_id_str).change();
 		}
 
 		var staff_id_str = response.payslip_template_data.staff_employees;
-		if(typeof(staff_id_str) == "string"){
+		if (typeof(staff_id_str) == "string") {
 			$('#add_payslip_template select[name="staff_employees[]"]').val( (staff_id_str).split(',')).change();
-		}else{
+		} else {
 			$('#add_payslip_template select[name="staff_employees[]"]').val(staff_id_str).change();
 		}
 
 		var expect_staff_id_str = response.payslip_template_data.except_staff;
-		if(typeof(expect_staff_id_str) == "string"){
+		if (typeof(expect_staff_id_str) == "string") {
 			$('#add_payslip_template select[name="except_staff[]"]').val( (expect_staff_id_str).split(',')).change();
-		}else{
+		} else {
 			$('#add_payslip_template select[name="except_staff[]"]').val(expect_staff_id_str).change();
 		}
 		
@@ -138,7 +138,7 @@ function addPaySlipTemplate(form) {
         })
         .done(function(res) {
             alert_float(res.type, res.message);
-            window.location.href = `${admin_url}hr_control/view_payslip_templates_detail/${res.id}`;
+            window.location.href = `${admin_url}hr_payroll/view_payslip_templates_detail/${res.id}`;
             $('#payslip_template_modal').modal('hide');
             $('.table-payslip_template_table').DataTable().ajax.reload();
         })

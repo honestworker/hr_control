@@ -24,7 +24,8 @@
 		"year_requisition": "[name='year_requisition']",
 	}
 	$(function() {
-    	'use strict';		
+    'use strict';
+		
 		$('').on('change', function() {
 			gen_reports();
 		});
@@ -69,10 +70,13 @@
 			var val = $(this).val();
 			gen_reports();
 		});
+
+
+
 	});
 
 	function init_report(e, type) {
-    	'use strict';
+    'use strict';
 
 		var report_wrapper = $('#report');
 
@@ -83,7 +87,9 @@
 		$('head title').html($(e).text());
 		$('.leave-statistics-gen').addClass('hide');
 
+
 		report_leave_statistics.addClass('hide');
+
 
 		report_from_choose.addClass('hide');
 
@@ -92,84 +98,105 @@
 		} else {
 			$('select[name="months-report"]').selectpicker('val', 'this_month');
 		}
-		// Cleaasr custom date picker
-		report_to.val('');
-		report_from.val('');
+	 // Cleaasr custom date picker
+	 report_to.val('');
+	 report_from.val('');
+	 $('#report-time').removeClass('hide');
+	 $('.title_table').text('');
+	 $('.sorting_table').addClass('hide');
+	 $('select[name="position[]"]').closest('.col-md-4').removeClass('hide');
+	 $('select[name="staff[]"]').closest('.col-md-4').removeClass('hide');
+
+
+	 if (type == 'payslip_report') {
+		
+		$('#payslip_report').removeClass('hide');
+		$('.sorting_table').removeClass('hide');
+		$('#income_summary_report').addClass('hide');
+		$('#insurance_cost_summary_report').addClass('hide');
+
 		$('#report-time').removeClass('hide');
-		$('.title_table').text('');
+		$('#year_requisition').addClass('hide');
+		$('.payslip_chart').addClass('hide');
+		$('.payslip_chart_table').addClass('hide');
+		$('#department_payslip_chart').addClass('hide');
+
+
+
+	 } 
+	 else if (type == 'income_summary_report') {
+		$('#payslip_report').addClass('hide');
+		$('#insurance_cost_summary_report').addClass('hide');
+		$('.sorting_table').removeClass('hide');
+		$('#income_summary_report').removeClass('hide');
+
+		$('#report-time').removeClass('hide');
+		$('.payslip_chart').addClass('hide');
+		$('#year_requisition').addClass('hide');
+		$('.payslip_chart_table').addClass('hide');
+		$('#department_payslip_chart').addClass('hide');
+
+
+
+	 }else if (type == 'insurance_cost_summary_report') {
+
+		$('#payslip_report').addClass('hide');
+		$('#income_summary_report').addClass('hide');
+		$('.sorting_table').removeClass('hide');
+		$('#insurance_cost_summary_report').removeClass('hide');
+
+		$('#report-time').removeClass('hide');
+		$('#year_requisition').addClass('hide');
+		$('.payslip_chart').addClass('hide');
+		$('.payslip_chart_table').addClass('hide');
+		$('#department_payslip_chart').addClass('hide');
+
+
+
+
+
+	 } else if (type == 'payslip_chart') {
+
+		$('#payslip_chart').removeClass('hide');
+
+	 	$('#payslip_report').addClass('hide');
+		$('#income_summary_report').addClass('hide');
+		$('#insurance_cost_summary_report').addClass('hide');
 		$('.sorting_table').addClass('hide');
-		$('select[name="position[]"]').closest('.col-md-4').removeClass('hide');
-		$('select[name="staff[]"]').closest('.col-md-4').removeClass('hide');
+		$('#department_payslip_chart').addClass('hide');
 
 
-		if (type == 'payslip_report') {		
-			$('#payslip_report').removeClass('hide');
-			$('.sorting_table').removeClass('hide');
-			$('#income_summary_report').addClass('hide');
-			$('#insurance_cost_summary_report').addClass('hide');
-
-			$('#report-time').removeClass('hide');
-			$('#year_requisition').addClass('hide');
-			$('.payslip_chart').addClass('hide');
-			$('.payslip_chart_table').addClass('hide');
-			$('#department_payslip_chart').addClass('hide');
-		} else if (type == 'income_summary_report') {
-			$('#payslip_report').addClass('hide');
-			$('#insurance_cost_summary_report').addClass('hide');
-			$('.sorting_table').removeClass('hide');
-			$('#income_summary_report').removeClass('hide');
-
-			$('#report-time').removeClass('hide');
-			$('.payslip_chart').addClass('hide');
-			$('#year_requisition').addClass('hide');
-			$('.payslip_chart_table').addClass('hide');
-			$('#department_payslip_chart').addClass('hide');
-		} else if (type == 'insurance_cost_summary_report') {
-			$('#payslip_report').addClass('hide');
-			$('#income_summary_report').addClass('hide');
-			$('.sorting_table').removeClass('hide');
-			$('#insurance_cost_summary_report').removeClass('hide');
-
-			$('#report-time').removeClass('hide');
-			$('#year_requisition').addClass('hide');
-			$('.payslip_chart').addClass('hide');
-			$('.payslip_chart_table').addClass('hide');
-			$('#department_payslip_chart').addClass('hide');
-	 	} else if (type == 'payslip_chart') {
-			$('#payslip_chart').removeClass('hide');
-
-			$('#payslip_report').addClass('hide');
-			$('#income_summary_report').addClass('hide');
-			$('#insurance_cost_summary_report').addClass('hide');
-			$('.sorting_table').addClass('hide');
-			$('#department_payslip_chart').addClass('hide');
+		$('#report-time').addClass('hide');
+		$('#year_requisition').removeClass('hide');
+		$('.payslip_chart').removeClass('hide');
+		$('.payslip_chart_table').removeClass('hide');
 
 
-			$('#report-time').addClass('hide');
-			$('#year_requisition').removeClass('hide');
-			$('.payslip_chart').removeClass('hide');
-			$('.payslip_chart_table').removeClass('hide');
-		} else if (type == 'department_payslip_chart') {
-			$('#payslip_chart').addClass('hide');
+	 }else if (type == 'department_payslip_chart') {
+	 	$('#payslip_chart').addClass('hide');
 
-			$('#payslip_report').addClass('hide');
-			$('#income_summary_report').addClass('hide');
-			$('#insurance_cost_summary_report').addClass('hide');
-			$('.sorting_table').addClass('hide');
-			$('#department_payslip_chart').removeClass('hide');
+	 	$('#payslip_report').addClass('hide');
+		$('#income_summary_report').addClass('hide');
+		$('#insurance_cost_summary_report').addClass('hide');
+		$('.sorting_table').addClass('hide');
+		$('#department_payslip_chart').removeClass('hide');
 
-			$('#report-time').removeClass('hide');
-			$('#year_requisition').addClass('hide');
-			$('.payslip_chart').addClass('hide');
-			$('.payslip_chart_table').addClass('hide');
-	 	}
+		$('#report-time').removeClass('hide');
+		$('#year_requisition').addClass('hide');
+		$('.payslip_chart').addClass('hide');
+		$('.payslip_chart_table').addClass('hide');
 
-	 	gen_reports();
+	 }
+
+
+	 gen_reports();
 	}
 
-	// Main generate report function
-	function gen_reports() {
-    	'use strict';
+
+
+	 // Main generate report function
+	 function gen_reports() {
+    'use strict';
 
 		if (!$('#payslip_report').hasClass('hide')) {
 			payslip_report();
@@ -189,11 +216,12 @@
 
 		if (!$('#department_payslip_chart').hasClass('hide')) {
 			department_payslip_chart();
-		}
-	}
+		} 
+		
 
-	function senior_statff_gen() {
-    	'use strict';
+	 }
+	 function senior_statff_gen() {
+    'use strict';
 
 		var data = {};
 		var sort_from='0';
@@ -202,18 +230,19 @@
 		var report_from = $('input[name="report-from"]').val();
 		var report_to = $('input[name="report-to"]').val();
 
-		requestGetJSON('hr_profile/get_chart_senior_staff/' + sort_from+'/'+months_report+'/'+report_from+'/'+report_to).done(function (response) {
-			//get data for hightchart
-			Highcharts.setOptions({
+		requestGetJSON('hr_control/get_chart_senior_staff/' + sort_from+'/'+months_report+'/'+report_from+'/'+report_to).done(function (response) {
+
+			 //get data for hightchart
+			 Highcharts.setOptions({
 				chart: {
 					style: {
 						fontFamily: 'inherit !important',
-						fill: 'black'
-					}
-				},
-				colors: [ '#119EFA','#ef370dc7','#15f34f','#791db2d1', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263','#6AF9C4','#50B432','#0d91efc7','#ED561B']
-			});
-			Highcharts.chart('container_senior_staff', {
+									fill: 'black'
+								}
+							},
+							colors: [ '#119EFA','#ef370dc7','#15f34f','#791db2d1', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263','#6AF9C4','#50B432','#0d91efc7','#ED561B']
+						});
+			 Highcharts.chart('container_senior_staff', {
 				chart: {
 					zoomType: 'xy'        
 				},
@@ -230,70 +259,77 @@
 					categories: ['<= 1 <?php echo _l('months'); ?>', '<= 3 <?php echo _l('months'); ?>', '<= 6 <?php echo _l('months'); ?>', '<= 9 <?php echo _l('months'); ?>', '<= 12 <?php echo _l('months'); ?>', '> 12 <?php echo _l('months'); ?>'],
 					crosshair: true
 				}],
-				yAxis: [{ // Primary yAxis
-					labels: {
-						format: '{value} %',
-						style: {
-							color: Highcharts.getOptions().colors[3]
-						}
+		yAxis: [{ // Primary yAxis
+			labels: {
+				format: '{value} %',
+				style: {
+					color: Highcharts.getOptions().colors[3]
+				}
+			},
+			title: {
+				text: '<?php echo _l('ratio'); ?>',
+				style: {
+					color: Highcharts.getOptions().colors[4]
+				}
+			}
+		}, { // Secondary yAxis
+			title: {
+				text: '<?php echo _l('hr_number_of_employees'); ?>',
+				style: {
+					color: Highcharts.getOptions().colors[0]
+				}
+			},
+			labels: {
+				format: '{value} ',
+				style: {
+					color: Highcharts.getOptions().colors[2]
+				}
+			},
+			opposite: true
+		}],
+		tooltip: {
+			shared: true
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'left',
+			x: 60,
+			verticalAlign: 'top',
+			y: -4,
+			floating: true,
+			backgroundColor:
+						Highcharts.defaultOptions.legend.backgroundColor || // theme
+						'rgba(255,0,0,0.2)'
 					},
-					title: {
-						text: '<?php echo _l('ratio'); ?>',
-						style: {
-							color: Highcharts.getOptions().colors[4]
+					series: [{
+						name: '<?php echo _l('hr_number_of_employees'); ?>',
+						type: 'column',
+						yAxis: 1,
+						data:response.data,
+						tooltip: {
+							valueSuffix: ' <?php echo _l('people'); ?>'
 						}
-					}
-				}, { // Secondary yAxis
-					title: {
-						text: '<?php echo _l('hr_number_of_employees'); ?>',
-						style: {
-							color: Highcharts.getOptions().colors[0]
-						}
-					},
-					labels: {
-						format: '{value} ',
-						style: {
-							color: Highcharts.getOptions().colors[2]
-						}
-					},
-					opposite: true
-				}],
-				tooltip: {
-					shared: true
-				},
-				legend: {
-					layout: 'vertical',
-					align: 'left',
-					x: 60,
-					verticalAlign: 'top',
-					y: -4,
-					floating: true,
-					backgroundColor:
-					Highcharts.defaultOptions.legend.backgroundColor || // theme
-					'rgba(255,0,0,0.2)'
-				},
-				series: [{
-					name: '<?php echo _l('hr_number_of_employees'); ?>',
-					type: 'column',
-					yAxis: 1,
-					data:response.data,
-					tooltip: {
-						valueSuffix: ' <?php echo _l('people'); ?>'
-					}
-				}, {
-					name: '<?php echo _l('ratio'); ?>',
-					type: 'spline',
-					data:response.data_ratio,
-					tooltip: {
-						valueSuffix: ' %'
-					}
-				}]
-			});
-		});
-	}
 
-	function payslip_chart() {
-    	'use strict';
+					}, {
+						name: '<?php echo _l('ratio'); ?>',
+						type: 'spline',
+						data:response.data_ratio,
+						tooltip: {
+							valueSuffix: ' %'
+						}
+					}]
+				});
+			 
+
+			});
+
+
+
+
+	 }
+
+	 function payslip_chart() {
+    'use strict';
 
 		var data = {};
 		data.sort_from='0';
@@ -364,20 +400,25 @@
 					name: '<?php echo _l('ps_net_pay'); ?>',
 					data: response.hr_staff_net_pay
 
-				}]
+				}
+				]
 			});
-		});
-	}
 
-	function department_payslip_chart() {
-    	'use strict';
+
+		});
+
+	 }
+
+	 function department_payslip_chart() {
+    'use strict';
 
 		$('select[name="position[]"]').closest('.col-md-4').addClass('hide');
 		$('select[name="staff[]"]').closest('.col-md-4').addClass('hide');
 		var data = {};
 		data.months_filter = $('select[name="months-report"]').val(); 
 		data.report_from = $('input[name="report-from"]').val();
-		data.report_to = $('input[name="report-to"]').val();		
+		data.report_to = $('input[name="report-to"]').val();
+		
 
 		$.post(admin_url + 'hr_control/department_payslip_chart', data).done(function(response) {
 			response = JSON.parse(response);
@@ -389,7 +430,7 @@
 						name: e.stack,
 						data: e.data
 					};
-					data_json.push(data);                                    
+					data_json.push(data);                             
 				});
 
 				var options = {
@@ -436,7 +477,8 @@
 					series: data_json
 				};
 				var chart1 = new Highcharts.Chart(options);
-			} else {
+			}
+			else{
 				Highcharts.chart('department_payslip_chart', {
 					chart: {
 						plotBackgroundColor: null,
@@ -472,61 +514,65 @@
 					}]
 				});
 			}
-		});
-	}
 
-	//table bao cao
-	$(function() {
-		'use strict';
-
-		$('select[name="position[]"],select[name="department[]"],select[name="staff[]"], select[name="staff"]').on('change', function() {
-			gen_reports();
 		});
+	 }
+//table bao cao
+$(function() {
+    'use strict';
+
+	$('select[name="position[]"],select[name="department[]"],select[name="staff[]"], select[name="staff"]').on('change', function() {
+		gen_reports();
 	});
 
-	function payslip_report() {
-		'use strict';
 
-		$('.title_table').text('<?php echo _l('hr_payslip_report'); ?>');
-		if ($.fn.DataTable.isDataTable('.table-payslip_report')) {
-			$('.table-payslip_report').DataTable().destroy();
-		} 
-		initDataTable('.table-payslip_report', admin_url + 'hr_control/payslip_report', [0], [0], fnServerParams, [0, 'desc']);
+});
 
-		//hide first column
-		var hidden_columns = [0];
-		$('.table-payslip_report').DataTable().columns(hidden_columns).visible(false, false);
-	}
+function payslip_report() {
+    'use strict';
 
-	function income_summary_report() { 
-		'use strict';
+	$('.title_table').text('<?php echo _l('hr_payslip_report'); ?>');
+	if ($.fn.DataTable.isDataTable('.table-payslip_report')) {
+		$('.table-payslip_report').DataTable().destroy();
+	} 
+	initDataTable('.table-payslip_report', admin_url + 'hr_control/payslip_report', [0], [0], fnServerParams, [0, 'desc']);
 
-		$('.title_table').text('<?php echo _l('hr_income_summary_report'); ?>');
-		if ($.fn.DataTable.isDataTable('.table-income_summary_report')) {
-			$('.table-income_summary_report').DataTable().destroy();
-		} 
-		initDataTable('.table-income_summary_report', admin_url + 'hr_control/income_summary_report', [0], [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], fnServerParams, [0, 'desc']);
-		//hide first column
-		var hidden_columns = [];
-		$('.table-income_summary_report').DataTable().columns(hidden_columns).visible(false, false);
-	}
+	//hide first column
+    var hidden_columns = [0];
+        $('.table-payslip_report').DataTable().columns(hidden_columns).visible(false, false);
+}
 
-	function insurance_cost_summary_report() { 
-		'use strict';
+function income_summary_report() { 
+    'use strict';
 
-		$('.title_table').text('<?php echo _l('hr_insurance_cost_summary_report'); ?>');
-		if ($.fn.DataTable.isDataTable('.table-insurance_cost_summary_report')) {
-			$('.table-insurance_cost_summary_report').DataTable().destroy();
-		} 
-		initDataTable('.table-insurance_cost_summary_report', admin_url + 'hr_control/insurance_cost_summary_report', [0,1], [0,1], fnServerParams, [0, 'desc']);
-		//hide first column
-		var hidden_columns = [];
-		$('.table-insurance_cost_summary_report').DataTable().columns(hidden_columns).visible(false, false);
-	}
+	$('.title_table').text('<?php echo _l('hr_income_summary_report'); ?>');
+	if ($.fn.DataTable.isDataTable('.table-income_summary_report')) {
+		$('.table-income_summary_report').DataTable().destroy();
+	} 
+	initDataTable('.table-income_summary_report', admin_url + 'hr_control/income_summary_report', [0], [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], fnServerParams, [0, 'desc']);
+	//hide first column
+    var hidden_columns = [];
+        $('.table-income_summary_report').DataTable().columns(hidden_columns).visible(false, false);
+}
 
-	function formatNumber(n) {
-		'use strict';
+function insurance_cost_summary_report() { 
+    'use strict';
 
-		return n.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
+	$('.title_table').text('<?php echo _l('hr_insurance_cost_summary_report'); ?>');
+	if ($.fn.DataTable.isDataTable('.table-insurance_cost_summary_report')) {
+		$('.table-insurance_cost_summary_report').DataTable().destroy();
+	} 
+	initDataTable('.table-insurance_cost_summary_report', admin_url + 'hr_control/insurance_cost_summary_report', [0,1], [0,1], fnServerParams, [0, 'desc']);
+	//hide first column
+    var hidden_columns = [];
+        $('.table-insurance_cost_summary_report').DataTable().columns(hidden_columns).visible(false, false);
+}
+
+function formatNumber(n) {
+	'use strict';
+
+	return n.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
+
 </script>

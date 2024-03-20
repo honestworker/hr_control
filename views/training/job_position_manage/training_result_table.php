@@ -19,13 +19,13 @@ $join = [
 $where =[];
 
 //load deparment by manager
-if(!is_admin() && !has_permission('staffmanage_training','','view')){
+if (!is_admin() && !has_permission('staffmanage_training','','view')) {
 	  //View own
 	$staff_ids = $this->ci->hr_profile_model->get_staff_by_manager();
 	if (count($staff_ids) > 0) {
 		$where[] = 'AND '.db_prefix().'hr_p_t_surveyresultsets.staff_id IN (' . implode(', ', $staff_ids) . ')';
 
-	}else{
+	} else {
 		$where[] = 'AND 1=2';
 	}
 
@@ -33,37 +33,37 @@ if(!is_admin() && !has_permission('staffmanage_training','','view')){
 
 
 $training_program = $this->ci->input->post('training_program');
-if(isset($training_program)){
+if (isset($training_program)) {
 //get staff from training program
 	$str_staff = $this->ci->hr_profile_model->get_staff_from_training_program($training_program);
-	if(strlen($str_staff) > 0){
+	if (strlen($str_staff) > 0) {
 		$where[] = 'AND ('  .db_prefix().'hr_p_t_surveyresultsets.staff_id IN ('.$str_staff.') )';
-	}else{
+	} else {
 		$where[] = 'AND (1=3 )';
 	}
 
 }
 
 $staff_id = $this->ci->input->post('hr_staff');
-if(isset($staff_id)){
+if (isset($staff_id)) {
 	$where_staff = '';
 	foreach ($staff_id as $staffid) {
 
-		if($staffid != '')
+		if ($staffid != '')
 		{
-			if($where_staff == ''){
+			if ($where_staff == '') {
 				$where_staff .= ' ('.db_prefix().'hr_p_t_surveyresultsets.staff_id in ('.$staffid.')';
-			}else{
+			} else {
 				$where_staff .= ' or '.db_prefix().'hr_p_t_surveyresultsets.staff_id in ('.$staffid.')';
 			}
 		}
 	}
-	if($where_staff != '')
+	if ($where_staff != '')
 	{
 		$where_staff .= ')';
-		if($where != ''){
+		if ($where != '') {
 			array_push($where, 'AND'. $where_staff);
-		}else{
+		} else {
 			array_push($where, $where_staff);
 		}
 		
@@ -71,25 +71,25 @@ if(isset($staff_id)){
 }
 
 $training_libraries = $this->ci->input->post('training_library');
-if(isset($training_libraries)){
+if (isset($training_libraries)) {
 	$where_staff = '';
 	foreach ($training_libraries as $training_library) {
 
-		if($training_library != '')
+		if ($training_library != '')
 		{
-			if($where_staff == ''){
+			if ($where_staff == '') {
 				$where_staff .= ' ('.db_prefix().'hr_p_t_surveyresultsets.trainingid in ('.$training_library.')';
-			}else{
+			} else {
 				$where_staff .= ' or '.db_prefix().'hr_p_t_surveyresultsets.trainingid in ('.$training_library.')';
 			}
 		}
 	}
-	if($where_staff != '')
+	if ($where_staff != '')
 	{
 		$where_staff .= ')';
-		if($where != ''){
+		if ($where != '') {
 			array_push($where, 'AND'. $where_staff);
-		}else{
+		} else {
 			array_push($where, $where_staff);
 		}
 		
@@ -116,12 +116,12 @@ foreach ($rResult as $aRow) {
 
 	if (has_permission('staffmanage_training', '', 'view') || has_permission('staffmanage_training', '', 'view_own')) {
 		
-		$subject .= '<a href="' . site_url('hr_profile/participate/view_staff_training_result/'.$aRow['staff_id'].'/'.$aRow['resultsetid'].'/' . $aRow['training_id'] . '/' . $aRow['hash']) . '" target="_blank">' ._l('view'). '</a>';
+		$subject .= '<a href="' . site_url('hr_control/participate/view_staff_training_result/'.$aRow['staff_id'].'/'.$aRow['resultsetid'].'/' . $aRow['training_id'] . '/' . $aRow['hash']) . '" target="_blank">' ._l('view'). '</a>';
 
 	}
 
 	if (has_permission('staffmanage_training', '', 'delete')) {
-		$subject .= ' | <a href="' . admin_url('hr_profile/delete_job_position_training_process/' . $aRow['resultsetid']) . '" class="text-danger _delete hide">' . _l('delete') . '</a>';
+		$subject .= ' | <a href="' . admin_url('hr_control/delete_job_position_training_process/' . $aRow['resultsetid']) . '" class="text-danger _delete hide">' . _l('delete') . '</a>';
 	}
 	
 	$subject .= '</div>';

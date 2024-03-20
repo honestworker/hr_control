@@ -2,16 +2,14 @@
 <?php init_head(); ?>
 
 <div id="wrapper">
-	<div class="content">
-		
+	<div class="content">		
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel_s">
 					<div class="panel-body">
-
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<h4 ><?php echo _l('hr_income_tax') ?> </h4>
+								<h4 ><?php echo _l('hrp_income_tax') ?> </h4>
 							</div>
 						</div>
 						<br>
@@ -19,7 +17,6 @@
 							<div class="col-md-12">
 								<!-- filter -->
 								<div class="row filter_by">
-
 									<div class="col-md-2">
 										<?php echo render_input('month_income_taxs','month',date('Y-m'), 'month'); ?>   
 									</div>
@@ -40,23 +37,18 @@
 									</div>
 
 									<div class="col-md-3 leads-filter-column pull-left">
-
 										<div class="form-group">
 											<label for="staff_income_taxs" class="control-label"><?php echo _l('staff'); ?></label>
 											<select name="staff_income_taxs[]" class="form-control selectpicker" multiple="true" id="staff_income_taxs" data-actions-box="true" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>" data-live-search="true"> 
 												<?php foreach ($staffs as $key => $staff) { ?>
-
 													<option value="<?php echo html_entity_decode($staff['staffid']); ?>" ><?php  echo html_entity_decode($staff['firstname'].' '.$staff['lastname']); ?></option>
 												<?php } ?>
 											</select>
 										</div>
-
 									</div>
-
 								</div>
 								<!-- filter -->
-							</div>
-							
+							</div>							
 						</div>
 
 						<div class="row">
@@ -72,9 +64,9 @@
 						</div>
 						<div id="total_insurance_histtory" class="col-md-12">
 							<div class="row">  
-								<div id="hr_income_taxs_value" class="hot handsontable htColumnHeaders" >
+								<div id="hrp_income_taxs_value" class="hot handsontable htColumnHeaders" >
 								</div>
-								<?php echo form_hidden('hr_income_taxs_value'); ?>
+								<?php echo form_hidden('hrp_income_taxs_value'); ?>
 								<?php echo form_hidden('month', date('m-Y')); ?>
 								<?php echo form_hidden('income_taxs_fill_month'); ?>
 								<?php echo form_hidden('department_income_taxs_filter'); ?>
@@ -82,20 +74,17 @@
 								<?php echo form_hidden('role_income_taxs_filter'); ?>
 
 								<!-- rel_type synchronization or update value -->
-								<?php echo form_hidden('hr_income_taxs_rel_type'); ?>
-
+								<?php echo form_hidden('hrp_income_taxs_rel_type'); ?>
 							</div>
 						</div>
 
 						<div class="col-md-12">
 							<div class="modal-footer">
-								<?php if(has_permission('hr_control', '', 'create') || has_permission('hr_control', '', 'edit')){ ?>
-									
+								<?php if (has_permission('hr_control', '', 'create') || has_permission('hr_control', '', 'edit')) { ?>									
 									<a href="<?php echo admin_url('hr_control/import_xlsx_income_taxs'); ?>" class="hide btn mright5 btn-default pull-right">
 										<?php echo _l('hr_job_p_export_excel'); ?>
 									</a>
-								<?php } ?>
-								
+								<?php } ?>								
 							</div>
 						</div>
 					</div>
@@ -103,17 +92,12 @@
 			</div>
 
 			<?php echo form_close(); ?>
-
 		</div>
-
 	</div>
 </div>
-
-
 </div>
 </div>
 </div>
-
 
 <?php init_tail(); ?>
 <?php require 'modules/hr_control/assets/js/income_tax/income_tax_manage_js.php'; ?>

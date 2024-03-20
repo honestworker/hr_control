@@ -1,9 +1,9 @@
 <script>
 
 var position_training_id = {};
-(function(){
+(function() {
 	'use strict';
-	window.addEventListener('load',function(){
+	window.addEventListener('load',function() {
 		appValidateForm($("body").find('.job_position_training_add_edit'), {
 			training_type: 'required',
 			'position_training_id[]': 'required',
@@ -16,7 +16,7 @@ var position_training_id = {};
 
 var TrainingProgramServerParams = { };
 var table_training_program = $('.table-table_training_program');
-		initDataTable(table_training_program, admin_url+'hr_profile/table_training_program', [0], [0], TrainingProgramServerParams, [0, 'desc']);
+		initDataTable(table_training_program, admin_url+'hr_control/table_training_program', [0], [0], TrainingProgramServerParams, [0, 'desc']);
 
 		 //hide first column
 		 var hidden_columns = [1];
@@ -24,7 +24,7 @@ var table_training_program = $('.table-table_training_program');
 
 
 
-function new_training_process(){
+function new_training_process() {
 	'use strict';
 
 	$('#job_position_training').modal('show');
@@ -62,7 +62,7 @@ function new_training_process(){
 		});
 }
 
-function edit_training_process(invoker,id, rec_evaluation_form_id){
+function edit_training_process(invoker,id, rec_evaluation_form_id) {
 	'use strict';
 
 	$('#job_position_training').modal('show');
@@ -76,7 +76,7 @@ function edit_training_process(invoker,id, rec_evaluation_form_id){
 	$('#job_position_training input[name="mint_point"]').val($(invoker).data('job_position_mint_point'));
 	$('#job_position_training select[name="training_type"]').val($(invoker).data('job_position_training_type'));
 	$('#job_position_training select[name="training_type"]').change();
-	$.post(admin_url + 'hr_profile/get_list_job_position_training/'+id).done(function(response) {
+	$.post(admin_url + 'hr_control/get_list_job_position_training/'+id).done(function(response) {
 		response = JSON.parse(response);
 		tinyMCE.activeEditor.setContent(response.description);
 		$('.selectpicker').selectpicker({
@@ -85,29 +85,29 @@ function edit_training_process(invoker,id, rec_evaluation_form_id){
 
 	var job_position_training_id_str = $(invoker).data('job_position_training_id');
 
-	if(typeof(job_position_training_id_str) == "string"){
+	if (typeof(job_position_training_id_str) == "string") {
 		position_training_id = ($(invoker).data('job_position_training_id')).split(',');
-	}else{
+	} else {
 		position_training_id = ($(invoker).data('job_position_training_id'));
 
 	}
 
 	var job_position_id_str = $(invoker).data('job_position_id');
-	if(typeof(job_position_id_str) == "string"){
+	if (typeof(job_position_id_str) == "string") {
 		$('#job_position_training select[name="job_position_id[]"]').val( ($(invoker).data('job_position_id')).split(',')).change();
-	}else{
+	} else {
 	 $('#job_position_training select[name="job_position_id[]"]').val($(invoker).data('job_position_id')).change();
 
  }
 
  var staff_id_str = $(invoker).data('staff_id');
-	if(typeof(staff_id_str) == "string"){
+	if (typeof(staff_id_str) == "string") {
 		$('#job_position_training select[name="staff_id[]"]').val( ($(invoker).data('staff_id')).split(',')).change();
-	}else{
+	} else {
 	 $('#job_position_training select[name="staff_id[]"]').val($(invoker).data('staff_id')).change();
  }
 
- if($(invoker).data('additional_training') == 'additional_training'){
+ if ($(invoker).data('additional_training') == 'additional_training') {
  	$('#job_position_training input[id="additional_training"]').prop('checked', true);
 
  	$('.additional_training_hide').removeClass('hide');
@@ -115,7 +115,7 @@ function edit_training_process(invoker,id, rec_evaluation_form_id){
 
  	$('select[id="job_position_id"]').removeAttr( "required" );
 
- }else{
+ } else {
  	$('#job_position_training input[id="additional_training"]').prop("checked", false);
 
  	$('.additional_training_hide').addClass('hide');
@@ -132,11 +132,11 @@ function edit_training_process(invoker,id, rec_evaluation_form_id){
  $('.edit-title').removeClass('hide');
 }
 
-function training_type_change(invoker){
+function training_type_change(invoker) {
 	'use strict';
 
-	if(invoker.value){
-		$.post(admin_url + 'hr_profile/get_training_type_child/'+invoker.value).done(function(response) {
+	if (invoker.value) {
+		$.post(admin_url + 'hr_control/get_training_type_child/'+invoker.value).done(function(response) {
 			response = JSON.parse(response);
 			$('select[name="position_training_id[]"]').html('');
 			$('select[name="position_training_id[]"]').append(response.html);
@@ -151,16 +151,16 @@ function training_type_change(invoker){
 
 /*get jobposition in department by staff in department*/
 
-function department_change(invoker){
+function department_change(invoker) {
 	'use strict';
 
 	var data_select = {};
 	data_select.department_id = $('select[name="department_id[]"]').val();
 	data_select.status = 'true';
-	if((data_select.department_id).length == 0){
+	if ((data_select.department_id).length == 0) {
 		data_select.status = 'false';
 	}
-	$.post(admin_url + 'hr_profile/get_jobposition_fill_data',data_select).done(function(response){
+	$.post(admin_url + 'hr_control/get_jobposition_fill_data',data_select).done(function(response) {
 	 response = JSON.parse(response);
 	 $("select[name='job_position_id[]']").html('');
 	 $("select[name='job_position_id[]']").append(response.job_position);
@@ -169,7 +169,7 @@ function department_change(invoker){
 }
 
 
-	function training_program_bulk_actions(){
+	function training_program_bulk_actions() {
 		'use strict';
 
 		$('#table_training_program_bulk_actions').modal('show');
@@ -182,7 +182,7 @@ function department_change(invoker){
 		if (confirm_delete()) {
 			var mass_delete = $('#mass_delete').prop('checked');
 
-			if(mass_delete == true){
+			if (mass_delete == true) {
 				var ids = [];
 				var data = {};
 
@@ -200,14 +200,14 @@ function department_change(invoker){
 				data.ids = ids;
 				$(event).addClass('disabled');
 				setTimeout(function() {
-					$.post(admin_url + 'hr_profile/hrm_delete_bulk_action_v2', data).done(function() {
+					$.post(admin_url + 'hr_control/hrm_delete_bulk_action_v2', data).done(function() {
 						window.location.reload();
 					}).fail(function(data) {
 						$('#training_program_bulk_actions').modal('hide');
 						alert_float('danger', data.responseText);
 					});
 				}, 200);
-			}else{
+			} else {
 				window.location.reload();
 			}
 
@@ -220,7 +220,7 @@ function department_change(invoker){
 
 		var additional_training = $('input[id="additional_training"]').is(":checked");
 
-		if(additional_training == true){
+		if (additional_training == true) {
 			$('.additional_training_hide').removeClass('hide');
 			$('.onboading_hide').addClass('hide');
 

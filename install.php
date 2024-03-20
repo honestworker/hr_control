@@ -2,11 +2,8 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/*
- HR Payroll
-*/
-if (!$CI->db->table_exists(db_prefix() . 'hr_control_option')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_control_option` (
+if (!$CI->db->table_exists(db_prefix() . 'hr_payroll_option')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_payroll_option` (
     `option_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     `option_name` varchar(200) NOT NULL,
     `option_val` longtext NULL,
@@ -16,8 +13,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_control_option')) {
 }
 
 //Payslip table
-if (!$CI->db->table_exists(db_prefix() . 'hr_payslips')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_payslips` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_payslips')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_payslips` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     `payslip_name` VARCHAR(100) NOT NULL,
     `payslip_template_id` INT(11) NULL,
@@ -30,43 +27,43 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_payslips')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('file_name', db_prefix() . 'hr_payslips')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslips`
+if (!$CI->db->field_exists('file_name', db_prefix() . 'hrp_payslips')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslips`
     ADD COLUMN `file_name` TEXT NULL ;");
 }
 
-if (!$CI->db->field_exists('payslip_status', db_prefix() . 'hr_payslips')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslips`
+if (!$CI->db->field_exists('payslip_status', db_prefix() . 'hrp_payslips')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslips`
     ADD COLUMN `payslip_status` VARCHAR(100) DEFAULT 'payslip_opening' ;");
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_payslip_templates')) {
-    $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_payslip_templates` (
-      `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-      `templates_name` VARCHAR(100) NOT NULL,
-      `payslip_columns` LONGTEXT NULL,
-      `payslip_id_copy` INT(11) UNSIGNED NOT NULL,
+if (!$CI->db->table_exists(db_prefix() . 'hrp_payslip_templates')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_payslip_templates` (
+    `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `templates_name` VARCHAR(100) NOT NULL,
+    `payslip_columns` LONGTEXT NULL,
+    `payslip_id_copy` INT(11) UNSIGNED NOT NULL,
 
-      `department_id`  LONGTEXT  NULL,
-      `role_employees`  LONGTEXT  NULL,
-      `staff_employees`  LONGTEXT  NULL,
-     
-      `payslip_template_data` LONGTEXT NULL,
-      `date_created` DATETIME NOT NULL,
-      `staff_id_created` INT(11) NOT NULL,
-      `cell_data` LONGTEXT  NULL,
+    `department_id`  LONGTEXT  NULL,
+    `role_employees`  LONGTEXT  NULL,
+    `staff_employees`  LONGTEXT  NULL,
 
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
+    `payslip_template_data` LONGTEXT NULL,
+    `date_created` DATETIME NOT NULL,
+    `staff_id_created` INT(11) NOT NULL,
+    `cell_data` LONGTEXT  NULL,
+
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('except_staff', db_prefix() . 'hr_payslip_templates')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslip_templates`
+if (!$CI->db->field_exists('except_staff', db_prefix() . 'hrp_payslip_templates')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslip_templates`
     ADD COLUMN `except_staff` TEXT NULL ;");
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_payroll_columns')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_payroll_columns` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_payroll_columns')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_payroll_columns` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     `column_key` TEXT NULL,
     `taking_method` TEXT NULL COMMENT 'get from system, caculator, constant... ',
@@ -82,23 +79,23 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_payroll_columns')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('is_edit', db_prefix() . 'hr_payroll_columns')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payroll_columns`
+if (!$CI->db->field_exists('is_edit', db_prefix() . 'hrp_payroll_columns')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payroll_columns`
     ADD COLUMN `is_edit` VARCHAR(100) NULL DEFAULT 'yes';");
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_bonus_kpi')) {
-    $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_bonus_kpi` (
-      `id` INT(11) NOT NULL AUTO_INCREMENT,
-      `month_bonus_kpi` VARCHAR(45) NULL,
-      `staffid` INT(11) NUll,
-      `bonus_kpi` varchar(100) NULL,
+if (!$CI->db->table_exists(db_prefix() . 'hrp_bonus_kpi')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_bonus_kpi` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `month_bonus_kpi` VARCHAR(45) NULL,
+    `staffid` INT(11) NUll,
+    `bonus_kpi` varchar(100) NULL,
 
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('parent_id', db_prefix() . 'departments')) { 
+if (!$CI->db->field_exists('parent_id', db_prefix() . 'departments')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "departments`
     ADD COLUMN `parent_id` INT(11) NULL DEFAULT 0;");
 }
@@ -109,16 +106,16 @@ if (!$CI->db->field_exists('parent_id', db_prefix() . 'departments')) {
 // Payment_Run_Date: system - generate
 // Employee_Number: system - generate or get from hr records
 // Employee_Name: system - get tbl staff (fist+lastname)
-// Dept: system - get tbl staffdepartment 
-// Standard_Working_Time: system - get tblhr_employees_timesheets
-// Actual_Working_Time: system - get tblhr_employees_timesheets
-// Paid_Leave_Time: system - get tblhr_employees_timesheets
-// Unpaid_Leave_Time : system - get tblhr_employees_timesheets
+// Dept: system - get tbl staffdepartment
+// Standard_Working_Time: system - get tblhrp_employees_timesheets
+// Actual_Working_Time: system - get tblhrp_employees_timesheets
+// Paid_Leave_Time: system - get tblhrp_employees_timesheets
+// Unpaid_Leave_Time : system - get tblhrp_employees_timesheets
 
 //earnings list: generate earning list (take from payroll or Hr records dependent on data integrated)
 
 //Gross Pay: formulate - (total earings)
-//Income Tax (PAYE): system (must caculating base on Income tax rates) 
+//Income Tax (PAYE): system (must caculating base on Income tax rates)
 
 //deduct list: generate deduct list (take from payroll setting)
 //Total Deductions: formulate - (total deduct)
@@ -129,141 +126,135 @@ if (!$CI->db->field_exists('parent_id', db_prefix() . 'departments')) {
 
 //
 
-if (hr_control_payroll_column_exist('"staff_id"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Staff ID", "system", "staff_id", "", "true", "Staff ID", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "1", "no");');
+if (hr_payroll_payroll_column_exist('"staff_id"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Staff ID", "system", "staff_id", "", "true", "Staff ID", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "1", "no");');
 }
 
-if (hr_control_payroll_column_exist('"pay_slip_number"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Payslip Number", "system", "pay_slip_number", "", "true", "Pay Slip Number", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "2", "no");');
+if (hr_payroll_payroll_column_exist('"pay_slip_number"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Payslip Number", "system", "pay_slip_number", "", "true", "Pay Slip Number", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "2", "no");');
 }
 
-if (hr_control_payroll_column_exist('"payment_run_date"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Payment Run Date", "system", "payment_run_date", "", "true", "Payment Run Date", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "3", "no");');
+if (hr_payroll_payroll_column_exist('"payment_run_date"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Payment Run Date", "system", "payment_run_date", "", "true", "Payment Run Date", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "3", "no");');
 }
 
-if (hr_control_payroll_column_exist('"employee_number"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Employee Number", "system", "employee_number", "", "true", "Employee Number", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "4", "no");');
+if (hr_payroll_payroll_column_exist('"employee_number"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Employee Number", "system", "employee_number", "", "true", "Employee Number", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "4", "no");');
 }
 
-if (hr_control_payroll_column_exist('"employee_name"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Employee Name", "system", "employee_name", "", "true", "Employee Name", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "5", "no");');
+if (hr_payroll_payroll_column_exist('"employee_name"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Employee Name", "system", "employee_name", "", "true", "Employee Name", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "5", "no");');
 }
 
-if (hr_control_payroll_column_exist('"dept_name"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Deparment Name", "system", "dept_name", "", "true", "Dept name Name", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "6", "no");');
+if (hr_payroll_payroll_column_exist('"dept_name"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Deparment Name", "system", "dept_name", "", "true", "Dept name Name", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "6", "no");');
 }
 
 //Standard_Working_Time
-if (hr_control_payroll_column_exist('"standard_workday"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Standard Working Time", "system", "standard_workday", "", "true", "Standard working time of the month (hours)", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "7", "no");');
+if (hr_payroll_payroll_column_exist('"standard_workday"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Standard Working Time", "system", "standard_workday", "", "true", "Standard working time of the month (hours)", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "7", "no");');
 }
 
 //Actual_Working_Time
-if (hr_control_payroll_column_exist('"actual_workday"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Actual Working Time of Formal contract", "system", "actual_workday", "", "true", "Actual working time (hours)", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "8", "no");');
+if (hr_payroll_payroll_column_exist('"actual_workday"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Actual Working Time of Formal contract", "system", "actual_workday", "", "true", "Actual working time (hours)", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "8", "no");');
 }
 
-if (hr_control_payroll_column_exist('"actual_workday_probation"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Actual Working Time of Probation contract", "system", "actual_workday_probation", "", "true", "Actual Working Time of Probation contract (hours)", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "9", "no");');
+if (hr_payroll_payroll_column_exist('"actual_workday_probation"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Actual Working Time of Probation contract", "system", "actual_workday_probation", "", "true", "Actual Working Time of Probation contract (hours)", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "9", "no");');
 }
-
 
 //Paid_Leave_Time
-if (hr_control_payroll_column_exist('"paid_leave"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Paid Leave Time", "system", "paid_leave", "", "true", "Paid Leave Time (hours)", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "10", "no");');
+if (hr_payroll_payroll_column_exist('"paid_leave"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Paid Leave Time", "system", "paid_leave", "", "true", "Paid Leave Time (hours)", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "10", "no");');
 }
 
 //Unpaid_Leave_Time
-if (hr_control_payroll_column_exist('"unpaid_leave"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Unpaid Leave Time", "system", "unpaid_leave", "", "true", "Unpaid Leave Time (hours)", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "11", "no");');
+if (hr_payroll_payroll_column_exist('"unpaid_leave"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Unpaid Leave Time", "system", "unpaid_leave", "", "true", "Unpaid Leave Time (hours)", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "11", "no");');
 }
 
-if (hr_control_payroll_column_exist('"salary_of_the_probationary_contract"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Salary of the probationary contract", "caculator", "salary_of_the_probationary_contract", "", "true", "Salary of the probationary contract", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "12", "no");');
+if (hr_payroll_payroll_column_exist('"salary_of_the_probationary_contract"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Salary of the probationary contract", "caculator", "salary_of_the_probationary_contract", "", "true", "Salary of the probationary contract", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "12", "no");');
 }
 
-if (hr_control_payroll_column_exist('"salary_of_the_formal_contract"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Salary of the formal contract", "caculator", "salary_of_the_formal_contract", "", "true", "Salary of the formal contract", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "13", "no");');
+if (hr_payroll_payroll_column_exist('"salary_of_the_formal_contract"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Salary of the formal contract", "caculator", "salary_of_the_formal_contract", "", "true", "Salary of the formal contract", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "13", "no");');
 }
 
 //Gross Pay formulas
-if (hr_control_payroll_column_exist('"gross_pay"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Gross Pay", "caculator", "gross_pay", "", "true", "Gross Pay", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "14", "no");');
+if (hr_payroll_payroll_column_exist('"gross_pay"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Gross Pay", "caculator", "gross_pay", "", "true", "Gross Pay", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "14", "no");');
 }
-
 
 //Total Deductions formulas
-if (hr_control_payroll_column_exist('"total_deductions"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total Deductions", "caculator", "total_deductions", "", "true", "Total Deductions", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "15", "no");');
+if (hr_payroll_payroll_column_exist('"total_deductions"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total Deductions", "caculator", "total_deductions", "", "true", "Total Deductions", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "15", "no");');
 }
 
-
-if (hr_control_payroll_column_exist('"total_insurance"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total Insurance", "caculator", "total_insurance", "", "true", "Total Insurance", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "16", "no");');
+if (hr_payroll_payroll_column_exist('"total_insurance"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total Insurance", "caculator", "total_insurance", "", "true", "Total Insurance", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "16", "no");');
 }
 
 //Income Tax Rebate Code
-if (hr_control_payroll_column_exist('"it_rebate_code"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Income Tax Rebate Code", "system", "it_rebate_code", "", "true", "IT Rebate Code", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "17", "no");');
+if (hr_payroll_payroll_column_exist('"it_rebate_code"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Income Tax Rebate Code", "system", "it_rebate_code", "", "true", "IT Rebate Code", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "17", "no");');
 }
 
 //Income_Tax Rebate Value
-if (hr_control_payroll_column_exist('"it_rebate_value"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Income Tax Rebate Value", "system", "it_rebate_value", "", "true", "IT Rebate Value", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "18", "no");');
+if (hr_payroll_payroll_column_exist('"it_rebate_value"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Income Tax Rebate Value", "system", "it_rebate_value", "", "true", "IT Rebate Value", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "18", "no");');
 }
 
-
-if (hr_control_payroll_column_exist('"taxable_salary"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Taxable salary", "caculator", "taxable_salary", "", "true", "Taxable salary", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "19", "no");');
+if (hr_payroll_payroll_column_exist('"taxable_salary"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Taxable salary", "caculator", "taxable_salary", "", "true", "Taxable salary", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "19", "no");');
 }
 
 //Income Tax Rate code
-if (hr_control_payroll_column_exist('"income_tax_code"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Income Tax code", "system", "income_tax_code", "", "true", "Income Tax code", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "20", "no");');
+if (hr_payroll_payroll_column_exist('"income_tax_code"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Income Tax code", "system", "income_tax_code", "", "true", "Income Tax code", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "20", "no");');
 }
 
 //Income Tax PAYE system, need caculating
-if (hr_control_payroll_column_exist('"income_tax_paye"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Personal Income Tax", "system", "income_tax_paye", "", "true", "Personal Income Tax", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "21", "no");');
+if (hr_payroll_payroll_column_exist('"income_tax_paye"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Personal Income Tax", "system", "income_tax_paye", "", "true", "Personal Income Tax", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "21", "no");');
 }
 
-
-if (hr_control_payroll_column_exist('"commission_amount"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Commission Amount", "system", "commission_amount", "", "true", "Commission", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "22", "no");');
+if (hr_payroll_payroll_column_exist('"commission_amount"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Commission Amount", "system", "commission_amount", "", "true", "Commission", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "22", "no");');
 }
 
-if (hr_control_payroll_column_exist('"bonus_kpi"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Bonus Kpi", "system", "bonus_kpi", "", "true", "Bonus Kpi", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "23", "no");');
+if (hr_payroll_payroll_column_exist('"bonus_kpi"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Bonus Kpi", "system", "bonus_kpi", "", "true", "Bonus Kpi", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "23", "no");');
 }
-
 
 //Net Pay formulas
-if (hr_control_payroll_column_exist('"net_pay"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Net Pay", "caculator", "net_pay", "", "true", "Net Pay", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "24", "no");');
+if (hr_payroll_payroll_column_exist('"net_pay"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Net Pay", "caculator", "net_pay", "", "true", "Net Pay", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "24", "no");');
 }
 
-if (hr_control_payroll_column_exist('"total_cost"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total Cost", "caculator", "total_cost", "", "true", "Total cost", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "25", "no");');
+if (hr_payroll_payroll_column_exist('"total_cost"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total Cost", "caculator", "total_cost", "", "true", "Total cost", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "25", "no");');
 }
 
-if (hr_control_payroll_column_exist('"total_hours_by_tasks"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total hours by tasks", "system", "total_hours_by_tasks", "", "true", "Total hours by tasks", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "16", "no");');
+if (hr_payroll_payroll_column_exist('"total_hours_by_tasks"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Total hours by tasks", "system", "total_hours_by_tasks", "", "true", "Total hours by tasks", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "16", "no");');
 }
 
-if (hr_control_payroll_column_exist('"salary_from_tasks"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Salary from tasks", "system", "salary_from_tasks", "", "true", "Salary from tasks", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "16", "no");');
+if (hr_payroll_payroll_column_exist('"salary_from_tasks"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Salary from tasks", "system", "salary_from_tasks", "", "true", "Salary from tasks", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "16", "no");');
 }
 
-if (hr_control_payroll_column_exist('"bank_name"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Bank Name", "system", "bank_name", "", "true", "Bank Name", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "17", "no");');
+if (hr_payroll_payroll_column_exist('"bank_name"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Bank Name", "system", "bank_name", "", "true", "Bank Name", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "17", "no");');
 }
 
-if (hr_control_payroll_column_exist('"account_number"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Account Number", "system", "account_number", "", "true", "Account Number", "'.date("Y-m-d H:i:s").'", "'.get_staff_user_id().'", "17", "no");');
+if (hr_payroll_payroll_column_exist('"account_number"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hrp_payroll_columns` (`column_key`, `taking_method`, `function_name`, `value_related_to`, `display_with_staff`, `description`, `date_created`, `staff_id_created`, `order_display`, `is_edit`) VALUES ("Account Number", "system", "account_number", "", "true", "Account Number", "' . date("Y-m-d H:i:s") . '", "' . get_staff_user_id() . '", "17", "no");');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_income_tax_rates')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_income_tax_rates` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_income_tax_rates')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_income_tax_rates` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `tax_bracket_value_from` DECIMAL(15,2)  NULL,
     `tax_bracket_value_to` DECIMAL(15,2)  NULL,
@@ -275,8 +266,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_income_tax_rates')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_income_tax_rebates')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_income_tax_rebates` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_income_tax_rebates')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_income_tax_rebates` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `code` VARCHAR(200) NULL,
     `description` VARCHAR(200) NULL,
@@ -287,8 +278,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_income_tax_rebates')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_earnings_list')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_earnings_list` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_earnings_list')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_earnings_list` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `code` VARCHAR(200) NULL,
     `description` VARCHAR(200) NULL,
@@ -300,8 +291,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_earnings_list')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_salary_deductions_list')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_salary_deductions_list` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_salary_deductions_list')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_salary_deductions_list` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `code` VARCHAR(200) NULL,
     `description` VARCHAR(200) NULL,
@@ -317,8 +308,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_salary_deductions_list')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_company_contributions_list')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_company_contributions_list` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_company_contributions_list')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_company_contributions_list` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `code` VARCHAR(200) NULL,
     `description` VARCHAR(200) NULL,
@@ -332,8 +323,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_company_contributions_list')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_earnings_list_hr_records')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_earnings_list_hr_records` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_earnings_list_hr_records')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_earnings_list_hr_records` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `code` VARCHAR(200) NULL,
     `description` VARCHAR(200) NULL,
@@ -350,8 +341,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_earnings_list_hr_records')) {
 //employees manage
 //Save header: eg staff name, deparment name, earning 1: only header
 //rel_type: 'hr_records' integration hr records module, 'none' don't integration hr records module
-if (!$CI->db->table_exists(db_prefix() . 'hr_employees_value')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_employees_value` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_employees_value')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_employees_value` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `staff_id` INT(11) NULL,
     `month` DATE NOT NULL,
@@ -369,8 +360,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_employees_value')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('probationary_effective', db_prefix() . 'hr_employees_value')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_employees_value`
+if (!$CI->db->field_exists('probationary_effective', db_prefix() . 'hrp_employees_value')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_employees_value`
     ADD COLUMN `probationary_effective` DATE NULL ,
     ADD COLUMN `probationary_expiration` DATE NULL ,
     ADD COLUMN `primary_effective` DATE NULL ,
@@ -379,8 +370,8 @@ if (!$CI->db->field_exists('probationary_effective', db_prefix() . 'hr_employees
 
 //Timesheet integration
 //rel_type: 'hr_timesheets' integration timesheets module, 'none' don't integration timesheets module
-if (!$CI->db->table_exists(db_prefix() . 'hr_employees_timesheets')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_employees_timesheets` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_employees_timesheets')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_employees_timesheets` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `staff_id` INT(11) NULL,
     `month` DATE NOT NULL,
@@ -428,33 +419,27 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_employees_timesheets')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('actual_workday_probation', db_prefix() . 'hr_employees_timesheets')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_employees_timesheets`
-    ADD COLUMN `actual_workday_probation` DECIMAL(15,2) DEFAULT '0';");
+if (!$CI->db->field_exists('actual_workday_probation', db_prefix() . 'hrp_employees_timesheets')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_employees_timesheets`
+    ADD COLUMN `actual_workday_probation` DECIMAL(15,2) DEFAULT '0' ;");
 }
 
-if (!$CI->db->field_exists('day_26', db_prefix() . 'hr_employees_timesheets')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_employees_timesheets`
-    ADD COLUMN `day_26` DECIMAL(15,2) DEFAULT '0' ;");
-}
-  
-if (!$CI->db->table_exists(db_prefix() . 'hr_salary_deductions')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_salary_deductions` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_salary_deductions')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_salary_deductions` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `staff_id` INT(11) NULL,
     `month` DATE NOT NULL,
-    
+
     `deduction_list` LONGTEXT NULL,
 
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-
 //Commission integration
 //rel_type: 'commission' integration commission module, 'none' don't integration commission module
-if (!$CI->db->table_exists(db_prefix() . 'hr_commissions')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_commissions` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_commissions')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_commissions` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `staff_id` INT(11) NULL,
     `month` DATE NOT NULL,
@@ -466,9 +451,8 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_commissions')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-
-if (!$CI->db->table_exists(db_prefix() . 'hr_income_taxs')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_income_taxs` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_income_taxs')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_income_taxs` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `staff_id` INT(11) NULL,
     `month` DATE NOT NULL,
@@ -481,13 +465,13 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_income_taxs')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('payslip_id', db_prefix() . 'hr_income_taxs')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_income_taxs`
+if (!$CI->db->field_exists('payslip_id', db_prefix() . 'hrp_income_taxs')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_income_taxs`
     ADD COLUMN `payslip_id` INT(11) NOT NULL ;");
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_payslip_details')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_payslip_details` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_payslip_details')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_payslip_details` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     `payslip_id` INT(11) NULL,
     `staff_id` INT(11) NULL,
@@ -517,26 +501,26 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_payslip_details')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('total_insurance', db_prefix() . 'hr_payslip_details')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslip_details`
+if (!$CI->db->field_exists('total_insurance', db_prefix() . 'hrp_payslip_details')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslip_details`
     ADD COLUMN `total_insurance` DECIMAL(15,2)  DEFAULT '0' ;");
 }
 
-if (!$CI->db->field_exists('json_data', db_prefix() . 'hr_payslip_details')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslip_details`
+if (!$CI->db->field_exists('json_data', db_prefix() . 'hrp_payslip_details')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslip_details`
     ADD COLUMN `json_data` LONGTEXT NULL ;");
 }
 
-if (!$CI->db->field_exists('salary_of_the_probationary_contract', db_prefix() . 'hr_payslip_details')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslip_details`
+if (!$CI->db->field_exists('salary_of_the_probationary_contract', db_prefix() . 'hrp_payslip_details')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslip_details`
     ADD COLUMN `salary_of_the_probationary_contract`  DECIMAL(15,2)  DEFAULT '0',
     ADD COLUMN `salary_of_the_formal_contract`  DECIMAL(15,2)  DEFAULT '0',
     ADD COLUMN `taxable_salary`  DECIMAL(15,2)  DEFAULT '0',
     ADD COLUMN `actual_workday_probation`  DECIMAL(15,2)  DEFAULT '0';");
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_insurance_list')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_insurance_list` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_insurance_list')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_insurance_list` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `code` VARCHAR(200) NULL,
     `description` VARCHAR(200) NULL,
@@ -547,67 +531,74 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_insurance_list')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->table_exists(db_prefix() . 'hr_staff_insurances')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_staff_insurances` (
+if (!$CI->db->table_exists(db_prefix() . 'hrp_staff_insurances')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hrp_staff_insurances` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `staff_id` INT(11) NULL,
     `month` DATE NOT NULL,
-    
+
     `insurance_list` LONGTEXT NULL,
 
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (hr_control_options_row_exist('"integrated_hrprofile"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("integrated_hrprofile", "0", "1");');
+if (row_hr_payroll_options_exist('"integrated_hrprofile"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("integrated_hrprofile", "0", "1");');
 }
 
-if (hr_control_options_row_exist('"integrated_timesheets"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("integrated_timesheets", "0", "1");');
+if (row_hr_payroll_options_exist('"integrated_timesheets"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("integrated_timesheets", "0", "1");');
 }
 
-if (hr_control_options_row_exist('"integration_actual_workday"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("integration_actual_workday", "W,B", "1");');
+if (row_hr_payroll_options_exist('"integration_actual_workday"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("integration_actual_workday", "W,B", "1");');
 }
 
-if (hr_control_options_row_exist('"integration_paid_leave"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("integration_paid_leave", "AL,HO,EB", "1");');
+if (row_hr_payroll_options_exist('"integration_paid_leave"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("integration_paid_leave", "AL,HO,EB", "1");');
 }
 
-if (hr_control_options_row_exist('"integration_unpaid_leave"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("integration_unpaid_leave", "U,SI,UB,P", "1");');
+if (row_hr_payroll_options_exist('"integration_unpaid_leave"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("integration_unpaid_leave", "U,SI,UB,P", "1");');
 }
 
-if (hr_control_options_row_exist('"standard_working_time"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("standard_working_time", "160", "1");');
+if (row_hr_payroll_options_exist('"standard_working_time"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("standard_working_time", "160", "1");');
 }
 
-if (hr_control_options_row_exist('"integrated_commissions"') == 0) {
-  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("integrated_commissions", "0", "1");');
+if (row_hr_payroll_options_exist('"integrated_commissions"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_payroll_option` (`option_name`,`option_val`, `auto`) VALUES ("integrated_commissions", "0", "1");');
 }
 
-// v101: add two column: total_hours_by_tasks, salary_from_tasks
-if (!$CI->db->field_exists('salary_from_tasks', db_prefix() . 'hr_payslip_details')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_payslip_details`
+//v101: add two column: total_hours_by_tasks, salary_from_tasks
+if (!$CI->db->field_exists('salary_from_tasks', db_prefix() . 'hrp_payslip_details')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_payslip_details`
     ADD COLUMN `total_hours_by_tasks`  DECIMAL(15,2)  DEFAULT '0',
     ADD COLUMN `salary_from_tasks`  DECIMAL(15,2)  DEFAULT '0';");
 }
 
-if (!$CI->db->field_exists('bank_name', db_prefix() . 'hr_employees_value')) { 
-  $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_employees_value`
+if (!$CI->db->field_exists('bank_name', db_prefix() . 'hrp_employees_value')) {
+  $CI->db->query('ALTER TABLE `' . db_prefix() . "hrp_employees_value`
     ADD COLUMN `bank_name` VARCHAR(500) ,
     ADD COLUMN `account_number` VARCHAR(200);");
 }
 
-/*
- HR Profile
-*/
-if (!$CI->db->field_exists('manager_id', db_prefix() . 'departments')) { 
+if (!$CI->db->table_exists(db_prefix() . 'hr_profile_option')) {
+  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_profile_option` (
+    `option_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `option_name` varchar(200) NOT NULL,
+    `option_val` longtext NULL,
+    `auto` tinyint(1) NULL,
+    PRIMARY KEY (`option_id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
+}
+
+if (!$CI->db->field_exists('manager_id', db_prefix() . 'departments')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "departments`
     ADD COLUMN `manager_id` INT(11) NULL DEFAULT 0;");
 }
-if (!$CI->db->field_exists('parent_id', db_prefix() . 'departments')) { 
+if (!$CI->db->field_exists('parent_id', db_prefix() . 'departments')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "departments`
     ADD COLUMN `parent_id` INT(11) NULL DEFAULT 0;");
 }
@@ -628,8 +619,8 @@ if (!$CI->db->table_exists(db_prefix() . 'rec_transfer_records')) {
 if (!$CI->db->table_exists(db_prefix() . 'setting_transfer_records')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "setting_transfer_records` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name`varchar(150),  
-    `meta` varchar(50),  
+    `name`varchar(150),
+    `meta` varchar(50),
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
@@ -649,7 +640,7 @@ if (!$CI->db->table_exists(db_prefix() . 'rec_set_transfer_record')) {
 if (!$CI->db->table_exists(db_prefix() . 'setting_asset_allocation')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "setting_asset_allocation` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` varchar(150),     
+    `name` varchar(150),
     `meta` varchar(50),
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
@@ -657,36 +648,36 @@ if (!$CI->db->table_exists(db_prefix() . 'setting_asset_allocation')) {
 if (!$CI->db->table_exists(db_prefix() . 'records_meta')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "records_meta` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` varchar(150),  
-    `meta` varchar(100),  
+    `name` varchar(150),
+    `meta` varchar(100),
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 
-  $data_array = array( 
-    array("staff_identifi", "staff_identifi"), 
-    array("firstname", "firstname"), 
-    array("email", "email"), 
-    array("phonenumber", "phonenumber"), 
-    array("facebook", "facebook"), 
-    array("skype", "skype"), 
-    array("birthday", "birthday"), 
-    array("birthplace", "birthplace"), 
-    array("home_town", "home_town"), 
-    array("marital_status", "marital_status"), 
-    array("nation", "nation"), 
-    array("religion", "religion"), 
-    array("identification", "identification"), 
-    array("days_for_identity", "days_for_identity"), 
-    array("place_of_issue", "place_of_issue"), 
-    array("resident", "resident"), 
-    array("current_address", "current_address"), 
-    array("literacy", "literacy"), 
-  ); 
+  $data_array = array(
+      array("staff_identifi", "staff_identifi"),
+      array("firstname", "firstname"),
+      array("email", "email"),
+      array("phonenumber", "phonenumber"),
+      array("facebook", "facebook"),
+      array("skype", "skype"),
+      array("birthday", "birthday"),
+      array("birthplace", "birthplace"),
+      array("home_town", "home_town"),
+      array("marital_status", "marital_status"),
+      array("nation", "nation"),
+      array("religion", "religion"),
+      array("identification", "identification"),
+      array("days_for_identity", "days_for_identity"),
+      array("place_of_issue", "place_of_issue"),
+      array("resident", "resident"),
+      array("current_address", "current_address"),
+      array("literacy", "literacy"),
+  );
   foreach ($data_array as $key => $value) {
-    $data['name']=$value[0];
-    $data['meta']=$value[1];
+    $data['name'] = $value[0];
+    $data['meta'] = $value[1];
     $CI->db->insert(db_prefix() . 'records_meta', $data);
-  }    
+  }
 }
 if (!$CI->db->table_exists(db_prefix() . 'group_checklist')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . 'group_checklist` (
@@ -784,22 +775,22 @@ if (!$CI->db->table_exists(db_prefix() . 'training_allocation')) {
 if (!$CI->db->table_exists(db_prefix() . 'transfer_records_reception')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "transfer_records_reception` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name`varchar(150),  
-    `meta` varchar(50), 
-    `staffid` int(11) NULL, 
+    `name`varchar(150),
+    `meta` varchar(50),
+    `staffid` int(11) NULL,
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('question_answers', db_prefix() . 'knowledge_base')) { 
+if (!$CI->db->field_exists('question_answers', db_prefix() . 'knowledge_base')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "knowledge_base`
     ADD COLUMN `question_answers` INT(11) NULL DEFAULT 0,
     ADD COLUMN `file_name` VARCHAR(255) NULL DEFAULT '',
     ADD COLUMN `curator` VARCHAR(11) NULL DEFAULT '',
-    ADD COLUMN `benchmark` INT(11) NULL DEFAULT 0, 
-    ADD COLUMN `score` INT(11) NULL DEFAULT 0;");
+    ADD COLUMN `benchmark` INT(11) NULL DEFAULT 0,
+    ADD COLUMN `score` INT(11) NULL DEFAULT 0
+    ;");
 }
-
 if (!$CI->db->table_exists(db_prefix() . 'rec_job_position')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "rec_job_position` (
     `position_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -815,7 +806,7 @@ if (!$CI->db->table_exists(db_prefix() . 'bonus_discipline')) {
     `name` VARCHAR(100) NULL,
     `id_criteria`  VARCHAR(200)  NULL,
     `type` int(3)  NOT NULL,
-    `apply_for` varchar(50) NULL, 
+    `apply_for` varchar(50) NULL,
     `from_time` DATETIME NULL ,
     `lever_bonus` int(11)  NULL,
     `approver` int(11)  NULL,
@@ -826,7 +817,6 @@ if (!$CI->db->table_exists(db_prefix() . 'bonus_discipline')) {
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
-
 if (!$CI->db->table_exists(db_prefix() . 'bonus_discipline_detail')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "bonus_discipline_detail` (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -912,7 +902,6 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_procedure_retire_manage')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-
 //job position table
 if (!$CI->db->table_exists(db_prefix() . 'hr_job_p')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_job_p` (
@@ -922,7 +911,6 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_job_p')) {
     PRIMARY KEY (`job_id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
-
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_job_position')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_job_position` (
@@ -1007,11 +995,11 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_training_allocation')) {
     `date_add` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `training_name` varchar(150) NULL,
 
-    PRIMARY KEY (`id`)
+     PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('jp_interview_training_id', db_prefix() . 'hr_training_allocation')) { 
+if (!$CI->db->field_exists('jp_interview_training_id', db_prefix() . 'hr_training_allocation')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_training_allocation`
     ADD COLUMN `jp_interview_training_id` INT(11) NULL ;");
 }
@@ -1025,7 +1013,7 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_p_t_surveyresultsets')) {
     `date` datetime NOT NULL,
     `staff_id` int(11) UNSIGNED NOT NULL,
 
-    PRIMARY KEY (`resultsetid`)
+     PRIMARY KEY (`resultsetid`)
     ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
@@ -1092,8 +1080,7 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_position_training_question_form')) 
     `point`int(11) NOT NULL,
 
     PRIMARY KEY (`questionid`)
-
-  ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
+    ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_p_t_form_question_box')) {
@@ -1103,7 +1090,7 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_p_t_form_question_box')) {
     `questionid` int(11) NOT NULL,
 
     PRIMARY KEY (`boxid`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
+    ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_p_t_form_question_box_description')) {
@@ -1115,8 +1102,7 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_p_t_form_question_box_description')
     `correct` int(11) NULL DEFAULT '1' COMMENT'0: correct 1: incorrect',
 
     PRIMARY KEY (`questionboxdescriptionid`)
-
-  ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
+    ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_staff_contract')) {
@@ -1139,7 +1125,6 @@ if (!$CI->db->field_exists('hourly_or_month', db_prefix() . 'hr_staff_contract')
   $CI->db->query('ALTER TABLE `' . db_prefix() . 'hr_staff_contract`
     ADD COLUMN `hourly_or_month` LONGTEXT NULL ');
 }
-
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_staff_contract_detail')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_staff_contract_detail` (
@@ -1166,8 +1151,7 @@ if (!$CI->db->field_exists('staff_identifi', db_prefix() . 'staff')) {
     ADD COLUMN `staff_identifi` VARCHAR(200) NULL ');
 }
 
-
-if (!$CI->db->field_exists('birthday', db_prefix() . 'staff')) { 
+if (!$CI->db->field_exists('birthday', db_prefix() . 'staff')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "staff`
     ADD COLUMN `birthday` date NULL AFTER `email_signature`,
     ADD COLUMN `birthplace` VARCHAR(200) NULL AFTER `birthday`,
@@ -1184,7 +1168,7 @@ if (!$CI->db->field_exists('birthday', db_prefix() . 'staff')) {
     ADD COLUMN `orther_infor` text NULL AFTER `literacy`;");
 }
 
-if (!$CI->db->field_exists('place_of_issue', db_prefix() . 'staff')) { 
+if (!$CI->db->field_exists('place_of_issue', db_prefix() . 'staff')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "staff`
     ADD COLUMN `place_of_issue` varchar(50) NULL AFTER `orther_infor`,
     ADD COLUMN `account_number` varchar(50) NULL AFTER `place_of_issue`,
@@ -1203,7 +1187,7 @@ if (!$CI->db->field_exists('status_work', db_prefix() . 'staff')) {
     ADD COLUMN `status_work` VARCHAR(100) NULL');
 }
 
-if (!$CI->db->field_exists('date_update', db_prefix() . 'staff')) { 
+if (!$CI->db->field_exists('date_update', db_prefix() . 'staff')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "staff`
     ADD COLUMN `date_update` DATE NULL AFTER `status_work`;");
 }
@@ -1215,21 +1199,21 @@ if (!$CI->db->field_exists('job_position', db_prefix() . 'staff')) {
 }
 
 //general settings
-if (hr_control_options_row_exist('"job_position_prefix"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("job_position_prefix", "#JOB", "1");');
+if (hr_profile_row_options_exists('"job_position_prefix"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_profile_option` (`option_name`,`option_val`, `auto`) VALUES ("job_position_prefix", "#JOB", "1");');
 }
 
-if (hr_control_options_row_exist('"job_position_number"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("job_position_number", "1", "1");');
+if (hr_profile_row_options_exists('"job_position_number"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_profile_option` (`option_name`,`option_val`, `auto`) VALUES ("job_position_number", "1", "1");');
 }
 
-if (hr_control_options_row_exist('"contract_code_prefix"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("contract_code_prefix", "#CONTRACT", "1");');
+if (hr_profile_row_options_exists('"contract_code_prefix"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_profile_option` (`option_name`,`option_val`, `auto`) VALUES ("contract_code_prefix", "#CONTRACT", "1");');
 }
 
-if (hr_control_options_row_exist('"contract_code_number"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("contract_code_number", "1", "1");');
-}  
+if (hr_profile_row_options_exists('"contract_code_number"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_profile_option` (`option_name`,`option_val`, `auto`) VALUES ("contract_code_number", "1", "1");');
+}
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_dependent_person')) {
   $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_dependent_person` (
@@ -1244,13 +1228,13 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_dependent_person')) {
     `reason` longtext NULL ,
     `status` int(11) UNSIGNED  NULL DEFAULT 0 ,
     `status_comment` longtext NULL,
-    
+
     PRIMARY KEY (`id`,`dependent_iden`)
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
 if (!$CI->db->table_exists(db_prefix() . 'hr_list_staff_quitting_work')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_list_staff_quitting_work` (
+    $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_list_staff_quitting_work` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `staffid` int(11) DEFAULT NULL,
     `staff_name` TEXT NULL,
@@ -1286,7 +1270,7 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_procedure_retire_of_staff_by_id')) 
 
 /*knowledge_base for Q&A*/
 if (!$CI->db->table_exists(db_prefix() . 'hr_knowledge_base')) {
-  $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_knowledge_base` (
+    $CI->db->query('CREATE TABLE `' . db_prefix() . "hr_knowledge_base` (
     `articleid` int(11) NOT NULL AUTO_INCREMENT,
     `articlegroup` int(11) NOT NULL,
     `subject` mediumtext NOT NULL,
@@ -1363,12 +1347,12 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_education')) {
 
 /*knowledge_base for Q&A*/
 
-if (hr_control_options_row_exist('"staff_code_prefix"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("staff_code_prefix", "EC", "1");');
+if (hr_profile_row_options_exists('"staff_code_prefix"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_profile_option` (`option_name`,`option_val`, `auto`) VALUES ("staff_code_prefix", "EC", "1");');
 }
 
-if (hr_control_options_row_exist('"staff_code_number"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_control_option` (`option_name`,`option_val`, `auto`) VALUES ("staff_code_number", "1", "1");');
+if (hr_profile_row_options_exists('"staff_code_number"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_profile_option` (`option_name`,`option_val`, `auto`) VALUES ("staff_code_number", "1", "1");');
 }
 
 //Update v102: add Type of training menu
@@ -1382,12 +1366,12 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_type_of_trainings')) {
 }
 
 //Insert default data: Basic training for old customer
-if (hr_control_type_of_training_exists('"Basic training"') == 0) {
-  $CI->db->query('INSERT INTO `'.db_prefix().'hr_type_of_trainings` (`name`) VALUES ("Basic training");');
+if (hr_profile_type_of_training_exists('"Basic training"') == 0) {
+  $CI->db->query('INSERT INTO `' . db_prefix() . 'hr_type_of_trainings` (`name`) VALUES ("Basic training");');
 }
 
 //V103 add option : additional_training, show result training
-if (!$CI->db->field_exists('additional_training', db_prefix() . 'hr_jp_interview_training')) { 
+if (!$CI->db->field_exists('additional_training', db_prefix() . 'hr_jp_interview_training')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_jp_interview_training`
     ADD COLUMN `additional_training` VARCHAR(100) NULL DEFAULT '',
     ADD COLUMN `staff_id` TEXT NULL ,
@@ -1396,7 +1380,7 @@ if (!$CI->db->field_exists('additional_training', db_prefix() . 'hr_jp_interview
 }
 
 //V104: import, export staff, contract pdf
-if (!$CI->db->field_exists('hash', db_prefix() . 'hr_staff_contract')) { 
+if (!$CI->db->field_exists('hash', db_prefix() . 'hr_staff_contract')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_staff_contract`
     ADD COLUMN `content` LONGTEXT NULL,
     ADD COLUMN `hash` VARCHAR(32) NULL,
@@ -1415,10 +1399,10 @@ if (!$CI->db->table_exists(db_prefix() . 'hr_contract_template')) {
   ) ENGINE=InnoDB DEFAULT CHARSET=" . $CI->db->char_set . ';');
 }
 
-if (!$CI->db->field_exists('staff_signature', db_prefix() . 'hr_staff_contract')) { 
+if (!$CI->db->field_exists('staff_signature', db_prefix() . 'hr_staff_contract')) {
   $CI->db->query('ALTER TABLE `' . db_prefix() . "hr_staff_contract`
     ADD COLUMN `staff_signature` VARCHAR(40) NULL,
     ADD COLUMN `staff_sign_day` DATE NULL;");
 }
 
-add_option('hr_control_hide_menu', 1, 1);
+add_option('hr_profile_hide_menu', 1, 1);

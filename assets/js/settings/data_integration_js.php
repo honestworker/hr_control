@@ -38,6 +38,7 @@ $('#integration_unpaid_leave').on('change', function() {
 	timesheet_integration_type_change();
 });
 
+
 function timesheet_integration_type_change() {
 	'use strict';
 	
@@ -62,8 +63,11 @@ function timesheet_integration_type_change() {
 		$('select[id="integration_unpaid_leave"]').html('');
 		$('select[id="integration_unpaid_leave"]').append(response.unpaid_leave_v);
 		
-		init_selectpicker();
-		$('.selectpicker').selectpicker('refresh');
+		 init_selectpicker();
+		 $('.selectpicker').selectpicker('refresh');
 	});
 }
+
+
+
 </script>

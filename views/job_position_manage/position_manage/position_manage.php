@@ -35,7 +35,7 @@
 										</li>
 										<?php }?>
 
-										<li class="hidden-xs"><a href="<?php echo admin_url('hr_profile/job_position_manage'); ?>">
+										<li class="hidden-xs"><a href="<?php echo admin_url('hr_control/job_position_manage'); ?>">
 											<?php echo _l('hr_manage_position_groups'); ?></a>
 										</li>
 									</ul>
@@ -43,7 +43,7 @@
 
 							<?php if (is_admin() || has_permission('staffmanage_job_position', '', 'create')) {?>
 
-								<a href="<?php echo admin_url('hr_profile/import_job_position'); ?>" class=" btn mright5 btn-default ">
+								<a href="<?php echo admin_url('hr_control/import_job_position'); ?>" class=" btn mright5 btn-default ">
 									<?php echo _l('hr_job_p_import_excel'); ?>
 								</a>
 							<?php }?>
@@ -144,7 +144,7 @@
 							<span class="add-title"><?php echo _l('hr_new_job_rank'); ?></span>
 						</h4>
 					</div>
-					<?php echo form_open_multipart(admin_url('hr_profile/job_position'), array('id' => 'job_position', 'autocomplete' => 'off')); ?>
+					<?php echo form_open_multipart(admin_url('hr_control/job_position'), array('id' => 'job_position', 'autocomplete' => 'off')); ?>
 					<div class="modal-body">
 						<div id="additional_proposal"></div>
 
@@ -239,7 +239,7 @@ echo render_input('position_name', 'hr_position_name'); ?>
 							<span class="add-title"><?php echo _l('hr_new_job_p'); ?></span>
 						</h4>
 					</div>
-					<?php echo form_open_multipart(admin_url('hr_profile/job_p'), array('class' => 'job_p', 'autocomplete' => 'off')); ?>
+					<?php echo form_open_multipart(admin_url('hr_control/job_p'), array('class' => 'job_p', 'autocomplete' => 'off')); ?>
 					<div class="modal-body">
 						<div id="additional_job"></div>
 						<div role="tabpanel" class="tab-pane active" id="general_infor">

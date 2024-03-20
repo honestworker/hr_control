@@ -68,7 +68,7 @@
 
 						<div class="col-md-12">
 							<div class="modal-footer">
-								<?php if(has_permission('hr_bonus_kpi', '', 'create') || has_permission('hr_bonus_kpi', '', 'edit')){ ?>
+								<?php if (has_permission('hrp_bonus_kpi', '', 'create') || has_permission('hrp_bonus_kpi', '', 'edit')) { ?>
 									<button type="button" class="btn btn-info pull-right save_bonus_kpi mleft5 " onclick="save_bonus_kpi(this); return false;"><?php echo html_entity_decode($button_name); ?></button>
 								<?php } ?>
 							</div>

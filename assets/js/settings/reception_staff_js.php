@@ -2,10 +2,10 @@
     var counttitle ;
      counttitle = $('#manage_reception').children('.title').length;
 
-   function add_title(el){
+   function add_title(el) {
     'use strict';
 
-     var html = '<div class="row title pt-5">';                           
+     var html = '<div class="row title pt-5">';                    
      html+='<div class="col-md-11 pt-2">';
      html+='<div class="form-group">';
      html+='<input type="text" name="title_name['+counttitle+']" class="form-control" placeholder="<?php echo _l('hr_title'); ?>" value="">';
@@ -16,7 +16,7 @@
      html+='</div>';
 
      html+='<div class="col-md-12 pl-0 sub_title">';
-     html+='<div class="sub">';                           
+     html+='<div class="sub">';                    
      html+='<div class="col-md-10 pt-2">';
      html+='<div class="form-group">';
      html+='<input type="text" name="sub_title_name['+counttitle+'][0]" value="" data-count="'+counttitle+'" class="form-control" placeholder="<?php echo _l('hr_sub_title'); ?>">';
@@ -37,7 +37,7 @@
 
     var step_increa;
         step_increa = <?php echo isset($max_checklist) ? $max_checklist : 1 ; ?>;
-   function add_subtitle(el){
+   function add_subtitle(el) {
     'use strict';
     var step_default = $(el).parent().parent().find('input').data('count');
 
@@ -55,11 +55,11 @@
     $(el).closest('.title').find('.sub_title').append(html);
   }
 
-  function remove_title(el){
+  function remove_title(el) {
     'use strict';
     $(el).closest('.title').remove();
   }
-  function remove_subtitle(el){
+  function remove_subtitle(el) {
     'use strict';
     $(el).closest('.sub').remove();
   }
@@ -73,7 +73,7 @@
     if ($(this).hasClass('disabled')) { return false; }
     var new_assets_emp = $(this).parents('.assets_wrap').find('#assets_emp').eq(0).clone().appendTo($(this).parents('.assets_wrap'));
 
-    new_assets_emp.find('input[name="asset_name[]"]').val('');       
+    new_assets_emp.find('input[name="asset_name[]"]').val('');
 
     new_assets_emp.find('div[name="button_add"]').removeAttr("style");
 
@@ -81,7 +81,7 @@
     new_assets_emp.find('button[name="add_asset"]').removeClass('new_assets_emp').addClass('remove_assets_emp').removeClass('btn-primary').addClass('btn-danger');
 
     new_assets_emp.find('select').selectpicker('val', '');
-    addMoreVendorsInputKey2++;            
+    addMoreVendorsInputKey2++;     
   });
   $("body").on('click', '.remove_assets_emp', function() {
     'use strict';

@@ -32,22 +32,22 @@
 										<div class="clearfix"></div>
 									</div>
 
-									<?php if($contract->staff_signature == '' ) { ?>
-										<?php if( get_staff_user_id() == $contract->staff){ ?>
+									<?php if ($contract->staff_signature == '' ) { ?>
+										<?php if ( get_staff_user_id() == $contract->staff) { ?>
 											<button type="submit" id="staff_accept_action" class="btn btn-success pull-right action-button"><?php echo _l('staff_signature_sign'); ?></button>
 										<?php } ?>
 
 									<?php }?>
 
-									<?php if($contract->signature == '' ) { ?>
-										<?php if(is_admin() || get_staff_user_id() == $contract->staff_delegate){ ?>
+									<?php if ($contract->signature == '' ) { ?>
+										<?php if (is_admin() || get_staff_user_id() == $contract->staff_delegate) { ?>
 											<button type="submit" id="accept_action" class="btn btn-success pull-right action-button"><?php echo _l('e_signature_sign'); ?></button>
 										<?php } ?>
 
 									<?php } else { ?>
 										<span class="success-bg content-view-status contract-html-is-signed"><?php echo _l('is_signed'); ?></span>
 									<?php } ?>
-									<a href="<?php echo admin_url('hr_profile/contract_pdf/'.$contract->id_contract); ?>" class="btn btn-default pull-right action-button mright5 contract-html-pdf"><i class="fa fa-file-pdf-o"></i> <?php echo _l('download'); ?></a>
+									<a href="<?php echo admin_url('hr_control/contract_pdf/'.$contract->id_contract); ?>" class="btn btn-default pull-right action-button mright5 contract-html-pdf"><i class="fa fa-file-pdf-o"></i> <?php echo _l('download'); ?></a>
 
 									</div>
 								</div>
@@ -65,14 +65,14 @@
 								<div class="col-md-4 contract-right">
 									<div class="inner mtop20 contract-html-tabs">
 										<ul class="nav nav-tabs nav-tabs-flat mbot15" role="tablist">
-											<li role="presentation" class="<?php if(!$this->input->get('tab') || $this->input->get('tab') === 'summary'){echo 'active';} ?>">
+											<li role="presentation" class="<?php if (!$this->input->get('tab') || $this->input->get('tab') === 'summary') {echo 'active';} ?>">
 												<a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">
 													<i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo _l('summary'); ?></a>
 												</li>
 
 											</ul>
 											<div class="tab-content">
-												<div role="tabpanel" class="tab-pane<?php if(!$this->input->get('tab') || $this->input->get('tab') === 'summary'){echo ' active';} ?>" id="summary">
+												<div role="tabpanel" class="tab-pane<?php if (!$this->input->get('tab') || $this->input->get('tab') === 'summary') {echo ' active';} ?>" id="summary">
 													<address class="contract-html-company-info">
 														<?php echo format_organization_info(); ?>
 													</address>
@@ -90,7 +90,7 @@
 														<div class="col-md-7 contract-start-date">
 															<?php echo _d($contract->start_valid); ?>
 														</div>
-														<?php if(!empty($contract->end_valid)){ ?>
+														<?php if (!empty($contract->end_valid)) { ?>
 															<div class="col-md-5 text-muted contract-end-date">
 																<?php echo _l('contract_end_date'); ?>
 															</div>
@@ -98,7 +98,7 @@
 																<?php echo _d($contract->end_valid); ?>
 															</div>
 														<?php } ?>
-														<?php if(!empty($contract->type_name)){ ?>
+														<?php if (!empty($contract->type_name)) { ?>
 															<div class="col-md-5 text-muted contract-type">
 																<?php echo _l('contract_type'); ?>
 															</div>
@@ -106,7 +106,7 @@
 																<?php echo html_entity_decode($contract->name_contract); ?>
 															</div>
 														<?php } ?>
-														<?php if($contract->signature != ''){ ?>
+														<?php if ($contract->signature != '') { ?>
 															<div class="col-md-5 text-muted contract-type">
 																<?php echo _l('date_signed'); ?>
 															</div>
@@ -117,7 +117,7 @@
 													</div>
 
 
-													<?php if($contract->staff_signature != ''){ ?>
+													<?php if ($contract->staff_signature != '') { ?>
 														<div class="row mtop20">
 															<div class="col-md-12 contract-value">
 																<h4 class="bold mbot30">
@@ -129,7 +129,7 @@
 															</div>
 															
 															 <?php 
-															 if(is_numeric($contract->staff)){
+															 if (is_numeric($contract->staff)) {
 															 	$contracts_staff_signer = get_staff_full_name($contract->staff);
 															 }else {
 															 	$contracts_staff_signer = ' ';
@@ -151,13 +151,13 @@
 														</div>
 														<div class="row mtop20">
 															<?php if ( strlen($contract->staff_signature) > 0) { ?>
-															<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_PROFILE_CONTRACT_SIGN.$contract->id_contract.'/'.$contract->staff_signature)); ?>" class="img-responsive" alt="">
+															<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_CONTROL_CONTRACT_SIGN.$contract->id_contract.'/'.$contract->staff_signature)); ?>" class="img-responsive" alt="">
 														<?php } ?>
 															
 														</div>
 													<?php } ?>
 
-													<?php if($contract->signature != ''){ ?>
+													<?php if ($contract->signature != '') { ?>
 														<div class="row mtop20">
 															<div class="col-md-12 contract-value">
 																<h4 class="bold mbot30">
@@ -171,7 +171,7 @@
 															$staff_delegate = get_staff_full_name($contract->signer);
 															 ?>
 															 <?php 
-															 if(is_numeric($contract->signer)){
+															 if (is_numeric($contract->signer)) {
 															 	$contracts_signer = get_staff_full_name($contract->signer);
 															 }else {
 															 	$contracts_signer = ' ';
@@ -193,7 +193,7 @@
 														</div>
 														<div class="row mtop20">
 															<?php if ( strlen($contract->signature) > 0) { ?>
-															<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_PROFILE_CONTRACT_SIGN.$contract->id_contract.'/'.$contract->signature)); ?>" class="img-responsive" alt="">
+															<img src="<?php echo site_url('download/preview_image?path='.protected_file_url_by_path(HR_CONTROL_CONTRACT_SIGN.$contract->id_contract.'/'.$contract->signature)); ?>" class="img-responsive" alt="">
 														<?php } ?>
 															
 														</div>
@@ -290,7 +290,7 @@
 
 		<?php init_tail(); ?>
 <?php 
-require('modules/hr_profile/assets/js/contracts/contracthtml_js.php');
+require('modules/hr_control/assets/js/contracts/contracthtml_js.php');
 ?>
 
 

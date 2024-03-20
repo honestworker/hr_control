@@ -1,8 +1,8 @@
 
 <script>
 	$(function() {
-		//procedure update_permissions
-		appValidateForm($('#update_permissions'), {
+		 //procedure update_permissions
+		 appValidateForm($('#update_permissions'), {
 		    role: 'required',
 		});
 
@@ -11,12 +11,12 @@
 
 		$('select[name="role"]').on('change', function() {
            var roleid = $(this).val();
-           hr_control_init_roles_permissions(roleid, true);
+           hr_payroll_init_roles_permissions(roleid, true);
        	});
 
        	// Called when editing member profile
-		function hr_control_init_roles_permissions(roleid, user_changed) {
-    		'use strict';
+		function hr_payroll_init_roles_permissions(roleid, user_changed) {
+    	'use strict';
 
 		    roleid = typeof(roleid) == 'undefined' ? $('select[name="role"]').val() : roleid;
 		    var isedit = $('.member > input[name="isedit"]');
@@ -39,6 +39,7 @@
 		    // Get all permissions
 		    var permissions = $('table.roles').find('tr');
 		    requestGetJSON('staff/role_changed/' + roleid).done(function(response) {
+
 		        permissions.find('.capability').not('[data-not-applicable="true"]').prop('checked', false).trigger('change');
 
 		        $.each(permissions, function() {
@@ -60,7 +61,7 @@
 		}
 
 		$('select[name="staff_id"]').on('change', function() {
-    		'use strict';
+    	'use strict';
 
            	var staff_id = $(this).val();
            	if (staff_id) {
@@ -68,14 +69,16 @@
     			$('#additional_staff_permissions').append(hidden_input('id',staff_id));
 
            		requestGetJSON('hr_control/staff_id_changed/' + staff_id).done(function(response) {
-           			if((response.status == 'true' || response.status == true) && (response.role_id != 0 || response.role_id != '0')) {
+           			if ((response.status == 'true' || response.status == true) && (response.role_id != 0 || response.role_id != '0')) {
            			
            				$('select[name="role"]').val(response.role_id).change();
 
-           				if(response.permission == true || response.permission == 'true') {
-           					setTimeout(function(){
+           				if (response.permission == true || response.permission == 'true') {
+
+           					setTimeout(function() {
            						// Get all permissions
            						var permissions = $('table.roles').find('tr');
+
            							permissions.find('.capability').not('[data-not-applicable="true"]').prop('checked', false).trigger('change');
 
            							$.each(permissions, function() {
@@ -93,17 +96,24 @@
            									}
            								});
            							});
+
            					}, 3000);
+
            				}
+
            			} else {
+           			
            				$('select[name="role"]').val('').change();
            			}
 
            			$('.role_hide').removeClass('hide');
            			init_selectpicker();
 					$(".selectpicker").selectpicker('refresh');
+
            		});
+
            	}
+
        	});
 
        	// Permissions change, apply necessary action to disable OWN or VIEW OWN
@@ -120,5 +130,9 @@
        		view_chk_selector.prop('checked', false);
        		view_chk_selector.prop('disabled', $(this).prop('checked') === true);
        	});
+
+
+		
+
 	});
 </script>

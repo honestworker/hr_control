@@ -270,7 +270,7 @@
     },
     //
     zoomStartHandler: function (e) {
-      if(e.touches && e.touches.length === 2) {
+      if (e.touches && e.touches.length === 2) {
         var oc = e.data.oc;
         oc.$chart.data('pinching', true);
         var dist = oc.getPinchDist(e);
@@ -279,14 +279,14 @@
     },
     zoomingHandler: function (e) {
       var oc = e.data.oc;
-      if(oc.$chart.data('pinching')) {
+      if (oc.$chart.data('pinching')) {
         var dist = oc.getPinchDist(e);
         oc.$chart.data('pinchDistEnd', dist);
       }
     },
     zoomEndHandler: function (e) {
       var oc = e.data.oc;
-      if(oc.$chart.data('pinching')) {
+      if (oc.$chart.data('pinching')) {
         oc.$chart.data('pinching', false);
         var diff = oc.$chart.data('pinchDistEnd') - oc.$chart.data('pinchDistStart');
         if (diff > 0) {
@@ -1079,7 +1079,7 @@
 
       if (!this.touchMoved) {
         // we do not bother with createGhostNode (dragstart does) since the touch event does not have a dataTransfer property
-        this.filterAllowedDropNodes($(event.currentTarget));        // will also set 'this.$chart.data('dragged')' for us
+        this.filterAllowedDropNodes($(event.currentTarget)); // will also set 'this.$chart.data('dragged')' for us
         // create an image which can be used to illustrate the drag (our own createGhostNode)
         this.touchDragImage = this.createDragImage(event, this.$chart.data('dragged')[0]);
       }
@@ -1245,11 +1245,11 @@
         if (Number(flags.substr(0,1))) {
           $nodeDiv.append('<i class="edge verticalEdge topEdge fa"></i>');
         }
-        if(Number(flags.substr(1,1))) {
+        if (Number(flags.substr(1,1))) {
           $nodeDiv.append('<i class="edge horizontalEdge rightEdge fa"></i>' +
             '<i class="edge horizontalEdge leftEdge fa"></i>');
         }
-        if(Number(flags.substr(2,1))) {
+        if (Number(flags.substr(2,1))) {
           $nodeDiv.append('<i class="edge verticalEdge bottomEdge fa"></i>')
             .children('.title').prepend('<i class="fa '+ opts.parentNodeSymbol + ' symbol"></i>');
         }
@@ -1468,7 +1468,7 @@
       droppedOnNode.triggerHandler({ 'type': 'drop' });
     },
     //
-    exportPDF: function(canvas, exportFilename){
+    exportPDF: function(canvas, exportFilename) {
       var doc = {};
       var docWidth = Math.floor(canvas.width);
       var docHeight = Math.floor(canvas.height);
@@ -1490,7 +1490,7 @@
       doc.save(exportFilename + '.pdf');
     },
     //
-    exportPNG: function(canvas, exportFilename){
+    exportPNG: function(canvas, exportFilename) {
       var that = this;
       var isWebkit = 'WebkitAppearance' in document.documentElement.style;
       var isFf = !!window.sidebar;

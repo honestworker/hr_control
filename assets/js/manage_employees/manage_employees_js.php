@@ -2,12 +2,12 @@
     
     var purchase;
     
-    <?php if(isset($body_value)){ ?>
+    <?php if (isset($body_value)) { ?>
 
       var dataObject = <?php echo html_entity_decode($body_value) ; ?>;
-    <?php }?>
+    <?php } ?>
 
-  var hotElement1 = document.querySelector('#hr_employees_value');
+  var hotElement1 = document.querySelector('#hrp_employees_value');
    var purchase = new Handsontable(hotElement1, {
 
     contextMenu: true,
@@ -57,7 +57,7 @@
   });
 
     //filter
-  function employees_filter (invoker){
+  function employees_filter (invoker) {
     'use strict';
 
     var data = {};
@@ -83,18 +83,18 @@
 
   var purchase_value = purchase;
 
-  $('.hr_employees_synchronization').on('click', function() {
+  $('.hrp_employees_synchronization').on('click', function() {
     'use strict';
 
-    var valid_contract = $('#hr_employees_value').find('.htInvalid').html();
+    var valid_contract = $('#hrp_employees_value').find('.htInvalid').html();
 
-    if(valid_contract){
+    if (valid_contract) {
       alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-    }else{
+    } else {
 
-      $('input[name="hr_employees_value"]').val(JSON.stringify(purchase_value.getData()));   
+      $('input[name="hrp_employees_value"]').val(JSON.stringify(purchase_value.getData()));   
       $('input[name="employees_fill_month"]').val($("#month_employees").val());
-      $('input[name="hr_employees_rel_type"]').val('synchronization');   
+      $('input[name="hrp_employees_rel_type"]').val('synchronization');   
       $('#add_manage_employees').submit(); 
 
     }
@@ -104,15 +104,15 @@
   $('.save_manage_employees').on('click', function() {
     'use strict';
 
-    var valid_contract = $('#hr_employees_value').find('.htInvalid').html();
+    var valid_contract = $('#hrp_employees_value').find('.htInvalid').html();
 
-    if(valid_contract){
+    if (valid_contract) {
       alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-    }else{
+    } else {
 
-      $('input[name="hr_employees_value"]').val(JSON.stringify(purchase_value.getData()));   
+      $('input[name="hrp_employees_value"]').val(JSON.stringify(purchase_value.getData()));   
       $('input[name="employees_fill_month"]').val($("#month_employees").val());
-      $('input[name="hr_employees_rel_type"]').val('update');   
+      $('input[name="hrp_employees_rel_type"]').val('update');   
       $('#add_manage_employees').submit(); 
 
     }
@@ -146,7 +146,7 @@
 
   });
 
-  $('.hr_employees_copy').on('click', function() {
+  $('.hrp_employees_copy').on('click', function() {
     'use strict';
 
     var data = {};

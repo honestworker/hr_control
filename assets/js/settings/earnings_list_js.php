@@ -1,10 +1,11 @@
 <script>
-var purchase;
+	var purchase;
 
-(function($) {
-	"use strict";
-	
-	<?php if (isset($earnings_list)){?>
+	(function($) {
+		"use strict";  
+
+
+	<?php if (isset($earnings_list)) { ?>
 		var dataObject_pu = <?php echo html_entity_decode($earnings_list); ?>;
 	<?php } else { ?>
 		var dataObject_pu = [];
@@ -51,50 +52,58 @@ var purchase;
 		},
 
 		columns: [
-			{
-				type: 'text',
-				data: 'code',
+				{
+			type: 'text',
+			data: 'code',
+		},
+		{
+			type: 'text',
+			data: 'description',
+		},
+		{
+			type: 'text',
+			data: 'short_name',
+		},
+		
+		{
+			type: 'numeric',
+			data: 'taxable',
+			numericFormat: {
+				pattern: '0,00',
 			},
-			{
-				type: 'text',
-				data: 'description',
-			},
-			{
-				type: 'text',
-				data: 'short_name',
-			},			
-			{
-				type: 'numeric',
-				data: 'taxable',
-				numericFormat: {
-					pattern: '0,00',
-				},
-			},
-			{
-				type: 'text',
-				data: 'basis_type',
-				renderer: customDropdownRenderer,
-				editor: "chosen",
-				chosenOptions: {
-					data: <?php echo json_encode($basis_value); ?>
-				}
-			},
-			{
-				type: 'text',
-				data: 'id',
-			},
+		},
+
+		{
+			type: 'text',
+			data: 'basis_type',
+			renderer: customDropdownRenderer,
+			editor: "chosen",
+			chosenOptions: {
+				data: <?php echo json_encode($basis_value); ?>
+			}
+
+		},
+		{
+			type: 'text',
+			data: 'id',
+		},
+		
+
 		],
+
 		colHeaders: [
-			'<?php echo _l('earning_code'); ?>',
-			'<?php echo _l('earning_name'); ?>',
-			'<?php echo _l('short_name'); ?>',
-			'<?php echo _l('taxable').' %'; ?>',
-			'<?php echo _l('earning_basis'); ?>',
-			'<?php echo _l('id'); ?>',
+		'<?php echo _l('earning_code'); ?>',
+		'<?php echo _l('earning_name'); ?>',
+		'<?php echo _l('short_name'); ?>',
+		'<?php echo _l('taxable') . ' %'; ?>',
+		'<?php echo _l('earning_basis'); ?>',
+		'<?php echo _l('id'); ?>',
 		],
 
 		data: dataObject_pu,
 	});
+
+
 })(jQuery);
 
 function customDropdownRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -110,6 +119,7 @@ function customDropdownRenderer(instance, td, row, col, prop, value, cellPropert
 	var values = (value + "").split("|");
 	value = [];
 	for (var index = 0; index < optionsList.length; index++) {
+
 		if (values.indexOf(optionsList[index].id + "") > -1) {
 			selectedId = optionsList[index].id;
 			value.push(optionsList[index].label);
@@ -128,11 +138,15 @@ $('.add_earnings_list').on('click', function() {
 	
 	var valid_contract = $('#earnings_list_hs').find('.htInvalid').html();
 
-	if (valid_contract){
+	if (valid_contract) {
 		alert_float('danger', "<?php echo _l('data_must_number') ; ?>");
 	} else {
+
 		$('input[name="earnings_list_hs"]').val(JSON.stringify(purchase_value.getData()));   
-		$('#add_earnings_list').submit();
+		$('#add_earnings_list').submit(); 
+
 	}
 });
+
+
 </script>

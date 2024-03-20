@@ -5,7 +5,7 @@ appValidateForm($('#salary_form_manage'), {
     
 });
 
-function new_salary_form(){
+function new_salary_form() {
     'use strict';
 
     $('#salary_form').modal('show');
@@ -25,7 +25,7 @@ function new_salary_form(){
       }
     });
 }
-function edit_salary_form(invoker,id){
+function edit_salary_form(invoker,id) {
     'use strict';
     $('#additional_salary_form').html('');
     

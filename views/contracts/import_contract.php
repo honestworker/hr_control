@@ -41,10 +41,10 @@ foreach ($allowance_type as $allowance_value) {
 
 
 						</div>
-						<a href="<?= site_url('hr_profile/write_xlsx_contract_sample') ?>" class="btn btn-secondary-color2" ><?php echo _l('hr_download_sample') ?></a>
+						<a href="<?= site_url('hr_control/write_xlsx_contract_sample') ?>" class="btn btn-secondary-color2" ><?php echo _l('hr_download_sample') ?></a>
 						<hr>
 
-						<?php if(!isset($simulate)) { ?>
+						<?php if (!isset($simulate)) { ?>
 							<ul>
 								<li>1. <?php echo _l('hr_import_excel_1'); ?></li>
 								<li class="text-danger">2. <?php echo _l('file_xlsx_hrm_contract'); ?></li>
@@ -56,8 +56,8 @@ foreach ($allowance_type as $allowance_value) {
 											<?php
 											$total_fields = 0;
 											
-											for($i=0;$i<count($file_header);$i++){
-												if($i == 0 || $i == 1 ||$i == 2){
+											for($i=0;$i<count($file_header);$i++) {
+												if ($i == 0 || $i == 1 ||$i == 2) {
 													?>
 													<th class="bold"><span class="text-danger">*</span> <?php echo html_entity_decode($file_header[$i]) ?> </th>
 													<?php 
@@ -76,9 +76,9 @@ foreach ($allowance_type as $allowance_value) {
 										</tr>
 									</thead>
 									<tbody>
-										<?php for($i = 0; $i<1;$i++){
+										<?php for($i = 0; $i<1;$i++) {
 											echo '<tr>';
-											for($x = 0; $x<count($file_header);$x++){
+											for($x = 0; $x<count($file_header);$x++) {
 												echo '<td>- </td>';
 											}
 											echo '</tr>';
@@ -93,7 +93,7 @@ foreach ($allowance_type as $allowance_value) {
 						
 						<div class="row">
 							<div class="col-md-4">
-								<?php echo form_open_multipart(admin_url('hr_profile/import_job_p_excel'),array('id'=>'import_form')) ;?>
+								<?php echo form_open_multipart(admin_url('hr_control/import_job_p_excel'),array('id'=>'import_form')) ;?>
 								<?php echo form_hidden('leads_import','true'); ?>
 								<?php echo render_input('file_csv','choose_excel_file','','file'); ?> 
 
@@ -119,7 +119,7 @@ foreach ($allowance_type as $allowance_value) {
 <?php init_tail(); ?>
 <script src="<?php echo base_url('assets/plugins/jquery-validation/additional-methods.min.js'); ?>"></script>
 <?php 
-require('modules/hr_profile/assets/js/contracts/import_xlsx_js.php');
+require('modules/hr_control/assets/js/contracts/import_xlsx_js.php');
 ?>
 </body>
 </html>

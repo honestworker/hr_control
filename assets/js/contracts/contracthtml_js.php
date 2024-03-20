@@ -84,7 +84,7 @@
 
 	var signaturePad = new SignaturePad(canvas, {
 		maxWidth: 2,
-		onEnd:function(){
+		onEnd:function() {
 			signaturePadChanged();
 		}
 	});
@@ -109,13 +109,13 @@
 
 })(jQuery); 
 
-function signature_clear(){
+function signature_clear() {
 	"use strict";
 
 	var canvas = document.getElementById("signature");
 	var signaturePad = new SignaturePad(canvas, {
 		maxWidth: 2,
-		onEnd:function(){
+		onEnd:function() {
 
 		}
 	});
@@ -123,7 +123,7 @@ function signature_clear(){
 
 }
 
-$('#accept_action').on('click', function(){
+$('#accept_action').on('click', function() {
 
 	'use strict';
 
@@ -136,7 +136,7 @@ $('#accept_action').on('click', function(){
 
 })
 
-$('#staff_accept_action').on('click', function(){
+$('#staff_accept_action').on('click', function() {
 
 	'use strict';
 

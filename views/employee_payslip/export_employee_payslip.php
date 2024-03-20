@@ -12,7 +12,7 @@
 </table>
 
 <div class="text_align_center">
-	<b><h3><?php echo _l('hr_payslip_for').' '. date('M-Y', strtotime($payslip_detail['month'])); ?> </h3></b>
+	<b><h3><?php echo _l('hrp_payslip_for') . ' '. date('M-Y', strtotime($payslip_detail['month'])); ?> </h3></b>
 </div>
 
 
@@ -29,7 +29,7 @@
 		<tr class="height-27">
 			<td class="width-20-height-27 align_left" ><strong><?php echo _l('job_title') ; ?></strong></td>
 			<td class="width-30-height-27" ><?php echo html_entity_decode(isset($employee['job_title']) ? $employee['job_title'] : '') ?></td>
-			<td class="width-20-height-27" ><strong><?php echo _l('hr_worked_day') ; ?></strong></td>
+			<td class="width-20-height-27" ><strong><?php echo _l('hrp_worked_day') ; ?></strong></td>
 			<td class="width-30-height-27" ><?php echo app_format_money((float)$payslip_detail['actual_workday']+(float)$payslip_detail['actual_workday_probation'], '') ?></td>
 		</tr>
 
@@ -50,33 +50,33 @@
 </table>
 
 <?php 
-	$hr_payslip_salary_allowance = hr_payslip_json_data_decode($payslip_detail['json_data']);
+	$hrp_payslip_salary_allowance = hrp_payslip_json_data_decode($payslip_detail['json_data']);
 	
  ?>
 <div class="row">
 	<div class="col-md-6">
-		<?php if((float)($payslip_detail['actual_workday_probation']) > 0){ ?>
+		<?php if ((float)($payslip_detail['actual_workday_probation']) > 0) { ?>
 			<table class="table">
 				<tbody>
 					<tr>
-						<th  class=" thead-dark"><?php echo _l('hr_probation_contract'); ?></th>
+						<th  class=" thead-dark"><?php echo _l('hrp_probation_contract'); ?></th>
 						<th  class=" thead-dark"></th>
 					</tr>
 
-					<?php echo isset($hr_payslip_salary_allowance['probation_contract_list']) ? $hr_payslip_salary_allowance['probation_contract_list'] : '' ?>
+					<?php echo isset($hrp_payslip_salary_allowance['probation_contract_list']) ? $hrp_payslip_salary_allowance['probation_contract_list'] : '' ?>
 				</tbody>
 			</table>
 		<?php } ?>
 		
-		<?php if((float)($payslip_detail['actual_workday']) > 0){ ?>
+		<?php if ((float)($payslip_detail['actual_workday']) > 0) { ?>
 		<table class="table">
 			<tbody>
 				<tr>
-					<th  class=" thead-dark"><?php echo _l('hr_formal_contract'); ?></th>
+					<th  class=" thead-dark"><?php echo _l('hrp_formal_contract'); ?></th>
 					<th  class=" thead-dark"></th>
 				</tr>
 
-				<?php echo isset($hr_payslip_salary_allowance['formal_contract_list']) ? $hr_payslip_salary_allowance['formal_contract_list'] : '' ?>
+				<?php echo isset($hrp_payslip_salary_allowance['formal_contract_list']) ? $hrp_payslip_salary_allowance['formal_contract_list'] : '' ?>
 			</tbody>
 		</table>
 		<?php } ?>
@@ -92,7 +92,7 @@
 			<tbody>
 				<tr>
 					<th  class=" thead-dark"><?php echo _l('Earnings'); ?></th>
-					<th  class=" thead-dark"><?php echo _l('hr_amount'); ?></th>
+					<th  class=" thead-dark"><?php echo _l('hrp_amount'); ?></th>
 				</tr>
 
 				<tr class="project-overview">
@@ -120,7 +120,7 @@
 			<tbody>
 				<tr>
 					<th  class=" thead-dark"><?php echo _l('deduction_list'); ?></th>
-					<th  class=" thead-dark"><?php echo _l('hr_amount'); ?></th>
+					<th  class=" thead-dark"><?php echo _l('hrp_amount'); ?></th>
 				</tr>
 
 				<tr class="project-overview">
@@ -128,12 +128,12 @@
 					<td class="text-left"><?php echo html_entity_decode( isset($payslip_detail) ? app_format_money($payslip_detail['income_tax_paye'],'') : ''); ?></td>
 				</tr>
 				<tr class="project-overview">
-					<td ><?php echo _l('hr_insurrance'); ?></td>
+					<td ><?php echo _l('hrp_insurrance'); ?></td>
 					<td><?php echo isset($payslip_detail) ? app_format_money($payslip_detail['total_insurance'],'') : 0; ?></td>
 				</tr>
 
 				<tr class="project-overview">
-					<td ><?php echo _l('hr_deduction_manage'); ?></td>
+					<td ><?php echo _l('hrp_deduction_manage'); ?></td>
 					<td><?php echo isset($payslip_detail) ? app_format_money($payslip_detail['total_deductions'],'') : 0; ?></td>
 				</tr>
 				<tr class="project-overview">

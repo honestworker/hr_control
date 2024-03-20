@@ -5,7 +5,7 @@
       'taking_method': 'required',
   });    
 
-  function new_column_type(){
+  function new_column_type() {
     "use strict";
     $('#insurance_type_modal').modal('show');
     $('.edit-title').addClass('hide');
@@ -38,20 +38,20 @@
 
   }
 
-  function edit_column_type(invoker,id){
+  function edit_column_type(invoker,id) {
     "use strict";
 
     $('#additional_payroll_column').html('');
 
     requestGetJSON('hr_control/get_payroll_column/' + id).done(function (response) {
-        if(response.payroll_column.is_edit == 'no'){
+        if (response.payroll_column.is_edit == 'no') {
             //function name hide
             $(".function_name_hide").removeClass("hide"); 
             $("input[name='function_name']").attr( "disabled", "disabled" );
             
             $("select[name='taking_method']").attr( "disabled", "disabled" );
             $("select[name='function_name']").attr( "disabled", "disabled" );
-        }else{
+        } else {
             $(".function_name_hide").addClass("hide"); 
 
             $("select[name='taking_method']").removeAttr( "disabled", "disabled" );
@@ -74,13 +74,13 @@
         $("#add_payroll_column select[name='function_name']").html('');
         $("#add_payroll_column select[name='function_name']").append(response.function_name.method_option).selectpicker('refresh');
 
-        if(response.payroll_column.taking_method == 'system'){
+        if (response.payroll_column.taking_method == 'system') {
             $(".function_name_hide").removeClass("hide"); 
         }
 
-        if(response.payroll_column.display_with_staff == 'true'){
+        if (response.payroll_column.display_with_staff == 'true') {
             $('#add_payroll_column input[name="display_with_staff"]').prop('checked',true); 
-        }else{
+        } else {
             $('#add_payroll_column input[name="display_with_staff"]').prop("checked", false);
         }
          
@@ -107,28 +107,28 @@
     var taking_method_value = $('select[name="taking_method"]').val();
 
     var $flag_submit = true;
-    if(taking_method_value == 'system'){
-        if(function_name_value == ''){
+    if (taking_method_value == 'system') {
+        if (function_name_value == '') {
             $flag_submit = false;
         }
     }
 
-    if($flag_submit == true){
+    if ($flag_submit == true) {
         var data={};
 
         /*update*/
         var check_id = $('#additional_payroll_column').html();
-        if(check_id){
+        if (check_id) {
           data.id = $('input[name="id"]').val();
-        }else{
+        } else {
           data.id = '';
         }
         data.from_month = $('input[name="from_month"]').val();
 
         $('#add_payroll_column').submit();
           
-    }else{
-        if(taking_method_value == 'system'){
+    } else {
+        if (taking_method_value == 'system') {
             alert_float('warning', '<?php echo _l("please_select_function_name") ?>')
         }
     }
@@ -143,8 +143,8 @@
     $("input[name='function_name']").val('');
 
     var taking_method_value = $('select[name="taking_method"]').val();
-    if(taking_method_value == 'system'){
-        $.post(admin_url + 'hr_control/get_payroll_column_function_name_html').done(function(response){
+    if (taking_method_value == 'system') {
+        $.post(admin_url + 'hr_control/get_payroll_column_function_name_html').done(function(response) {
             response = JSON.parse(response); 
             
             //function name
@@ -160,7 +160,7 @@
 
 
         });
-    }else{
+    } else {
         $(".function_name_hide").addClass("hide"); 
         $("input[name='function_name']").removeAttr( "disabled", "disabled" );
 
@@ -186,12 +186,12 @@ $('input[name="column_key"]').on('change', function() {
     
     var taking_method = $('select[name="taking_method"]').val();
 
-    if($("input[name='id']").val() == undefined && taking_method != 'system'){
+    if ($("input[name='id']").val() == undefined && taking_method != 'system') {
         var column_key = $('input[name="column_key"]' ).val().replace(/\s+/g, '_');
         $( 'input[name="function_name"]' ).val(column_key);
-    }else{
+    } else {
 
-      if($( 'input[name="function_name"]' ).val() == ''){
+      if ($( 'input[name="function_name"]' ).val() == '') {
             var column_key = $('input[name="column_key"]' ).val().replace(/\s+/g, '_');
             $( 'input[name="function_name"]' ).val(column_key);
         }

@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<?php if(!isset($column)){
+<?php if (!isset($column)) {
   $column = 'col-md-5ths';
 }
 ?>

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	(function(){
+	(function() {
 		"use strict";
 		$("#spreadsheet-advanced").treetable({ expandable: true });
 	    $("#spreadsheet-advanced tbody").on("mousedown", "tr", function() {
@@ -30,7 +30,7 @@
     			hoverClass: "accept",
     			over: function(e, ui) {
     				var droppedEl = ui.draggable.parents("tr");
-    				if(this != droppedEl[0] && !$(this).is(".expanded")) {
+    				if (this != droppedEl[0] && !$(this).is(".expanded")) {
 
     					$("#spreadsheet-advanced").treetable("expandNode", $(this).data("ttId"));
     				}

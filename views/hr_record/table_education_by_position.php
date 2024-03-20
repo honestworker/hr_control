@@ -24,7 +24,7 @@ foreach ($rResult as $aRow) {
 	$count_complete = 0;
 	foreach ($data_marks['array_resiult_filter'] as $key => $item_mark) {
 		$mark_form = $this->ci->hr_profile_model->get_board_mark_form((int)$item_mark[0]);
-		if($item_mark[1] >= $mark_form->mint_point){
+		if ($item_mark[1] >= $mark_form->mint_point) {
 			$count_complete += 1;
 		}
 	}

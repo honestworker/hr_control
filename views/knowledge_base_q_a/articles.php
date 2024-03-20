@@ -10,11 +10,11 @@
       <div class="panel_s mtop5">
          <div class="panel-body">
             <div class="_buttons">
-               <?php if($has_permission_create){ ?>
-               <a href="<?php echo admin_url('hr_profile/knowledge_base_q_a/article'); ?>" class="btn btn-info mright5"><?php echo _l('kb_article_new_article'); ?></a>
+               <?php if ($has_permission_create) { ?>
+               <a href="<?php echo admin_url('hr_control/knowledge_base_q_a/article'); ?>" class="btn btn-info mright5"><?php echo _l('kb_article_new_article'); ?></a>
                <?php } ?>
-               <?php if($has_permission_edit || $has_permission_create){ ?>
-               <a href="<?php echo admin_url('hr_profile/knowledge_base_q_a/manage_groups'); ?>" class="btn btn-info mright5"><?php echo _l('als_kb_groups'); ?></a>
+               <?php if ($has_permission_edit || $has_permission_create) { ?>
+               <a href="<?php echo admin_url('hr_control/knowledge_base_q_a/manage_groups'); ?>" class="btn btn-info mright5"><?php echo _l('als_kb_groups'); ?></a>
                <?php } ?>
                <a href="#" class="btn btn-default hidden-xs toggle-articles-list" onclick="initKnowledgeBaseTableArticles(); return false;">
                <i class="fa fa-th-list article_change_icon"></i>
@@ -27,13 +27,13 @@
                      <li class="active">
                         <a href="#" data-cview="all" onclick="dt_custom_view('','.table-articles',''); return false;"><?php echo _l('view_articles_list_all'); ?></a>
                      </li>
-                     <?php foreach($groups as $group){ ?>
+                     <?php foreach($groups as $group) { ?>
                      <li><a href="#" data-cview="kb_group_<?php echo html_entity_decode($group['groupid']); ?>" onclick="dt_custom_view('kb_group_<?php echo html_entity_decode($group['groupid']); ?>','.table-articles','kb_group_<?php echo html_entity_decode($group['groupid']); ?>'); return false;"><?php echo html_entity_decode($group['name']); ?></a></li>
                      <?php } ?>
                   </ul>
                </div>
                <div class="_hidden_inputs _filters">
-                  <?php foreach($groups as $group){
+                  <?php foreach($groups as $group) {
                      echo form_hidden('kb_group_'.$group['groupid']);
                      } ?>
                </div>
@@ -44,35 +44,35 @@
                   <div role="tabpanel" class="tab-pane kb-kan-ban kan-ban-tab active" id="kan-ban">
                      <div class="container-fluid">
                         <?php
-                           if(count($groups) == 0){
+                           if (count($groups) == 0) {
                             echo _l('kb_no_articles_found');
                            }
-                           foreach($groups as $group){
+                           foreach($groups as $group) {
                             $kanban_colors = '';
-                            foreach(get_system_favourite_colors() as $color){
+                            foreach(get_system_favourite_colors() as $color) {
                               $color_selected_class = 'cpicker-small';
                               $kanban_colors .= "<div class='kanban-cpicker cpicker ".$color_selected_class."' data-color='".$color."' style   =  'background:".$color.";border:1px solid ".$color."'></div>";
                             }
                             ?>
-                        <ul class="kan-ban-col<?php if(!$has_permission_edit){echo ' sortable-disabled'; } ?>" data-col-group-id="<?php echo html_entity_decode($group['groupid']); ?>">
+                        <ul class="kan-ban-col<?php if (!$has_permission_edit) {echo ' sortable-disabled'; } ?>" data-col-group-id="<?php echo html_entity_decode($group['groupid']); ?>">
                            <li class="kan-ban-col-wrapper">
                               <div class="border-right panel_s">
                                  <?php
                                     $group_color = 'style   =    "background:'.$group["color"].';border:1px solid '.$group['color'].'"';
                                     ?>
                                  <div class="panel-heading-bg primary-bg" <?php echo html_entity_decode($group_color); ?> data-group-id="<?php echo html_entity_decode($group['groupid']); ?>">
-                                    <?php if($has_permission_edit){ ?>
+                                    <?php if ($has_permission_edit) { ?>
                                     <i class="fa fa-reorder pointer"></i> <?php } ?>
-                                    <a href="#" class="color-white" <?php if($has_permission_create || $has_permission_edit){ ?>onclick="edit_kb_group(this,<?php echo html_entity_decode($group['groupid']); ?>); return false;" data-name="<?php echo html_entity_decode($group['name']); ?>" data-slug="<?php echo html_entity_decode($group['group_slug']); ?>" data-color="<?php echo html_entity_decode($group['color']); ?>" data-description="<?php echo clear_textarea_breaks($group['description']); ?>" data-order="<?php echo html_entity_decode($group['group_order']); ?>" data-active="<?php echo html_entity_decode($group['active']); ?>" <?php } ?>><?php echo html_entity_decode($group['name']); ?></a>
+                                    <a href="#" class="color-white" <?php if ($has_permission_create || $has_permission_edit) { ?>onclick="edit_kb_group(this,<?php echo html_entity_decode($group['groupid']); ?>); return false;" data-name="<?php echo html_entity_decode($group['name']); ?>" data-slug="<?php echo html_entity_decode($group['group_slug']); ?>" data-color="<?php echo html_entity_decode($group['color']); ?>" data-description="<?php echo clear_textarea_breaks($group['description']); ?>" data-order="<?php echo html_entity_decode($group['group_order']); ?>" data-active="<?php echo html_entity_decode($group['active']); ?>" <?php } ?>><?php echo html_entity_decode($group['name']); ?></a>
                                     <small> - <?php echo total_rows(db_prefix().'hr_knowledge_base','articlegroup='.$group['groupid']); ?></small>
-                                    <?php if($has_permission_edit){ ?>
+                                    <?php if ($has_permission_edit) { ?>
                                     <a href="#" onclick="return false;" class="pull-right color-white kanban-color-picker" data-placement="bottom" data-toggle="popover" data-content="<div class='kan-ban-settings cpicker-wrapper'><?php echo html_entity_decode($kanban_colors); ?></div>" data-html="true" data-trigger="focus"><i class="fa fa-angle-down"></i>
                                     </a>
                                     <?php } ?>
                                  </div>
                                  <?php
                                     $this->db->select('*, (SELECT COUNT(*) FROM '.db_prefix().'hr_views_tracking WHERE rel_type="hr_profile_kb_article" AND rel_id='.db_prefix().'hr_knowledge_base.articleid) as total_views')->from(db_prefix().'hr_knowledge_base')->where('articlegroup',$group['groupid'])->order_by('article_order','asc');
-                                    if(!$has_permission_create && !$has_permission_edit) {
+                                    if (!$has_permission_create && !$has_permission_edit) {
                                       $this->db->where('active', 1);
                                       $this->db->where('question_answers', 1);
                                     }
@@ -80,21 +80,21 @@
                                     ?>
                                  <div class="kan-ban-content-wrapper">
                                     <div class="kan-ban-content">
-                                       <ul class="sortable article-group groups<?php if(!$has_permission_edit){echo 'sortable-disabled'; } ?>" data-group-id="<?php echo html_entity_decode($group['groupid']); ?>">
+                                       <ul class="sortable article-group groups<?php if (!$has_permission_edit) {echo 'sortable-disabled'; } ?>" data-group-id="<?php echo html_entity_decode($group['groupid']); ?>">
                                           <?php foreach($articles as $article) { ?>
-                                          <li class="<?php if($article['active'] == 0){echo 'line-throught';} ?>" data-article-id="<?php echo html_entity_decode($article['articleid']); ?>">
+                                          <li class="<?php if ($article['active'] == 0) {echo 'line-throught';} ?>" data-article-id="<?php echo html_entity_decode($article['articleid']); ?>">
                                              <div class="panel-body">
-                                                <?php if($article['staff_article'] == 1){ ?>
-                                                <a href="<?php echo admin_url('hr_profile/knowledge_base_q_a/view/'.$article['slug']); ?>">
+                                                <?php if ($article['staff_article'] == 1) { ?>
+                                                <a href="<?php echo admin_url('hr_control/knowledge_base_q_a/view/'.$article['slug']); ?>">
                                                 <?php } else { ?>
                                                 <a href="<?php echo site_url('knowledge-base/article/'.$article['slug']); ?>" target="_blank">
                                                 <?php } ?><?php echo html_entity_decode($article['subject']); ?></a>
-                                                <?php if($has_permission_edit){ ?>
-                                                <a href="<?php echo admin_url('hr_profile/knowledge_base_q_a/article/'.$article['articleid']); ?>" target="_blank" class="pull-right"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
+                                                <?php if ($has_permission_edit) { ?>
+                                                <a href="<?php echo admin_url('hr_control/knowledge_base_q_a/article/'.$article['articleid']); ?>" target="_blank" class="pull-right"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
                                                 <?php } ?>
                                                 <div class="clearfix"></div>
                                                 <hr class="hr-10" />
-                                                <?php if(isset($article['curator']) && $article['curator'] != '' && $article['curator'] != 0){ ?>
+                                                <?php if (isset($article['curator']) && $article['curator'] != '' && $article['curator'] != 0) { ?>
 
                                                   <?php echo staff_profile_image($article['curator'], ['staff-profile-image-small',], 'small', ['data-toggle' => 'tooltip', 'data-title' => _l('hr_curator_label').': '.get_staff_full_name($article['curator'])]); ?>
 
@@ -133,7 +133,7 @@
                                   <h4 class="modal-title"><?php echo _l('hr_bulk_actions'); ?></h4>
                                 </div>
                                 <div class="modal-body">
-                                  <?php if(has_permission('hr_manage_q_a','','delete') || is_admin()){ ?>
+                                  <?php if (has_permission('hr_manage_q_a','','delete') || is_admin()) { ?>
                                     <div class="checkbox checkbox-danger">
                                       <input type="checkbox" name="mass_delete" id="mass_delete">
                                       <label for="mass_delete"><?php echo _l('hr_mass_delete'); ?></label>
@@ -143,7 +143,7 @@
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo _l('hr_close'); ?></button>
 
-                                  <?php if(has_permission('hr_manage_q_a','','delete') || is_admin()){ ?>
+                                  <?php if (has_permission('hr_manage_q_a','','delete') || is_admin()) { ?>
                                     <a href="#" class="btn btn-info" onclick="staff_delete_bulk_action(this); return false;"><?php echo _l('hr_confirm'); ?></a>
                                   <?php } ?>
                                 </div>
@@ -179,7 +179,7 @@
 
 <?php include_once(APPPATH.'views/admin/knowledge_base/group.php'); ?>
 <?php init_tail(); ?>
-<?php  require('modules/hr_profile/assets/js/knowledge_base_q_a/articles_js.php'); ?>
+<?php  require('modules/hr_control/assets/js/knowledge_base_q_a/articles_js.php'); ?>
 
 </body>
 </html>

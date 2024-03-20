@@ -1,11 +1,11 @@
-   (function(){
+   (function() {
     'use strict';
     var position_training_id = {};
     var Input_totall= 0;
     var addnewkpi = 0;
     var InputKeyallowance = 0;
     var addMoreVendorsInputKey=0;
-    window.addEventListener('load',function(){
+    window.addEventListener('load',function() {
       'use strict';
       appValidateForm($("body").find('.job_position_interview_add_edit'), {
         'order': 'required',
@@ -15,7 +15,7 @@
       });
     });
 
-    window.addEventListener('load',function(){
+    window.addEventListener('load',function() {
       'use strict';
       appValidateForm($("body").find('.job_position_training_add_edit'), {
         'training_type': 'required',
@@ -34,7 +34,7 @@
       newkpi.find('button[data-toggle="dropdown"]').remove();
 
       newkpi.find('select[id="evaluation_criteria[' + idrow + '][0]"]').attr('name', 'evaluation_criteria[' + idrow + '][' + addnewkpi + ']').val('');
-      newkpi.find('select[id="evaluation_criteria[' + idrow + '][0]"]').attr('id', 'evaluation_criteria[' + idrow + '][' + addnewkpi + ']').val('');        
+      newkpi.find('select[id="evaluation_criteria[' + idrow + '][0]"]').attr('id', 'evaluation_criteria[' + idrow + '][' + addnewkpi + ']').val(''); 
 
       newkpi.find('input[id="percent[' + idrow + '][0]"]').attr('name', 'percent[' + idrow + '][' + addnewkpi + ']').val('');
       newkpi.find('input[id="percent[' + idrow + '][0]"]').attr('id', 'percent[' + idrow + '][' + addnewkpi + ']').val('');
@@ -61,8 +61,8 @@
 
       var newkpigroup = $('.new-kpi-group-al').find('#new_kpi_group').eq(0).clone().appendTo('.new-kpi-group-al');
 
-      for(var i = 0; i <= newkpigroup.find('#new_kpi').length ; i++){
-        if(i > 0){
+      for(var i = 0; i <= newkpigroup.find('#new_kpi').length ; i++) {
+        if (i > 0) {
           newkpigroup.find('#new_kpi').eq(i).remove();
         }
         newkpigroup.find('#new_kpi').eq(1).remove();
@@ -215,7 +215,7 @@
     caret_pos = updated_len - original_len + caret_pos;
     input[0].setSelectionRange(caret_pos, caret_pos);
   }
-  function new_interview_process(){
+  function new_interview_process() {
     'use strict';
     $('.add-title-interview').addClass('hide');
     $('.edit-title-interview').removeClass('hide');
@@ -223,7 +223,7 @@
     $('#additional_form_name').empty();
   }
 
-  function new_training_process(){
+  function new_training_process() {
     'use strict';
 
     $('.add-title-training').addClass('hide');
@@ -240,7 +240,7 @@
     position_training_id = ('').split(',');
   }
 
-  function edit_training_process(invoker,id, rec_evaluation_form_id){
+  function edit_training_process(invoker,id, rec_evaluation_form_id) {
     'use strict';
     $('.edit-title-training').addClass('hide');
     $('.add-title-training').removeClass('hide');
@@ -250,7 +250,7 @@
     $('#job_position_training input[name="mint_point"]').val($(invoker).data('job_position_mint_point'));
     $('#job_position_training select[name="training_type"]').val($(invoker).data('job_position_training_type'));
     $('#job_position_training select[name="training_type"]').change();
-    $.post(admin_url + 'hr_profile/get_list_job_position_training/'+id).done(function(response) {
+    $.post(admin_url + 'hr_control/get_list_job_position_training/'+id).done(function(response) {
       response = JSON.parse(response);
       tinyMCE.activeEditor.setContent(response.description);
       $('.selectpicker').selectpicker({
@@ -262,7 +262,7 @@
   }
 
 
-  function edit_interview_process(invoker,id, rec_evaluation_form_id){
+  function edit_interview_process(invoker,id, rec_evaluation_form_id) {
     'use strict';
     $('.edit-title-interview').addClass('hide');
     $('.add-title-interview').removeClass('hide');
@@ -276,12 +276,12 @@
     $('#job_position_interview select[name="specific_people"]').val($(invoker).data('job_position_interview_specific_people'));
     $('#job_position_interview select[name="specific_people"]').change();
     var job_position_id_str = $(invoker).data('job_position_id');
-    if(typeof(job_position_id_str) == "string"){
+    if (typeof(job_position_id_str) == "string") {
       $('#job_position_interview select[name="job_position_id[]"]').val( ($(invoker).data('job_position_id')).split(',')).change();
-    }else{
+    } else {
       $('#job_position_interview select[name="job_position_id[]"]').val($(invoker).data('job_position_id')).change();
     }
-    $.post(admin_url + 'hr_profile/get_list_job_position_interview_edit/'+rec_evaluation_form_id+'/'+id).done(function(response) {
+    $.post(admin_url + 'hr_control/get_list_job_position_interview_edit/'+rec_evaluation_form_id+'/'+id).done(function(response) {
       response = JSON.parse(response);
       $('#list_criteria').html('');
       $('#list_criteria').append(response.html);
@@ -297,7 +297,7 @@
   }
 
 
-  function group_criteria_change(invoker){
+  function group_criteria_change(invoker) {
     'use strict';
     var result = invoker.name.match(/\d/g);
     $.post(admin_url + 'recruitment/get_criteria_by_group/'+invoker.value).done(function(response) {
@@ -310,10 +310,10 @@
 
 
 
-  function training_type_change(invoker){
+  function training_type_change(invoker) {
     'use strict';
-    if(invoker.value){
-      $.post(admin_url + 'hr_profile/get_training_type_child/'+invoker.value).done(function(response) {
+    if (invoker.value) {
+      $.post(admin_url + 'hr_control/get_training_type_child/'+invoker.value).done(function(response) {
         response = JSON.parse(response);
         $('select[name="position_training_id[]').html('');
         $('select[name="position_training_id[]').append(response.html);
@@ -331,25 +331,25 @@
     var selectedOption = select.options[select.selectedIndex];
     var ex = select.name.substring(11);
 
-    if(selectedOption.value != ''){
+    if (selectedOption.value != '') {
 
       var formData = new FormData();
       formData.append("csrf_token_name", $('input[name="csrf_token_name"]').val());
       formData.append("id", selectedOption.value);
       $.ajax({ 
-        url: admin_url + 'hr_profile/get_staff_salary_form', 
+        url: admin_url + 'hr_control/get_staff_salary_form', 
         method: 'post', 
         data: formData, 
         contentType: false, 
         processData: false
       }).done(function(response) {
         response = JSON.parse(response);
-        if(response.salary_val != null){
+        if (response.salary_val != null) {
          document.getElementById("contract_expense"+ex).value = (response.salary_val);
        }
      });
       return false;
-    }else{
+    } else {
       document.getElementById("contract_expense"+ex).value = '';
     }
 
@@ -359,30 +359,30 @@
     'use strict';
     var selectedOption = allowancetype_value.options[allowancetype_value.selectedIndex];
     var ex = allowancetype_value.name.substring(14);
-    if(selectedOption.value != ''){
+    if (selectedOption.value != '') {
       var formData = new FormData();
       formData.append("csrf_token_name", $('input[name="csrf_token_name"]').val());
       formData.append("id", selectedOption.value);
       $.ajax({ 
-        url: admin_url + 'hr_profile/get_staff_allowance_type', 
+        url: admin_url + 'hr_control/get_staff_allowance_type', 
         method: 'post', 
         data: formData, 
         contentType: false, 
         processData: false
       }).done(function(response) {
         response = JSON.parse(response);
-        if(response.allowance_val != null){
+        if (response.allowance_val != null) {
          document.getElementById("allowance_expense"+ex).value = (response.allowance_val);
        }
      });
       return false;
-    }else{
+    } else {
       document.getElementById("allowance_expense"+ex).value = '';
     }
   }
 
     //contract preview file
-    function preview_file_job_position(invoker){
+    function preview_file_job_position(invoker) {
       'use strict';
       var id = $(invoker).attr('id');
       var rel_id = $(invoker).attr('rel_id');
@@ -393,7 +393,7 @@
    function view_hr_profilestaff_file_job_position(id, rel_id) {  
      'use strict'; 
      $('#contract_file_data').empty();
-     $("#contract_file_data").load(admin_url + 'hr_profile/preview_job_position_file/' + id + '/' + rel_id, function(response, status, xhr) {
+     $("#contract_file_data").load(admin_url + 'hr_control/preview_job_position_file/' + id + '/' + rel_id, function(response, status, xhr) {
       if (status == "error") {
         alert_float('danger', xhr.statusText);
       }

@@ -419,7 +419,7 @@ class Knowledge_base_q_a_model extends App_Model
      * @param  string $rel_type  
      * @return [type]            
      */
-    public function get_file_article($articleid, $rel_type = "hr_profile_kb_article"){
+    public function get_file_article($articleid, $rel_type = "hr_profile_kb_article") {
         $this->db->where('rel_type', $rel_type);
         $this->db->from('files');
         $this->db->join('hr_knowledge_base', 'files.rel_id=hr_knowledge_base.articleid');
@@ -432,11 +432,11 @@ class Knowledge_base_q_a_model extends App_Model
      * @param  [type] $articleid 
      * @return [type]            
      */
-    public function get_list_files($id, $articleid){
+    public function get_list_files($id, $articleid) {
         $this->db->where('rel_type', 'hr_profile_kb_article');
         $this->db->where('rel_id', $articleid);
         $results = $this->db->get(db_prefix().'files')->result_array();
-        return $results;        
+        return $results; 
     }
 
 
@@ -455,14 +455,14 @@ class Knowledge_base_q_a_model extends App_Model
         $inbox['to'] = $data['email'];
         $inbox['sender_name'] = get_staff_full_name($staff_id);
         $inbox['subject'] = _strip_tags($data['subject']);
-        $inbox['body'] = _strip_tags($data['content']);        
+        $inbox['body'] = _strip_tags($data['content']); 
         $inbox['body'] = nl2br_save_html($inbox['body']);
         $inbox['date_received']      = date('Y-m-d H:i:s');
 
         $sender_email = _l('hr_this_is_the_email_sent_from').' '.hr_get_staff_email_by_id($staff_id).'. '._l('hr_if_there_is_any_response_please_send_it_via_this_email').': '.hr_get_staff_email_by_id($staff_id).'. ';
 
         
-        if(strlen(get_option('smtp_host')) > 0 && strlen(get_option('smtp_password')) > 0 && strlen(get_option('smtp_username')) > 0){
+        if (strlen(get_option('smtp_host')) > 0 && strlen(get_option('smtp_password')) > 0 && strlen(get_option('smtp_username')) > 0) {
 
             $ci = &get_instance();
             $ci->email->initialize();
@@ -478,7 +478,7 @@ class Knowledge_base_q_a_model extends App_Model
 
             $result = $ci->email->send(true);
 
-            if($result){
+            if ($result) {
                 return true;
             }
             return fasle;

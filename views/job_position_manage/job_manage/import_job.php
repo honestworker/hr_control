@@ -20,7 +20,7 @@ $file_header[] = _l('hr_create_job_position_default');
 							
 						</div>
 
-						<?php if(!isset($simulate)) { ?>
+						<?php if (!isset($simulate)) { ?>
 							<ul>
 								<li>1. <?php echo _l('hr_import_excel_1'); ?></li>
 								<li class="text-danger">2. <?php echo _l('hr_import_xlsx_required'); ?></li>
@@ -32,8 +32,8 @@ $file_header[] = _l('hr_create_job_position_default');
 											<?php
 											$total_fields = 0;
 											
-											for($i=0;$i<count($file_header);$i++){
-												if($i == 0 || $i == 1 ||$i == 22){
+											for($i=0;$i<count($file_header);$i++) {
+												if ($i == 0 || $i == 1 ||$i == 22) {
 													?>
 													<th class="bold"><span class="text-danger">*</span> <?php echo html_entity_decode($file_header[$i]) ?> </th>
 													<?php 
@@ -52,9 +52,9 @@ $file_header[] = _l('hr_create_job_position_default');
 										</tr>
 									</thead>
 									<tbody>
-										<?php for($i = 0; $i<1;$i++){
+										<?php for($i = 0; $i<1;$i++) {
 											echo '<tr>';
-											for($x = 0; $x<count($file_header);$x++){
+											for($x = 0; $x<count($file_header);$x++) {
 												echo '<td>- </td>';
 											}
 											echo '</tr>';
@@ -98,6 +98,6 @@ $file_header[] = _l('hr_create_job_position_default');
 </div>
 <?php init_tail(); ?>
 <script src="<?php echo base_url('assets/plugins/jquery-validation/additional-methods.min.js'); ?>"></script>
-<?php require('modules/hr_profile/assets/js/job_position/job/import_excel_js.php'); ?>
+<?php require('modules/hr_control/assets/js/job_position/job/import_excel_js.php'); ?>
 </body>
 </html>

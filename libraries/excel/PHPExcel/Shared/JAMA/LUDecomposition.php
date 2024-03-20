@@ -117,7 +117,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
         } else {
             throw new PHPExcel_Calculation_Exception(PHPExcel_Shared_JAMA_Matrix::ARGUMENT_TYPE_EXCEPTION);
         }
-    }    //    function __construct()
+    }//    function __construct()
 
     /**
      *    Get lower triangular factor.
@@ -138,7 +138,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
             }
         }
         return new PHPExcel_Shared_JAMA_Matrix($L);
-    }    //    function getL()
+    }//    function getL()
 
     /**
      *    Get upper triangular factor.
@@ -157,7 +157,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
             }
         }
         return new PHPExcel_Shared_JAMA_Matrix($U);
-    }    //    function getU()
+    }//    function getU()
 
     /**
      *    Return pivot permutation vector.
@@ -167,7 +167,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
     public function getPivot()
     {
         return $this->piv;
-    }    //    function getPivot()
+    }//    function getPivot()
 
     /**
      *    Alias for getPivot
@@ -177,7 +177,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
     public function getDoublePivot()
     {
         return $this->getPivot();
-    }    //    function getDoublePivot()
+    }//    function getDoublePivot()
 
     /**
      *    Is the matrix nonsingular?
@@ -192,7 +192,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
             }
         }
         return true;
-    }    //    function isNonsingular()
+    }//    function isNonsingular()
 
     /**
      *    Count determinants
@@ -210,7 +210,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
         } else {
             throw new PHPExcel_Calculation_Exception(PHPExcel_Shared_JAMA_Matrix::MATRIX_DIMENSION_EXCEPTION);
         }
-    }    //    function det()
+    }//    function det()
 
     /**
      *    Solve A*X = B

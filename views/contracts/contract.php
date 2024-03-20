@@ -4,7 +4,7 @@
 <div id="wrapper">
 	<div class="content">
 		<div class="row">
-			<?php if(isset($contracts)){ ?>
+			<?php if (isset($contracts)) { ?>
 				<div class="member">
 					<?php echo form_hidden('isedit'); ?>
 					<?php echo form_hidden('contractid',$contracts->id_contract); ?>
@@ -18,10 +18,10 @@
 					<div class="panel-body">
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<?php if(isset($contracts)){ ?>
+								<?php if (isset($contracts)) { ?>
 									<h4 class="no-margin"><?php echo _l('hr_edit_contract') ?> 
 								</h4>
-							<?php }else{?>
+							<?php } else {?>
 								<h4 class="no-margin"><?php echo _l('new_contract') ?> 
 							</h4>
 						<?php } ?>
@@ -49,8 +49,8 @@
 								<label for="staff" class="control-label"><?php echo _l('hr_hr_staff_name'); ?></label>
 								<select name="staff" class="selectpicker" id="staff" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>" data-live-search="true"> 
 									<option value=""></option>                  
-									<?php foreach($staff as $s){ ?>
-										<option value="<?php echo html_entity_decode($s['staffid']); ?>"  <?php if(isset($contracts) && $contracts->staff == $s['staffid'] ){echo 'selected';} ?>> <?php echo html_entity_decode($s['firstname'].''.$s['lastname']); ?></option>                  
+									<?php foreach($staff as $s) { ?>
+										<option value="<?php echo html_entity_decode($s['staffid']); ?>"  <?php if (isset($contracts) && $contracts->staff == $s['staffid'] ) {echo 'selected';} ?>> <?php echo html_entity_decode($s['firstname'].''.$s['lastname']); ?></option>                  
 									<?php }?>
 								</select>
 							</div>
@@ -62,8 +62,8 @@
 									<label for="name_contract" class="control-label"><?php echo _l('hr_name_contract'); ?></label>
 									<select name="name_contract" class="selectpicker" id="name_contract" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 										<option value=""></option>                  
-										<?php foreach($contract_type as $c){ ?>
-											<option value="<?php echo html_entity_decode($c['id_contracttype']); ?>" <?php if(isset($contracts) && $contracts->name_contract == $c['id_contracttype'] ){echo 'selected';} ?>><?php echo html_entity_decode($c['name_contracttype']); ?> </option>
+										<?php foreach($contract_type as $c) { ?>
+											<option value="<?php echo html_entity_decode($c['id_contracttype']); ?>" <?php if (isset($contracts) && $contracts->name_contract == $c['id_contracttype'] ) {echo 'selected';} ?>><?php echo html_entity_decode($c['name_contracttype']); ?> </option>
 										<?php }?>
 									</select>
 								</div>
@@ -73,10 +73,10 @@
 								<div class="form-group">
 									<label for="contract_status" class="control-label"><?php echo _l('hr_status_label'); ?></label>
 									<select name="contract_status" class="selectpicker" id="contract_status" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
-										<option value="draft" <?php if(isset($contracts) && $contracts->contract_status == 'draft' ){echo 'selected';} ?> ><?php echo _l('hr_hr_draft') ?></option>
-										<option value="valid" <?php if(isset($contracts) && $contracts->contract_status == 'valid' ){echo 'selected';} ?>><?php echo _l('hr_hr_valid') ?></option>
-										<option value="invalid" <?php if(isset($contracts) && $contracts->contract_status == 'invalid' ){echo 'selected';} ?>><?php echo _l('hr_hr_expired') ?></option>
-										<option value="finish" <?php if(isset($contracts) && $contracts->contract_status == 'finish' ){echo 'selected';} ?>><?php echo _l('hr_hr_finish') ?></option>
+										<option value="draft" <?php if (isset($contracts) && $contracts->contract_status == 'draft' ) {echo 'selected';} ?> ><?php echo _l('hr_hr_draft') ?></option>
+										<option value="valid" <?php if (isset($contracts) && $contracts->contract_status == 'valid' ) {echo 'selected';} ?>><?php echo _l('hr_hr_valid') ?></option>
+										<option value="invalid" <?php if (isset($contracts) && $contracts->contract_status == 'invalid' ) {echo 'selected';} ?>><?php echo _l('hr_hr_expired') ?></option>
+										<option value="finish" <?php if (isset($contracts) && $contracts->contract_status == 'finish' ) {echo 'selected';} ?>><?php echo _l('hr_hr_finish') ?></option>
 									</select>
 								</div>
 							</div>
@@ -101,8 +101,8 @@
 								<div class="form-group">
 									<label for="hourly_or_month" class="control-label"><?php echo _l('hr_hourly_rate_month'); ?></label>
 									<select name="hourly_or_month" class="selectpicker" id="hourly_or_month" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
-										<option value="month" <?php if(isset($contracts) && $contracts->hourly_or_month == 'month' ){echo 'selected';} ?>><?php echo _l('hr_month') ?></option>
-										<option value="hourly_rate" <?php if(isset($contracts) && $contracts->hourly_or_month == 'hourly_rate' ){echo 'selected';} ?> ><?php echo _l('hourly_rate') ?></option>
+										<option value="month" <?php if (isset($contracts) && $contracts->hourly_or_month == 'month' ) {echo 'selected';} ?>><?php echo _l('hr_month') ?></option>
+										<option value="hourly_rate" <?php if (isset($contracts) && $contracts->hourly_or_month == 'hourly_rate' ) {echo 'selected';} ?> ><?php echo _l('hourly_rate') ?></option>
 										
 									</select>
 							</div>
@@ -135,8 +135,8 @@
 								<label for="staff_delegate" class="control-label"><?php echo _l('hr_staff_delegate'); ?></label>
 								<select name="staff_delegate" class="selectpicker" data-live-search="true" id="staff_delegate" data-width="100%" data-none-selected-text="<?php echo _l('dropdown_non_selected_tex'); ?>"> 
 									<option value=""></option>                  
-									<?php foreach($staff as $s){ ?>
-										<option value="<?php echo html_entity_decode($s['staffid']); ?>"  <?php if(isset($contracts) && $contracts->staff_delegate == $s['staffid'] ){echo 'selected';} ?>> <?php echo html_entity_decode($s['firstname'].''.$s['lastname']); ?></option>                  
+									<?php foreach($staff as $s) { ?>
+										<option value="<?php echo html_entity_decode($s['staffid']); ?>"  <?php if (isset($contracts) && $contracts->staff_delegate == $s['staffid'] ) {echo 'selected';} ?>> <?php echo html_entity_decode($s['firstname'].''.$s['lastname']); ?></option>                  
 									<?php }?>
 								</select>
 							</div>
@@ -171,13 +171,13 @@
 								</div>
 								<div class="row">
 									<div id="contract_attachments" class="mtop30 ">
-										<?php if(isset($contract_attachment)){ ?>
+										<?php if (isset($contract_attachment)) { ?>
 
 											<?php
 											$data = '<div class="row" id="attachment_file">';
 											foreach($contract_attachment as $attachment) {
-												$href_url = site_url('modules/hr_profile/uploads/contracts/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
-												if(!empty($attachment['external'])){
+												$href_url = site_url('modules/hr_control/uploads/contracts/'.$attachment['rel_id'].'/'.$attachment['file_name']).'" download';
+												if (!empty($attachment['external'])) {
 													$href_url = $attachment['external_link'];
 												}
 												$data .= '<div class="display-block contract-attachment-wrapper">';
@@ -194,7 +194,7 @@
 												$data .= '</div>';
 												$data .= '</div>';
 												$data .= '<div class="col-md-2 text-right">';
-												if(is_admin() || has_permission('hrm_contract', '', 'delete')){
+												if (is_admin() || has_permission('hrm_contract', '', 'delete')) {
 													$data .= '<a href="#" class="text-danger" onclick="delete_contract_attachment(this,'.$attachment['id'].'); return false;"><i class="fa fa fa-times"></i></a>';
 												}
 												$data .= '</div>';
@@ -222,8 +222,8 @@
 				</div>
 
 				<div class="modal-footer">
-					<a href="<?php echo admin_url('hr_profile/contracts'); ?>"  class="btn btn-default mr-2 "><?php echo _l('hr_close'); ?></a>
-					<?php if(has_permission('hrm_contract', '', 'create') || has_permission('hrm_contract', '', 'edit')){ ?>
+					<a href="<?php echo admin_url('hr_control/contracts'); ?>"  class="btn btn-default mr-2 "><?php echo _l('hr_close'); ?></a>
+					<?php if (has_permission('hrm_contract', '', 'create') || has_permission('hrm_contract', '', 'edit')) { ?>
 						<a href="#"class="btn btn-info pull-right mright10 display-block add_goods_receipt" ><?php echo _l('submit'); ?></a>
 					<?php } ?>
 				</div>
@@ -238,7 +238,7 @@
 </div>
 <?php init_tail(); ?>
 <?php 
-require('modules/hr_profile/assets/js/contracts/contract_js.php');
+require('modules/hr_control/assets/js/contracts/contract_js.php');
 ?>
 </body>
 </html>

@@ -83,9 +83,9 @@ class PHPExcel_Writer_Excel5_Font
         $bFamily = 0; // Font family
         $bCharSet = PHPExcel_Shared_Font::getCharsetFromFontName($this->font->getName()); // Character set
 
-        $record = 0x31;        // Record identifier
+        $record = 0x31; // Record identifier
         $reserved = 0x00;    // Reserved
-        $grbit = 0x00;        // Font attributes
+        $grbit = 0x00; // Font attributes
         if ($this->font->getItalic()) {
             $grbit |= 0x02;
         }

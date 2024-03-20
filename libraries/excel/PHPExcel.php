@@ -242,7 +242,7 @@ class PHPExcel
     {
         $ReturnData = null;
         $What = strtolower($What);
-        switch ($What){
+        switch ($What) {
             case 'all':
                 $ReturnData = $this->ribbonXMLData;
                 break;
@@ -423,7 +423,7 @@ class PHPExcel
     public function getCalculationEngine()
     {
         return $this->calculationEngine;
-    }    //    function getCellCacheController()
+    }//    function getCellCacheController()
 
     /**
      * Get properties
@@ -791,7 +791,7 @@ class PHPExcel
             $this->namedRanges[$namedRange->getName()] = $namedRange;
         } else {
             // local scope
-            $this->namedRanges[$namedRange->getScope()->getTitle().'!'.$namedRange->getName()] = $namedRange;
+            $this->namedRanges[$namedRange->getScope()->getTitle() . '!'.$namedRange->getName()] = $namedRange;
         }
         return true;
     }

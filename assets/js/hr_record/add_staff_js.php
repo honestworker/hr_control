@@ -1,5 +1,5 @@
 <script>
-	$(function(){
+	$(function() {
 		'use strict';
 		init_roles_permissions_v1();
 
@@ -27,7 +27,7 @@
 
     // Get all permissions
     var permissions = $('table.roles').find('tr');
-    requestGetJSON('hr_profile/hr_role_changed/' + roleid).done(function(response) {
+    requestGetJSON('hr_control/hr_role_changed/' + roleid).done(function(response) {
 
     	permissions.find('.capability').not('[data-not-applicable="true"]').prop('checked', false).trigger('change');
 

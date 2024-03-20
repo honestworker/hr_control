@@ -1,15 +1,12 @@
 <script>
-		
-		var purchase;
-		
-		<?php if(isset($body_value)){ ?>
+	var purchase;
 
-			var dataObject = <?php echo html_entity_decode($body_value) ; ?>;
-		<?php }?>
+	<?php if (isset($body_value)) { ?>
+		var dataObject = <?php echo html_entity_decode($body_value); ?>;
+	<?php } ?>
 
-	var hotElement1 = document.querySelector('#hr_commissions_value');
-	 var purchase = new Handsontable(hotElement1, {
-
+	var hotElement1 = document.querySelector('#hrp_commissions_value');
+	var purchase = new Handsontable(hotElement1, {
 		contextMenu: true,
 		manualRowMove: true,
 		manualColumnMove: true,
@@ -28,13 +25,13 @@
 			samplingRatio: 23
 		},
 		dropdownMenu: true,
-		 hiddenColumns: {
+		hiddenColumns: {
 		    columns: [0,1,2,3],
 		    indicators: false
-		  },
+		},
 		multiColumnSorting: {
-				indicator: true
-			}, 
+			indicator: true
+		},
 		fixedColumnsLeft: 5,
 
 		filters: true,
@@ -47,17 +44,15 @@
 		rowHeights: 40,
 		rowHeaderWidth: [44],
 
-
 		columns: <?php echo html_entity_decode($columns) ?>,
 
 		colHeaders: <?php echo html_entity_decode($col_header); ?>,
 
 		data: dataObject,
-
 	});
 
-		//filter
-	function commissions_filter (invoker){
+	//filter
+	function commissions_filter (invoker) {
 		'use strict';
 
 		var data = {};
@@ -75,83 +70,67 @@
 			})
 			$('input[name="month"]').val(response.month);
 			$('.save_manage_commissions').html(response.button_name);
-			
 		});
 	};
 
-
-
 	var purchase_value = purchase;
-
-
-
 	$('.save_manage_commissions').on('click', function() {
 		'use strict';
 
-		var valid_contract = $('#hr_commissions_value').find('.htInvalid').html();
+		var valid_contract = $('#hrp_commissions_value').find('.htInvalid').html();
 
-		if(valid_contract){
-			alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-		}else{
+		if (valid_contract) {
+			alert_float('danger', "<?php echo _l('data_invalid'); ?>");
+		} else {
 
-			$('input[name="hr_commissions_value"]').val(JSON.stringify(purchase_value.getData()));   
+			$('input[name="hrp_commissions_value"]').val(JSON.stringify(purchase_value.getData()));
 			$('input[name="commissions_fill_month"]').val($("#month_commissions").val());
-			$('input[name="hr_commissions_rel_type"]').val('update');   
-			$('#add_manage_commissions').submit(); 
-
+			$('input[name="hrp_commissions_rel_type"]').val('update');
+			$('#add_manage_commissions').submit();
 		}
 	});
 
-
-	function save_synchronized(event){
+	function save_synchronized(event) {
 		'use strict';
 
-		var valid_employees_value = $('#hr_commissions_value').find('.htInvalid').html();
+		var valid_employees_value = $('#hrp_commissions_value').find('.htInvalid').html();
 
-		if(valid_employees_value){
-			alert_float('danger', "<?php echo _l('data_invalid') ; ?>");
-		}else{
-      $(event).addClass('disabled');
+		if (valid_employees_value) {
+			alert_float('danger', "<?php echo _l('data_invalid'); ?>");
+		} else {
+      		$(event).addClass('disabled');
 
-			$('input[name="hr_commissions_value"]').val(JSON.stringify(purchase_value.getData()));   
+			$('input[name="hrp_commissions_value"]').val(JSON.stringify(purchase_value.getData()));
 			$('input[name="commissions_fill_month"]').val($("#month_commissions").val());
-			$('input[name="hr_commissions_rel_type"]').val('synchronization');   
+			$('input[name="hrp_commissions_rel_type"]').val('synchronization');
 			$( "#add_manage_commissions" ).submit();
 		}
-
 	};
-	
+
 	$('#department_commissions').on('change', function() {
 		'use strict';
 
-		$('input[name="department_commissions_filter"]').val($("#department_commissions").val());  
+		$('input[name="department_commissions_filter"]').val($("#department_commissions").val());
 		commissions_filter();
-
 	});
 
 	$('#staff_commissions').on('change', function() {
 		'use strict';
 
-		$('input[name="staff_commissions_filter"]').val($("#staff_commissions").val()); 
+		$('input[name="staff_commissions_filter"]').val($("#staff_commissions").val());
 		commissions_filter();
-
 	});
 
 	$('#role_commissions').on('change', function() {
 		'use strict';
-		
-		$('input[name="role_commissions_filter"]').val($("#role_commissions").val()); 
+
+		$('input[name="role_commissions_filter"]').val($("#role_commissions").val());
 		commissions_filter();
-		  
 	});
-	
 
 	$('#month_commissions').on('change', function() {
 		'use strict';
 
 		commissions_filter();
-
 	});
-
-
 </script>

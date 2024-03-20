@@ -73,7 +73,7 @@
 						<div class="col-md-12">
 							<table class="table border table-striped table-margin-none">
 								<thead>
-									<th class="th-color"><?php echo _l('monthly_pay_for').' ' .isset($payslip_detail) ? date('m-Y',strtotime($payslip_detail->month)) : '' ; ?></th>
+									<th class="th-color"><?php echo _l('monthly_pay_for') . ' ' .isset($payslip_detail) ? date('m-Y',strtotime($payslip_detail->month)) : '' ; ?></th>
 								</thead>
 							</table >
 						</div>
@@ -81,12 +81,12 @@
 
 					<?php 
 
-					$hr_payslip_salary_allowance = hr_payslip_json_data_decode($payslip_detail->json_data);
+					$hrp_payslip_salary_allowance = hrp_payslip_json_data_decode($payslip_detail->json_data);
 
 
 					 ?>
 
-					<h5><?php echo _l('hr_salary').', '._l('hr_allowance'); ?></h5>
+					<h5><?php echo _l('hrp_salary') . ', '._l('hrp_allowance'); ?></h5>
 					<div>
 						<div class="row">
 							<div class="col-md-12">
@@ -94,10 +94,10 @@
 									<table class="table border table-striped table-margin-none">
 										<tbody>
 											<tr class="project-overview">
-												<td  width="50%" ><b><?php echo _l('hr_probation_contract'); ?></b></td>
+												<td  width="50%" ><b><?php echo _l('hrp_probation_contract'); ?></b></td>
 												<td  width="50%" ></td>
 											</tr>
-											<?php echo isset($hr_payslip_salary_allowance['probation_contract_list']) ? $hr_payslip_salary_allowance['probation_contract_list'] : '' ?>
+											<?php echo isset($hrp_payslip_salary_allowance['probation_contract_list']) ? $hrp_payslip_salary_allowance['probation_contract_list'] : '' ?>
 
 										</tbody>
 									</table>
@@ -107,11 +107,11 @@
 									<table class="table border table-striped table-margin-none">
 										<tbody>
 											<tr class="project-overview">
-												<td  width="50%" ><b><?php echo _l('hr_formal_contract'); ?></b></td>
+												<td  width="50%" ><b><?php echo _l('hrp_formal_contract'); ?></b></td>
 												<td  width="50%" ></td>
 
 											</tr>
-											<?php echo isset($hr_payslip_salary_allowance['formal_contract_list']) ? $hr_payslip_salary_allowance['formal_contract_list'] : '' ?>
+											<?php echo isset($hrp_payslip_salary_allowance['formal_contract_list']) ? $hrp_payslip_salary_allowance['formal_contract_list'] : '' ?>
 											
 
 										</tbody>
@@ -161,12 +161,12 @@
 										<td class="text-left"><?php echo html_entity_decode( isset($payslip_detail) ? app_format_money($payslip_detail->income_tax_paye,'') : ''); ?></td>
 									</tr>
 									<tr class="project-overview">
-										<td ><?php echo _l('hr_insurrance'); ?></td>
+										<td ><?php echo _l('hrp_insurrance'); ?></td>
 										<td><?php echo isset($payslip_detail) ? app_format_money($payslip_detail->total_insurance,'') : 0; ?></td>
 									</tr>
 
 									<tr class="project-overview">
-										<td ><?php echo _l('hr_deduction_manage'); ?></td>
+										<td ><?php echo _l('hrp_deduction_manage'); ?></td>
 										<td><?php echo isset($payslip_detail) ? app_format_money($payslip_detail->total_deductions,'') : 0; ?></td>
 									</tr>
 									<tr class="project-overview">

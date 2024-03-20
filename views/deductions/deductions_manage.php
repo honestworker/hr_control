@@ -11,7 +11,7 @@
 
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<h4 class="no-margin"><?php echo _l('hr_salary_deductions') ?> </h4>
+								<h4 class="no-margin"><?php echo _l('hrp_salary_deductions') ?> </h4>
 							</div>
 						</div>
 						<br>
@@ -72,9 +72,9 @@
 						</div>
 						<div id="total_insurance_histtory" class="col-md-12">
 							<div class="row">  
-								<div id="hr_deductions_value" class="hot handsontable htColumnHeaders" >
+								<div id="hrp_deductions_value" class="hot handsontable htColumnHeaders" >
 								</div>
-								<?php echo form_hidden('hr_deductions_value'); ?>
+								<?php echo form_hidden('hrp_deductions_value'); ?>
 								<?php echo form_hidden('month', date('m-Y')); ?>
 								<?php echo form_hidden('deductions_fill_month'); ?>
 								<?php echo form_hidden('department_deductions_filter'); ?>
@@ -82,19 +82,19 @@
 								<?php echo form_hidden('role_deductions_filter'); ?>
 
 								<!-- rel_type synchronization or update value -->
-								<?php echo form_hidden('hr_deductions_rel_type'); ?>
+								<?php echo form_hidden('hrp_deductions_rel_type'); ?>
 
 							</div>
 						</div>
 
 						<div class="col-md-12">
 							<div class="modal-footer">
-								<?php if(has_permission('hr_deduction', '', 'create') || has_permission('hr_deduction', '', 'edit')){ ?>
+								<?php if (has_permission('hrp_deduction', '', 'create') || has_permission('hrp_deduction', '', 'edit')) { ?>
 									<button type="button" class="btn btn-info pull-right save_manage_deductions mleft5 "><?php echo html_entity_decode($button_name); ?></button>
 								
 									
 									<a href="<?php echo admin_url('hr_control/import_xlsx_deductions'); ?>" class=" hide btn mright5 btn-default pull-right">
-										<?php echo _l('hr_import_excel'); ?>
+										<?php echo _l('hrp_import_excel'); ?>
 									</a>
 								<?php } ?>
 								

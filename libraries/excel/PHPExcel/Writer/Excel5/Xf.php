@@ -199,13 +199,13 @@ class PHPExcel_Writer_Excel5_Xf
             $this->_diag_color = 0;
         }
 
-        $record = 0x00E0;              // Record identifier
-        $length = 0x0014;              // Number of bytes to follow
+        $record = 0x00E0;       // Record identifier
+        $length = 0x0014;       // Number of bytes to follow
 
         $ifnt = $this->fontIndex;   // Index to FONT record
         $ifmt = $this->numberFormatIndex;  // Index to FORMAT record
 
-        $align  = $this->mapHAlign($this->_style->getAlignment()->getHorizontal());       // Alignment
+        $align  = $this->mapHAlign($this->_style->getAlignment()->getHorizontal());// Alignment
         $align |= (int) $this->_style->getAlignment()->getWrapText()     << 3;
         $align |= self::mapVAlign($this->_style->getAlignment()->getVertical())  << 4;
         $align |= $this->textJustLast << 7;
@@ -220,7 +220,7 @@ class PHPExcel_Writer_Excel5_Xf
         $icv  = $this->foregroundColor;      // fg and bg pattern colors
         $icv |= $this->backgroundColor      << 7;
 
-        $border1  = self::mapBorderStyle($this->_style->getBorders()->getLeft()->getBorderStyle());          // Border line style and color
+        $border1  = self::mapBorderStyle($this->_style->getBorders()->getLeft()->getBorderStyle());   // Border line style and color
         $border1 |= self::mapBorderStyle($this->_style->getBorders()->getRight()->getBorderStyle())         << 4;
         $border1 |= self::mapBorderStyle($this->_style->getBorders()->getTop()->getBorderStyle())           << 8;
         $border1 |= self::mapBorderStyle($this->_style->getBorders()->getBottom()->getBorderStyle())        << 12;

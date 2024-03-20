@@ -1,4 +1,4 @@
-(function(){
+(function() {
 $('#file-link').on('click', function(e) {
 	"use strict";
 

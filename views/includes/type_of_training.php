@@ -26,7 +26,7 @@
 						<?php } ?>
 
 						<?php if(has_permission('hrm_setting', '', 'delete') || is_admin() ){ ?>
-							<a href="<?php echo admin_url('hr_profile/delete_type_of_training/'.$type_of_training['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+							<a href="<?php echo admin_url('hr_control/delete_type_of_training/'.$type_of_training['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
@@ -37,7 +37,7 @@
 
 	<div class="modal" id="type_of_training" tabindex="-1" role="dialog">
 		<div class="modal-dialog w-25">
-			<?php echo form_open(admin_url('hr_profile/type_of_training'),  array('id'=>'add_type_of_training')); ?>
+			<?php echo form_open(admin_url('hr_control/type_of_training'),  array('id'=>'add_type_of_training')); ?>
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

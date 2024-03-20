@@ -30,7 +30,7 @@
 						<?php } ?>
 
 						<?php if(has_permission('hrm_setting', '', 'delete') || is_admin() ){ ?>
-							<a href="<?php echo admin_url('hr_profile/delete_salary_form/'.$c['form_id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+							<a href="<?php echo admin_url('hr_control/delete_salary_form/'.$c['form_id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
@@ -41,7 +41,7 @@
 
 	<div class="modal" id="salary_form" tabindex="-1" role="dialog">
 		<div class="modal-dialog w-25">
-			<?php echo form_open(admin_url('hr_profile/salary_form'),  array('id'=>'add_salary_form')); ?>
+			<?php echo form_open(admin_url('hr_control/salary_form'),  array('id'=>'add_salary_form')); ?>
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

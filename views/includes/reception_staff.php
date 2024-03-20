@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<?php echo  form_open(admin_url('hr_profile/save_setting_reception_staff'),['id' => 'reception_staff_form']); ?>
+<?php echo  form_open(admin_url('hr_control/save_setting_reception_staff'),['id' => 'reception_staff_form']); ?>
 <div class="col-md-12">
 	<h4><?php echo _l('hr_reception_information'); ?></h4>
 	<hr>

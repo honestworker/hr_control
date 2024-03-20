@@ -17,7 +17,7 @@
 				</div>
 			<?php } ?>
 			
-			<?php echo form_open_multipart(admin_url('hr_profile/contract_template/'.$template_id),array('class'=>'contract-template-form','autocomplete'=>'off')); ?>
+			<?php echo form_open_multipart(admin_url('hr_control/contract_template/'.$template_id),array('class'=>'contract-template-form','autocomplete'=>'off')); ?>
 
 
 			<div class="col-md-12" >
@@ -125,7 +125,7 @@
 						</div>
 
 						<div class="modal-footer">
-							<a href="<?php echo admin_url('hr_profile/setting?group=contract_template'); ?>"  class="btn btn-default mr-2 "><?php echo _l('hr_close'); ?></a>
+							<a href="<?php echo admin_url('hr_control/setting?group=contract_template'); ?>"  class="btn btn-default mr-2 "><?php echo _l('hr_close'); ?></a>
 							<?php if(has_permission('hrm_setting', '', 'create') || has_permission('hrm_setting', '', 'edit')){ ?>
 								<button type="submit" class="btn btn-info"><?php echo _l('submit'); ?></button>
 

@@ -28,7 +28,7 @@
 						<?php } ?>
 
 						<?php if(has_permission('hrm_setting', '', 'delete') || is_admin()){ ?>
-							<a href="<?php echo admin_url('hr_profile/delete_allowance_type/'.$c['type_id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+							<a href="<?php echo admin_url('hr_control/delete_allowance_type/'.$c['type_id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
@@ -38,7 +38,7 @@
 	
 	<div class="modal" id="allowance_type" tabindex="-1" role="dialog"  aria-hidden="true">
 		<div class="modal-dialog w-25">
-			<?php echo form_open(admin_url('hr_profile/allowance_type')); ?>
+			<?php echo form_open(admin_url('hr_control/allowance_type')); ?>
 			<div class="modal-content ">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

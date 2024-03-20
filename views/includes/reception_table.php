@@ -39,10 +39,10 @@ $rResult = $result['rResult'];
 foreach ($rResult as $aRow) {
 	$row = [];
 	$row[] = $aRow['staff_identifi'];  
-	$_data = '<a href="' . admin_url('hr_profile/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . staff_profile_image($aRow[db_prefix().'hr_rec_transfer_records.staffid'], [
+	$_data = '<a href="' . admin_url('hr_control/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . staff_profile_image($aRow[db_prefix().'hr_rec_transfer_records.staffid'], [
 		'staff-profile-image-small',
 	]) . '</a>';
-	$_data .= ' <a href="' . admin_url('hr_profile/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . $aRow['firstname'] . ' ' . $aRow['lastname'] . '</a>';
+	$_data .= ' <a href="' . admin_url('hr_control/member/' . $aRow[db_prefix().'hr_rec_transfer_records.staffid']) . '">' . $aRow['firstname'] . ' ' . $aRow['lastname'] . '</a>';
 	$row[] = $_data; 
 
 

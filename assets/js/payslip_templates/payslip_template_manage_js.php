@@ -138,7 +138,7 @@ function addPaySlipTemplate(form) {
         })
         .done(function(res) {
             alert_float(res.type, res.message);
-            window.location.href = `${admin_url}hr_payroll/view_payslip_templates_detail/${res.id}`;
+            window.location.href = `${admin_url}hr_control/view_payslip_templates_detail/${res.id}`;
             $('#payslip_template_modal').modal('hide');
             $('.table-payslip_template_table').DataTable().ajax.reload();
         })

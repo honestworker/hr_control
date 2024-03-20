@@ -12,7 +12,7 @@
 			contract_code: {
 				required: true,
 				remote: {
-					url: site_url + "admin/hr_profile/contract_code_exists",
+					url: site_url + "admin/hr_control/contract_code_exists",
 					type: 'post',
 					data: {
 						contract_code: function() {

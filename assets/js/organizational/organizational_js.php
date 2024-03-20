@@ -20,7 +20,7 @@
 		appValidateForm($('form'),{name:'required',email:{
 			email: true,
 			remote: {
-				url: admin_url + "hr_profile/email_exists",
+				url: admin_url + "hr_control/email_exists",
 				type: 'post',
 				data: {
 					email: function() {

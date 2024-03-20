@@ -18,7 +18,7 @@
     function member_view_payslip(payslip_detail_id) {
       "use strict";
 
-      $("#contract_modal_wrapper").load("<?php echo admin_url('hr_control/hr_payroll/view_staff_payslip_modal'); ?>", {
+      $("#contract_modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/view_staff_payslip_modal'); ?>", {
            slug: 'view',
            payslip_detail_id: payslip_detail_id
       }, function() {

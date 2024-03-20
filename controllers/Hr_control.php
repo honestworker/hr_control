@@ -44,7 +44,6 @@ class hr_control extends AdminController
         $data['tab'][] = 'payroll_columns';
         $data['tab'][] = 'data_integration';
 
-		$data['tab'][] = 'profile';
 		$data['tab'][] = 'contract_type';
 		$data['tab'][] = 'salary_type';
 		$data['tab'][] = 'allowance_type';
@@ -78,11 +77,11 @@ class hr_control extends AdminController
 
         if ($data['group'] == '') {
             $data['group'] = 'payroll_columns';
-            $data['payroll_column_value'] = $this->hr_payroll_model->get_hrc_control_columns();
-            $data['order_display_in_paylip'] = $this->hr_payroll_model->count_control_column();
+            $data['payroll_column_value'] = $this->hr_payroll_model->get_hrp_payroll_columns();
+            $data['order_display_in_paylip'] = $this->hr_payroll_model->count_payroll_column();
         } elseif ($data['group'] == 'payroll_columns') {
-            $data['payroll_column_value'] = $this->hr_payroll_model->get_hrc_control_columns();
-            $data['order_display_in_paylip'] = $this->hr_payroll_model->count_control_column();
+            $data['payroll_column_value'] = $this->hr_payroll_model->get_hrp_payroll_columns();
+            $data['order_display_in_paylip'] = $this->hr_payroll_model->count_payroll_column();
         } elseif ($data['group'] == 'income_tax_rates') {
             $data['title'] = _l('income_tax_rates');
             $data['income_tax_rates'] = json_encode($this->hr_payroll_model->get_income_tax_rate());
@@ -493,7 +492,7 @@ class hr_control extends AdminController
                 }
 
                 if (has_permission('hrm_setting', '', 'delete')) {
-                    $options .= icon_btn('hr_payroll/delete_hr_payroll_permission/' . $aRow['staffid'], 'fa fa-remove', 'btn-danger _delete', [
+                    $options .= icon_btn('hr_control/delete_hr_payroll_permission/' . $aRow['staffid'], 'fa fa-remove', 'btn-danger _delete', [
                         'data-toggle' => 'tooltip',
                         'data-title' => _l('delete'),
                     ]);
@@ -3509,7 +3508,7 @@ class hr_control extends AdminController
     public function get_payroll_column_method_html_add()
     {
         $method_option = $this->hr_payroll_model->get_list_payroll_column_method(['id' => '']);
-        $order_display = $this->hr_payroll_model->count_control_column();
+        $order_display = $this->hr_payroll_model->count_payroll_column();
 
         echo json_encode([
             'method_option' => $method_option['method_option'],
@@ -3574,7 +3573,7 @@ class hr_control extends AdminController
     public function get_payroll_column($id)
     {
         //get data
-        $payroll_column = $this->hr_payroll_model->get_hrc_control_columns($id);
+        $payroll_column = $this->hr_payroll_model->get_hrp_payroll_columns($id);
 
         //get taking method html
         $taking_method = ($payroll_column) ? $payroll_column->taking_method : '';
@@ -3764,9 +3763,9 @@ class hr_control extends AdminController
         }
         if (has_permission('hrp_payslip_template', '', 'create') || has_permission('hrp_payslip_template', '', 'edit')) {
 
-            $permission_actions = '<button id="luckysheet_info_detail_save" class="BTNSS btn btn-info luckysheet_info_detail_save pull-right">Save</button><a id="luckysheet_info_detail_export" class="btn btn-info luckysheet_info_detail_export pull-right"> Download</a><a href="' . admin_url() . 'hr_payroll/payslip_templates_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
+            $permission_actions = '<button id="luckysheet_info_detail_save" class="BTNSS btn btn-info luckysheet_info_detail_save pull-right">Save</button><a id="luckysheet_info_detail_export" class="btn btn-info luckysheet_info_detail_export pull-right"> Download</a><a href="' . admin_url() . 'hr_control/payslip_templates_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
         } else {
-            $permission_actions = '<a id="luckysheet_info_detail_export" class="btn btn-info luckysheet_info_detail_export pull-right"> Download</a><a href="' . admin_url() . 'hr_payroll/payslip_templates_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
+            $permission_actions = '<a id="luckysheet_info_detail_export" class="btn btn-info luckysheet_info_detail_export pull-right"> Download</a><a href="' . admin_url() . 'hr_control/payslip_templates_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
         }
 
         $data['permission_actions'] = $permission_actions;
@@ -3824,9 +3823,9 @@ class hr_control extends AdminController
         }
 
         if (has_permission('hrp_payslip', '', 'create') || has_permission('hrp_payslip', '', 'edit')) {
-            $permission_actions = '<button id="save_data" class="btn mright5 btn-primary pull-right luckysheet_info_detail_save" >Save</button><a href="#" class="btn mright5 btn-success pull-right payslip_download hide" >Download</a><button  class="btn mright5 btn-info pull-right luckysheet_info_detail_exports ">Create file</button><button id="payslip_close" class="btn mright5 btn-warning pull-right luckysheet_info_detail_payslip_close" >Payslip closing</button><a href="' . admin_url() . 'hr_payroll/payslip_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
+            $permission_actions = '<button id="save_data" class="btn mright5 btn-primary pull-right luckysheet_info_detail_save" >Save</button><a href="#" class="btn mright5 btn-success pull-right payslip_download hide" >Download</a><button  class="btn mright5 btn-info pull-right luckysheet_info_detail_exports ">Create file</button><button id="payslip_close" class="btn mright5 btn-warning pull-right luckysheet_info_detail_payslip_close" >Payslip closing</button><a href="' . admin_url() . 'hr_control/payslip_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
         } else {
-            $permission_actions = '<a href="#" class="btn mright5 btn-success pull-right payslip_download hide" >Download</a><button  class="btn mright5 btn-info pull-right luckysheet_info_detail_exports ">Create file</button><a href="' . admin_url() . 'hr_payroll/payslip_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
+            $permission_actions = '<a href="#" class="btn mright5 btn-success pull-right payslip_download hide" >Download</a><button  class="btn mright5 btn-info pull-right luckysheet_info_detail_exports ">Create file</button><a href="' . admin_url() . 'hr_control/payslip_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
         }
         $data['permission_actions'] = $permission_actions;
         $data['title'] = _l('payslip_detail');
@@ -3885,7 +3884,7 @@ class hr_control extends AdminController
             $data['data_form'] = $mystring;
         }
 
-        $permission_actions = '<a href="#" class="btn mright5 btn-success pull-right payslip_download hide" >Download</a><button  class="btn mright5 btn-info pull-right luckysheet_info_detail_exports ">Create file</button><a href="' . admin_url() . 'hr_payroll/payslip_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
+        $permission_actions = '<a href="#" class="btn mright5 btn-success pull-right payslip_download hide" >Download</a><button  class="btn mright5 btn-info pull-right luckysheet_info_detail_exports ">Create file</button><a href="' . admin_url() . 'hr_control/payslip_manage' . '" class="btn mright5 btn-default pull-right" >Back</a>';
         $data['permission_actions'] = $permission_actions;
 
         $data['title'] = _l('view_payslip');
@@ -5334,7 +5333,7 @@ class hr_control extends AdminController
 		$this->app_scripts->add('circle-progress-js', 'assets/plugins/jquery-circle-progress/circle-progress.min.js');
 		$data['google_ids_calendars'] = $this->misc_model->get_google_calendar_ids();
 		$data['title'] = _l('hr_hr_profile');
-		$this->load->view('hr_records_dashboard', $data);
+		$this->load->view('hr_hr_records_dashboard', $data);
 	}
 
 	/**
@@ -5522,7 +5521,7 @@ class hr_control extends AdminController
 		if (!is_admin() && !has_permission('hrm_reception_staff', '', 'view') && !has_permission('hrm_reception_staff', '', 'view_own')) {
 			access_denied('reception_staff');
 		}
-		$this->load->model('hr_profile/hr_profile_model');
+		$this->load->model('hr_control/hr_profile_model');
 		$this->load->model('roles_model');
 		$this->load->model('staff_model');
 		$data['staff_members'] = $this->hr_profile_model->get_staff('', ['active' => 1]);
@@ -6908,7 +6907,7 @@ class hr_control extends AdminController
 			<div></div>';
 			foreach ($data_training as $key => $value) {
 				$data['description'] .= '<div>';
-				$data['description'] .= '&#9755; <a href="' . site_url() . 'hr_profile/participate/index/' . $value['training_id'] . '/' . $value['hash'] . '">' . site_url() . '' . $value['slug'] . '</a>';
+				$data['description'] .= '&#9755; <a href="' . site_url() . 'hr_control/participate/index/' . $value['training_id'] . '/' . $value['hash'] . '">' . site_url() . '' . $value['slug'] . '</a>';
 				$data['description'] .= '</div><br>';
 			}
 
@@ -6938,7 +6937,7 @@ class hr_control extends AdminController
 	 */
 	public function get_percent_complete($id = '') {
 		if ($id != '') {
-			$this->load->model('hr_profile/hr_profile_model');
+			$this->load->model('hr_control/hr_profile_model');
 			$this->load->model('departments_model');
 			$this->load->model('staff_model');
 
@@ -9187,7 +9186,7 @@ class hr_control extends AdminController
 				}
 
 				if (has_permission('hrm_setting', '', 'delete')) {
-					$options .= icon_btn('hr_profile/delete_hr_profile_permission/' . $aRow['staffid'], 'remove', 'btn-danger _delete', ['title' => _l('delete')]);
+					$options .= icon_btn('hr_control/delete_hr_profile_permission/' . $aRow['staffid'], 'remove', 'btn-danger _delete', ['title' => _l('delete')]);
 				}
 
 				$row[] = $options;
@@ -12129,7 +12128,6 @@ class hr_control extends AdminController
 	 * @return [type]
 	 */
 	public function profile_reset_data() {
-
 		if (!is_admin()) {
 			access_denied('hr_pcontrol');
 		}
@@ -12201,8 +12199,7 @@ class hr_control extends AdminController
 		$this->db->delete(db_prefix() . 'files');
 
 		set_alert('success', _l('reset_data_successful'));
-		redirect(admin_url('hr_profile/setting?group=profile_reset_data'));
-
+		redirect(admin_url('hr_control/setting?group=profile_reset_data'));
 	}
 
 	/**

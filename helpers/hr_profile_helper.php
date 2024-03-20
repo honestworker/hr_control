@@ -48,7 +48,7 @@ function hr_profile_row_options_exists($name) {
  */
 function hr_profile_job_position_by_staff($staffid) {
 	$CI             = &get_instance();
-	$CI->load->model('hr_profile/hr_profile_model');
+	$CI->load->model('hr_control/hr_profile_model');
 	$staff = $CI->hr_profile_model->get_staff($staffid);
 	if ($staff) {
 		$job_name = hr_profile_job_name_by_id($staff->job_position);

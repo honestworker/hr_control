@@ -33,7 +33,7 @@
 			staff_identifi: {
 				required: true,
 				remote: {
-					url: site_url + "admin/hr_profile/hr_code_exists",
+					url: site_url + "admin/hr_control/hr_code_exists",
 					type: 'post',
 					data: {
 						staff_identifi: function() {
@@ -123,7 +123,7 @@
 	function hr_profile_update_staff(staff_id) {
 		"use strict";
 
-		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/member_modal'); ?>", {
+		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/member_modal'); ?>", {
 			slug: 'update',
 			staff_id: staff_id
 		}, function() {

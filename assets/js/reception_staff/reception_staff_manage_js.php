@@ -198,7 +198,7 @@ function delete_reception(id) {
 
 function show_info_reception(id) {
 	'use strict';
-	var requestURL = (typeof(url) != 'undefined' ? url : 'hr_profile/get_reception/') + (typeof(id) != 'undefined' ? id : '');
+	var requestURL = (typeof(url) != 'undefined' ? url : 'hr_control/get_reception/') + (typeof(id) != 'undefined' ? id : '');
 	requestGetJSON(requestURL).done(function(response) {
 		$('#reception_sidebar').modal('show').find('.modal-content').html(response.data);  
 	}).fail(function(data) {

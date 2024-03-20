@@ -30,7 +30,7 @@
 						<?php } ?>
 
 						<?php if(is_admin() || has_permission('hrm_setting','','delete')) {?>
-							<a href="<?php echo admin_url('hr_profile/delete_workplace/'.$w['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+							<a href="<?php echo admin_url('hr_control/delete_workplace/'.$w['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
@@ -39,7 +39,7 @@
 	</table>       
 	<div class="modal" id="workplace" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
-			<?php echo form_open(admin_url('hr_profile/workplace'), array('id' => 'add_workplace' )); ?>
+			<?php echo form_open(admin_url('hr_control/workplace'), array('id' => 'add_workplace' )); ?>
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

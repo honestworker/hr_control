@@ -23,7 +23,7 @@
 
 	<div class="modal" id="add_procedure_retire_manage" tabindex="-1" role="dialog">
 		<div class="modal-dialog modal-lg">
-			<?php echo form_open(admin_url('hr_profile/add_procedure_form_manage'),  array('id'=>'add_procedure_form_manage')); ?>
+			<?php echo form_open(admin_url('hr_control/add_procedure_form_manage'),  array('id'=>'add_procedure_form_manage')); ?>
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

@@ -59,7 +59,7 @@
 	function init_hrm_contract(id) {
 		'use strict';
 
-		load_small_table_item(id, '#hrm_contract', 'hrmcontractid', 'hr_profile/get_hrm_contract_data_ajax', '.table-table_contract');
+		load_small_table_item(id, '#hrm_contract', 'hrmcontractid', 'hr_control/get_hrm_contract_data_ajax', '.table-table_contract');
 	}
 
 	function load_small_table_item(pr_id, selector, input_name, url, table) {

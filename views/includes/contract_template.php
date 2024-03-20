@@ -3,7 +3,7 @@
 	<div class="_buttons">
 		<?php if(is_admin() || has_permission('hrm_setting','','create')){ ?>
 			
-			<a href="<?php echo admin_url('hr_profile/contract_template'); ?>" class="btn btn-info pull-left display-block mright5"><?php echo _l('new_contract_template'); ?></a>
+			<a href="<?php echo admin_url('hr_control/contract_template'); ?>" class="btn btn-info pull-left display-block mright5"><?php echo _l('new_contract_template'); ?></a>
 
 		<?php } ?>
 	</div>
@@ -65,11 +65,11 @@
 					<td><?php echo html_entity_decode($data_position_names); ?></td>
 					<td>
 						<?php if(is_admin() || has_permission('hrm_setting','','edit')){ ?>
-							<a href="<?php echo admin_url('hr_profile/contract_template/'.$c['id']); ?>"  class="btn btn-default btn-icon"><i class="fa fa-pencil-square-o"></i></a>
+							<a href="<?php echo admin_url('hr_control/contract_template/'.$c['id']); ?>"  class="btn btn-default btn-icon"><i class="fa fa-pencil-square-o"></i></a>
 						<?php } ?>
 
 						<?php if(is_admin() || has_permission('hrm_setting','','delete')){ ?>
-							<a href="<?php echo admin_url('hr_profile/delete_contract_template_/'.$c['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+							<a href="<?php echo admin_url('hr_control/delete_contract_template_/'.$c['id']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 						<?php } ?>
 
 					</td>

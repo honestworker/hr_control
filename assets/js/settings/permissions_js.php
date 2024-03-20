@@ -10,7 +10,7 @@
 	function hr_payroll_permissions_update(staff_id, role_id, add_new) {
 	"use strict";
 
-	  $("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_payroll/permission_modal'); ?>", {
+	  $("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/permission_modal'); ?>", {
 	       slug: 'update',
 	       staff_id: staff_id,
 	       role_id: role_id,

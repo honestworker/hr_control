@@ -125,7 +125,7 @@
 	function dependent_person_update(staff_id, dependent_person_id, manage) {
 		"use strict";
 
-		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/dependent_person_modal'); ?>", {
+		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/dependent_person_modal'); ?>", {
 			slug: 'update',
 			staff_id: staff_id,
 			dependent_person_id: dependent_person_id,
@@ -148,7 +148,7 @@
 	function dependent_person_add(staff_id, dependent_person_id, manage) {
 		"use strict";
 
-		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/dependent_person_modal'); ?>", {
+		$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/dependent_person_modal'); ?>", {
 			slug: 'create',
 			staff_id: staff_id,
 			dependent_person_id: dependent_person_id,

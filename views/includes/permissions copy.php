@@ -15,7 +15,7 @@
 				?>
 				<h4 class="modal-title"><?php echo html_entity_decode($title); ?></h4>
 			</div>
-			<?php echo form_open(admin_url('hr_profile/hr_profile_update_permissions/'.$staffid), array('id' => 'update_permissions')); ?>
+			<?php echo form_open(admin_url('hr_control/hr_profile_update_permissions/'.$staffid), array('id' => 'update_permissions')); ?>
 			<div class="modal-body">
 
 

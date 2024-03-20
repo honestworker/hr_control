@@ -32,7 +32,7 @@
                                     <td><?php echo html_entity_decode($group['name']); ?> <span class="badge mleft5"><?php echo total_rows(db_prefix().'hr_knowledge_base','articlegroup='.$group['groupid']); ?></span></td>
                                     <td>
                                         <div class="onoffswitch">
-                                            <input type="checkbox" id="<?php echo html_entity_decode($group['groupid']); ?>" data-id="<?php echo html_entity_decode($group['groupid']); ?>" class="onoffswitch-checkbox" <?php if (!has_permission('hr_manage_q_a','','edit')) { echo 'disabled'; } ?> data-switch-url="<?php echo admin_url(); ?>hr_profile/knowledge_base_q_a/change_group_status" <?php if ($group['active'] == 1) {echo 'checked';} ?>>
+                                            <input type="checkbox" id="<?php echo html_entity_decode($group['groupid']); ?>" data-id="<?php echo html_entity_decode($group['groupid']); ?>" class="onoffswitch-checkbox" <?php if (!has_permission('hr_manage_q_a','','edit')) { echo 'disabled'; } ?> data-switch-url="<?php echo admin_url(); ?>hr_control/knowledge_base_q_a/change_group_status" <?php if ($group['active'] == 1) {echo 'checked';} ?>>
                                             <label class="onoffswitch-label" for="<?php echo html_entity_decode($group['groupid']); ?>"></label>
                                         </div>
                                     </td>

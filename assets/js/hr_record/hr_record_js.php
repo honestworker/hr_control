@@ -167,7 +167,7 @@ function staff_delete_bulk_action(event) {
 function hr_profile_add_staff(staff_id, role_id, add_new) {
 	"use strict";
 
-	$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/member_modal'); ?>", {
+	$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/member_modal'); ?>", {
 		slug: 'create',
 		staff_id: staff_id,
 		role_id: role_id,
@@ -191,7 +191,7 @@ function hr_profile_add_staff(staff_id, role_id, add_new) {
 function hr_profile_update_staff_manage_view(staff_id) {
 	"use strict";
 
-	$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/member_modal'); ?>", {
+	$("#modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/member_modal'); ?>", {
 		slug: 'update',
 		staff_id: staff_id,
 		manage_staff: 'manage_staff'

@@ -156,7 +156,7 @@ foreach ($staff_departments as $staff_department) {
 if ($member->job_position > 0) {
 	$job_position_name = html_entity_decode(hr_profile_get_job_position_name($member->job_position))
 	?>
-	<a href="<?php echo admin_url() . 'hr_profile/job_position_view_edit/' . $member->job_position; ?>"><?php echo $job_position_name; ?></a>
+	<a href="<?php echo admin_url() . 'hr_control/job_position_view_edit/' . $member->job_position; ?>"><?php echo $job_position_name; ?></a>
 										<?php
 }
 

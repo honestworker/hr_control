@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<?php echo form_open_multipart(admin_url('hr_control/reset_data'), array('id'=>'reset_data')); ?>
+<?php echo form_open_multipart(admin_url('hr_control/reset_data'), array('id' => 'reset_data')); ?>
 <div class="_buttons">
     <?php if (is_admin()) { ?>
         <div class="row">
@@ -9,7 +9,6 @@
                 <a href="#" class="input_method"><i class="fa fa-question-circle i_tooltip" data-toggle="tooltip" title="" data-original-title="<?php echo _l('hrp_reset_data_title'); ?>"></i></a>
             </div>
         </div>
-
     <?php } ?>
 </div>
 <?php echo form_close(); ?>

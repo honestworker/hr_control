@@ -10,7 +10,7 @@ class Hr_profile_model extends App_Model
      * get hr profile dashboard data
      * @return array
      */
-    public function get_hr_records_dashboard_data()
+    public function get_hr_hr_records_dashboard_data()
     {
         $data_hrm = [];
         $staff = $this->staff_model->get();
@@ -1768,7 +1768,7 @@ class Hr_profile_model extends App_Model
                         $notified = add_notification([
                             'description' => $training_description,
                             'touserid' => $staff_id,
-                            'link' => 'hr_profile/member/' . $staff_id . '/' . 'training',
+                            'link' => 'hr_control/member/' . $staff_id . '/' . 'training',
                             'additional_data' => serialize([
                                 $training_description,
                             ]),
@@ -1844,7 +1844,7 @@ class Hr_profile_model extends App_Model
                         $notified = add_notification([
                             'description' => $training_description,
                             'touserid' => $staff_id,
-                            'link' => 'hr_profile/member/' . $staff_id . '/' . 'training',
+                            'link' => 'hr_control/member/' . $staff_id . '/' . 'training',
                             'additional_data' => serialize([
                                 $training_description,
                             ]),
@@ -5409,7 +5409,7 @@ class Hr_profile_model extends App_Model
                             $people_handle_id = $name['people_handle_id'];
                             $staffid_user = get_staff_user_id();
                             $subject = get_staff_full_name($staffid);
-                            $link = 'hr_profile/resignation_procedures?detail=' . $staffid;
+                            $link = 'hr_control/resignation_procedures?detail=' . $staffid;
 
                             if ($people_handle_id != '') {
                                 if ($staffid_user != $people_handle_id) {

@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php
-$this->load->model('hr_profile/hr_profile_model');
-$data_dash = $this->hr_profile_model->get_hr_records_dashboard_data();
+$this->load->model('hr_control/hr_profile_model');
+$data_dash = $this->hr_profile_model->get_hr_hr_records_dashboard_data();
 
 $staff_chart_by_age = json_encode($this->hr_profile_model->staff_chart_by_age());
 $contract_type_chart = json_encode($this->hr_profile_model->contract_type_chart());
@@ -21,7 +21,7 @@ $staff_chart_by_job_positions = json_encode($this->hr_profile_model->staff_chart
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-6">
-										<p class="text-dark text-uppercase bold"><?php echo _l('hr_records_dashboard');?></p>
+										<p class="text-dark text-uppercase bold"><?php echo _l('hr_hr_records_dashboard');?></p>
 									</div>
 									<div class="col-md-3 pull-right">
 									</div>

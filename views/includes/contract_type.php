@@ -37,7 +37,7 @@
 						<?php } ?>
 
 						<?php if (is_admin() || has_permission('hrm_setting','','delete')) { ?>
-							<a href="<?php echo admin_url('hr_profile/delete_contract_type/'.$c['id_contracttype']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
+							<a href="<?php echo admin_url('hr_control/delete_contract_type/'.$c['id_contracttype']); ?>" class="btn btn-danger btn-icon _delete"><i class="fa fa-remove"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
@@ -47,7 +47,7 @@
 
 	<div class="modal" id="contract_type" tabindex="-1" role="dialog">
 		<div class="modal-dialog w-25">
-			<?php echo form_open(admin_url('hr_profile/contract_type'),  array('id'=>'add_contract_type')); ?>
+			<?php echo form_open(admin_url('hr_control/contract_type'),  array('id'=>'add_contract_type')); ?>
 			<div class="modal-content ">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -18,7 +18,7 @@
     function member_view_contract(contract_id) {
       "use strict";
 
-      $("#contract_modal_wrapper").load("<?php echo admin_url('hr_control/hr_profile/view_contract_modal'); ?>", {
+      $("#contract_modal_wrapper").load("<?php echo admin_url('hr_control/hr_control/view_contract_modal'); ?>", {
            slug: 'view',
            contract_id: contract_id
       }, function() {

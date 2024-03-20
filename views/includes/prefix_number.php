@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<?php echo form_open_multipart(admin_url('hr_profile/prefix_number'),array('class'=>'prefix_number','autocomplete'=>'off')); ?>
+<?php echo form_open_multipart(admin_url('hr_control/prefix_number'),array('class'=>'prefix_number','autocomplete'=>'off')); ?>
 
 <div class="row">
 	<div class="col-md-12">

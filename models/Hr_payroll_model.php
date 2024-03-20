@@ -803,7 +803,7 @@ class Hr_payroll_model extends App_Model {
 		$array_salary_allowance=[];
 		if (hr_payroll_get_status_modules('hr_profile') && get_hr_payroll_option('integrated_hrprofile') == 1) {
 
-			$this->load->model('hr_profile/hr_profile_model');
+			$this->load->model('hr_control/hr_profile_model');
 		//get salary type
 			$salary_types = $this->hr_profile_model->get_salary_form();
 		//get allowance type
@@ -2266,14 +2266,14 @@ class Hr_payroll_model extends App_Model {
 				$attendance_month_format = date("m", strtotime($month_format ?? ''));
 
 				if ((float)$attendance_month_format == (float)$shift_detail_to_month && (float)$attendance_month_format == (float)$shift_detail_from_month ) {
-					$from_day = date_format(date_create($value['from_date']),"j");
+					$from_day = date_format(date_create($value['from_date'] ?? ''),"j");
 					$to_day = date_format(date_create($value['to_date']),"j");
 				} elseif ((float)$attendance_month_format == (float)$shift_detail_from_month ) {
-					$from_day = date_format(date_create($value['from_date']),"j");
+					$from_day = date_format(date_create($value['from_date'] ?? ''),"j");
 					$to_day = cal_days_in_month(CAL_GREGORIAN,date("m", strtotime($month_format ?? '')),date("Y", strtotime($month_format ?? '')));
 				} elseif ((float)$attendance_month_format == (float)$shift_detail_to_month) {
 					$from_day = 1;
-					$to_day = date_format(date_create($value['to_date']),"j");
+					$to_day = date_format(date_create($value['to_date'] ?? ''),"j");
 				} else {
 					$from_day = 1;
 					$to_day = cal_days_in_month(CAL_GREGORIAN,date("m", strtotime($month_format ?? '')),date("Y", strtotime($month_format ?? '')));

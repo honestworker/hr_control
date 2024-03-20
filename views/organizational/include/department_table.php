@@ -82,7 +82,7 @@ foreach ($rResult as $aRow) {
 	}
 
 	if (is_admin() || has_permission('staffmanage_orgchart','','delete')) {
-		$options .= icon_btn('hr_profile/delete_department/' . $aRow['departmentid'], 'remove', 'btn-danger _delete');
+		$options .= icon_btn('hr_control/delete_department/' . $aRow['departmentid'], 'remove', 'btn-danger _delete');
 	}
 
 	$row[] = $options;

@@ -667,7 +667,7 @@ function hr_profile_add_head_components()
 
     if (!(strpos($viewuri, 'admin/hr_control/organizational_chart') === false) || !(strpos($viewuri, 'admin/hr_control/staff_infor') === false)) {
         echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/plugins/ComboTree/style.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
-        echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/css/style.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
+        echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, 'assets/css/profile.style.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
         echo '<link href="' . module_dir_url(HR_CONTROL_MODULE_NAME, '/assets/plugins/OrgChart-master/jquery.orgchart.css') . '?v=' . HR_CONTROL_REVISION . '"  rel="stylesheet" type="text/css" />';
     }
 
